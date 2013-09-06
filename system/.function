@@ -1,0 +1,94 @@
+# Create a new directory and enter it
+
+function mkd() {
+    mkdir -p "$@" && cd "$@"
+}
+
+# Find file/dir (fuzzy)
+
+function ff() {  find . -type f -name "${1}";}
+function fff() { find . -type f -name "*${1}*";}
+function fd() {  find . -type d -name "${1}";}
+function fdf() { find . -type d -name "*${1}*";}
+
+# Show disk usage of current folder, or list with depth
+
+function duf() {
+    du -d ${1} -c | sort -r -n | awk '{split("K M G",v); s=1; while($1>1024){$1/=1024; s++} print int($1)v[s]"\t"$2}'
+}
+
+# Open man page as PDF
+
+function manpdf() {
+    man -t "${1}" | open -f -a /Applications/Preview.app/
+}
+
+## Check if resource is served compressed
+
+function check_compression() {
+    curl --write-out 'Size (uncompressed) = %{size_download}\n' --silent --output /dev/null $1
+    curl --header 'Accept-Encoding: gzip,deflate,compress' --write-out 'Size (compressed) =   %{size_download}\n' --silent --output /dev/null $1
+    curl --head --header 'Accept-Encoding: gzip,deflate' --silent $1 | grep -i "cache\|content\|vary\|expires"
+}
+
+# Get gzipped file size
+
+function gz() {
+    echo "orig size (bytes): "
+    cat "$1" | wc -c
+    echo "gzipped size (bytes): "
+    gzip -c "$1" | wc -c
+}
+
+# Create a data URL from a file
+
+function dataurl() {
+    local mimeType=$(file --mime-type "$1" | cut -d ' ' -f2)
+    if [[ $mimeType == text/* ]]; then
+        mimeType="${mimeType};charset=utf-8"
+    fi
+    echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
+}
+
+# Show and select the given file(s) in the Finder
+
+function show() {
+    # Default to the current directory.
+    [ $# -eq 0 ] && set -- .;
+
+    # Build the array of paths for AppleScript.
+    local path paths=();
+    for path; do
+        # Make sure each path exists.
+        if ! [ -e "$path" ]; then
+            echo "show: $path: No such file or directory";
+            continue;
+        fi;
+
+        # Crappily re-implement "readlink -f" ("realpath") for Darwin.
+        # (The "cd ... > /dev/null" hides CDPATH noise.)
+        [ -d "$path" ] \
+			&& path="$(cd "$path" > /dev/null && pwd)" \
+			|| path="$(cd "$(dirname "$path")" > /dev/null && \
+			           echo "$PWD/$(basename "$path")")";
+
+        # Use the "POSIX file" AppleScript syntax.
+        paths+=("POSIX file \"${path//\"/\"}\"");
+    done;
+    [ "${#paths[@]}" -eq 0 ] && return;
+
+    # Group all output to pipe through osacript.
+    {
+        echo 'tell application "Finder"';
+        echo -n 'select {'; # "reveal" would select only the last file.
+
+        for ((i = 0; i < ${#paths[@]}; i++)); do
+            echo -n "${paths[$i]}";
+            [ $i -lt $(($# - 1)) ] && echo -n ', '; # Ugly array.join()...
+        done;
+
+        echo '}';
+        echo 'activate';
+        echo 'end tell';
+    } | osascript;
+}

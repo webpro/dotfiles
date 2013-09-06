@@ -1,0 +1,59 @@
+# ls
+
+alias l="ls -la"
+alias la="ls -lAh"
+alias ld="ls -ld */"
+
+# cd
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias bd=". bd -s"
+
+# tree
+
+alias tree="tree -A"
+alias trd="tree -d"
+alias trl1="tree -d -L 1"
+alias trl2="tree -d -L 2"
+
+# Webserver
+
+alias srv="http-server"
+
+# Browsers
+
+alias gc="open -a /Applications/Google\ Chrome.app"
+alias gcc="open -a /Applications/Google\ Chrome\ Canary.app"
+alias ff="open -a /Applications/Firefox.app"
+
+# JSON pretty-print
+
+alias json="python -mjson.tool"
+
+# IP addresses
+
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+#alias ip="curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'"
+alias ipl="ipconfig getifaddr en0"
+alias ipa="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
+
+# Speed Test
+
+alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
+
+# Recursively remove .DS_Store files
+
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Request using GET, POST, etc. method
+
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+	alias "$method"="lwp-request -m '$method'"
+done
+
+# Kill all the tabs in Chrome to free up memory
+
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
