@@ -14,6 +14,12 @@ bash_prompt_command() {
         NEW_PWD=${NEW_PWD:$pwdoffset:$pwdmaxlen}
         NEW_PWD=${trunc_symbol}/${NEW_PWD#*/}
     fi
+	GIT_INFO=$(parse_git_branch)
+}
+
+parse_git_branch() {
+	local OUT=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ "$OUT" != "" ]; then echo " $OUT"; fi
 }
 
 bash_prompt() {
@@ -63,7 +69,7 @@ bash_prompt() {
 	# root's color
     [ $UID -eq "0" ] && UC=$R
 
-	PS1="$TITLEBAR${Y}[${G}\u${G} ${Y}\${NEW_PWD}${Y}]${W} \\$ ${NONE}"
+	PS1="$TITLEBAR${Y}[${G}\u${G} ${Y}\${NEW_PWD}${Y}${G}\${GIT_INFO}${G}${Y}]${W} \\$ ${NONE}"
 }
 
 PROMPT_COMMAND=bash_prompt_command
