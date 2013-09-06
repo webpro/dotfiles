@@ -44,6 +44,10 @@ alias ipa="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+
 
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 
+# Empty trash on mounted volumes and main HDD, and clear system logs
+
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
 # Recursively remove .DS_Store files
 
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
