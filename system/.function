@@ -34,10 +34,11 @@ function check_compression() {
 # Get gzipped file size
 
 function gz() {
-    echo "orig size (bytes): "
-    cat "$1" | wc -c
-    echo "gzipped size (bytes): "
-    gzip -c "$1" | wc -c
+	local origsize=$(wc -c < "$1")
+	local gzipsize=$(gzip -c "$1" | wc -c)
+	local ratio=$(echo "$gzipsize * 100/ $origsize" | bc -l)
+	local saved=$(echo "($origsize - $gzipsize) * 100/ $origsize" | bc -l)
+	printf "orig: %d bytes\ngzip: %d bytes\nsave: %2.0f%% (%2.0f%%)\n" "$origsize" "$gzipsize" "$saved" "$ratio"
 }
 
 # Create a data URL from a file
