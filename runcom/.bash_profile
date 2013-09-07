@@ -13,4 +13,6 @@ do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
+[ -f "$DOTFILES_DIR"/git/.git-completion ] && source "$DOTFILES_DIR"/git/.git-completion
+
 unset DOTFILE PROFILE_SOURCE DOTFILES_DIR

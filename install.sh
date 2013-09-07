@@ -4,6 +4,10 @@
 
 git pull origin master
 
+# Grab the latest git-completion
+
+curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > "$PWD/.git-completion"
+
 # Bunch of symlinks
 
 ln -sfhv "$PWD/runcom/.bash_profile" ~
