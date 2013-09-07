@@ -27,7 +27,7 @@ alias srv="http-server"
 
 alias gc="open -a /Applications/Google\ Chrome.app"
 alias gcc="open -a /Applications/Google\ Chrome\ Canary.app"
-alias ff="open -a /Applications/Firefox.app"
+alias f="open -a /Applications/Firefox.app"
 
 # JSON pretty-print
 
