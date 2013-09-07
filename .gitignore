@@ -1,1 +1,7 @@
 git/.git-completion
+system/*
+!system/.alias
+!system/.env
+!system/.function
+!system/.path
+!system/.prompt
