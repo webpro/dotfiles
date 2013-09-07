@@ -1,6 +1,2 @@
-DIR="$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))"
-
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
-export PATH="$DIR/bin:$PATH"
-
-unset DIR
+export PATH="$DOTFILES_DIR/bin:$PATH"

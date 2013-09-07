@@ -1,15 +1,16 @@
 # Resolve path until file is no longer a symlink
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ]; do
-	DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-	SOURCE="$(readlink "$SOURCE")"
-	[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+PROFILE_SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$PROFILE_SOURCE" ]; do
+	DOTFILES_DIR="$( cd -P "$( dirname "$PROFILE_SOURCE" )" && pwd )"
+	PROFILE_SOURCE="$(readlink "$PROFILE_SOURCE")"
+	[[ $PROFILE_SOURCE != /* ]] && PROFILE_SOURCE="$DIR/$PROFILE_SOURCE"
 done
-DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+DOTFILES_DIR="$( cd -P "$( dirname "$PROFILE_SOURCE" )/.." && pwd )"
 
 # Finally we can evaluate the actual files
-for file in `find "$DIR"/../system`
+for DOTFILE in `find "$DOTFILES_DIR"/system`
 do
-    [ -f "$file" ] && source "$file"
+    [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
-unset file
+
+unset DOTFILE PROFILE_SOURCE DOTFILES_DIR
