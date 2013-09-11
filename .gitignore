@@ -1,7 +1,7 @@
 git/.git-completion
 system/*
+!system/.1_path
 !system/.alias
 !system/.env
 !system/.function
-!system/.path
 !system/.prompt
