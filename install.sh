@@ -33,3 +33,7 @@ function ask { while true; do read -p "$1 [Y/n] " REPLY; if [ -z "$REPLY" ]; the
 type -P bower &>/dev/null || ( ask "npm install -g bower" Y && npm install -g bower )
 type -P grunt &>/dev/null || ( ask "npm install -g grunt-cli" Y && npm install -g grunt-cli )
 type -P http-server &>/dev/null || ( ask "npm install -g http-server" Y && npm install -g http-server )
+
+# Install hub for git
+
+curl https://hub.github.com/standalone -Lo "$DOTFILES_DIR/bin/hub" && chmod +x "$DOTFILES_DIR/bin/hub"
