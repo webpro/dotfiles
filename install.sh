@@ -1,24 +1,28 @@
 #!/bin/sh
 
+# Get current dir (so run this script from anywhere)
+
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Update dotfiles itself first
 
-git pull origin master
+git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
 # Grab the latest git-completion
 
-curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > "$PWD/.git-completion"
+curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > "$DOTFILES_DIR/git/.git-completion"
 
 # Bunch of symlinks
 
-ln -sfhv "$PWD/runcom/.bash_profile" ~
-ln -sfhv "$PWD/runcom/.inputrc" ~
-ln -sfhv "$PWD/git/.gitconfig" ~
-ln -sfhv "$PWD/git/.gitignore_global" ~
+ln -sfhv "$DOTFILES_DIR/runcom/.bash_profile" ~
+ln -sfhv "$DOTFILES_DIR/runcom/.inputrc" ~
+ln -sfhv "$DOTFILES_DIR/git/.gitconfig" ~
+ln -sfhv "$DOTFILES_DIR/git/.gitignore_global" ~
 
 # Custom symlinks
 
 mkdir -p ~/Projects && ln -sfhv ~/Projects ~/p
-[ -f "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ] && ln -sfhv "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" "$PWD/bin/subl"
+[ -f "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ] && ln -sfhv "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" "$DOTFILES_DIR/bin/subl"
 
 # "Confirm" function borrowed from https://gist.github.com/davejamesmiller/1965569
 

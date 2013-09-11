@@ -3,8 +3,7 @@
 ## Install
 
     git clone https://github.com/webpro/dotfiles.git
-    cd dotfiles
-    source install.sh
+    source dotfiles/install.sh
 
 Just re-run `source install.sh` to update.
 
