@@ -46,7 +46,7 @@
 	lineNumber = true
 
 [help]
-	autocorrect = true
+	autocorrect = 1
 
 [difftool]
 	prompt = false
