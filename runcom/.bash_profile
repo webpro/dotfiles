@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 # Resolve path until file is no longer a symlink
 PROFILE_SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$PROFILE_SOURCE" ]; do
