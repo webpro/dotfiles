@@ -61,3 +61,8 @@ done
 # Kill all the tabs in Chrome to free up memory
 
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+# Show/hide desktop icons
+
+alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
