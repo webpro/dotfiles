@@ -24,6 +24,35 @@ mkdir -p ~/Projects && ln -sfhv ~/Projects ~/p
 
 function ask { while true; do read -p "$1 [Y/n] " REPLY; if [ -z "$REPLY" ]; then REPLY=Y; fi; case "$REPLY" in Y*|y*) return 0;; N*|n*) return 1;; esac; done }
 
+# Install Homebrew & brew-cask
+
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" && brew doctor
+brew tap phinze/homebrew-cask
+brew install brew-cask
+
+# Install Node & npm with brew
+
+brew install node
+
+# Install applications with brew-cask
+
+brew cask install alfred
+brew cask install dash
+brew cask install firefox
+brew cask install google-chrome
+brew cask install google-chrome-canary
+brew cask install opera
+brew cask install sourcetree
+brew cask install sublime-text-3
+brew cask install transmit
+brew cask install virtualbox
+brew cask install webstorm
+
+# Update Homebrew, formulae, and packages
+
+brew update
+brew upgrade
+
 # Globally install with npm if not done yet (bower, grunt, http-server)
 
 type -P bower &>/dev/null || ( ask "npm install -g bower" Y && npm install -g bower )
