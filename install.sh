@@ -8,10 +8,6 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
-# Grab the latest git-completion
-
-curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > "$DOTFILES_DIR/git/.git-completion"
-
 # Bunch of symlinks
 
 ln -sfhv "$DOTFILES_DIR/runcom/.bash_profile" ~
@@ -33,6 +29,10 @@ function ask { while true; do read -p "$1 [Y/n] " REPLY; if [ -z "$REPLY" ]; the
 type -P bower &>/dev/null || ( ask "npm install -g bower" Y && npm install -g bower )
 type -P grunt &>/dev/null || ( ask "npm install -g grunt-cli" Y && npm install -g grunt-cli )
 type -P http-server &>/dev/null || ( ask "npm install -g http-server" Y && npm install -g http-server )
+
+# Grab the latest git-completion
+
+curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > "$DOTFILES_DIR/git/.git-completion"
 
 # Install hub for git
 
