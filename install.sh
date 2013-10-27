@@ -31,6 +31,7 @@ brew install git
 brew install node
 brew install tree
 brew install wget
+brew install hub
 
 # Install applications with brew-cask
 
@@ -56,10 +57,6 @@ brew upgrade
 type -P bower &>/dev/null || ( ask "npm install -g bower" Y && npm install -g bower )
 type -P grunt &>/dev/null || ( ask "npm install -g grunt-cli" Y && npm install -g grunt-cli )
 type -P http-server &>/dev/null || ( ask "npm install -g http-server" Y && npm install -g http-server )
-
-# Install hub for git
-
-curl https://hub.github.com/standalone -Lo "$DOTFILES_DIR/bin/hub" && chmod +x "$DOTFILES_DIR/bin/hub"
 
 # Custom symlinks
 
