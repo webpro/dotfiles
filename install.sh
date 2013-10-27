@@ -15,11 +15,6 @@ ln -sfhv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfhv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfhv "$DOTFILES_DIR/git/.gitignore_global" ~
 
-# Custom symlinks
-
-mkdir -p ~/Projects && ln -sfhv ~/Projects ~/p
-[ -f "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ] && ln -sfhv "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" "$DOTFILES_DIR/bin/subl"
-
 # "Confirm" function
 
 function ask { while true; do read -p "$1 [Y/n] " REPLY; if [ -z "$REPLY" ]; then REPLY=Y; fi; case "$REPLY" in Y*|y*) return 0;; N*|n*) return 1;; esac; done }
@@ -63,3 +58,8 @@ type -P http-server &>/dev/null || ( ask "npm install -g http-server" Y && npm i
 # Install hub for git
 
 curl https://hub.github.com/standalone -Lo "$DOTFILES_DIR/bin/hub" && chmod +x "$DOTFILES_DIR/bin/hub"
+
+# Custom symlinks
+
+mkdir -p ~/Projects && ln -sfhv ~/Projects ~/p
+[ -f "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ] && ln -sfhv "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" "$DOTFILES_DIR/bin/subl"
