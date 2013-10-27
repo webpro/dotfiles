@@ -29,6 +29,8 @@ brew install brew-cask
 
 brew install git
 brew install node
+brew install tree
+brew install wget
 
 # Install applications with brew-cask
 
