@@ -1,5 +1,4 @@
 bin/hub
-git/.git-completion
 system/*
 !system/.1_path
 !system/.alias

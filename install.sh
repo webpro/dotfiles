@@ -30,8 +30,9 @@ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" && brew doctor
 brew tap phinze/homebrew-cask
 brew install brew-cask
 
-# Install Node & npm with brew
+# Install Git, Node & npm with brew
 
+brew install git
 brew install node
 
 # Install applications with brew-cask
@@ -58,10 +59,6 @@ brew upgrade
 type -P bower &>/dev/null || ( ask "npm install -g bower" Y && npm install -g bower )
 type -P grunt &>/dev/null || ( ask "npm install -g grunt-cli" Y && npm install -g grunt-cli )
 type -P http-server &>/dev/null || ( ask "npm install -g http-server" Y && npm install -g http-server )
-
-# Grab the latest git-completion
-
-curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > "$DOTFILES_DIR/git/.git-completion"
 
 # Install hub for git
 
