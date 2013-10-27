@@ -1,4 +1,4 @@
-## Prompt (source: http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
+## Prompt
 
 bash_prompt_command() {
     # How many characters of the $PWD should be kept

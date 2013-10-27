@@ -20,7 +20,7 @@ ln -sfhv "$DOTFILES_DIR/git/.gitignore_global" ~
 mkdir -p ~/Projects && ln -sfhv ~/Projects ~/p
 [ -f "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ] && ln -sfhv "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" "$DOTFILES_DIR/bin/subl"
 
-# "Confirm" function borrowed from https://gist.github.com/davejamesmiller/1965569
+# "Confirm" function
 
 function ask { while true; do read -p "$1 [Y/n] " REPLY; if [ -z "$REPLY" ]; then REPLY=Y; fi; case "$REPLY" in Y*|y*) return 0;; N*|n*) return 1;; esac; done }
 
