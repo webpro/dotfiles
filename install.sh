@@ -37,9 +37,12 @@ brew install hub
 
 brew cask install alfred
 brew cask install dash
+brew cask install dropbox
 brew cask install firefox
 brew cask install google-chrome
 brew cask install google-chrome-canary
+brew cask install google-drive
+brew cask install mou
 brew cask install opera
 brew cask install sourcetree
 brew cask install sublime-text-3
@@ -57,6 +60,7 @@ brew upgrade
 type -P bower &>/dev/null || ( ask "npm install -g bower" Y && npm install -g bower )
 type -P grunt &>/dev/null || ( ask "npm install -g grunt-cli" Y && npm install -g grunt-cli )
 type -P http-server &>/dev/null || ( ask "npm install -g http-server" Y && npm install -g http-server )
+type -P nodemon &>/dev/null || ( ask "npm install -g nodemon" Y && npm install -g nodemon )
 
 # Custom symlinks
 
