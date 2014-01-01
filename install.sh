@@ -21,9 +21,11 @@ function ask { while true; do read -p "$1 [Y/n] " REPLY; if [ -z "$REPLY" ]; the
 
 # Install Homebrew & brew-cask
 
-ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" && brew doctor
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+brew doctor
 brew tap phinze/homebrew-cask
 brew install brew-cask
+brew tap caskroom/versions
 
 # Install Git, Node & npm with brew
 
