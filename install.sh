@@ -70,3 +70,6 @@ type -P nodemon &>/dev/null || ( ask "npm install -g nodemon" Y && npm install -
 
 mkdir -p ~/Projects && ln -sfhv ~/Projects ~/p
 [ -f "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ] && ln -sfhv "~/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" "$DOTFILES_DIR/bin/subl"
+
+# Divvy prefs/shortcuts
+cp "$DOTFILES_DIR/etc/com.mizage.direct.Divvy.plist" ~/Library/Preferences
