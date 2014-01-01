@@ -39,6 +39,7 @@ brew install hub
 
 brew cask install alfred
 brew cask install dash
+brew cask install divvy
 brew cask install dropbox
 brew cask install firefox
 brew cask install google-chrome
@@ -47,7 +48,8 @@ brew cask install google-drive
 brew cask install mou
 brew cask install opera
 brew cask install sourcetree
-brew cask install sublime-text-3
+brew cask install spotify
+brew cask install sublime-text3
 brew cask install transmit
 brew cask install virtualbox
 brew cask install webstorm
