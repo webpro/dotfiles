@@ -4,3 +4,4 @@ system/*
 !system/.env
 !system/.function
 !system/.prompt
+bin/subl
