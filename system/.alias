@@ -29,6 +29,10 @@ alias gc="open -a /Applications/Google\ Chrome.app"
 alias gcc="open -a /Applications/Google\ Chrome\ Canary.app"
 alias f="open -a /Applications/Firefox.app"
 
+# npm
+
+alias npme="npm --registry http://registry.npmjs.eu"
+
 # JSON pretty-print
 
 alias json="python -mjson.tool"
