@@ -15,10 +15,6 @@ ln -sfhv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfhv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfhv "$DOTFILES_DIR/git/.gitignore_global" ~
 
-# "Confirm" function
-
-function ask { while true; do read -p "$1 [Y/n] " REPLY; if [ -z "$REPLY" ]; then REPLY=Y; fi; case "$REPLY" in Y*|y*) return 0;; N*|n*) return 1;; esac; done }
-
 # Install Homebrew & brew-cask
 
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
@@ -62,12 +58,19 @@ brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch 
 brew update
 brew upgrade
 
-# Globally install with npm if not done yet (bower, grunt, http-server)
+# Globally install or update with npm
 
-type -P bower &>/dev/null || ( ask "npm install -g bower" Y && npm install -g bower )
-type -P grunt &>/dev/null || ( ask "npm install -g grunt-cli" Y && npm install -g grunt-cli )
-type -P http-server &>/dev/null || ( ask "npm install -g http-server" Y && npm install -g http-server )
-type -P nodemon &>/dev/null || ( ask "npm install -g nodemon" Y && npm install -g nodemon )
+function _install-npm() {
+    type -P $1 &>/dev/null && npm update -g $1 || npm install -g $1
+}
+
+_install-npm "bower"
+_install-npm "grunt"
+_install-npm "gulp"
+_install-npm "http-server"
+_install-npm "nodemon"
+_install-npm "spot"
+_install-npm "svgo"
 
 # Custom symlinks
 
