@@ -17,3 +17,5 @@ do
 done
 
 unset DOTFILE PROFILE_SOURCE DOTFILES_DIR
+
+cd ~
