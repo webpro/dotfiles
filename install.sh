@@ -58,6 +58,11 @@ brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch 
 brew update
 brew upgrade
 
+## Install Ruby gems (SASS, Compass)
+
+sudo gem update --system
+sudo gem install compass sass sass-globbing
+
 # Globally install or update with npm
 
 function _install-npm() {
