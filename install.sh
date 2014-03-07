@@ -43,11 +43,15 @@ brew cask install google-chrome-canary
 brew cask install google-drive
 brew cask install mou
 brew cask install opera
+# brew cask install skype
+# brew cask install sonos
 brew cask install sourcetree
 brew cask install spotify
 brew cask install sublime-text3
+# brew cask install things
 brew cask install transmit
 brew cask install virtualbox
+brew cask install vlc
 brew cask install webstorm
 
 # https://github.com/sindresorhus/quick-look-plugins
