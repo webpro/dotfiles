@@ -65,8 +65,16 @@ brew upgrade
 
 ## Install Ruby gems (SASS, Compass)
 
+function _install-gem() {
+    # Unacceptable way to check if sass-globbing was installed (it's not in `gem list`)
+    [ -n "$2" ] && CHECK_GEM="$2" || CHECK_GEM="$1"
+    type -P "$CHECK_GEM" &>/dev/null && sudo gem update $1 || sudo gem install $1
+}
+
 sudo gem update --system
-sudo gem install compass sass sass-globbing
+_install-gem "compass"
+_install-gem "sass"
+_install-gem "sass-globbing" "sass"
 
 # Globally install or update with npm
 
