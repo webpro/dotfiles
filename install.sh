@@ -14,6 +14,7 @@ ln -sfhv "$DOTFILES_DIR/runcom/.bash_profile" ~
 ln -sfhv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfhv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfhv "$DOTFILES_DIR/git/.gitignore_global" ~
+ln -sfhv "$DOTFILES_DIR/etc/hydra" ~/.hydra
 
 # Install Homebrew & brew-cask
 
@@ -35,12 +36,12 @@ brew install hub
 
 brew cask install alfred
 brew cask install dash
-brew cask install divvy
 brew cask install dropbox
 brew cask install firefox
 brew cask install google-chrome
 brew cask install google-chrome-canary
 brew cask install google-drive
+brew cask install hydra
 brew cask install mou
 brew cask install opera
 # brew cask install skype
@@ -85,6 +86,3 @@ _install-npm "svgo"
 
 # http://www.sublimetext.com/docs/3/osx_command_line.html
 [ -f ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ] && ln -sfhv ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl "$DOTFILES_DIR/bin/subl"
-
-# Divvy prefs/shortcuts
-cp "$DOTFILES_DIR/etc/com.mizage.direct.Divvy.plist" ~/Library/Preferences
