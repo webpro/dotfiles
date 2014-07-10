@@ -24,13 +24,25 @@ brew tap phinze/homebrew-cask
 brew install brew-cask
 brew tap caskroom/versions
 
-# Install Git, Node & npm with brew
+# Install GNU packages (and override OSX version)
 
-brew install git
-brew install node
+brew install coreutils
+brew install gnu-sed --default-names
 brew install tree
 brew install wget
+
+# Install bash
+
+brew install bash
+grep "/usr/local/bin/bash" /private/etc/shells &>/dev/null || sudo bash -c "echo /usr/local/bin/bash >> /private/etc/shells"
+chsh -s /usr/local/bin/bash
+
+# Install Node, npm, VCSs
+
+brew install node
+brew install git
 brew install hub
+brew install svn
 
 # Install applications with brew-cask
 
