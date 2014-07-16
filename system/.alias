@@ -1,8 +1,8 @@
 # ls
 
-alias l="ls -la"
-alias la="ls -lAh"
-alias ld="ls -ld */"
+alias l="ls -la"            # List in long format, include dotfiles
+alias la="ls -lAh"          # List in long format, all entries except for . and .., use unit suffixes (KB, MB etc.)
+alias ld="ls -ld */"        # List in long format, only directories
 
 # cd
 
