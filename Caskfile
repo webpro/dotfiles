@@ -1,0 +1,25 @@
+cask install alfred
+cask install atom
+cask install cornerstone
+cask install dash
+cask install dropbox
+cask install firefox
+cask install firefox-nightly
+cask install google-chrome
+cask install google-chrome-canary
+cask install google-drive
+cask install hydra
+cask install kaleidoscope
+cask install mou
+cask install opera
+cask install sonos
+cask install sourcetree
+cask install spotify
+cask install sublime-text3
+cask install transmit
+cask install virtualbox
+cask install vlc
+cask install webstorm
+
+# See https://github.com/sindresorhus/quick-look-plugins
+cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package && qlmanage -r

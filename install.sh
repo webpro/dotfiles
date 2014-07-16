@@ -19,61 +19,19 @@ ln -sfhv "$DOTFILES_DIR/etc/hydra" ~/.hydra
 # Install Homebrew & brew-cask
 
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-brew doctor
-brew tap phinze/homebrew-cask
+brew tap caskroom/cask
 brew install brew-cask
 brew tap caskroom/versions
 
-# Install GNU packages (and override OSX version)
+# Install brew & brew-cask packages
 
-brew install coreutils
-brew install gnu-sed --default-names
-brew install tree
-brew install wget
+brew bundle "$DOTFILES_DIR/Brewfile"
+brew bundle "$DOTFILES_DIR/Caskfile"
 
-# Install bash
+# Configure bash (installed with brew)
 
-brew install bash
 grep "/usr/local/bin/bash" /private/etc/shells &>/dev/null || sudo bash -c "echo /usr/local/bin/bash >> /private/etc/shells"
 chsh -s /usr/local/bin/bash
-
-# Install Node, npm, VCSs
-
-brew install node
-brew install git
-brew install hub
-brew install svn
-
-# Install applications with brew-cask
-
-brew cask install alfred
-brew cask install dash
-brew cask install dropbox
-brew cask install firefox
-brew cask install google-chrome
-brew cask install google-chrome-canary
-brew cask install google-drive
-brew cask install hydra
-brew cask install mou
-brew cask install opera
-# brew cask install skype
-# brew cask install sonos
-brew cask install sourcetree
-brew cask install spotify
-brew cask install sublime-text3
-# brew cask install things
-brew cask install transmit
-brew cask install virtualbox
-brew cask install vlc
-brew cask install webstorm
-
-# https://github.com/sindresorhus/quick-look-plugins
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package && qlmanage -r
-
-# Update Homebrew, formulae, and packages
-
-brew update
-brew upgrade
 
 ## Install Ruby gems (SASS, Compass)
 
