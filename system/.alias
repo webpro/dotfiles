@@ -70,3 +70,9 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 
 alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+
+# Start screen saver
+alias afk="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine"
+
+# Log off
+alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
