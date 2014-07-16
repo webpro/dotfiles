@@ -54,7 +54,7 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 # Recursively remove .DS_Store files
 
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Request using GET, POST, etc. method
 

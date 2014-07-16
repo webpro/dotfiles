@@ -1,3 +1,13 @@
+# Clean caches
+
+function cleanup() {
+    npm cache clean
+    brew cleanup
+    brew cask cleanup
+    emptytrash
+    cleanupds
+}
+
 # Create a new directory and enter it
 
 function mk() {
