@@ -25,9 +25,9 @@ alias srv="http-server"
 
 # Browsers
 
-alias gc="open -a /Applications/Google\ Chrome.app"
-alias gcc="open -a /Applications/Google\ Chrome\ Canary.app"
-alias f="open -a /Applications/Firefox.app"
+alias gc="open -a ~/Applications/Google\ Chrome.app"
+alias gcc="open -a ~/Applications/Google\ Chrome\ Canary.app"
+alias f="open -a ~/Applications/Firefox.app"
 
 # npm
 
