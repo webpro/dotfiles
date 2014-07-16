@@ -5,7 +5,7 @@
     git clone https://github.com/webpro/dotfiles.git
     source dotfiles/install.sh
 
-Just re-run `source install.sh` to update.
+Run `source update.sh` to update.
 
 ## OS X Defaults
 

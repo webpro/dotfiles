@@ -33,32 +33,21 @@ brew bundle "$DOTFILES_DIR/Caskfile"
 grep "/usr/local/bin/bash" /private/etc/shells &>/dev/null || sudo bash -c "echo /usr/local/bin/bash >> /private/etc/shells"
 chsh -s /usr/local/bin/bash
 
-## Install Ruby gems (SASS, Compass)
+# Install Ruby gems (SASS, Compass)
 
-function _install-gem() {
-    # Unacceptable way to check if sass-globbing was installed (it's not in `gem list`)
-    [ -n "$2" ] && CHECK_GEM="$2" || CHECK_GEM="$1"
-    type -P "$CHECK_GEM" &>/dev/null && sudo gem update $1 || sudo gem install $1
-}
+sudo gem install compass
+sudo gem install sass
+sudo gem install sass-globbing
 
-sudo gem update --system
-_install-gem "compass"
-_install-gem "sass"
-_install-gem "sass-globbing" "sass"
+# Globally install with npm
 
-# Globally install or update with npm
-
-function _install-npm() {
-    type -P $1 &>/dev/null && npm update -g $1 || npm install -g $1
-}
-
-_install-npm "bower"
-_install-npm "grunt"
-_install-npm "gulp"
-_install-npm "http-server"
-_install-npm "nodemon"
-_install-npm "spot"
-_install-npm "svgo"
+npm install -g bower
+npm install -g grunt
+npm install -g gulp
+npm install -g http-server
+npm install -g nodemon
+npm install -g spot
+npm install -g svgo
 
 # Custom symlinks
 
