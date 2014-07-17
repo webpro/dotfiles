@@ -1,3 +1,7 @@
+# reload
+
+alias reload="source ~/.bash_profile"
+
 # ls
 
 alias l="ls -la"            # List in long format, include dotfiles
