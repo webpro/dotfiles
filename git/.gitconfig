@@ -1,8 +1,3 @@
-# Put personal user and e.g. diff/mergetool data in ~/.gitconfig.user:
-# [user]
-#   name = [your name]
-#   email = [your email]
-
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = subl -w
@@ -57,5 +52,3 @@
 [push]
 	default = simple
 
-[include]
-	path = ~/.gitconfig.user
