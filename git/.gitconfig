@@ -2,6 +2,7 @@
 	excludesfile = ~/.gitignore_global
 	editor = subl -w
 	filemode = false
+	trustctime = false
 
 [alias]
 	st = status
@@ -15,8 +16,12 @@
 	unstage = reset --hard HEAD
 	ag = !sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --verbose' -
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ll = log --pretty=oneline -n 20 --graph --abbrev-commit
+	lr = log --pretty=format:'* %s (%h)' --reverse
 	lg = log -p
 	g = grep --break --heading --line-number
+	amend = commit --amend --reuse-message=HEAD
+	contrib = shortlog --summary --numbered
 
 [color]
 	ui = auto
