@@ -5,17 +5,35 @@
     git clone https://github.com/webpro/dotfiles.git
     source dotfiles/install.sh
 
-Run `source update.sh` to update.
+## Remote Install
 
-## OS X Defaults
+You can also install from remote without Git:
 
-    source osxdefaults.sh
+    sh -c "`curl -fsSL https://raw.github.com/webpro/dotfiles/master/remote-install.sh`"
 
-## Warning
+This will install the dotfiles in `~/.dotfiles`.
 
-If you would use or fork this, you'll want to put at least `user.name`, `user.email` in `~/.gitconfig.user`.
+## Update
 
-Any file in the `system/` folder will be evaluated when starting a terminal session, so that's where customizations like paths, functions, and aliases go.
+Just run:
+
+	update
+
+## Reload
+
+You can use `reload` to "reload" the shell by sourcing `.bash_profile` again (i.e. no need to restart shell or something).
+
+    reload
+
+## Apply OS X Defaults
+
+Source `osxdefaults.sh`, e.g.:
+
+    source ~/.dotfiles/osxdefaults.sh
+
+## Custom settings
+
+You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.bash_profile` (i.e. when opening console). This file is in `.gitignore`.
 
 ## Credits
 
@@ -27,4 +45,3 @@ Many thanks to the [dotfiles community](http://dotfiles.github.io/), especially 
 * [brew-cask](https://github.com/phinze/homebrew-cask), [usage]((https://github.com/phinze/homebrew-cask/blob/master/USAGE.md))
 * [Bash prompt](http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 * [hub](http://hub.github.com/) for Git
-* ["Confirm" function](https://gist.github.com/davejamesmiller/1965569)
