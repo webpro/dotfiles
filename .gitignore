@@ -1,7 +1,2 @@
-system/*
-!system/.1_path
-!system/.alias
-!system/.env
-!system/.function
-!system/.prompt
+system/.custom
 bin/subl

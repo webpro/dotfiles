@@ -11,10 +11,9 @@ done
 DOTFILES_DIR="$( cd -P "$( dirname "$PROFILE_SOURCE" )/.." && pwd )"
 
 # Finally we can evaluate the actual files
-for DOTFILE in `find "$DOTFILES_DIR"/system`
-do
-    [ -f "$DOTFILE" ] && source "$DOTFILE"
-done
+for DOTFILE in "$DOTFILES_DIR"/system/.{path,alias,env,alias,function,prompt,custom}; do
+	[ -f "$DOTFILE" ] && source "$DOTFILE";
+done;
 
 unset DOTFILE PROFILE_SOURCE DOTFILES_DIR
 
