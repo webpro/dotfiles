@@ -1,6 +1,6 @@
 # Update
 
-function update() {
+update() {
     sudo softwareupdate -i -a
     brew update
     brew upgrade
@@ -12,7 +12,7 @@ function update() {
 
 # Clean caches
 
-function cleanup() {
+cleanup() {
     npm cache clean
     brew cleanup
     brew cask cleanup
@@ -22,32 +22,32 @@ function cleanup() {
 
 # Create a new directory and enter it
 
-function mk() {
+mk() {
     mkdir -p "$@" && cd "$@"
 }
 
 # Find file/dir (fuzzy)
 
-function ff() {  find . -type f -name "${1}";}
-function fff() { find . -type f -name "*${1}*";}
-function fd() {  find . -type d -name "${1}";}
-function fdf() { find . -type d -name "*${1}*";}
+ff() {  find . -type f -name "${1}";}
+fff() { find . -type f -name "*${1}*";}
+fd() {  find . -type d -name "${1}";}
+fdf() { find . -type d -name "*${1}*";}
 
 # Show disk usage of current folder, or list with depth
 
-function duf() {
+duf() {
     du -d ${1} -c | sort -r -n | awk '{split("K M G",v); s=1; while($1>1024){$1/=1024; s++} print int($1)v[s]"\t"$2}'
 }
 
 # Open man page as PDF
 
-function manpdf() {
+manpdf() {
     man -t "${1}" | open -f -a /Applications/Preview.app/
 }
 
 # Show line, optionally show surrounding lines
 
-line () {
+line() {
     local line_number=$1
     local lines_around=${2:-0}
     sed -n "`expr $line_number - $lines_around`,`expr $line_number + $lines_around`p"
@@ -67,7 +67,7 @@ json() {
 # Extract many types of compress files
 # credit: http://nparikh.org/notes/zshrc.txt
 
-extract () {
+extract() {
     if [ -f $1 ]; then
         case $1 in
             *.tar.bz2)  tar -jxvf $1                        ;;
@@ -92,7 +92,7 @@ extract () {
 
 # Check if resource is served compressed
 
-function check_compression() {
+check_compression() {
     curl --write-out 'Size (uncompressed) = %{size_download}\n' --silent --output /dev/null $1
     curl --header 'Accept-Encoding: gzip,deflate,compress' --write-out 'Size (compressed) =   %{size_download}\n' --silent --output /dev/null $1
     curl --head --header 'Accept-Encoding: gzip,deflate' --silent $1 | grep -i "cache\|content\|vary\|expires"
@@ -100,7 +100,7 @@ function check_compression() {
 
 # Get gzipped file size
 
-function gz() {
+gz() {
 	local origsize=$(wc -c < "$1")
 	local gzipsize=$(gzip -c "$1" | wc -c)
 	local ratio=$(echo "$gzipsize * 100/ $origsize" | bc -l)
@@ -110,7 +110,7 @@ function gz() {
 
 # Create a data URL from a file
 
-function dataurl() {
+dataurl() {
     local mimeType=$(file --mime-type "$1" | cut -d ' ' -f2)
     if [[ $mimeType == text/* ]]; then
         mimeType="${mimeType};charset=utf-8"
@@ -120,7 +120,7 @@ function dataurl() {
 
 # Show and select the given file(s) in the Finder
 
-function show() {
+show() {
     # Default to the current directory.
     [ $# -eq 0 ] && set -- .;
 
