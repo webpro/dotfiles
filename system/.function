@@ -45,6 +45,15 @@ function manpdf() {
     man -t "${1}" | open -f -a /Applications/Preview.app/
 }
 
+# Show line, optionally show surrounding lines
+
+line () {
+    local line_number=$1
+    local lines_around=${2:-0}
+    sed -n "`expr $line_number - $lines_around`,`expr $line_number + $lines_around`p"
+}
+
+# Extract many types of compress files
 # credit: http://nparikh.org/notes/zshrc.txt
 
 extract () {
