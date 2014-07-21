@@ -53,6 +53,17 @@ line () {
     sed -n "`expr $line_number - $lines_around`,`expr $line_number + $lines_around`p"
 }
 
+# Pretty print JSON
+
+json() {
+    local url=$1
+    if [[ "http" == $url[0,4] ]] ; then
+        curl --silent $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+    else
+        cat $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+    fi
+}
+
 # Extract many types of compress files
 # credit: http://nparikh.org/notes/zshrc.txt
 

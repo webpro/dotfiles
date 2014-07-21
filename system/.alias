@@ -37,10 +37,6 @@ alias f="open -a ~/Applications/Firefox.app"
 
 alias npme="npm --registry http://registry.npmjs.eu"
 
-# JSON pretty-print
-
-alias json="python -mjson.tool"
-
 # IP addresses
 
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
