@@ -10,6 +10,7 @@ install coreutils
 install git
 install gnu-sed --default-names
 install hub
+install jq
 install node
 install phantomjs
 install svn
