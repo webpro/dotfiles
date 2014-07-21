@@ -38,6 +38,7 @@ chsh -s /usr/local/bin/bash
 sudo gem install compass
 sudo gem install sass
 sudo gem install sass-globbing
+sudo gem install pygmentize
 
 # Globally install with npm
 
