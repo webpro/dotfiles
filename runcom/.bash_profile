@@ -11,7 +11,7 @@ done
 DOTFILES_DIR="$( cd -P "$( dirname "$PROFILE_SOURCE" )/.." && pwd )"
 
 # Finally we can evaluate the actual files
-for DOTFILE in "$DOTFILES_DIR"/system/.{path,alias,env,alias,function,colors,prompt,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{path,alias,colors,completion,env,function,prompt,custom}; do
 	[ -f "$DOTFILE" ] && source "$DOTFILE";
 done;
 
