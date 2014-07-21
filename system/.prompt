@@ -32,7 +32,7 @@ bash_prompt() {
         ;;
     esac
 
-	PS1="$TITLEBAR${YELLOW}[${GREEN}\u${GREEN} ${YELLOW}\${NEW_PWD}${YELLOW}${GREEN}\${GIT_INFO}${GREEN}${YELLOW}]${WHITE} \\$ ${NORMAL}"
+	PS1="$TITLEBAR${YELLOW}[${GREEN}\u${GREEN} ${YELLOW}\${NEW_PWD}${YELLOW}${GREEN}\${GIT_INFO}${GREEN}${YELLOW}]${WHITE} ${NORMAL}"
 }
 
 PROMPT_COMMAND=bash_prompt_command
