@@ -26,7 +26,7 @@ mk() {
     mkdir -p "$@" && cd "$@"
 }
 
-# Find file/dir (fuzzy)
+# Fuzzy find file/dir
 
 ff() {  find . -type f -name "${1}";}
 fff() { find . -type f -name "*${1}*";}
