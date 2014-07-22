@@ -56,6 +56,13 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
 
+## Reload native apps
+
+alias killfinder="killall Finder"
+alias killdock="killall Dock"
+alias killmenubar="killa SystemUIServer NotificationCenter"
+alias killosx="killfinder && killdock && killmenubar"
+
 # Request using GET, POST, etc. method
 
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do

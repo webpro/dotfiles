@@ -7,6 +7,7 @@ upgrade
 
 install bash
 install coreutils
+install dockutil
 install git
 install gnu-sed --default-names
 install hub

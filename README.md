@@ -27,9 +27,15 @@ Reloading the dotfiles will source `.bash_profile` again (i.e. no need to restar
 
 ## Apply OS X Defaults
 
-Source `osxdefaults.sh`, e.g.:
+Source `osx/defaults.sh` for OS X system defaults as you'd expect, e.g.:
 
     source ~/.dotfiles/osx/defaults.sh
+
+### Dock
+
+The Dock can be completely customized using [dockutil](https://github.com/kcrawford/dockutil). See `osx/dock.sh` for details.
+
+    source ~/.dotfiles/osx/dock.sh
 
 ## Custom settings
 
