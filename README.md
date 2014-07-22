@@ -29,7 +29,7 @@ Reloading the dotfiles will source `.bash_profile` again (i.e. no need to restar
 
 Source `osxdefaults.sh`, e.g.:
 
-    source ~/.dotfiles/osxdefaults.sh
+    source ~/.dotfiles/osx/defaults.sh
 
 ## Custom settings
 
