@@ -45,6 +45,13 @@ manpdf() {
     man -t "${1}" | open -f -a /Applications/Preview.app/
 }
 
+# Dev
+
+d() {
+    stree ${1:-.}
+    e ${1:-.}
+}
+
 # Show line, optionally show surrounding lines
 
 line() {
