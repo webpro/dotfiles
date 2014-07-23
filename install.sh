@@ -47,6 +47,7 @@ npm install -g grunt
 npm install -g gulp
 npm install -g http-server
 npm install -g nodemon
+npm install -g tldr
 npm install -g spot
 npm install -g svgo
 
