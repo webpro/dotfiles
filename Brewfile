@@ -13,6 +13,7 @@ install gnu-sed --default-names
 install hub
 install jq
 install node
+install peco
 install phantomjs
 install svn
 install tree
