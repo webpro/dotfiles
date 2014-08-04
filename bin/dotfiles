@@ -1,0 +1,64 @@
+#!/bin/sh
+
+BIN_NAME=$(basename $0)
+COMMAND_NAME=$1
+
+sub_help () {
+    echo "Usage: $BIN_NAME <command>\n"
+    echo "Commands:"
+    echo "   help        This help message"
+    echo "   edit        Open dotfiles in default editor ($EDITOR) and Git GUI ($GIT_GUI)"
+    echo "   reload      Reload dotfiles"
+    echo "   update      Update OS X Applications, Homebrew (cask), npm, and Ruby packages"
+    echo "   osx         Apply OS X system defaults"
+    echo "   dock        Apply OS X Dock settings"
+}
+
+sub_edit () {
+    $EDITOR $DOTFILES_DIR
+    $GIT_GUI $DOTFILES_DIR
+
+}
+
+sub_reload () {
+    source ~/.bash_profile
+}
+
+sub_update () {
+    sudo softwareupdate -i -a
+    brew update
+    brew upgrade
+    npm update npm -g
+    npm update -g
+    sudo gem update --system
+    sudo gem update
+}
+
+sub_osx () {
+    source $DOTFILES_DIR/osx/defaults.sh
+}
+
+sub_dock () {
+    source $DOTFILES_DIR/osx/dock.sh
+}
+
+# Make sure to keep this in sync with the available public commands
+
+sub_completion () {
+    echo "help edit reload update osx dock"
+}
+
+case $COMMAND_NAME in
+    "" | "-h" | "--help")
+        sub_help
+        ;;
+    *)
+        shift
+        sub_${COMMAND_NAME} $@
+        if [ $? = 127 ]; then
+            echo "'$COMMAND_NAME' is not a known command." >&2
+            sub_help
+            exit 1
+        fi
+        ;;
+esac

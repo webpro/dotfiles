@@ -9,11 +9,6 @@ alias firefox="open -a ~/Applications/Firefox.app"
 
 eval "$(hub alias -s)" # alias git=hub
 
-# Reload/open dotfiles
-
-alias reload="source ~/.bash_profile"
-alias dotfiles="d $DOTFILES_DIR"
-
 # ls
 
 alias l="ls -la"            # List in long format, include dotfiles
