@@ -11,4 +11,4 @@ dockutil --no-restart --add "/Applications/System Preferences.app"
 dockutil --no-restart --add "/Applications/Utilities/Console.app"
 dockutil --no-restart --add "~/Applications/Spotify.app"
 
-killdock
+killall Dock
