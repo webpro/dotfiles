@@ -2,53 +2,61 @@
 
 ## Install
 
+On a sparkling fresh installation of OS X:
+
+    sudo softwareupdate -i -a
+    xcode-select --install
+
+Install the dotfiles with either Git or curl:
+
 ### Clone with Git
 
     git clone https://github.com/webpro/dotfiles.git
     source dotfiles/install.sh
 
-### Remote with curl
+### Remotely install using curl
 
-You can also install this into `~/.dotfiles` from remote without Git:
+Alternatively, you can install this into `~/.dotfiles` from remote without Git using curl:
 
     sh -c "`curl -fsSL https://raw.github.com/webpro/dotfiles/master/remote-install.sh`"
 
-## Update
+## The `dotfiles` command
 
-To update installed OS X apps, brew packages, npm packages, and gems:
+    $ dotfiles help
+    Usage: dotfiles <command>
 
-	update
-
-## Reload
-
-Reloading the dotfiles will source `.bash_profile` again (i.e. no need to restart shell or something):
-
-    reload
-
-## Apply OS X Defaults
-
-Source `osx/defaults.sh` for OS X system defaults as you'd expect, e.g.:
-
-    source ~/.dotfiles/osx/defaults.sh
-
-### Dock
-
-The Dock can be completely customized using [dockutil](https://github.com/kcrawford/dockutil). See `osx/dock.sh` for details.
-
-    source ~/.dotfiles/osx/dock.sh
+    Commands:
+       help        This help message
+       edit        Open dotfiles in default editor (atom) and Git GUI (stree)
+       reload      Reload dotfiles
+       update      Update OS X Applications, Homebrew (cask), npm, and Ruby packages
+       osx         Apply OS X system defaults
+       dock        Apply OS X Dock settings
 
 ## Custom settings
 
 You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.bash_profile` automatically. This file is in `.gitignore`.
 
-## Credits
+## Some installed packages
 
-Many thanks to the [dotfiles community](http://dotfiles.github.io/), especially [Jan Moesen](https://github.com/janmoesen) and [Mathias Bynens](https://github.com/mathiasbynens).
+* [dockutil](https://github.com/kcrawford/dockutil)
+* [hub](http://hub.github.com/)
+* [http-server](https://github.com/nodeapps/http-server)
+* [Hydra](https://github.com/sdegutis/hydra)
+* [jq](http://stedolan.github.io/jq/)
+* [peco](http://peco.github.io/)
+* [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
+* [spot](https://github.com/guille/spot)
+* [tldr](https://github.com/tldr-pages/tldr)
+* [svgo](https://github.com/svg/svgo)
 
-## Resources
+## Additional resources
 
 * [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
 * [Homebrew](http://brew.sh/) ([FAQ](https://github.com/Homebrew/homebrew/wiki/FAQ))
-* [brew-cask](https://github.com/phinze/homebrew-cask) ([usage]((https://github.com/phinze/homebrew-cask/blob/master/USAGE.md))
+* [homebrew-cask](http://caskroom.io/) ([usage]((https://github.com/phinze/homebrew-cask/blob/master/USAGE.md))
 * [Bash prompt](http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
-* [hub](http://hub.github.com/) for Git
+
+## Credits
+
+Many thanks to the [dotfiles community](http://dotfiles.github.io/) and the creators of the incredibly useful tools.

@@ -20,6 +20,4 @@ cask install transmit
 cask install virtualbox
 cask install vlc
 cask install webstorm
-
-# See https://github.com/sindresorhus/quick-look-plugins
 cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package && qlmanage -r
