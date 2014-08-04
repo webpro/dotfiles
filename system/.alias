@@ -2,6 +2,7 @@
 
 alias e="$EDITOR"
 alias g="git"
+alias gg="$GIT_GUI"
 
 alias chrome="open -a ~/Applications/Google\ Chrome.app"
 alias canary="open -a ~/Applications/Google\ Chrome\ Canary.app"
