@@ -6,6 +6,7 @@ upgrade
 # Install GNU packages (and override OSX version)
 
 install bash
+install bash-completion
 install coreutils
 install dockutil
 install git
