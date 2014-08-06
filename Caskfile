@@ -5,6 +5,7 @@ cask install dash
 cask install dropbox
 cask install firefox
 cask install firefox-nightly
+cask install glimmerblocker
 cask install google-chrome
 cask install google-chrome-canary
 cask install google-drive
