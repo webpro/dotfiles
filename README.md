@@ -50,6 +50,13 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 * [tldr](https://github.com/tldr-pages/tldr)
 * [svgo](https://github.com/svg/svgo)
 
+## Not or barely installable from CLI
+
+* [Downloads for Apple Developers](https://developer.apple.com/downloads), including:
+    * Command Line Tools for XCode
+    * Hardware IO Tools for XCode (includes Network Link Conditioner)
+* [An OS X Yosemite Theme for Alfred](http://blog.alfredapp.com/2014/06/12/an-os-x-yosemite-theme-for-alfred/)
+
 ## Additional resources
 
 * [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
