@@ -22,3 +22,5 @@ cask install virtualbox
 cask install vlc
 cask install webstorm
 cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package && qlmanage -r
+
+cask alfred link
