@@ -335,6 +335,9 @@ defaults write com.apple.mail MailSound -string ""
 # Disable sound for other mail actions
 defaults write com.apple.mail PlayMailSounds -bool false
 
+# Mark all messages as read when opening a conversation
+defaults write com.apple.mail ConversationViewMarkAllAsRead -bool true
+
 ###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
