@@ -44,6 +44,7 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 * [http-server](https://github.com/nodeapps/http-server)
 * [Hydra](https://github.com/sdegutis/hydra)
 * [jq](http://stedolan.github.io/jq/)
+* [lunchy](https://github.com/eddiezane/lunchy)
 * [peco](http://peco.github.io/)
 * [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
 * [spot](https://github.com/guille/spot)

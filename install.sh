@@ -36,9 +36,10 @@ chsh -s /usr/local/bin/bash
 # Install Ruby gems (SASS, Compass)
 
 sudo gem install compass
+sudo gem install lunchy
+sudo gem install pygmentize
 sudo gem install sass
 sudo gem install sass-globbing
-sudo gem install pygmentize
 
 # Globally install with npm
 
