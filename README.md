@@ -48,8 +48,9 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 * [peco](http://peco.github.io/)
 * [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
 * [spot](https://github.com/guille/spot)
-* [tldr](https://github.com/tldr-pages/tldr)
 * [svgo](https://github.com/svg/svgo)
+* [tldr](https://github.com/tldr-pages/tldr)
+* [vtop](https://github.com/MrRio/vtop)
 
 ## Not or barely installable from CLI
 
