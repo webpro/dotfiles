@@ -71,7 +71,7 @@ json() {
 }
 
 # Extract many types of compress files
-# credit: http://nparikh.org/notes/zshrc.txt
+# Source: http://nparikh.org/notes/zshrc.txt
 
 extract() {
     if [ -f $1 ]; then
@@ -125,6 +125,7 @@ dataurl() {
 }
 
 # Show and select the given file(s) in the Finder
+# Source: https://github.com/janmoesen/tilde/blob/348c90caf004b7185816e620f240fd2406e4eace/.bash/commands#L259-L299
 
 show() {
     # Default to the current directory.
