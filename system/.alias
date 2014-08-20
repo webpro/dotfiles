@@ -2,7 +2,6 @@
 
 alias g="git"
 
-
 if [ command -v hub > /dev/null 2>&1 ]; then
 	eval "$(hub alias -s)" # alias git=hub
 fi
@@ -14,9 +13,9 @@ alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'" # show non 
 
 # ls
 
-alias l="ls -la"            # List in long format, include dotfiles
-alias la="ls -lAh"          # List in long format, all entries except for . and .., use unit suffixes (KB, MB etc.)
-alias ld="ls -ld */"        # List in long format, only directories
+alias l="ls -la --color"		# List in long format, include dotfiles, directories first
+alias la="ls -lAh --color"      # List in long format, all entries except for . and .., use unit suffixes (KB, MB etc.)
+alias ld="ls -ld --color */"    # List in long format, only directories
 
 # cd
 
@@ -65,4 +64,4 @@ alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/download
 
 # Recursively remove .DS_Store files
 
-alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanupds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
