@@ -16,6 +16,7 @@ install jq
 install node
 install peco
 install phantomjs
+install ssh-copy-id
 install svn
 install tree
 install wget
