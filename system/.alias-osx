@@ -1,0 +1,48 @@
+# Shortcuts
+
+alias e="$EDITOR"
+alias gg="$GIT_GUI"
+
+alias chrome="open -a ~/Applications/Google\ Chrome.app"
+alias canary="open -a ~/Applications/Google\ Chrome\ Canary.app"
+alias firefox="open -a ~/Applications/Firefox.app"
+
+# IP addresses
+
+alias ipl="ipconfig getifaddr en0"
+
+# Flush DNS
+
+alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+# Start screen saver
+
+alias afk="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine"
+
+# Log off
+
+alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Show/hide desktop icons
+
+alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killfinder"
+alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killfinder"
+
+# Clean up LaunchServices to remove duplicates in the "Open With" menu
+
+alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+
+# Empty trash on mounted volumes and main HDD, and clear system logs
+
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+# Reload native apps
+
+alias killfinder="killall Finder"
+alias killdock="killall Dock"
+alias killmenubar="killa SystemUIServer NotificationCenter"
+alias killosx="killfinder && killdock && killmenubar"
+
+## Kill all the tabs in Chrome to free up memory
+
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
