@@ -24,9 +24,3 @@ cask install webstorm
 cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package && qlmanage -r
 
 cask alfred link
-
-# Rarely used (just Karma afaic: http://karma-runner.github.io/0.12/config/browsers.html)
-
-export CHROME_BIN="$HOME/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-export CHROME_CANARY_BIN="$HOME/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
-export FIREFOX_BIN="$HOME/Applications/Firefox.app/Contents/MacOS/firefox-bin"
