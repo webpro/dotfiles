@@ -10,50 +10,55 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Bunch of symlinks
 
-ln -sfhv "$DOTFILES_DIR/runcom/.bash_profile" ~
-ln -sfhv "$DOTFILES_DIR/runcom/.inputrc" ~
-ln -sfhv "$DOTFILES_DIR/git/.gitconfig" ~
-ln -sfhv "$DOTFILES_DIR/git/.gitignore_global" ~
-ln -sfhv "$DOTFILES_DIR/etc/hydra" ~/.hydra
+ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
+ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
+[ -f "$DOTFILES_DIR/git/.gitconfig" ] && ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
+[ -f "$DOTFILES_DIR/git/.gitignore_global" ] && ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
-# Install Homebrew & brew-cask
+if [ "$(uname)" == "Darwin" ]; then
 
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-brew tap caskroom/cask
-brew install brew-cask
-brew tap caskroom/versions
+    # Install Homebrew & brew-cask
 
-# Install brew & brew-cask packages
+    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    brew tap caskroom/cask
+    brew install brew-cask
+    brew tap caskroom/versions
 
-brew bundle "$DOTFILES_DIR/Brewfile"
-brew bundle "$DOTFILES_DIR/Caskfile"
+    # Install brew & brew-cask packages
 
-# Configure bash (installed with brew)
+    brew bundle "$DOTFILES_DIR/Brewfile"
+    brew bundle "$DOTFILES_DIR/Caskfile"
 
-grep "/usr/local/bin/bash" /private/etc/shells &>/dev/null || sudo bash -c "echo /usr/local/bin/bash >> /private/etc/shells"
-chsh -s /usr/local/bin/bash
+    # Configure bash (installed with brew)
 
-# Install Ruby gems (SASS, Compass)
+    grep "/usr/local/bin/bash" /private/etc/shells &>/dev/null || sudo bash -c "echo /usr/local/bin/bash >> /private/etc/shells"
+    chsh -s /usr/local/bin/bash
 
-sudo gem install compass
-sudo gem install lunchy
-sudo gem install pygmentize
-sudo gem install sass
-sudo gem install sass-globbing
+    # Install Ruby gems (SASS, Compass)
 
-# Globally install with npm
+    sudo gem install compass
+    sudo gem install lunchy
+    sudo gem install pygmentize
+    sudo gem install sass
+    sudo gem install sass-globbing
 
-npm install -g bower
-npm install -g grunt
-npm install -g gulp
-npm install -g http-server
-npm install -g nodemon
-npm install -g tldr
-npm install -g spot
-npm install -g svgo
-npm install -g vtop
+    # Globally install with npm
 
-# Custom symlinks
+    npm install -g bower
+    npm install -g grunt
+    npm install -g gulp
+    npm install -g http-server
+    npm install -g nodemon
+    npm install -g tldr
+    npm install -g spot
+    npm install -g svgo
+    npm install -g vtop
 
-# http://www.sublimetext.com/docs/3/osx_command_line.html
-[ -f ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ] && ln -sfhv ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl "$DOTFILES_DIR/bin/subl"
+    # More symlinks
+
+    ln -sfv "$DOTFILES_DIR/etc/hydra" ~/.hydra
+
+    # http://www.sublimetext.com/docs/3/osx_command_line.html
+    [ -f ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ] && ln -sfhv ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl "$DOTFILES_DIR/bin/subl"
+
+fi
