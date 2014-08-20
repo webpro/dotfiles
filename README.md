@@ -27,7 +27,7 @@ Alternatively, you can install this into `~/.dotfiles` from remote without Git u
 
     Commands:
        help        This help message
-       edit        Open dotfiles in default editor (atom) and Git GUI (stree)
+       edit        Open dotfiles in default editor ($EDITOR) and Git GUI ($GIT_GUI)
        reload      Reload dotfiles
        update      Update OS X Applications, Homebrew (cask), npm, and Ruby packages
        osx         Apply OS X system defaults

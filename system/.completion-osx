@@ -10,7 +10,7 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # Homebrew
 
-if [ command -v brew > /dev/null 2>&1 -a -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
+if [ command -v brew > /dev/null 2>&1 -a -f $(brew --prefix)/Library/Contributions/brew_bash_completion.sh ]; then
     . `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 fi
 
