@@ -17,11 +17,10 @@ sub_help () {
 sub_edit () {
     $EDITOR $DOTFILES_DIR
     $GIT_GUI $DOTFILES_DIR
-
 }
 
 sub_reload () {
-    source ~/.bash_profile
+    source ~/.bash_profile && echo "Bash reloaded."
 }
 
 sub_update () {
@@ -35,11 +34,14 @@ sub_update () {
 }
 
 sub_osx () {
-    source $DOTFILES_DIR/osx/defaults.sh
+    for DEFAULTS_FILE in "$DOTFILES_DIR"/osx/defaults*.sh; do
+        [ -f "$DEFAULTS_FILE" ] && source "$DEFAULTS_FILE" && echo "Successfully applied $DEFAULTS_FILE"
+    done
+    echo "Done. Some changes may require a logout/restart to take effect."
 }
 
 sub_dock () {
-    source $DOTFILES_DIR/osx/dock.sh
+    source $DOTFILES_DIR/osx/dock.sh && echo "Dock reloaded."
 }
 
 # Make sure to keep this in sync with the available public commands
@@ -56,7 +58,7 @@ case $COMMAND_NAME in
         shift
         sub_${COMMAND_NAME} $@
         if [ $? = 127 ]; then
-            echo "'$COMMAND_NAME' is not a known command." >&2
+            echo "'$COMMAND_NAME' is not a known command or has errors." >&2
             sub_help
             exit 1
         fi
