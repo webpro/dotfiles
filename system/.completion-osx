@@ -1,0 +1,21 @@
+# Bash
+
+if [ command -v brew > /dev/null 2>&1 -a -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
+# killall
+
+complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal" killall;
+
+# Homebrew
+
+if [ command -v brew > /dev/null 2>&1 -a -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
+    . `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+fi
+
+# Grunt
+
+if [ command -v grunt > /dev/null 2>&1 ]; then
+    eval "$(grunt --completion=bash)"
+fi

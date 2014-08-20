@@ -1,13 +1,3 @@
-# Bash
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
-
-# killall
-
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal" killall;
-
 # Dotfiles
 
 _dotfiles_completions() {
@@ -16,15 +6,3 @@ _dotfiles_completions() {
 }
 
 complete -o default -F _dotfiles_completions dotfiles
-
-# Homebrew
-
-if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
-    . `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-fi
-
-# Grunt
-
-if which grunt &> /dev/null; then
-    eval "$(grunt --completion=bash)"
-fi;
