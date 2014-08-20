@@ -1,0 +1,56 @@
+# Open man page as PDF
+
+manpdf() {
+    man -t "${1}" | open -f -a /Applications/Preview.app/
+}
+
+# Dev
+
+d() {
+    $EDITOR ${1:-.}
+    $GIT_GUI ${1:-.}
+}
+
+# Show and select the given file(s) in the Finder
+# Source: https://github.com/janmoesen/tilde/blob/348c90caf004b7185816e620f240fd2406e4eace/.bash/commands#L259-L299
+
+show() {
+    # Default to the current directory.
+    [ $# -eq 0 ] && set -- .;
+
+    # Build the array of paths for AppleScript.
+    local path paths=();
+    for path; do
+        # Make sure each path exists.
+        if ! [ -e "$path" ]; then
+            echo "show: $path: No such file or directory";
+            continue;
+        fi;
+
+        # Crappily re-implement "readlink -f" ("realpath") for Darwin.
+        # (The "cd ... > /dev/null" hides CDPATH noise.)
+        [ -d "$path" ] \
+			&& path="$(cd "$path" > /dev/null && pwd)" \
+			|| path="$(cd "$(dirname "$path")" > /dev/null && \
+			           echo "$PWD/$(basename "$path")")";
+
+        # Use the "POSIX file" AppleScript syntax.
+        paths+=("POSIX file \"${path//\"/\"}\"");
+    done;
+    [ "${#paths[@]}" -eq 0 ] && return;
+
+    # Group all output to pipe through osacript.
+    {
+        echo 'tell application "Finder"';
+        echo -n 'select {'; # "reveal" would select only the last file.
+
+        for ((i = 0; i < ${#paths[@]}; i++)); do
+            echo -n "${paths[$i]}";
+            [ $i -lt $(($# - 1)) ] && echo -n ', '; # Ugly array.join()...
+        done;
+
+        echo '}';
+        echo 'activate';
+        echo 'end tell';
+    } | osascript;
+}
