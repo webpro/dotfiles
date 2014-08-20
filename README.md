@@ -1,5 +1,9 @@
 # .files
 
+These are my dotfiles. Take anything you want, but at your own risk.
+
+It targets OS X systems, but since it has some defensive checks it should work on *nix as well (tested on a few Linux boxes).
+
 ## Install
 
 On a sparkling fresh installation of OS X:
@@ -57,7 +61,6 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 * [Downloads for Apple Developers](https://developer.apple.com/downloads), including:
     * Command Line Tools for XCode
     * Hardware IO Tools for XCode (includes Network Link Conditioner)
-* [An OS X Yosemite Theme for Alfred](http://blog.alfredapp.com/2014/06/12/an-os-x-yosemite-theme-for-alfred/)
 
 ## Additional resources
 
