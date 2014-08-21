@@ -24,9 +24,9 @@ else
     return # `exit 1` would quit the shell itself
 fi
 
-# Finally we can source the dotfiles (make sure path & env are sourced first)
+# Finally we can source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{path,env,alias,colors,completion,function,prompt,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,colors,completion,prompt,custom}; do
 	[ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 

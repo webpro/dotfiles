@@ -1,8 +1,6 @@
 # Bash
 
-if [ command -v brew > /dev/null 2>&1 -a -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
+is-executable brew && [ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
 
 # killall
 
@@ -10,12 +8,8 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # Homebrew
 
-if [ command -v brew > /dev/null 2>&1 -a -f $(brew --prefix)/Library/Contributions/brew_bash_completion.sh ]; then
-    . `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-fi
+is-executable brew && [ -f $(brew --prefix)/Library/Contributions/brew_bash_completion.sh ] && . `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 
 # Grunt
 
-if [ command -v grunt > /dev/null 2>&1 ]; then
-    eval "$(grunt --completion=bash)"
-fi
+is-executable grunt && eval "$(grunt --completion=bash)"

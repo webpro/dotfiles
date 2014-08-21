@@ -2,9 +2,7 @@
 
 alias g="git"
 
-if [ command -v hub > /dev/null 2>&1 ]; then
-	eval "$(hub alias -s)" # alias git=hub
-fi
+is-executable hub && eval "$(hub alias -s)" # alias git=hub
 
 # List declared aliases, functions
 
@@ -41,7 +39,7 @@ alias rsync="rsync -vh"
 
 alias ni="npm install"
 alias nu="npm uninstall"
-command -v npm > /dev/null 2>&1 && alias npme="npm --registry http://registry.npmjs.eu"
+alias npme="npm --registry http://registry.npmjs.eu"
 
 # Webserver
 

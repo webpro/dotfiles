@@ -1,3 +1,10 @@
+# Executable
+
+is-executable() {
+    local BIN=`command -v "$1"`
+    [[ ! $BIN == "" && -x $BIN ]] && true || false
+}
+
 # Clean caches
 
 cleanup() {
