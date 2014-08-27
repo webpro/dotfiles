@@ -5,6 +5,10 @@ is-executable() {
     [[ ! $BIN == "" && -x $BIN ]] && true || false
 }
 
+is-supported() {
+    $1 > /dev/null 2>&1 && echo "$2" || echo "$3"
+}
+
 # Clean caches
 
 cleanup() {
