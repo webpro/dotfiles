@@ -1,7 +1,7 @@
 # Executable
 
 is-executable() {
-    local BIN=`command -v "$1"`
+    local BIN=`command -v "$1" 2>/dev/null`
     [[ ! $BIN == "" && -x $BIN ]] && true || false
 }
 
