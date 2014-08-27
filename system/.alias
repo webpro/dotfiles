@@ -28,6 +28,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias -- -="cd -"
+alias cd.='cd $(readlink -f .)'
 
 alias bd=". bd -s"
 
