@@ -1,19 +1,27 @@
 ## Prompt
 
 bash_prompt_command() {
-    # How many characters of the $PWD should be kept
-    local pwdmaxlen=35
-    # Indicate that there has been dir truncation
-    local trunc_symbol=".."
-    local dir=${PWD##*/}
-    pwdmaxlen=$(( ( pwdmaxlen < ${#dir} ) ? ${#dir} : pwdmaxlen ))
+
+    local MAXLENGTH=35
+    local TRUNC_SYMBOL=".."
+    local DIR=${PWD##*/}
+
+    MAXLENGTH=$(( ( MAXLENGTH < ${#DIR} ) ? ${#DIR} : MAXLENGTH ))
     NEW_PWD=${PWD/#$HOME/\~}
-    local pwdoffset=$(( ${#NEW_PWD} - pwdmaxlen ))
-    if [ ${pwdoffset} -gt "0" ]
-    then
-        NEW_PWD=${NEW_PWD:$pwdoffset:$pwdmaxlen}
-        NEW_PWD=${trunc_symbol}/${NEW_PWD#*/}
+
+    local OFFSET=$(( ${#NEW_PWD} - MAXLENGTH ))
+
+    if [ ${OFFSET} -gt "0" ]; then
+        NEW_PWD=${NEW_PWD:$OFFSET:$MAXLENGTH}
+        NEW_PWD=${TRUNC_SYMBOL}/${NEW_PWD#*/}
     fi
+
+    # Update terminal title
+    if [[ $TERM == xterm* ]]; then
+        echo -ne "\033]0;${NEW_PWD}\007"
+    fi
+
+    # Parse Git branch name
 	GIT_INFO=$(parse_git_branch)
 }
 
@@ -22,19 +30,6 @@ parse_git_branch() {
 	if [ "$OUT" != "" ]; then echo " $OUT"; fi
 }
 
-bash_prompt() {
-    case $TERM in
-        xterm*|rxvt*)
-            local TITLEBAR='\[\033]0;${NEW_PWD}\007\]'
-        ;;
-        *)
-            local TITLEBAR=""
-        ;;
-    esac
-
-	PS1="$TITLEBAR${COLOR_GREEN}\u${COLOR_BLUE}@\h ${COLOR_YELLOW}\${NEW_PWD}${COLOR_GREEN}\${GIT_INFO}${COLOR_YELLOW} ❯${COLOR_WHITE} ${COLOR_NORMAL}"
-}
-
 PROMPT_COMMAND=bash_prompt_command
-bash_prompt
-unset bash_prompt
+
+PS1="${TITLEBAR}${COLOR_GREEN}\u${COLOR_BLUE}@\h ${COLOR_YELLOW}\${NEW_PWD}${COLOR_GREEN}\${GIT_INFO}${COLOR_YELLOW} ❯${COLOR_WHITE} ${COLOR_NORMAL}"
