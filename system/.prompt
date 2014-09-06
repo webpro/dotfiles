@@ -1,28 +1,89 @@
 ## Prompt
 
+_bash_prompt_config() {
+
+	if $SHELL_BASH; then
+        local USER_SYMBOL="\u"
+        local HOST_SYMBOL="\h"
+        local ESC_OPEN="\["
+        local ESC_CLOSE="\]"
+    else
+        # Assume zsh
+        local USER_SYMBOL="%n"
+        local HOST_SYMBOL=%m
+        local ESC_OPEN="%{"
+        local ESC_CLOSE="%}"
+	fi
+
+
+    if tput setaf >/dev/null 2>&1 ; then
+        _setaf () { tput setaf "$1" ; }
+        #local _RESET="$( { tput sgr0 || tput me ; } 2>/dev/null )"
+        local RESET="${OPEN_ESC}$( { tput sgr0 || tput me ; } 2>/dev/null )${CLOSE_ESC}"
+        local BOLD="$( { tput bold || tput md ; } 2>/dev/null )"
+    else
+        # Fallback
+        _setaf () { echo "\033[0;$(($1+30))m" ; }
+        local RESET="\033[m"
+        local BOLD=""
+        ESC_OPEN=""
+        ESC_CLOSE=""
+    fi
+
+    # Normal colors
+	local BLACK="${ESC_OPEN}$(_setaf 0)${ESC_CLOSE}"
+	local RED="${ESC_OPEN}$(_setaf 1)${ESC_CLOSE}"
+	local GREEN="${ESC_OPEN}$(_setaf 2)${ESC_CLOSE}"
+	local YELLOW="${ESC_OPEN}$(_setaf 3)${ESC_CLOSE}"
+	local BLUE="${ESC_OPEN}$(_setaf 4)${ESC_CLOSE}"
+	local VIOLET="${ESC_OPEN}$(_setaf 5)${ESC_CLOSE}"
+	local CYAN="${ESC_OPEN}$(_setaf 6)${ESC_CLOSE}"
+	local WHITE="${ESC_OPEN}$(_setaf 7)${ESC_CLOSE}"
+
+    # Bold colors
+	local BLACK_BOLD="${ESC_OPEN}${BOLD}$(_setaf 0)${ESC_CLOSE}"
+	local RED_BOLD="${ESC_OPEN}${BOLD}$(_setaf 1)${ESC_CLOSE}"
+	local GREEN_BOLD="${ESC_OPEN}${BOLD}$(_setaf 2)${ESC_CLOSE}"
+	local YELLOW_BOLD="${ESC_OPEN}${BOLD}$(_setaf 3)${ESC_CLOSE}"
+	local BLUE_BOLD="${ESC_OPEN}${BOLD}$(_setaf 4)${ESC_CLOSE}"
+	local VIOLET_BOLD="${ESC_OPEN}${BOLD}$(_setaf 5)${ESC_CLOSE}"
+	local CYAN_BOLD="${ESC_OPEN}${BOLD}$(_setaf 6)${ESC_CLOSE}"
+	local WHITE_BOLD="${ESC_OPEN}${BOLD}$(_setaf 7)${ESC_CLOSE}"
+
+    # Expose the variables we need in prompt command
+    P_USER=${GREEN}${USER_SYMBOL}
+    P_HOST=${BLUE}${HOST_SYMBOL}
+    P_GREEN=${GREEN}
+    P_YELLOW=${YELLOW}
+    P_RESET=${RESET}
+
+}
+
 bash_prompt_command() {
 
     local MAXLENGTH=35
     local TRUNC_SYMBOL=".."
     local DIR=${PWD##*/}
+    local P_PWD=${PWD/#$HOME/\~}
 
     MAXLENGTH=$(( ( MAXLENGTH < ${#DIR} ) ? ${#DIR} : MAXLENGTH ))
-    NEW_PWD=${PWD/#$HOME/\~}
 
-    local OFFSET=$(( ${#NEW_PWD} - MAXLENGTH ))
+    local OFFSET=$(( ${#P_PWD} - MAXLENGTH ))
 
     if [ ${OFFSET} -gt "0" ]; then
-        NEW_PWD=${NEW_PWD:$OFFSET:$MAXLENGTH}
-        NEW_PWD=${TRUNC_SYMBOL}/${NEW_PWD#*/}
+        P_PWD=${P_PWD:$OFFSET:$MAXLENGTH}
+        P_PWD=${TRUNC_SYMBOL}/${P_PWD#*/}
     fi
 
     # Update terminal title
     if [[ $TERM == xterm* ]]; then
-        echo -ne "\033]0;${NEW_PWD}\007"
+        echo -ne "\033]0;${P_PWD}\007"
     fi
 
     # Parse Git branch name
-	GIT_INFO=$(parse_git_branch)
+	P_GIT=$(parse_git_branch)
+
+    PS1="${P_USER}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
 }
 
 parse_git_branch() {
@@ -30,6 +91,14 @@ parse_git_branch() {
 	if [ "$OUT" != "" ]; then echo " $OUT"; fi
 }
 
-PROMPT_COMMAND=bash_prompt_command
+_bash_prompt_config
+unset _bash_prompt_config
 
-PS1="${TITLEBAR}${COLOR_GREEN}\u${COLOR_BLUE}@\h ${COLOR_YELLOW}\${NEW_PWD}${COLOR_GREEN}\${GIT_INFO}${COLOR_YELLOW} ❯${COLOR_WHITE} ${COLOR_NORMAL}"
+if $SHELL_BASH; then
+    PROMPT_COMMAND=bash_prompt_command
+else
+    # Assume zsh
+    function precmd {
+        bash_prompt_command
+    }
+fi
