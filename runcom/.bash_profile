@@ -2,6 +2,16 @@
 
 [ -z "$PS1" ] && return
 
+# Shell
+
+if [ -n "$ZSH_VERSION" ]; then
+   SHELL_ZSH=true
+   SHELL_BASH=false
+elif [ -n "$BASH_VERSION" ]; then
+   SHELL_BASH=true
+   SHELL_ZSH=false
+fi
+
 # OS
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -10,12 +20,17 @@ else
     OS=`uname`
 fi
 
-# Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE)
+# Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
 
-READLINK=$(type -p greadlink readlink | head -1)
+READLINK=$(which greadlink || which readlink)
+if $SHELL_BASH; then
+    CURRENT_SCRIPT=${BASH_SOURCE}
+else
+    CURRENT_SCRIPT=${0}
+fi
 
-if [[ -n $BASH_SOURCE && -x "$READLINK" ]]; then
-    SCRIPT_PATH=$($READLINK -f ${BASH_SOURCE})
+if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
+    SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
     DOTFILES_DIR=$(dirname $(dirname ${SCRIPT_PATH}))
 elif [ -d "$HOME/.dotfiles" ]; then
     DOTFILES_DIR="$HOME/.dotfiles"
@@ -38,8 +53,8 @@ fi
 
 # Clean up
 
-unset READLINK SCRIPT_PATH DOTFILE
+unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 # Export
 
-export OS BASH_VERSION_MAJOR DOTFILES_DIR
+export SHELL_BASH SHELL_ZSH OS DOTFILES_DIR
