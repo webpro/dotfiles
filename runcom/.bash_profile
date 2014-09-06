@@ -14,10 +14,10 @@ fi
 
 # OS
 
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname -s)" = "Darwin" ]; then
     OS="OSX"
 else
-    OS=`uname`
+    OS=`uname -s`
 fi
 
 # Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
