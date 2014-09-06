@@ -6,7 +6,11 @@ is-executable() {
 }
 
 is-supported() {
-    $1 > /dev/null 2>&1 && echo "$2" || echo "$3"
+    if [ $# -eq 1 ]; then
+        eval $1 > /dev/null 2>&1 && true || false
+    else
+        eval $1 > /dev/null 2>&1 && echo -n "$2" || echo -n "$3"
+    fi
 }
 
 # Clean caches
