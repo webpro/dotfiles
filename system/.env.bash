@@ -24,3 +24,5 @@ shopt -s no_empty_cmd_completion
 # update the values of LINES and COLUMNS.
 
 shopt -s checkwinsize
+
+export HISTCONTROL=ignoredups:erasedups
