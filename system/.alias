@@ -63,10 +63,10 @@ alias npme="npm --registry http://registry.npmjs.eu"
 
 alias srv="sudo http-server $HOME/Projects/ -p 80 -c-1"
 
-# IP addresses
+# Network
 
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias ipa="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
+alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
 # Request using GET, POST, etc. method
 

@@ -7,10 +7,6 @@ alias chrome="open -a ~/Applications/Google\ Chrome.app"
 alias canary="open -a ~/Applications/Google\ Chrome\ Canary.app"
 alias firefox="open -a ~/Applications/Firefox.app"
 
-# IP addresses
-
-alias ipl="ipconfig getifaddr en0"
-
 # Flush DNS
 
 alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
