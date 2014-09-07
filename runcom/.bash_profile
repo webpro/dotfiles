@@ -41,18 +41,24 @@ fi
 
 # Finally we can source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,completion,prompt,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,completion,grep,prompt,custom}; do
 	[ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
 if [ $OS = "OSX" ]; then
-	for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}-osx; do
+	for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.osx; do
 		[ -f "$DOTFILE" ] && source "$DOTFILE"
 	done
 fi
 
 if $SHELL_BASH; then
-	for DOTFILE in "$DOTFILES_DIR"/system/.*-bash; do
+	for DOTFILE in "$DOTFILES_DIR"/system/.*.bash; do
+		[ -f "$DOTFILE" ] && source "$DOTFILE"
+	done
+fi
+
+if $SHELL_ZSH; then
+	for DOTFILE in "$DOTFILES_DIR"/system/.*.zsh; do
 		[ -f "$DOTFILE" ] && source "$DOTFILE"
 	done
 fi
