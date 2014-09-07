@@ -4,9 +4,6 @@ set completion-ignore-case on
 # List all matches in case multiple possible completions are possible
 set show-all-if-ambiguous on
 
-# Flip through autocompletion matches with Shift-Tab.
-"\e[Z": menu-complete
-
 # Immediately add a trailing slash when autocompleting symlinks to directories
 set mark-symlinked-directories on
 
@@ -30,6 +27,9 @@ set skip-completed-text on
 set input-meta on
 set output-meta on
 set convert-meta off
+
+# Flip through autocompletion matches with Shift-Tab.
+"\e[Z": menu-complete
 
 # Filtered history search
 "\e[A": history-search-backward
