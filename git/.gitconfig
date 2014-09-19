@@ -1,3 +1,10 @@
+[user]
+	name = Lars Kappert
+	email = lars@webpro.nl
+
+[github]
+	user = webpro
+
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = subl -w
