@@ -16,11 +16,9 @@ is-supported() {
 # Clean caches
 
 cleanup() {
-    npm cache clean
-    brew cleanup
-    brew cask cleanup
-    emptytrash
-    cleanupds
+    is-executable npm && npm cache clean
+    is-executable brew && brew cleanup
+    is-executable brew && brew cask cleanup
 }
 
 # Create a new directory and enter it
