@@ -1,10 +1,11 @@
 # Tell grep to highlight matches
 
-if [[ `grep --version` == *2.5* ]]; then
-    export GREP_OPTIONS='--color=auto'
+if is-supported "grep --color a <<< a"; then
+    GREP_OPTIONS+=" --color=auto"
 fi
 
-# avoid VCS folders (if the necessary grep flags are available)
+# Avoid VCS folders
+
 if is-supported "echo | grep --exclude-dir=.cvs ''"; then
     for PATTERN in .cvs .git .hg .svn; do
         GREP_OPTIONS+=" --exclude-dir=$PATTERN"

@@ -11,6 +11,7 @@ install coreutils
 install dockutil
 install git
 install gnu-sed --default-names
+install grep --default-names
 install hub
 install jq
 install node

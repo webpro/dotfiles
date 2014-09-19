@@ -35,7 +35,7 @@ fd() {  find . -type d -name "${1}";}
 fdf() { find . -type d -name "*${1}*";}
 
 psgrep() {
-    ps aux | tee >(head -1>&2) | grep -v " grep $@" | grep "$@" -i;
+    ps aux | grep -v " grep $@" | grep "$@" -i;
 }
 
 # Show disk usage of current folder, or list with depth
