@@ -20,4 +20,5 @@ install phantomjs
 install ssh-copy-id
 install svn
 install tree
+install vim
 install wget
