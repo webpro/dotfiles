@@ -54,9 +54,11 @@ if [ "$(uname)" == "Darwin" ]; then
     npm install -g svgo
     npm install -g vtop
 
-    # More symlinks
+    # Setup Mjolnir
 
-    ln -sfv "$DOTFILES_DIR/etc/hydra" ~/.hydra
+    luarocks install mjolnir.hotkey
+    luarocks install mjolnir.application
+    ln -sfv "$DOTFILES_DIR/etc/mjolnir" ~/.mjolnir
 
     # http://www.sublimetext.com/docs/3/osx_command_line.html
     [ -f ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ] && ln -sfhv ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl "$DOTFILES_DIR/bin/subl"

@@ -9,7 +9,7 @@ cask install glimmerblocker
 cask install google-chrome
 cask install google-chrome-canary
 cask install google-drive
-cask install hydra
+cask install mjolnir
 cask install kaleidoscope
 cask install mou
 cask install opera

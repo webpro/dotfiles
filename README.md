@@ -46,7 +46,7 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 * [dockutil](https://github.com/kcrawford/dockutil)
 * [hub](http://hub.github.com/)
 * [http-server](https://github.com/nodeapps/http-server)
-* [Hydra](https://github.com/sdegutis/hydra)
+* [Mjolnir](https://github.com/sdegutis/mjolnir)
 * [jq](http://stedolan.github.io/jq/)
 * [lunchy](https://github.com/eddiezane/lunchy)
 * [peco](http://peco.github.io/)

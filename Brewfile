@@ -22,3 +22,8 @@ install svn
 install tree
 install vim
 install wget
+
+# Lua (for Mjolnir)
+
+install lua
+install luarocks
