@@ -105,6 +105,14 @@ set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg,*.svg
 set wildignore+=*.swp,*.pyc,*.bak,*.class,*.orig
 set wildignore+=.git,.hg,.bzr,.svn
 
+" Ctrl-P
+
+let g:ctrlp_show_hidden=1
+
+" NERDTree
+
+let NERDTreeShowHidden=1
+
 " Snippets
 
 " UltiSnips completion function that tries to expand a snippet. If there's no
