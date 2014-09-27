@@ -1,6 +1,5 @@
 # Shortcuts
 
-alias e="$EDITOR"
 alias gg="$GIT_GUI"
 
 alias chrome="open -a ~/Applications/Google\ Chrome.app"

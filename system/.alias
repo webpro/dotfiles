@@ -45,9 +45,9 @@ alias bd=". bd -s"
 # tree
 
 alias tree="tree -A"
-alias trd="tree -d"
-alias trl1="tree -d -L 1"
-alias trl2="tree -d -L 2"
+alias treed="tree -d"
+alias tree1="tree -d -L 1"
+alias tree2="tree -d -L 2"
 
 # rsync
 
