@@ -18,6 +18,9 @@ set pastetoggle=<F2>            "Paste without being smart
 let mapleader=","
 nnoremap ; :                        " Use ; over : for commands
 nnoremap <leader><space> :noh<cr>   " Clear search highlighting with ,<space>
+nnoremap <tab> :bnext<cr>           " Tab to next buffer
+nnoremap <s-tab> :bprevious<cr>     " Shift-tab to previous buffer
+nnoremap <leader><leader> <C-^>     " Switch between last two buffers
 
 " Load plugins
 
@@ -108,9 +111,12 @@ set wildignore+=.git,.hg,.bzr,.svn
 " Ctrl-P
 
 let g:ctrlp_show_hidden=1
+let g:ctrlp_max_files = 600
+let g:ctrlp_max_depth = 6
 
 " NERDTree
 
+nmap <leader>n :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 
 " Snippets
