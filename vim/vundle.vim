@@ -11,8 +11,8 @@
 
 filetype off
 
-set rtp+=$VIM/bundle/vundle/
-call vundle#begin("$VIM/bundle")
+set rtp+=$HOME/.vim/bundle/vundle/
+call vundle#begin("$HOME/.vim/bundle")
 
 " let Vundle manage Vundle (required)
 
