@@ -15,8 +15,7 @@ sub_help () {
 }
 
 sub_edit () {
-    $EDITOR $DOTFILES_DIR
-    $GIT_GUI $DOTFILES_DIR
+    sh -c "$EDITOR --cmd 'cd $DOTFILES_DIR' $DOTFILES_DIR"
 }
 
 sub_reload () {
