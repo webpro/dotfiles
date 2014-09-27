@@ -19,6 +19,9 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
 
+# Disable audio feedback when volume is changed
+ write com.apple.sound.beep.feedback -bool false
+
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
