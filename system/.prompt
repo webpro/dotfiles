@@ -55,12 +55,15 @@ _bash_prompt_config() {
     P_HOST=${BLUE}${HOST_SYMBOL}
     P_GREEN=${GREEN}
     P_YELLOW=${YELLOW}
+    P_RED=${RED}
     P_RESET=${RESET}
 
 }
 
 bash_prompt_command() {
 
+    local EXIT_CODE=$?
+    local P_EXIT=""
     local MAXLENGTH=35
     local TRUNC_SYMBOL=".."
     local DIR=${PWD##*/}
@@ -83,7 +86,12 @@ bash_prompt_command() {
     # Parse Git branch name
 	P_GIT=$(parse_git_branch)
 
-    PS1="${P_USER}${P_YELLOW}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
+    # Exit code
+    if [[ $EXIT_CODE != 0 ]]; then
+        P_EXIT+="${P_RED}✘ "
+    fi
+
+    PS1="${P_EXIT}${P_USER}${P_YELLOW}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
 }
 
 parse_git_branch() {
