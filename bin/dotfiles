@@ -40,7 +40,7 @@ sub_osx () {
 }
 
 sub_dock () {
-    source $DOTFILES_DIR/osx/dock.sh && echo "Dock reloaded."
+    source "$DOTFILES_DIR/osx/dock.sh" && echo "Dock reloaded."
 }
 
 # Make sure to keep this in sync with the available public commands
