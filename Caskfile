@@ -5,14 +5,16 @@ cask install dash
 cask install dropbox
 cask install firefox
 cask install firefox-nightly
+cask install flux 
 cask install glimmerblocker
 cask install google-chrome
 cask install google-chrome-canary
 cask install google-drive
-cask install mjolnir
 cask install kaleidoscope
+cask install mjolnir
 cask install mou
 cask install opera
+cask install screenflow 
 cask install sonos
 cask install sourcetree
 cask install spotify
