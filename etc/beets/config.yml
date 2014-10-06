@@ -1,0 +1,12 @@
+library: ~/Dropbox/Library/beets/library.db
+directory: ~/MUSICLIB
+plugins: fetchart lastgenre web
+import:
+    move: yes
+paths:
+    default: $albumartist/[$original_year] $album/$track. $title
+art_filename: Folder
+lastgenre:
+    canonical: true
+    source: track
+
