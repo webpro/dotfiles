@@ -15,6 +15,6 @@ ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 [ -f "$DOTFILES_DIR/git/.gitconfig" ] && ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 [ -f "$DOTFILES_DIR/git/.gitignore_global" ] && ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
-if [ "$(uname)" == "Darwin" -a -f "$DOTFILES_DIR/install/install.osx.sh" ]; then
-    source "$DOTFILES_DIR/install/install.osx.sh"
+if [ "$(uname)" == "Darwin" -a -f "$DOTFILES_DIR/install/osx.sh" ]; then
+    source "$DOTFILES_DIR/install/osx.sh"
 fi
