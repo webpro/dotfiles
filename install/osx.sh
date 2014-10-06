@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Install Homebrew & brew-cask
 
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
@@ -7,13 +9,8 @@ brew tap caskroom/versions
 
 # Install brew & brew-cask packages
 
-brew bundle "$DOTFILES_DIR/Brewfile"
-brew bundle "$DOTFILES_DIR/Caskfile"
-
-# Configure bash (installed with brew)
-
-grep "/usr/local/bin/bash" /private/etc/shells &>/dev/null || sudo bash -c "echo /usr/local/bin/bash >> /private/etc/shells"
-chsh -s /usr/local/bin/bash
+source "$DOTFILES_DIR/install/brew.sh"
+source "$DOTFILES_DIR/install/brew-cask.sh"
 
 # Install Ruby gems (SASS, Compass)
 
@@ -35,12 +32,5 @@ npm install -g spot
 npm install -g svgo
 npm install -g vtop
 
-# Setup Mjolnir
-
-luarocks install mjolnir.hotkey
-luarocks install mjolnir.application
-ln -sfv "$DOTFILES_DIR/etc/mjolnir" ~/.mjolnir
-
 # http://www.sublimetext.com/docs/3/osx_command_line.html
 [ -f ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ] && ln -sfv ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl "$DOTFILES_DIR/bin/subl"
-
