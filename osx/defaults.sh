@@ -20,7 +20,7 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 sudo pmset -a standbydelay 86400
 
 # Disable audio feedback when volume is changed
- write com.apple.sound.beep.feedback -bool false
+write com.apple.sound.beep.feedback -bool false
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -30,6 +30,9 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
 # Menu bar: hide the useless Time Machine and Volume icons
 defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu"
+
+# Menu bar: show battery percentage
+defaults write com.apple.menuextra.battery -bool true
 
 # Disable opening and closing window animations
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
@@ -389,6 +392,10 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Use "Pro" theme (black background color)
 defaults write com.apple.terminal "Default Window Settings" -string "Pro"
 defaults write com.apple.terminal "Startup Window Settings" -string "Pro"
+
+# Disable audible and visual bells
+defaults write com.apple.terminal "Bell" -bool false
+defaults write com.apple.terminal "VisualBell" -bool false
 
 ###############################################################################
 # Time Machine                                                                #
