@@ -15,6 +15,7 @@ brew install gnu-sed --default-names
 brew install grep --default-names
 brew install hub
 brew install jq
+brew install mackup
 brew install node
 brew install peco
 brew install phantomjs
