@@ -8,4 +8,4 @@ brew install luarocks
 luarocks install mjolnir.hotkey
 luarocks install mjolnir.application
 
-ln -sfv "$DOTFILES_DIR/etc/mjolnir" ~/.mjolnir
+[ -d ~/.mjolnir ] || ln -sfv "$DOTFILES_DIR/etc/mjolnir/" ~/.mjolnir
