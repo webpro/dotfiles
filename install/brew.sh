@@ -19,6 +19,7 @@ brew install mackup
 brew install node
 brew install peco
 brew install phantomjs
+brew install psgrep
 brew install python
 brew install ssh-copy-id
 brew install svn
