@@ -24,6 +24,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Bundle "itchyny/lightline.vim"
 Plugin 'terryma/vim-multiple-cursors'
+Bundle 'rking/ag.vim'
 
 " Git
 
