@@ -12,7 +12,7 @@ brew cask install glimmerblocker
 brew cask install google-chrome
 brew cask install google-chrome-canary
 brew cask install google-drive
-brew cask install iterm
+brew cask install iterm2
 brew cask install kaleidoscope
 brew cask install mou
 brew cask install opera
@@ -28,6 +28,3 @@ brew cask install webstorm
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package && qlmanage -r
-
-# Alfred integration for Homebrew (https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md#alfred-integration)
-brew cask alfred link
