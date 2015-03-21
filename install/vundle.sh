@@ -1,12 +1,14 @@
 #!/bin/sh
 
-# Install Vundle
-mkdir -p ~/.vim/bundle && git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+BUNDLE_DIR=~/.vim/bundle
+
+# Install/update Vundle
+mkdir -p "$BUNDLE_DIR" && (git clone https://github.com/gmarik/vundle.git "$BUNDLE_DIR/vundle" || (cd "$BUNDLE_DIR/vundle" && git pull origin master))
 
 # Install bundles
 vim +PluginInstall +qall
 
 # Compile YouCompleteMe
-cd ~/.vim/bundle/YouCompleteMe && ./install.sh
+cd "$BUNDLE_DIR/YouCompleteMe" && ./install.sh
 
 cd -
