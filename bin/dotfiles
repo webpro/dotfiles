@@ -10,7 +10,7 @@ sub_help () {
     echo "   help               This help message"
     echo "   edit               Open dotfiles in default editor ($EDITOR) and Git GUI ($GIT_GUI)"
     echo "   reload             Reload dotfiles"
-    echo "   update             Update OS X Applications, Homebrew (cask), npm, and Ruby packages"
+    echo "   update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip"
     echo "   osx                Apply OS X system defaults"
     echo "   dock               Apply OS X Dock settings"
     echo "   install beets      Install Beets (PIP)"
@@ -34,6 +34,8 @@ sub_update () {
     npm update -g
     sudo gem update --system
     sudo gem update
+    pip install --upgrade pip
+    pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
 }
 
 sub_osx () {
