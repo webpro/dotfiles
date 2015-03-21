@@ -12,6 +12,10 @@ brew tap caskroom/versions
 source "$DOTFILES_DIR/install/brew.sh"
 source "$DOTFILES_DIR/install/brew-cask.sh"
 
+# Install bash (with Homebrew)
+
+source "$DOTFILES_DIR/install/bash.sh"
+
 # Install Ruby gems (SASS, Compass)
 
 sudo gem install compass

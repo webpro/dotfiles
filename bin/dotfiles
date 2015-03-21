@@ -13,7 +13,6 @@ sub_help () {
     echo "   update             Update OS X Applications, Homebrew (cask), npm, and Ruby packages"
     echo "   osx                Apply OS X system defaults"
     echo "   dock               Apply OS X Dock settings"
-    echo "   install bash       Install Bash (Homebrew)"
     echo "   install beets      Install Beets (PIP)"
     echo "   install mjolnir    Install Mjolnir (Homebrew/Luarocks)"
     echo "   install vundle     Install Vundle"
