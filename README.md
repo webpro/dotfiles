@@ -28,14 +28,17 @@ Alternatively, you can install this into `~/.dotfiles` from remote without Git u
 
     $ dotfiles help
     Usage: dotfiles <command>
-
+    
     Commands:
-       help        This help message
-       edit        Open dotfiles in default editor ($EDITOR) and Git GUI ($GIT_GUI)
-       reload      Reload dotfiles
-       update      Update OS X Applications, Homebrew (cask), npm, and Ruby packages
-       osx         Apply OS X system defaults
-       dock        Apply OS X Dock settings
+       help               This help message
+       edit               Open dotfiles in default editor (vim) and Git GUI (stree)
+       reload             Reload dotfiles
+       update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip
+       osx                Apply OS X system defaults
+       dock               Apply OS X Dock settings
+       install beets      Install Beets (PIP)
+       install mjolnir    Install Mjolnir (Homebrew/Luarocks)
+       install vundle     Install Vundle
 
 ## Custom settings
 
@@ -43,18 +46,31 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 
 ## Some installed packages
 
-* [dockutil](https://github.com/kcrawford/dockutil)
-* [hub](http://hub.github.com/)
-* [http-server](https://github.com/nodeapps/http-server)
-* [Mjolnir](https://github.com/sdegutis/mjolnir)
-* [jq](http://stedolan.github.io/jq/)
-* [lunchy](https://github.com/eddiezane/lunchy)
-* [peco](http://peco.github.io/)
-* [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
-* [spot](https://github.com/guille/spot)
-* [svgo](https://github.com/svg/svgo)
-* [tldr](https://github.com/tldr-pages/tldr)
-* [vtop](https://github.com/MrRio/vtop)
+* Core
+    * Bash + [coreutils](http://en.wikipedia.org/wiki/GNU_Core_Utilities) + bash-completion
+    * gnu-sed, grep, psgrep, tree, wget
+    * Git + [SourceTree](http://www.sourcetreeapp.com) + [hub](http://hub.github.com/), Subversion + [Cornerstone](https://www.zennaware.com/cornerstone/)
+    * Node.js + npm
+    * Python
+* Graphics
+    * [ffmpeg](https://www.ffmpeg.org)
+    * [gifsicle](http://www.lcdf.org/gifsicle)
+    * [imagemagick](http://www.imagemagick.org)
+    * [svgo](https://github.com/svg/svgo)
+* Dev
+    * [http-server](https://github.com/nodeapps/http-server)
+    * [jq](http://stedolan.github.io/jq/)
+    * [peco](http://peco.github.io/)
+* Misc.
+    * [lunchy](https://github.com/eddiezane/lunchy)
+    * [spot](https://github.com/guille/spot)
+    * [tldr](https://github.com/tldr-pages/tldr)
+    * [vtop](https://github.com/MrRio/vtop)
+* OSX
+    * [dockutil](https://github.com/kcrawford/dockutil)
+    * [Mjolnir](https://github.com/sdegutis/mjolnir)
+    * [Mackup](https://github.com/lra/mackup)
+    * [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
 
 ## Not or barely installable from CLI
 
@@ -66,7 +82,7 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 
 * [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
 * [Homebrew](http://brew.sh/) ([FAQ](https://github.com/Homebrew/homebrew/wiki/FAQ))
-* [homebrew-cask](http://caskroom.io/) ([usage]((https://github.com/phinze/homebrew-cask/blob/master/USAGE.md))
+* [homebrew-cask](http://caskroom.io/) ([usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md))
 * [Bash prompt](http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 
 ## Credits
