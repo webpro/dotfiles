@@ -1,68 +1,68 @@
 [user]
-	name = Lars Kappert
-	email = lars@webpro.nl
+    name = Lars Kappert
+    email = lars@webpro.nl
 
 [github]
-	user = webpro
+    user = webpro
 
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = vim
-	filemode = false
-	trustctime = false
+    excludesfile = ~/.gitignore_global
+    editor = vim
+    filemode = false
+    trustctime = false
 
 [alias]
-	st = status
-	sts = status -sb
-	stl = ls-files -m -o --exclude-standard
-	ci = commit
-	br = branch
-	co = checkout
-	cr = clone --recursive
-	df = diff --word-diff
-	unstage = reset --hard HEAD
-	ag = !sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --verbose' -
-	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	ll = log --pretty=oneline --graph --abbrev-commit
-	lm = log --pretty=format:'* %s (%h)'
-	lg = log -p
-	g = grep --break --heading --line-number
-	amend = commit --amend --reuse-message=HEAD
-	contrib = shortlog --summary --numbered
+    st = status
+    sts = status -sb
+    stl = ls-files -m -o --exclude-standard
+    ci = commit
+    br = branch
+    co = checkout
+    cr = clone --recursive
+    df = diff --word-diff
+    unstage = reset --hard HEAD
+    ag = !sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --verbose' -
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ll = log --pretty=oneline --graph --abbrev-commit
+    lm = log --pretty=format:'* %s (%h)'
+    lg = log -p
+    g = grep --break --heading --line-number
+    amend = commit --amend --reuse-message=HEAD
+    contrib = shortlog --summary --numbered
 
 [color]
-	ui = auto
+    ui = auto
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
 
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 
 [grep]
-	lineNumber = true
+    lineNumber = true
 
 [help]
-	autocorrect = 1
+    autocorrect = 1
 
 [difftool]
-	prompt = false
+    prompt = false
 
 [mergetool]
-	prompt = false
+    prompt = false
 
 [push]
-	default = simple
+    default = simple
 
 [fetch]
   prune = true
@@ -71,16 +71,16 @@
     renames = copies
     tool = Kaleidoscope
 [merge]
-	tool = Kaleidoscope
+    tool = Kaleidoscope
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
 [difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+    path =
 [mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+    cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
 

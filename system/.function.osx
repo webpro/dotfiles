@@ -30,9 +30,9 @@ show() {
         # Crappily re-implement "readlink -f" ("realpath") for Darwin.
         # (The "cd ... > /dev/null" hides CDPATH noise.)
         [ -d "$path" ] \
-			&& path="$(cd "$path" > /dev/null && pwd)" \
-			|| path="$(cd "$(dirname "$path")" > /dev/null && \
-			           echo "$PWD/$(basename "$path")")";
+            && path="$(cd "$path" > /dev/null && pwd)" \
+            || path="$(cd "$(dirname "$path")" > /dev/null && \
+                       echo "$PWD/$(basename "$path")")";
 
         # Use the "POSIX file" AppleScript syntax.
         paths+=("POSIX file \"${path//\"/\"}\"");
