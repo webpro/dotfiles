@@ -5,7 +5,7 @@
 brew update
 brew upgrade
 
-# Install GNU packages (and override OSX version)
+# Install packages
 
 apps=(
     bash-completion

@@ -84,3 +84,7 @@ alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/download
 
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
 alias cleanupad="find . -type d -name .AppleDouble -ls -exec /bin/rm -r {} \;"
+
+# It's probably me
+
+alias quit="exit"

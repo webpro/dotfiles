@@ -12,7 +12,7 @@ alias zip="zip -x *.DS_Store -x *__MACOSX* -x *.AppleDouble*"
 
 # Open iOS Simulator
 
-alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app'
+alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app"
 
 # Flush DNS
 
