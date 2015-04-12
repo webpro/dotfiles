@@ -8,7 +8,7 @@ brew upgrade
 # Install packages
 
 apps=(
-    bash-completion
+    bash-completion2
     coreutils
     dockutil
     ffmpeg
