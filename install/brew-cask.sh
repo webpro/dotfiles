@@ -13,6 +13,7 @@ apps=(
     google-chrome
     google-chrome-canary
     google-drive
+    hiarcs-chess-explorer
     iterm2
     kaleidoscope
     mou
