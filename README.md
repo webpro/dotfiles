@@ -40,8 +40,6 @@ Or, using wget:
        update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip
        osx                Apply OS X system defaults
        dock               Apply OS X Dock settings
-       install beets      Install Beets (PIP)
-       install mjolnir    Install Mjolnir (Homebrew/Luarocks)
        install vundle     Install Vundle
 
 ## Custom settings
@@ -72,7 +70,6 @@ You can put your custom settings, such as Git credentials in the `system/.custom
     * [vtop](https://github.com/MrRio/vtop)
 * OSX
     * [dockutil](https://github.com/kcrawford/dockutil)
-    * [Mjolnir](https://github.com/sdegutis/mjolnir)
     * [Mackup](https://github.com/lra/mackup)
     * [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
 

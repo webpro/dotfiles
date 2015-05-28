@@ -13,8 +13,6 @@ sub_help () {
     echo "   update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip"
     echo "   osx                Apply OS X system defaults"
     echo "   dock               Apply OS X Dock settings"
-    echo "   install beets      Install Beets (PIP)"
-    echo "   install mjolnir    Install Mjolnir (Homebrew/Luarocks)"
     echo "   install vundle     Install Vundle"
 }
 
@@ -30,12 +28,8 @@ sub_update () {
     sudo softwareupdate -i -a
     brew update
     brew upgrade
-    npm install npm -g
-    npm update -g
     sudo gem update --system
     sudo gem update
-    pip install --upgrade pip
-    pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
 }
 
 sub_osx () {
