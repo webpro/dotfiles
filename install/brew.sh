@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Update Homebrew, formulae, and packages
 
@@ -26,6 +26,7 @@ apps=(
     phantomjs
     psgrep
     python
+    shellcheck
     ssh-copy-id
     svn
     tree
@@ -33,4 +34,4 @@ apps=(
     wget
 )
 
-brew install ${apps[@]}
+brew install "${apps[@]}"
