@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-if [ ! -d "$HOME/.dotfiles" ]; then
+is-executable wget && CMD="wget --no-check-certificate -O -"
+is-executable curl && CMD="curl -#L"
+
+if [ -z "$CMD" ]; then
+    echo "No curl or wget available. Aborting."
+else
     echo "Installing dotfiles"
     mkdir -p "$HOME/.dotfiles" && \
-    curl -#L https://github.com/webpro/dotfiles/tarball/master | tar -xzv --directory ~/.dotfiles --strip-components=1 --exclude="{.gitignore}"
+    eval "$CMD https://github.com/webpro/dotfiles/tarball/master | tar -xzv -C ~/.dotfiles --strip-components=1 --exclude='{.gitignore}'"
     . "$HOME/.dotfiles/install.sh"
-else
-    echo "The dotfiles are already installed."
 fi
