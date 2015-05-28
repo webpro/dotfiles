@@ -88,3 +88,5 @@ alias cleanupad="find . -type d -name .AppleDouble -ls -exec /bin/rm -r {} \;"
 # It's probably me
 
 alias quit="exit"
+alias week="date +%V"
+alias openthegates="chown -R nobody:nogroup * && chmod -R 777 *"
