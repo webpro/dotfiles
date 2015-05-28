@@ -76,17 +76,14 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
     alias "$method"="lwp-request -m '$method'"
 done
 
-# Speed Test
-
-alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-
 # Recursively remove Apple meta files
 
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
-alias cleanupad="find . -type d -name .AppleDouble -ls -exec /bin/rm -r {} \;"
+alias cleanupad="find . -type d -name '.AppleD*' -ls -exec /bin/rm -r {} \;"
 
-# It's probably me
+# Miscellaneous
 
 alias quit="exit"
 alias week="date +%V"
+alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 alias openthegates="chown -R nobody:nogroup * && chmod -R 777 *"
