@@ -1,147 +1,166 @@
-" General
+" Section: Vundle
 
-set nocompatible
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-set laststatus=2                "Always display the status line
-set hidden                      "Hide buffer instead of closing it
-set pastetoggle=<F2>            "Paste without being smart
+  set nocompatible              " be iMproved, required
+  filetype off                  " required
 
-" Key mappings
 
-let mapleader=","
-nnoremap ; :                        " Use ; over : for commands
-nnoremap <leader><space> :noh<cr>   " Clear search highlighting with ,<space>
-nnoremap <tab> :bnext<cr>           " Tab to next buffer
-nnoremap <s-tab> :bprevious<cr>     " Shift-tab to previous buffer
-nnoremap <leader><leader> <C-^>     " Switch between last two buffers
+  " VUNDLE
+  " set the runtime path to include Vundle and initialize
+  set rtp+=~/.nvim/bundle/Vundle.vim
+  scriptencoding utf-8
+  call vundle#begin('~/.nvim/bundle')
 
-" Load plugins
+  Plugin 'gmarik/Vundle.vim'
+  Plugin 'rking/ag.vim'
+  Plugin 'kien/ctrlp.vim'
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'scrooloose/nerdcommenter'
+  " Plugin 'luochen1990/rainbow'
+  Plugin 'bling/vim-airline'
+  Plugin 'tpope/vim-endwise'
+  Plugin 'elixir-lang/vim-elixir'
+  Plugin 'tpope/vim-rails'
+  Plugin 'kchmck/vim-coffee-script'
+  Plugin 'Lokaltog/vim-easymotion'
+  Plugin 'vim-ruby/vim-ruby'
+  Plugin 'slim-template/vim-slim'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'tpope/vim-surround'
+  Plugin 'scrooloose/syntastic'
+  Plugin 'christoomey/vim-tmux-navigator' "Easy Pane Switching
+  Plugin 'jgdavey/vim-turbux' " TDD - run tests easily
+  Plugin 'benmills/vimux'
+  Plugin 'Valloric/YouCompleteMe'
 
-if filereadable(expand("$VIM/vundle.vim"))
-  source $VIM/vundle.vim
-endif
+  call vundle#end()            " required
+  filetype plugin indent on    " required
 
-" Swap file and backups
+" Section: Basic VIM Setup
+  " Remap leader key
+  let mapleader=","
 
-set noswapfile
-set nobackup
-set nowb
-au FocusLost * :wa
+  ",v brings up my .vimrc
+  map <leader>v :sp ~/.nvimrc<CR><C-W>_
+  ",V reloads it -- making all changes active (have to save first)
+  map <silent> <leader>V :source ~/.nvimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
-" Persistent undo
+  " the finder window
+  nmap <Leader>f :CtrlP<CR>
+  nmap <Leader>F :CtrlP<CR><F5>
 
-if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
-endif
+  " Make backspace work in insert mode
+  set backspace=indent,eol,start
 
-" Indentation
+  " Display line numbers on the left
+  set number
+  " Put temp / swp files in specific place to keep local dir clean
+  set directory=/tmp/
 
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set expandtab
+  " paste toggle
+  nnoremap <leader>p :set invpaste paste?<CR>
+  set pastetoggle=<leader>p
+  set showmode
 
-" Enable loading the plugin/indent files for specific file types
+  " Enable per-directory .vimrc files
+  " This lets you customize some things per the project you're in
+  set exrc
+  set secure  " disable unsafe commands in local .vimrc files
 
-filetype plugin indent on
+" Section: Indentation
+  set autoindent
+  set shiftwidth=2
+  set softtabstop=2
+  set tabstop=2
+  set expandtab
 
-" Wrapping
+" Section: Colours!
+  syntax enable
+  set background=dark
+  colorscheme solarized
+  let g:rainbow_active = 1
+  let g:rainbow_conf = {
+  \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+  \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+  \   'operators': '_,_',
+  \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+  \   'separately': {
+  \       '*': {},
+  \       'tex': {
+  \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+  \       },
+  \       'lisp': {
+  \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+  \       },
+  \       'vim': {
+  \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+  \       },
+  \       'html': 0,
+  \       'css': 0,
+  \   }
+  \}
 
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
+" Section: Search
+  " Case insensitive search
+  set ignorecase
+  " Space bar gets rid of search
+  nmap <space> :nohlsearch<CR>
+  " Highlight matches
+  set hlsearch
 
-" Folding
+" Section: Whitespace
+  " Display extra whitespace
+  set list listchars=tab:»·,trail:·
+  " Delete extra whitespace on save
+  autocmd BufWritePre *.py :%s/\s\+$//e
+  autocmd BufWritePre .nvimrc :%s/\s\+$//e
+  " unwanted whitespace removal/cleaning
+  autocmd BufWritePre *.rb :%s/\s\+$//e
+  autocmd BufWritePre *.py :%s/\s\+$//e
+  autocmd BufWritePre *.php :%s/\s\+$//e
+  autocmd BufWritePre *.haml :%s/\s\+$//e
+  autocmd BufWritePre *.slim :%s/\s\+$//e
+  autocmd BufWritePre *.js :%s/\s\+$//e
+  autocmd BufWritePre *.jsx :%s/\s\+$//e
+  autocmd BufWritePre *.coffee :%s/\s\+$//e
+  autocmd BufWritePre *.feature :%s/\s\+$//e
+  autocmd BufWritePre *.slimbars :%s/\s\+$//e
 
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+" Section: Turbux TDD - Keymaps for running tests
+  " Specify Commands
+  let g:turbux_command_rspec  = 'time rspec'
+  let g:turbux_command_test_unit  = 'time test'
+  let g:turbux_command_cucumber = 'time cucumber'
 
-" Search
+  " Keymaps
+  map <C-T> <Plug>SendTestToTmux
+  map <C-F> <Plug>SendFocusedTestToTmux
 
-set hlsearch
-set incsearch
-set ignorecase
-set showmatch
-set smartcase
+" Section: NerdTree - Project Sidebar
+  " quit NERDTree after openning a file
+  let NERDTreeQuitOnOpen=1
+  " Toggle NERDTree with <leader>,
+  map <silent> <leader>. :execute 'NERDTreeToggle ' . getcwd()<CR>
+  " Open current file in nerdtree
+  nmap \| :execute 'NERDTreeFind'<CR>
 
-" Colors
+" Section: Autocompletion!
+  let g:ycm_collect_identifiers_from_tags_files = 1
 
-syntax on
-set cursorline
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
-highlight clear SignColumn
+  autocmd FileType ruby set omnifunc=rubycomplete#Complete
+  autocmd FileType python set omnifunc=pythoncomplete#Complete
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+  autocmd FileType c set omnifunc=ccomplete#Complete
 
-" Scrolling
+" Section: Syntastic!
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
 
-set scrolloff=4
-set sidescrolloff=15
-set sidescroll=1
-
-" Completion
-
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildmode=list:longest
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg,*.svg
-set wildignore+=*.swp,*.pyc,*.bak,*.class,*.orig
-set wildignore+=.git,.hg,.bzr,.svn
-
-" Ctrl-P
-
-let g:ctrlp_show_hidden=1
-let g:ctrlp_max_files = 600
-let g:ctrlp_max_depth = 6
-
-" NERDTree
-
-nmap <leader>n :NERDTreeToggle<cr>
-let NERDTreeShowHidden=1
-
-" Snippets
-
-" UltiSnips completion function that tries to expand a snippet. If there's no
-" snippet for expanding, it checks for completion window and if it's
-" shown, selects first element. If there's no completion window it tries to
-" jump to next placeholder. If there's no placeholder it just returns TAB key
-
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:syntastic_always_populate_loc_list = 0
+  let g:syntastic_auto_loc_list = 0
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
