@@ -6,9 +6,9 @@
 
   " VUNDLE
   " set the runtime path to include Vundle and initialize
-  set rtp+=~/.nvim/bundle/Vundle.vim
+  set rtp+=~/.vim/bundle/Vundle.vim
   scriptencoding utf-8
-  call vundle#begin('~/.nvim/bundle')
+  call vundle#begin('~/.vim/bundle')
 
   Plugin 'gmarik/Vundle.vim'
   Plugin 'rking/ag.vim'
@@ -40,9 +40,9 @@
   let mapleader=","
 
   ",v brings up my .vimrc
-  map <leader>v :sp ~/.nvimrc<CR><C-W>_
+  map <leader>v :sp ~/.vimrc<CR><C-W>_
   ",V reloads it -- making all changes active (have to save first)
-  map <silent> <leader>V :source ~/.nvimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+  map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
   " the finder window
   nmap <Leader>f :CtrlP<CR>
@@ -112,7 +112,7 @@
   set list listchars=tab:»·,trail:·
   " Delete extra whitespace on save
   autocmd BufWritePre *.py :%s/\s\+$//e
-  autocmd BufWritePre .nvimrc :%s/\s\+$//e
+  autocmd BufWritePre .vimrc :%s/\s\+$//e
   " unwanted whitespace removal/cleaning
   autocmd BufWritePre *.rb :%s/\s\+$//e
   autocmd BufWritePre *.py :%s/\s\+$//e

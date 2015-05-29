@@ -17,6 +17,18 @@ brew tap caskroom/versions
 
 . "$DOTFILES_DIR/install/bash.sh"
 
+# Install vundle for vim
+
+. "$DOTFILES_DIR/install/vundle.sh"
+
+# Set up for colors (solarized) (do after vim!)
+
+. "$DOTFILES_DIR/install/colors.sh"
+
+# Set up for colors (solarized)
+
+. "$DOTFILES_DIR/install/ruby.sh"
+
 # Install Ruby gems (SASS, Compass)
 
 # sudo gem install compass
@@ -27,3 +39,10 @@ brew tap caskroom/versions
 
 # http://www.sublimetext.com/docs/3/osx_command_line.html
 [ -f ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ] && ln -sfv ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl "$DOTFILES_DIR/bin/subl"
+
+# OSX settings
+
+. "$DOTFILES_DIR/osx/defaults.sh"
+. "$DOTFILES_DIR/osx/dock.sh"
+. "$DOTFILES_DIR/osx/defaults-chrome.sh"
+

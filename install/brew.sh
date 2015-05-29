@@ -8,9 +8,16 @@ brew upgrade
 # Install packages
 
 apps=(
+    bash-completion2
+    chruby
+    cmake
+    coreutils
     dockutil
+    ag
     git
     mackup
+    python
+    ruby-install
     tree
     vim
 )

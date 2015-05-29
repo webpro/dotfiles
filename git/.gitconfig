@@ -1,9 +1,9 @@
 [user]
-    name = Lars Kappert
-    email = lars@webpro.nl
+    name = Joshua Balloch
+    email = joshuaballoch@gmail.com
 
 [github]
-    user = webpro
+    user = joshuaballoch
 
 [core]
     excludesfile = ~/.gitignore_global

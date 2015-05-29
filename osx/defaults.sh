@@ -393,10 +393,11 @@ defaults write com.apple.mail PlayMailSounds -bool false
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-# TODO: CHANGE TO SOLARIZED
-# Use "Pro" theme (black background color)
-defaults write com.apple.terminal "Default Window Settings" -string "Pro"
-defaults write com.apple.terminal "Startup Window Settings" -string "Pro"
+# Set Terminal Theme
+open "$HOME/.terminal/colors/osx-terminal.app-colors-solarized/Solarized Dark ansi.terminal"
+sleep 1 # Wait a bit to make sure the theme is loaded
+defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark ansi"
+defaults write com.apple.terminal "Startup Window Settings" -string "Solarized Dark ansi"
 
 # Disable audible and visual bells
 defaults write com.apple.terminal "Bell" -bool false
