@@ -47,6 +47,8 @@
   " the finder window
   nmap <Leader>f :CtrlP<CR>
   nmap <Leader>F :CtrlP<CR><F5>
+  " let ctrlp see hidden files by default
+  let g:ctrlp_show_hidden = 1
 
   " Make backspace work in insert mode
   set backspace=indent,eol,start
