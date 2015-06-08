@@ -13,6 +13,12 @@ is-supported() {
     fi
 }
 
+# Add to path
+
+prepend-path() {
+    [ -d $1 ] && PATH="$1:${PATH}"
+}
+
 # Clean caches
 
 cleanup() {
