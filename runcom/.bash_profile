@@ -63,6 +63,16 @@ if $SHELL_ZSH; then
     done
 fi
 
+# Hook for extra/custom stuff
+
+EXTRA_DIR="$HOME/.extra"
+
+if [ -d "$EXTRA_DIR" ]; then
+    for EXTRAFILE in "$EXTRA_DIR"/runcom/*.sh; do
+        [ -f "$EXTRAFILE" ] && . "$EXTRAFILE"
+    done
+fi
+
 # Clean up
 
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
