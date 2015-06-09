@@ -18,8 +18,7 @@ _bash_prompt_config() {
 
     if tput setaf >/dev/null 2>&1 ; then
         _setaf () { tput setaf "$1" ; }
-        #local _RESET="$( { tput sgr0 || tput me ; } 2>/dev/null )"
-        local RESET="${OPEN_ESC}$( { tput sgr0 || tput me ; } 2>/dev/null )${CLOSE_ESC}"
+        local RESET="${ESC_OPEN}$( { tput sgr0 || tput me ; } 2>/dev/null )${ESC_CLOSE}"
         local BOLD="$( { tput bold || tput md ; } 2>/dev/null )"
     else
         # Fallback
