@@ -33,19 +33,64 @@ hotkey.bind({"ctrl", "alt", "cmd"}, "left", function()
   moveTo(0, 0, 0.5, 1)
 end)
 
--- Push focused window to the right with 50% width
+-- Push window to the right with 50% width
 hotkey.bind({"ctrl", "alt", "cmd"}, "right", function()
   moveTo(0.5, 0, 0.5, 1)
 end)
 
--- Push focused window at the top with 50% height
+-- Push window at the top with 50% height
 hotkey.bind({"ctrl", "alt", "cmd"}, "up", function()
   moveTo(0, 0, 1, 0.5)
 end)
 
--- Push focused window at the bottom with 50% height
+-- Push window at the bottom with 50% height
 hotkey.bind({"ctrl", "alt", "cmd"}, "down", function()
   moveTo(0, 0.5, 1, 0.5)
+end)
+
+-- Push window to the left with 67% width
+hotkey.bind({"ctrl", "alt", "cmd"}, "1", function()
+    moveTo(0, 0, 0.67, 1)
+end)
+
+-- Push window to the left with 33% width
+hotkey.bind({"ctrl", "alt", "cmd"}, "2", function()
+    moveTo(0, 0, 0.33, 1)
+end)
+
+-- Push window to the right with 67% width
+hotkey.bind({"ctrl", "alt", "cmd"}, "8", function()
+    moveTo(0.33, 0, 0.67, 1)
+end)
+
+-- Push window to the right with 33% width
+hotkey.bind({"ctrl", "alt", "cmd"}, "9", function()
+    moveTo(0.67, 0, 0.33, 1)
+end)
+
+-- Push window to the upper left
+hotkey.bind({"ctrl", "alt", "cmd"}, "a", function()
+    moveTo(0, 0, 0.5, 0.5)
+end)
+
+-- Push window to the lower left
+hotkey.bind({"ctrl", "alt", "cmd"}, "z", function()
+    moveTo(0, 0.5, 0.5, 1)
+end)
+
+-- Push window to the upper right
+hotkey.bind({"ctrl", "alt", "cmd"}, "s", function()
+    moveTo(0.5, 0, 1, 0.5)
+end)
+
+-- Push window to the lower right
+hotkey.bind({"ctrl", "alt", "cmd"}, "x", function()
+    moveTo(0.5, 0.5, 1, 1)
+end)
+
+-- Push window to the middle
+hotkey.bind({"ctrl", "alt", "cmd"}, "c", function()
+    moveTo(0.25, 0.15, 0.5, 0.7)
 end)
 
 -- Push window full screen to first screen
