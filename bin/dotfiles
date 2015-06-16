@@ -49,8 +49,8 @@ sub_dock () {
 }
 
 sub_install () {
-    local SCRIPT="${DOTFILES_DIR}/install/${SUB_COMMAND_NAME}.sh"
-    [ -f "$SCRIPT" ] && . "$SCRIPT" || echo "Unable to find script to install ${SUB_COMMAND_NAME}"
+    local SCRIPT="$DOTFILES_DIR/install/$SUB_COMMAND_NAME.sh"
+    [ -f "$SCRIPT" ] && . "$SCRIPT" || echo "Unable to find script to install $SUB_COMMAND_NAME"
 }
 
 # Make sure to keep this in sync with the available public commands

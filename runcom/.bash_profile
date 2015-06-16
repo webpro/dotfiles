@@ -24,14 +24,14 @@ fi
 
 READLINK=$(which greadlink || which readlink)
 if $SHELL_BASH; then
-    CURRENT_SCRIPT=${BASH_SOURCE}
+    CURRENT_SCRIPT=$BASH_SOURCE
 else
-    CURRENT_SCRIPT=${0}
+    CURRENT_SCRIPT=$0
 fi
 
 if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
     SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
-    DOTFILES_DIR=$(dirname $(dirname ${SCRIPT_PATH}))
+    DOTFILES_DIR=$(dirname $(dirname "$SCRIPT_PATH"))
 elif [ -d "$HOME/.dotfiles" ]; then
     DOTFILES_DIR="$HOME/.dotfiles"
 else
