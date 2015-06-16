@@ -40,7 +40,6 @@ Or, using wget:
        update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip
        osx                Apply OS X system defaults
        dock               Apply OS X Dock settings
-       install beets      Install Beets (PIP)
        install mjolnir    Install Mjolnir (Homebrew/Luarocks)
        install vundle     Install Vundle
 
