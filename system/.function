@@ -65,6 +65,12 @@ uniqlines() {
     sort $1 | uniq -u
 }
 
+# Calculator
+
+c() {
+    echo "$*" | bc -l;
+}
+
 # Pretty print JSON
 
 json() {
