@@ -61,10 +61,6 @@ alias ni="npm install"
 alias nu="npm uninstall"
 alias npme="npm --registry http://registry.npmjs.eu"
 
-# Webserver
-
-alias srv="sudo http-server $HOME/Projects/ -p 80 -c-1"
-
 # Network
 
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

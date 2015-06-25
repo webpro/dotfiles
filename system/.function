@@ -71,6 +71,16 @@ c() {
     echo "$*" | bc -l;
 }
 
+# Webserver
+
+srv() {
+    local PORT=${1:-80}
+    if [ "$PORT" -le "1024" ]; then
+        sudo -v
+    fi
+    http-server -p "$PORT" -c-1
+}
+
 # Pretty print JSON
 
 json() {
