@@ -1,5 +1,3 @@
-#!/bin/sh
-
 brew cask install mjolnir
 
 brew install lua

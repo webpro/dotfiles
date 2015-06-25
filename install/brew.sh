@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Update Homebrew, formulae, and packages
 
 brew update
