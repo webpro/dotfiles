@@ -49,9 +49,9 @@ duf() {
 # Show line, optionally show surrounding lines
 
 line() {
-    local line_number=$1
-    local lines_around=${2:-0}
-    sed -n "`expr $line_number - $lines_around`,`expr $line_number + $lines_around`p"
+    local LINE_NUMBER=$1
+    local LINES_AROUND=${2:-0}
+    sed -n "`expr $LINE_NUMBER - $LINES_AROUND`,`expr $LINE_NUMBER + $LINES_AROUND`p"
 }
 
 # Show duplicate/unique lines
@@ -84,11 +84,11 @@ srv() {
 # Pretty print JSON
 
 json() {
-    local url=$1
-    if [[ "http" == $url[0,4] ]] ; then
-        curl --silent $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+    local URL=$1
+    if [[ "http" == $URL[0,4] ]]; then
+        cURL --silent $URL | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
     else
-        cat $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+        cat $URL | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
     fi
 }
 
@@ -129,21 +129,21 @@ check_compression() {
 # Get gzipped file size
 
 gz() {
-    local origsize=$(wc -c < "$1")
-    local gzipsize=$(gzip -c "$1" | wc -c)
-    local ratio=$(echo "$gzipsize * 100/ $origsize" | bc -l)
-    local saved=$(echo "($origsize - $gzipsize) * 100/ $origsize" | bc -l)
-    printf "orig: %d bytes\ngzip: %d bytes\nsave: %2.0f%% (%2.0f%%)\n" "$origsize" "$gzipsize" "$saved" "$ratio"
+    local ORIGSIZE=$(wc -c < "$1")
+    local GZIPSIZE=$(gzip -c "$1" | wc -c)
+    local RATIO=$(echo "$GZIPSIZE * 100/ $ORIGSIZE" | bc -l)
+    local SAVED=$(echo "($ORIGSIZE - $GZIPSIZE) * 100/ $ORIGSIZE" | bc -l)
+    printf "orig: %d bytes\ngzip: %d bytes\nsave: %2.0f%% (%2.0f%%)\n" "$ORIGSIZE" "$GZIPSIZE" "$SAVED" "$RATIO"
 }
 
 # Create a data URL from a file
 
 dataurl() {
-    local mimeType=$(file --mime-type "$1" | cut -d ' ' -f2)
-    if [[ $mimeType == text/* ]]; then
-        mimeType="${mimeType};charset=utf-8"
+    local MIMETYPE=$(file --mime-type "$1" | cut -d ' ' -f2)
+    if [[ $MIMETYPE == "text/*" ]]; then
+        MIMETYPE="${MIMETYPE};charset=utf-8"
     fi
-    echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
+    echo "data:${MIMETYPE};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
 
 # Get IP from hostname
