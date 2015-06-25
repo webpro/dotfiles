@@ -1,7 +1,6 @@
 apps=(
     alfred
     atom
-    cornerstone
     dash
     dropbox
     firefox
@@ -11,13 +10,11 @@ apps=(
     google-chrome
     google-chrome-canary
     google-drive
-    hiarcs-chess-explorer
     iterm2
     kaleidoscope
     mou
     opera
     screenflow
-    sonos
     sourcetree
     spotify
     sublime-text3
