@@ -49,6 +49,9 @@
   nmap <Leader>F :CtrlP<CR><F5>
   " let ctrlp see hidden files by default
   let g:ctrlp_show_hidden = 1
+  let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(bundle)$',
+    \ }
 
   " Make backspace work in insert mode
   set backspace=indent,eol,start
@@ -67,6 +70,9 @@
   " This lets you customize some things per the project you're in
   set exrc
   set secure  " disable unsafe commands in local .vimrc files
+
+" Section: Random Productivity
+  nnoremap <leader>o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
 
 " Section: Indentation
   set autoindent
