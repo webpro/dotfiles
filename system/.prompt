@@ -18,8 +18,8 @@ _bash_prompt_config() {
 
     if tput setaf >/dev/null 2>&1 ; then
         _setaf () { tput setaf "$1" ; }
-        #local _RESET="$( { tput sgr0 || tput me ; } 2>/dev/null )"
-        local RESET="${OPEN_ESC}$( { tput sgr0 || tput me ; } 2>/dev/null )${CLOSE_ESC}"
+        RESET_INNER="$( { tput sgr0 || tput me ; } 2>/dev/null )"
+        local RESET="${ESC_OPEN}${RESET_INNER}${ESC_CLOSE}"
         local BOLD="$( { tput bold || tput md ; } 2>/dev/null )"
     else
         # Fallback
@@ -91,7 +91,7 @@ bash_prompt_command() {
         P_EXIT+="${P_RED}✘ "
     fi
 
-    PS1="${P_EXIT}${P_USER}${P_YELLOW}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
+    PS1="${P_EXIT}${P_USER}${P_YELLOW}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} > ${P_RESET}"
 }
 
 parse_git_branch() {
