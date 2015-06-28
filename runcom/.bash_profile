@@ -63,6 +63,10 @@ if $SHELL_ZSH; then
     done
 fi
 
+# Set LSCOLORS
+
+eval $(dircolors $DOTFILES_DIR/system/.dir_colors)
+
 # Hook for extra/custom stuff
 
 EXTRA_DIR="$HOME/.extra"

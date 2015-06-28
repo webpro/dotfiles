@@ -87,6 +87,7 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 * [Homebrew](http://brew.sh/) ([FAQ](https://github.com/Homebrew/homebrew/wiki/FAQ))
 * [homebrew-cask](http://caskroom.io/) ([usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md))
 * [Bash prompt](http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
+* [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
 
 ## Credits
 
