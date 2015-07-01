@@ -47,6 +47,8 @@ Or, using wget:
 
 You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.bash_profile` automatically. This file is in `.gitignore`.
 
+Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`. The runcom `.bash_profile` sources all `~/.extra/runcom/*.sh` files. And the `install/osx.sh` will run `~/.extra/install/osx.sh`.
+
 ## Some installed packages
 
 * Core
