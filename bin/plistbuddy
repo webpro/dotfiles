@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 PLIST=$1
 ACTION=$2
 KEY="$3"

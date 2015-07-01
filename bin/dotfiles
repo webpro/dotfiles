@@ -1,11 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-BIN_NAME=$(basename $0)
+BIN_NAME=$(basename "$0")
 COMMAND_NAME=$1
 SUB_COMMAND_NAME=$2
 
 sub_help () {
-    echo "Usage: $BIN_NAME <command>\n"
+    echo "Usage: $BIN_NAME <command>"
+    echo
     echo "Commands:"
     echo "   help               This help message"
     echo "   edit               Open dotfiles in default editor ($EDITOR) and Git GUI ($GIT_GUI)"

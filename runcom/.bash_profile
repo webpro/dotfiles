@@ -17,7 +17,7 @@ fi
 if [ "$(uname -s)" = "Darwin" ]; then
     OS="OSX"
 else
-    OS=`uname -s`
+    OS=$(uname -s)
 fi
 
 # Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
@@ -31,7 +31,7 @@ fi
 
 if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
     SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
-    DOTFILES_DIR=$(dirname $(dirname "$SCRIPT_PATH"))
+    DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
 elif [ -d "$HOME/.dotfiles" ]; then
     DOTFILES_DIR="$HOME/.dotfiles"
 else
@@ -45,7 +45,7 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,completion,grep,
     [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
-if [ $OS = "OSX" ]; then
+if [ "$OS" = "OSX" ]; then
     for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.osx; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
@@ -65,7 +65,7 @@ fi
 
 # Set LSCOLORS
 
-eval $(dircolors $DOTFILES_DIR/system/.dir_colors)
+eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
 
 # Hook for extra/custom stuff
 
