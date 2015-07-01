@@ -35,7 +35,7 @@ Or, using wget:
     
     Commands:
        help               This help message
-       edit               Open dotfiles in default editor (vim) and Git GUI (stree)
+       edit               Open dotfiles in default editor (subl) and Git GUI (stree)
        reload             Reload dotfiles
        update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip
        osx                Apply OS X system defaults

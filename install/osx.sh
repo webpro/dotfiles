@@ -37,9 +37,6 @@ npm install -g spot
 npm install -g svgo
 npm install -g vtop
 
-# http://www.sublimetext.com/docs/3/osx_command_line.html
-[ -f ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ] && ln -sfv ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl "$DOTFILES_DIR/bin/subl"
-
 # Install extra stuff
 
 if [ -d "$EXTRA_DIR" -a -f "$EXTRA_DIR/install/osx.sh" ]; then
