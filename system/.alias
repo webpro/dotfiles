@@ -42,8 +42,6 @@ alias ....="cd ../../.."
 alias -- -="cd -"
 alias cd.='cd $(readlink -f .)'
 
-alias bd=". bd -s"
-
 # tree
 
 alias tree="tree -A"
