@@ -32,7 +32,7 @@ Or, using wget:
 
     $ dotfiles help
     Usage: dotfiles <command>
-    
+
     Commands:
        help               This help message
        edit               Open dotfiles in default editor (subl) and Git GUI (stree)

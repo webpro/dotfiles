@@ -41,7 +41,7 @@ sub_update () {
 
 sub_osx () {
     for DEFAULTS_FILE in "$DOTFILES_DIR"/osx/defaults*.sh; do
-        [ -f "$DEFAULTS_FILE" ] && echo "Applying $DEFAULTS_FILE" && . "$DEFAULTS_FILE"
+        echo "Applying $DEFAULTS_FILE" && . "$DEFAULTS_FILE"
     done
     echo "Done. Some changes may require a logout/restart to take effect."
 }

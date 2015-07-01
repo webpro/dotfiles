@@ -18,6 +18,7 @@ brew tap caskroom/versions
 . "$DOTFILES_DIR/install/bash.sh"
 
 # Install Ruby gems (SASS, Compass)
+# Not OSX-only, but lazy.
 
 sudo gem install compass
 sudo gem install lunchy
@@ -26,6 +27,7 @@ sudo gem install sass
 sudo gem install sass-globbing
 
 # Globally install with npm
+# Not OSX-only, but npm was installed from this script as well.
 
 npm install -g bower
 npm install -g grunt
