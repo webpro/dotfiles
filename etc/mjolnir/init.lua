@@ -75,17 +75,17 @@ end)
 
 -- Push window to the lower left
 hotkey.bind({"ctrl", "alt", "cmd"}, "z", function()
-    moveTo(0, 0.5, 0.5, 1)
+    moveTo(0, 0.5, 0.5, 0.5)
 end)
 
 -- Push window to the upper right
 hotkey.bind({"ctrl", "alt", "cmd"}, "s", function()
-    moveTo(0.5, 0, 1, 0.5)
+    moveTo(0.5, 0, 0.5, 0.5)
 end)
 
 -- Push window to the lower right
 hotkey.bind({"ctrl", "alt", "cmd"}, "x", function()
-    moveTo(0.5, 0.5, 1, 1)
+    moveTo(0.5, 0.5, 0.5, 0.5)
 end)
 
 -- Push window to the middle
