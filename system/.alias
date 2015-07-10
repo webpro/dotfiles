@@ -4,6 +4,7 @@ alias _="sudo"
 alias g="git"
 alias v="vim"
 alias rr="rm -rf"
+alias json="json -c"
 
 is-executable hub && eval "$(hub alias -s)" # alias git=hub
 

@@ -92,17 +92,6 @@ srv() {
     http-server . -p "$PORT" -c-1
 }
 
-# Pretty print JSON
-
-json() {
-    local URL=$1
-    if [[ "http" == $URL[0,4] ]]; then
-        cURL --silent $URL | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
-    else
-        cat $URL | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
-    fi
-}
-
 # Extract many types of compress files
 # Source: http://nparikh.org/notes/zshrc.txt
 
