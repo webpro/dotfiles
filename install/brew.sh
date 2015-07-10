@@ -7,6 +7,7 @@ brew upgrade
 
 apps=(
     bash-completion2
+    bats
     coreutils
     dockutil
     ffmpeg
