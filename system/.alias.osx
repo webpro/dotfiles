@@ -43,7 +43,7 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 alias killfinder="killall Finder"
 alias killdock="killall Dock"
-alias killmenubar="killa SystemUIServer NotificationCenter"
+alias killmenubar="killall SystemUIServer NotificationCenter"
 alias killosx="killfinder && killdock && killmenubar"
 
 ## Kill all the tabs in Chrome to free up memory
