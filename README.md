@@ -32,11 +32,12 @@ Or, using wget:
 
     $ dotfiles help
     Usage: dotfiles <command>
-
+    
     Commands:
        help               This help message
        edit               Open dotfiles in default editor (subl) and Git GUI (stree)
        reload             Reload dotfiles
+       test               Run tests
        update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip
        osx                Apply OS X system defaults
        dock               Apply OS X Dock settings

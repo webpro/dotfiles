@@ -11,7 +11,7 @@ sub_help () {
     echo "   help               This help message"
     echo "   edit               Open dotfiles in default editor ($EDITOR_NOWAIT) and Git GUI ($GIT_GUI)"
     echo "   reload             Reload dotfiles"
-    echo "   test               Run dotfiles tests"
+    echo "   test               Run tests"
     echo "   update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip"
     echo "   osx                Apply OS X system defaults"
     echo "   dock               Apply OS X Dock settings"
