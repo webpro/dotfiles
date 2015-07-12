@@ -55,6 +55,8 @@ show() {
     } | osascript;
 }
 
+# Open query in Dash app
+
 dash() {
     case $# in
         1) QUERY="$1";;
@@ -63,4 +65,3 @@ dash() {
     esac
     open "dash://$QUERY"
 }
-
