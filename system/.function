@@ -7,15 +7,19 @@ get() {
 # Executable
 
 is-executable() {
-    local BIN=`command -v "$1" 2>/dev/null`
-    [[ ! $BIN == "" && -x $BIN ]] && true || false
+    local BIN=$(command -v "$1" 2>/dev/null)
+    if [[ ! $BIN == "" && -x $BIN ]]; then true; else false; fi
 }
 
 is-supported() {
     if [ $# -eq 1 ]; then
-        eval $1 > /dev/null 2>&1 && true || false
+        if eval "$1" > /dev/null 2>&1; then true; else false; fi
     else
-        eval $1 > /dev/null 2>&1 && echo -n "$2" || echo -n "$3"
+        if eval "$1" > /dev/null 2>&1; then
+            echo -n "$2"
+        else
+            echo -n "$3"
+        fi
     fi
 }
 
@@ -28,11 +32,11 @@ prepend-path() {
 # Show 256 TERM colors
 
 colors() {
-  local X=`tput op`
-  local Y=`printf %$((${COLUMNS}-6))s`;
+  local X=$(tput op)
+  local Y=$(printf %$((COLUMNS-6))s)
   for i in {0..256}; do
     o=00$i;
-    echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${Y// /=}$X;
+    echo -e ${o:${#o}-3:3} $(tput setaf $i;tput setab $i)${Y// /=}$X;
   done
 }
 
