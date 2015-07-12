@@ -11,6 +11,7 @@ sub_help () {
     echo "   help               This help message"
     echo "   edit               Open dotfiles in default editor ($EDITOR_NOWAIT) and Git GUI ($GIT_GUI)"
     echo "   reload             Reload dotfiles"
+    echo "   test               Run dotfiles tests"
     echo "   update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip"
     echo "   osx                Apply OS X system defaults"
     echo "   dock               Apply OS X Dock settings"
@@ -25,6 +26,10 @@ sub_edit () {
 
 sub_reload () {
     . ~/.bash_profile && echo "Bash reloaded."
+}
+
+sub_test () {
+    bats "$DOTFILES_DIR"/test/*.bats
 }
 
 sub_update () {
@@ -58,7 +63,7 @@ sub_install () {
 # Make sure to keep this in sync with the available public commands
 
 sub_completion () {
-    echo "help edit reload update osx dock install"
+    echo "help edit reload test update osx dock install"
 }
 
 case $COMMAND_NAME in

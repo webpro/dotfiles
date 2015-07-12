@@ -23,3 +23,7 @@ if [ "$(uname)" == "Darwin" ]; then
         . "$DOTFILES_DIR/install/osx.sh"
     fi
 fi
+
+# Run tests
+
+bats test/*.bats
