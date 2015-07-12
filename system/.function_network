@@ -1,0 +1,15 @@
+# Webserver
+
+srv() {
+    local PORT=${1:-80}
+    if [ "$PORT" -le "1024" ]; then
+        sudo -v
+    fi
+    http-server . -p "$PORT" -c-1
+}
+
+# Get IP from hostname
+
+hostname2ip() {
+    ping -c 1 "$1" | egrep -m1 -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+}

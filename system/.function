@@ -19,33 +19,6 @@ prepend-path() {
     [ -d $1 ] && PATH="$1:$PATH"
 }
 
-# Clean caches
-
-cleanup() {
-    is-executable npm && npm cache clean
-    is-executable brew && brew cleanup
-    is-executable brew && brew cask cleanup
-}
-
-# Create a new directory and enter it
-
-mk() {
-    mkdir -p "$@" && cd "$@"
-}
-
-# Fuzzy find file/dir
-
-ff() {  find . -type f -iname "$1";}
-fff() { find . -type f -iname "*$1*";}
-fd() {  find . -type d -iname "$1";}
-fdf() { find . -type d -iname "*$1*";}
-
-# Show disk usage of current folder, or list with depth
-
-duf() {
-    du --max-depth=${1:-0} -c | sort -r -n | awk '{split("K M G",v); s=1; while($1>1024){$1/=1024; s++} print int($1)v[s]"\t"$2}'
-}
-
 # Show 256 TERM colors
 
 colors() {
@@ -57,97 +30,8 @@ colors() {
   done
 }
 
-# Show line, optionally show surrounding lines
-
-line() {
-    local LINE_NUMBER=$1
-    local LINES_AROUND=${2:-0}
-    sed -n "`expr $LINE_NUMBER - $LINES_AROUND`,`expr $LINE_NUMBER + $LINES_AROUND`p"
-}
-
-# Show duplicate/unique lines
-# Source: https://github.com/ain/.dotfiles/commit/967a2e65a44708449b6e93f87daa2721929cb87a
-
-duplines() {
-    sort $1 | uniq -d
-}
-
-uniqlines() {
-    sort $1 | uniq -u
-}
-
 # Calculator
 
 c() {
     echo "$*" | bc -l;
-}
-
-# Webserver
-
-srv() {
-    local PORT=${1:-80}
-    if [ "$PORT" -le "1024" ]; then
-        sudo -v
-    fi
-    http-server . -p "$PORT" -c-1
-}
-
-# Extract many types of compress files
-# Source: http://nparikh.org/notes/zshrc.txt
-
-extract() {
-    if [ -f "$1" ]; then
-        case "$1" in
-            *.tar.bz2)  tar -jxvf "$1"                        ;;
-            *.tar.gz)   tar -zxvf "$1"                        ;;
-            *.bz2)      bunzip2 "$1"                          ;;
-            *.dmg)      hdiutil mount "$1"                    ;;
-            *.gz)       gunzip "$1"                           ;;
-            *.tar)      tar -xvf "$1"                         ;;
-            *.tbz2)     tar -jxvf "$1"                        ;;
-            *.tgz)      tar -zxvf "$1"                        ;;
-            *.zip)      unzip "$1"                            ;;
-            *.ZIP)      unzip "$1"                            ;;
-            *.pax)      cat "$1" | pax -r                     ;;
-            *.pax.Z)    uncompress "$1" --stdout | pax -r     ;;
-            *.Z)        uncompress "$1"                       ;;
-            *)          echo "'$1' cannot be extracted/mounted via extract()" ;;
-        esac
-    else
-        echo "'$1' is not a valid file to extract"
-    fi
-}
-
-# Check if resource is served compressed
-
-check_compression() {
-    curl --write-out 'Size (uncompressed) = %{size_download}\n' --silent --output /dev/null $1
-    curl --header 'Accept-Encoding: gzip,deflate,compress' --write-out 'Size (compressed) =   %{size_download}\n' --silent --output /dev/null $1
-    curl --head --header 'Accept-Encoding: gzip,deflate' --silent $1 | grep -i "cache\|content\|vary\|expires"
-}
-
-# Get gzipped file size
-
-gz() {
-    local ORIGSIZE=$(wc -c < "$1")
-    local GZIPSIZE=$(gzip -c "$1" | wc -c)
-    local RATIO=$(echo "$GZIPSIZE * 100/ $ORIGSIZE" | bc -l)
-    local SAVED=$(echo "($ORIGSIZE - $GZIPSIZE) * 100/ $ORIGSIZE" | bc -l)
-    printf "orig: %d bytes\ngzip: %d bytes\nsave: %2.0f%% (%2.0f%%)\n" "$ORIGSIZE" "$GZIPSIZE" "$SAVED" "$RATIO"
-}
-
-# Create a data URL from a file
-
-dataurl() {
-    local MIMETYPE=$(file --mime-type "$1" | cut -d ' ' -f2)
-    if [[ $MIMETYPE == "text/*" ]]; then
-        MIMETYPE="${MIMETYPE};charset=utf-8"
-    fi
-    echo "data:${MIMETYPE};base64,$(openssl base64 -in "$1" | tr -d '\n')"
-}
-
-# Get IP from hostname
-
-hostname2ip() {
-    ping -c 1 "$1" | egrep -m1 -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 }
