@@ -12,14 +12,12 @@ shift $((OPTIND-1))
 
 if [ $# -ge 1 ]; then
 	if [[ "$1" == http* ]]; then
-	    RAW=$(cURL --silent "$1")
+	    INPUT=$(curl --silent "$1")
 	elif [ -f "$1" ]; then
-		RAW=$(cat "$1")
+		INPUT=$(cat "$1")
 	fi
 else
-    RAW=$(cat -)
+    INPUT=$(cat -)
 fi
 
-JSON=$(echo "$RAW" | underscore print "$OPT_COLOR")
-
-echo "$JSON"
+echo "$INPUT" | underscore print "$OPT_COLOR"
