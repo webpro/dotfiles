@@ -1,8 +1,16 @@
 #!/usr/bin/env bats
 
 load "${DOTFILES_DIR}/system/.function"
+load "${DOTFILES_DIR}/system/.function_text"
 
 FIXTURE=$'foo\nbar\nbaz\nfoo'
+FIXTURE_TEXT="foo"
+
+@test "get" {
+	ACTUAL=$(get "FIXTURE_TEXT")
+	EXPECTED="foo"
+	[ "$ACTUAL" = "$EXPECTED" ]
+}
 
 @test "is-executable" {
 	run is-executable ls
@@ -31,25 +39,25 @@ FIXTURE=$'foo\nbar\nbaz\nfoo'
 }
 
 @test "line" {
-	ACTUAL=$(echo "$FIXTURE" | line 2)
+	ACTUAL=$(get "FIXTURE" | line 2)
 	EXPECTED="bar"
 	[ "$ACTUAL" = "$EXPECTED" ]
 }
 
 @test "line + surrounding lines" {
-	ACTUAL=$(echo "$FIXTURE" | line 3 1)
+	ACTUAL=$(get "FIXTURE" | line 3 1)
 	EXPECTED=$(echo -e "bar\nbaz\nfoo")
 	[ "$ACTUAL" = "$EXPECTED" ]
 }
 
 @test "duplines" {
-	ACTUAL=$(echo "$FIXTURE" | duplines)
+	ACTUAL=$(get "FIXTURE" | duplines)
 	EXPECTED=$(echo -e "foo")
 	[ "$ACTUAL" = "$EXPECTED" ]
 }
 
 @test "uniqlines" {
-	ACTUAL=$(echo "$FIXTURE" | uniqlines)
+	ACTUAL=$(get "FIXTURE" | uniqlines)
 	EXPECTED=$'bar\nbaz'
 	[ "$ACTUAL" = "$EXPECTED" ]
 }
