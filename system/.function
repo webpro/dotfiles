@@ -42,6 +42,6 @@ colors() {
 
 # Calculator
 
-c() {
+calc() {
     echo "$*" | bc -l;
 }
