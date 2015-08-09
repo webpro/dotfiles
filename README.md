@@ -4,6 +4,20 @@ These are my dotfiles. Take anything you want, but at your own risk.
 
 It targets OS X systems, but since it has some defensive checks it should work on *nix as well (tested on a few Linux boxes).
 
+## Package overview
+
+* Core
+    * Bash + [coreutils](http://en.wikipedia.org/wiki/GNU_Core_Utilities) + bash-completion
+    * Node.js + npm
+    * GNU [sed](http://www.gnu.org/software/sed/), [grep](https://www.gnu.org/software/grep/), [Wget](https://www.gnu.org/software/wget/)
+    * [fasd](https://github.com/clvv/fasd), [lunchy](https://github.com/eddiezane/lunchy), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [pgrep](http://linux.die.net/man/1/pgrep), [spot](https://github.com/guille/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [vtop](https://github.com/MrRio/vtop)
+    * Git + [SourceTree](http://www.sourcetreeapp.com) + [hub](http://hub.github.com/), Subversion + [Cornerstone](https://www.zennaware.com/cornerstone/)
+    * Python 2
+* Dev (FE/JS/JSON): [http-server](https://github.com/nodeapps/http-server), [jq](http://stedolan.github.io/jq/), [nodemon](http://nodemon.io), [peco](http://peco.github.io), [underscore-cli](https://github.com/ddopson/underscore-cli)
+* Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](http://www.lcdf.org/gifsicle), [imagemagick](http://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
+* OS X: [dockutil](https://github.com/kcrawford/dockutil), [Mjolnir](https://github.com/sdegutis/mjolnir), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
+* [OS X apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
+
 ## Install
 
 On a sparkling fresh installation of OS X:
@@ -44,39 +58,15 @@ Or, using wget:
        install mjolnir    Install Mjolnir (Homebrew/Luarocks)
        install vundle     Install Vundle
 
-## Custom settings
+## Customize/extend
 
 You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.bash_profile` automatically. This file is in `.gitignore`.
 
-Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`. The runcom `.bash_profile` sources all `~/.extra/runcom/*.sh` files. And the `install/osx.sh` will run `~/.extra/install/osx.sh`.
+Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 
-## Some installed packages
-
-* Core
-    * Bash + [coreutils](http://en.wikipedia.org/wiki/GNU_Core_Utilities) + bash-completion
-    * gnu-sed, grep, psgrep, tree, wget
-    * Git + [SourceTree](http://www.sourcetreeapp.com) + [hub](http://hub.github.com/), Subversion + [Cornerstone](https://www.zennaware.com/cornerstone/)
-    * Node.js + npm
-    * Python
-* Graphics
-    * [ffmpeg](https://www.ffmpeg.org)
-    * [gifsicle](http://www.lcdf.org/gifsicle)
-    * [imagemagick](http://www.imagemagick.org)
-    * [svgo](https://github.com/svg/svgo)
-* Dev
-    * [http-server](https://github.com/nodeapps/http-server)
-    * [jq](http://stedolan.github.io/jq/)
-    * [peco](http://peco.github.io/)
-* Misc.
-    * [lunchy](https://github.com/eddiezane/lunchy)
-    * [spot](https://github.com/guille/spot)
-    * [tldr](https://github.com/tldr-pages/tldr)
-    * [vtop](https://github.com/MrRio/vtop)
-* OSX
-    * [dockutil](https://github.com/kcrawford/dockutil)
-    * [Mjolnir](https://github.com/sdegutis/mjolnir)
-    * [Mackup](https://github.com/lra/mackup)
-    * [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
+* The runcom `.bash_profile` sources all `~/.extra/runcom/*.sh` files.
+* The installer (`install.sh`) will run `~/.extra/install.sh`.
+* The OS X installer (`install/osx.sh`) will run `~/.extra/install/osx.sh`.
 
 ## Not or barely installable from CLI
 
