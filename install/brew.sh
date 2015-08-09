@@ -11,7 +11,7 @@ apps=(
     coreutils
     dockutil
     ffmpeg
-    fsad
+    fasd
     gifsicle
     git
     gnu-sed --default-names
