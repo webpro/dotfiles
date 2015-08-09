@@ -17,6 +17,7 @@ apps=(
     gnu-sed --default-names
     grep --default-names
     hub
+    httpie
     imagemagick
     jq
     mackup
