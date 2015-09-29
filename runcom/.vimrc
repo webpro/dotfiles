@@ -136,9 +136,9 @@
 
 " Section: Turbux TDD - Keymaps for running tests
   " Specify Commands
-  let g:turbux_command_rspec  = 'time rspec'
-  let g:turbux_command_test_unit  = 'time test'
-  let g:turbux_command_cucumber = 'time cucumber'
+  let g:turbux_command_rspec  = 'be time rspec'
+  let g:turbux_command_test_unit  = 'be time test'
+  let g:turbux_command_cucumber = 'be time cucumber'
 
   " Keymaps
   map <C-T> <Plug>SendTestToTmux

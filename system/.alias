@@ -1,9 +1,7 @@
 # Shortcuts
 
-alias _="sudo"
-alias g="git"
-alias v="vim"
 alias rr="rm -rf"
+alias be="bundle exec"
 
 is-executable hub && eval "$(hub alias -s)" # alias git=hub
 
