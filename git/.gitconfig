@@ -32,6 +32,9 @@
     ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
     pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 
+[pager]
+    diff = diff-highlight | less
+
 [color]
     ui = auto
 [color "branch"]
@@ -47,6 +50,11 @@
     added = yellow
     changed = green
     untracked = cyan
+[color "diff-highlight"]
+    oldNormal = "red bold"
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
 
 [credential]
     helper = osxkeychain
