@@ -1,5 +1,6 @@
 " Section: Vundle
 
+  set mouse=a
   set nocompatible              " be iMproved, required
   filetype off                  " required
 
