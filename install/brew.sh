@@ -22,6 +22,7 @@ apps=(
     jq
     mackup
     node
+    nvm
     peco
     phantomjs
     psgrep
