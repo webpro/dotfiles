@@ -12,7 +12,7 @@ apps=(
     google-drive
     iterm2
     kaleidoscope
-    mou
+    macdown
     opera
     screenflow
     sourcetree
