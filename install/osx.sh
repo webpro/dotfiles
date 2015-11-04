@@ -20,6 +20,8 @@ brew tap caskroom/versions
 # Install Ruby gems (SASS, Compass)
 # Not OSX-only, but lazy.
 
+sudo gem install consular
+sudo gem install consular-osx
 sudo gem install compass
 sudo gem install lunchy
 sudo gem install pygmentize
