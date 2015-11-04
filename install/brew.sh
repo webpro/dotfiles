@@ -2,6 +2,7 @@
 
 brew update
 brew upgrade
+brew tap homebrew/dupes
 
 # Install packages
 
@@ -14,8 +15,8 @@ apps=(
     fasd
     gifsicle
     git
-    gnu-sed --default-names
-    grep --default-names
+    gnu-sed --with-default-names
+    grep --with-default-names
     hub
     httpie
     imagemagick
