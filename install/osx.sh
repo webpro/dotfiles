@@ -29,7 +29,6 @@ sudo gem install sass-globbing
 # Globally install with npm
 # Not OSX-only, but npm was installed from this script as well.
 
-npm install -g bower
 npm install -g grunt
 npm install -g gulp
 npm install -g http-server

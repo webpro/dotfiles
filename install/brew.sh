@@ -25,7 +25,6 @@ apps=(
     node
     nvm
     peco
-    phantomjs
     psgrep
     python
     shellcheck
