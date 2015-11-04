@@ -68,12 +68,6 @@ Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 * The installer (`install.sh`) will run `~/.extra/install.sh`.
 * The OS X installer (`install/osx.sh`) will run `~/.extra/install/osx.sh`.
 
-## Not or barely installable from CLI
-
-* [Downloads for Apple Developers](https://developer.apple.com/downloads), including:
-    * Command Line Tools for XCode
-    * Hardware IO Tools for XCode (includes Network Link Conditioner)
-
 ## Additional resources
 
 * [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
