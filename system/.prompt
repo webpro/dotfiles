@@ -2,19 +2,10 @@
 
 _bash_prompt_config() {
 
-    if $SHELL_BASH; then
-        local USER_SYMBOL="\u"
-        local HOST_SYMBOL="\h"
-        local ESC_OPEN="\["
-        local ESC_CLOSE="\]"
-    else
-        # Assume zsh
-        local USER_SYMBOL="%n"
-        local HOST_SYMBOL=%m
-        local ESC_OPEN="%{"
-        local ESC_CLOSE="%}"
-    fi
-
+    local USER_SYMBOL="\u"
+    local HOST_SYMBOL="\h"
+    local ESC_OPEN="\["
+    local ESC_CLOSE="\]"
 
     if tput setaf >/dev/null 2>&1 ; then
         _setaf () { tput setaf "$1" ; }
@@ -110,11 +101,4 @@ parse_git_branch() {
 _bash_prompt_config
 unset _bash_prompt_config
 
-if $SHELL_BASH; then
-    PROMPT_COMMAND=bash_prompt_command
-else
-    # Assume zsh
-    function precmd {
-        bash_prompt_command
-    }
-fi
+PROMPT_COMMAND=bash_prompt_command
