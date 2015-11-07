@@ -8,10 +8,12 @@ It targets OS X systems, but since it has some defensive checks it should work o
 
 * Core
     * Bash + [coreutils](http://en.wikipedia.org/wiki/GNU_Core_Utilities) + bash-completion
+    * [Homebrew](http://brew.sh/), [homebrew-cask](http://caskroom.io/)
     * Node.js + npm
     * GNU [sed](http://www.gnu.org/software/sed/), [grep](https://www.gnu.org/software/grep/), [Wget](https://www.gnu.org/software/wget/)
-    * [fasd](https://github.com/clvv/fasd), [lunchy](https://github.com/eddiezane/lunchy), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [pgrep](http://linux.die.net/man/1/pgrep), [spot](https://github.com/guille/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [vtop](https://github.com/MrRio/vtop)
+    * [fasd](https://github.com/clvv/fasd), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [pgrep](http://linux.die.net/man/1/pgrep), [spot](https://github.com/guille/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [vtop](https://github.com/MrRio/vtop)
     * Git + [SourceTree](http://www.sourcetreeapp.com) + [hub](http://hub.github.com/), Subversion + [Cornerstone](https://www.zennaware.com/cornerstone/)
+    * [rvm](https://rvm.io/) (Ruby 2.1), [consular](https://github.com/achiu/consular) ([-osx](https://github.com/achiu/consular-osx)), [lunchy](https://github.com/eddiezane/lunchy)
     * Python 2
 * Dev (FE/JS/JSON): [http-server](https://github.com/nodeapps/http-server), [jq](http://stedolan.github.io/jq/), [nodemon](http://nodemon.io), [peco](http://peco.github.io), [underscore-cli](https://github.com/ddopson/underscore-cli)
 * Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](http://www.lcdf.org/gifsicle), [imagemagick](http://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
@@ -71,8 +73,8 @@ Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 ## Additional resources
 
 * [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
-* [Homebrew](http://brew.sh/) ([FAQ](https://github.com/Homebrew/homebrew/wiki/FAQ))
-* [homebrew-cask](http://caskroom.io/) ([usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md))
+* [Homebrew](http://brew.sh/) / [FAQ](https://github.com/Homebrew/homebrew/wiki/FAQ)
+* [homebrew-cask](http://caskroom.io/) / [usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md)
 * [Bash prompt](http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 * [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
 
