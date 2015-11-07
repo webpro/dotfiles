@@ -16,6 +16,7 @@ apps=(
     gifsicle
     git
     gnu-sed --with-default-names
+    gpg2
     grep --with-default-names
     hub
     httpie
