@@ -68,7 +68,6 @@ Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 
 * The runcom `.bash_profile` sources all `~/.extra/runcom/*.sh` files.
 * The installer (`install.sh`) will run `~/.extra/install.sh`.
-* The OS X installer (`install/osx.sh`) will run `~/.extra/install/osx.sh`.
 
 ## Additional resources
 

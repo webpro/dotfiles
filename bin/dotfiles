@@ -12,7 +12,7 @@ sub_help () {
     echo "   edit               Open dotfiles in editor ($EDITOR_ALT) and Git GUI ($GIT_GUI)"
     echo "   reload             Reload dotfiles"
     echo "   test               Run tests"
-    echo "   update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip"
+    echo "   update             Update packages and pkg managers (OS, brew, npm, gem, pip)"
     echo "   osx                Apply OS X system defaults"
     echo "   dock               Apply OS X Dock settings"
     echo "   install mjolnir    Install Mjolnir (Homebrew/Luarocks)"

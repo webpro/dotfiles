@@ -1,8 +1,10 @@
-# Update Homebrew, formulae, and packages
+# Install Homebrew
 
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap homebrew/versions
+brew tap homebrew/dupes
 brew update
 brew upgrade
-brew tap homebrew/dupes
 
 # Install packages
 
@@ -16,15 +18,12 @@ apps=(
     gifsicle
     git
     gnu-sed --with-default-names
-    gpg2
     grep --with-default-names
     hub
     httpie
     imagemagick
     jq
     mackup
-    node
-    nvm
     peco
     psgrep
     python

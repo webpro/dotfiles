@@ -18,11 +18,16 @@ ln -sfv "$DOTFILES_DIR/runcom/.gemrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
+# Package managers & packages
+
+. "$DOTFILES_DIR/install/brew.sh"
+. "$DOTFILES_DIR/install/bash.sh"
+. "$DOTFILES_DIR/install/node.sh"
+
 if [ "$(uname)" == "Darwin" ]; then
+    . "$DOTFILES_DIR/install/brew-cask.sh"
+    . "$DOTFILES_DIR/install/ruby.sh"
     ln -sfv "$DOTFILES_DIR/etc/mackup/.mackup.cfg" ~
-    if [ -f "$DOTFILES_DIR/install/osx.sh" ]; then
-        . "$DOTFILES_DIR/install/osx.sh"
-    fi
 fi
 
 # Run tests
