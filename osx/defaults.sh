@@ -1,3 +1,5 @@
+COMPUTER_NAME="Blade"
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -9,10 +11,10 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "Blade"
-sudo scutil --set HostName "Blade"
-sudo scutil --set LocalHostName "Blade"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Blade"
+sudo scutil --set ComputerName "$COMPUTER_NAME"
+sudo scutil --set HostName "$COMPUTER_NAME"
+sudo scutil --set LocalHostName "$COMPUTER_NAME"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
@@ -211,9 +213,6 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# Empty Trash securely by default
-defaults write com.apple.finder EmptyTrashSecurely -bool true
-
 # Enable the MacBook Air SuperDrive on any Mac
 sudo nvram boot-args="mbasd=1"
 
@@ -375,13 +374,13 @@ defaults write com.apple.spotlight orderedItems -array \
 	'{"enabled" = 0;"name" = "SOURCE";}'
 
 # Load new settings before rebuilding the index
-killall mds > /dev/null 2>&1
+killall mds
 
 # Make sure indexing is enabled for the main volume
-sudo mdutil -i on / > /dev/null
+sudo mdutil -i on /
 
 # Rebuild the index from scratch
-sudo mdutil -E / > /dev/null
+sudo mdutil -E /
 
 ###############################################################################
 # Terminal                                                                    #
@@ -443,6 +442,6 @@ sudo tmutil disablelocal
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal" "iTunes"; do
-    killall "$app" > /dev/null 2>&1
+for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal"; do
+    killall "${app}" &> /dev/null
 done
