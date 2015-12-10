@@ -1,8 +1,8 @@
 # .files
 
-These are my dotfiles. Take anything you want, but at your own risk.
+These are my dotfiles. They're customized version of this [guy's](https://github.com/webpro/dotfiles). He also wrote [this](https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.6mays3dy8).
 
-It targets OS X systems, but since it has some defensive checks it should work on *nix as well (tested on a few Linux boxes).
+This is for UNIX (Linux and OS X) systems, and currently under construction. Don't blame me if it breaks anything.
 
 ## Package overview
 
@@ -48,7 +48,7 @@ Or, using wget:
 
     $ dotfiles help
     Usage: dotfiles <command>
-    
+
     Commands:
        help               This help message
        edit               Open dotfiles in default editor (subl) and Git GUI (stree)
