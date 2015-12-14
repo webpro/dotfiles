@@ -17,7 +17,7 @@ It targets OS X systems, but since it has some defensive checks it should work o
     * Python 2
 * Dev (FE/JS/JSON): [http-server](https://github.com/nodeapps/http-server), [jq](http://stedolan.github.io/jq/), [nodemon](http://nodemon.io), [peco](http://peco.github.io), [underscore-cli](https://github.com/ddopson/underscore-cli)
 * Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](http://www.lcdf.org/gifsicle), [imagemagick](http://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
-* OS X: [dockutil](https://github.com/kcrawford/dockutil), [Mjolnir](https://github.com/sdegutis/mjolnir), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
+* OS X: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](http://www.hammerspoon.org/), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
 * [OS X apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
 
 ## Install
@@ -48,7 +48,7 @@ Or, using wget:
 
     $ dotfiles help
     Usage: dotfiles <command>
-    
+
     Commands:
        help               This help message
        edit               Open dotfiles in default editor (subl) and Git GUI (stree)
@@ -57,7 +57,6 @@ Or, using wget:
        update             Update packages and pkg managers: OS X Applications, Homebrew/Cask, npm, Ruby, and pip
        osx                Apply OS X system defaults
        dock               Apply OS X Dock settings
-       install mjolnir    Install Mjolnir (Homebrew/Luarocks)
        install vundle     Install Vundle
 
 ## Customize/extend

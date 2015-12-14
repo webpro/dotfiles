@@ -15,7 +15,6 @@ sub_help () {
     echo "   update             Update packages and pkg managers (OS, brew, npm, gem, pip)"
     echo "   osx                Apply OS X system defaults"
     echo "   dock               Apply OS X Dock settings"
-    echo "   install mjolnir    Install Mjolnir (Homebrew/Luarocks)"
     echo "   install vundle     Install Vundle"
 }
 
