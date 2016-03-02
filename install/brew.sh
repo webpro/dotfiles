@@ -35,6 +35,7 @@ apps=(
     tree
     vim
     wget
+    wifi-password
 )
 
 brew install "${apps[@]}"
