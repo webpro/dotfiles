@@ -14,6 +14,7 @@ apps=(
     bats
     battery
     coreutils
+    cmake
     dockutil
     ffmpeg
     fasd
