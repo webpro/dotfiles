@@ -1,0 +1,17 @@
+local function toggleApplication(name)
+  local app = hs.application.find(name)
+  if not app or app:isHidden() then
+    hs.application.launchOrFocus(name)
+  elseif hs.application.frontmostApplication() ~= app then
+    app:activate()
+  else
+    app:hide()
+  end
+end
+
+hs.hotkey.bind(mash, "c", function() toggleApplication("Chrome") end)
+hs.hotkey.bind(mash, "d", function() toggleApplication("Dash") end)
+hs.hotkey.bind(mash, "g", function() toggleApplication("SourceTree") end)
+hs.hotkey.bind(mash, "s", function() toggleApplication("Spotify") end)
+hs.hotkey.bind(mash, "t", function() toggleApplication("Terminal") end)
+hs.hotkey.bind(mash, "w", function() toggleApplication("WebStorm") end)
