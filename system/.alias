@@ -22,7 +22,7 @@ fi
 alias listaliases="alias | sed 's/=.*//'"
 alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'" # show non _prefixed functions
 
-# ls
+# dir listing/traversal
 
 LS_COLORS=`is-supported "ls --color" --color -G`
 LS_TIMESTYLEISO=`is-supported "ls --time-style=long-iso" --time-style=long-iso`
@@ -35,20 +35,18 @@ alias ld="ls -ld $LS_COLORS */"
 
 unset LS_COLORS LS_TIMESTYLEISO LS_GROUPDIRSFIRST
 
-# cd
-
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias -- -="cd -"                  # Go to previous dir with -
 alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is linked)
 
-# tree
-
 alias tree="tree -A"
 alias treed="tree -d"
 alias tree1="tree -d -L 1"
 alias tree2="tree -d -L 2"
+
+alias cpwd='pwd|tr -d "\n"|pbcopy'
 
 # rsync
 
