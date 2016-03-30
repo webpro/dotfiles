@@ -45,3 +45,10 @@ colors() {
 calc() {
     echo "$*" | bc -l;
 }
+
+# Weather
+
+meteo() {
+  local CITY=${1:-Utrecht}
+  curl -4 "wttr.in/$CITY"
+}
