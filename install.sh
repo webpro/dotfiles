@@ -26,9 +26,9 @@ ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 . "$DOTFILES_DIR/install/pip.sh"
 
 if [ "$(uname)" == "Darwin" ]; then
-    . "$DOTFILES_DIR/install/brew-cask.sh"
-    . "$DOTFILES_DIR/install/gem.sh"
-    ln -sfv "$DOTFILES_DIR/etc/mackup/.mackup.cfg" ~
+  . "$DOTFILES_DIR/install/brew-cask.sh"
+  . "$DOTFILES_DIR/install/gem.sh"
+  ln -sfv "$DOTFILES_DIR/etc/mackup/.mackup.cfg" ~
 fi
 
 # Run tests
@@ -38,5 +38,5 @@ bats test/*.bats
 # Install extra stuff
 
 if [ -d "$EXTRA_DIR" -a -f "$EXTRA_DIR/install.sh" ]; then
-    . "$EXTRA_DIR/install.sh"
+  . "$EXTRA_DIR/install.sh"
 fi

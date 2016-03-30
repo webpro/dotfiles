@@ -1,99 +1,99 @@
 [user]
-    name = Lars Kappert
-    email = lars@webpro.nl
+  name = Lars Kappert
+  email = lars@webpro.nl
 
 [github]
-    user = webpro
+  user = webpro
 
 [core]
-    excludesfile = ~/.gitignore_global
-    editor = vim
-    filemode = false
-    trustctime = false
+  excludesfile = ~/.gitignore_global
+  editor = vim
+  filemode = false
+  trustctime = false
 
 [alias]
-    st = status
-    sts = status -sb
-    stl = ls-files -m -o --exclude-standard
-    ci = commit
-    br = branch
-    co = checkout
-    cr = clone --recursive
-    df = diff --word-diff
-    unstage = reset --hard HEAD
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    ll = log --pretty=oneline --graph --abbrev-commit
-    lm = log --pretty=format:'* %s (%h)'
-    lg = log -p
-    g = grep --break --heading --line-number
-    amend = commit --amend --reuse-message=HEAD
-    contrib = shortlog --summary --numbered
-    show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
-    ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
-    pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+  st = status
+  sts = status -sb
+  stl = ls-files -m -o --exclude-standard
+  ci = commit
+  br = branch
+  co = checkout
+  cr = clone --recursive
+  df = diff --word-diff
+  unstage = reset --hard HEAD
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  ll = log --pretty=oneline --graph --abbrev-commit
+  lm = log --pretty=format:'* %s (%h)'
+  lg = log -p
+  g = grep --break --heading --line-number
+  amend = commit --amend --reuse-message=HEAD
+  contrib = shortlog --summary --numbered
+  show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
+  ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
+  pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 
 [pager]
 	diff = diff-so-fancy | less --tabs=4 -RFX
 	show = diff-so-fancy | less --tabs=4 -RFX
 
 [color]
-    ui = auto
+  ui = auto
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 [color "diff-highlight"]
-    oldNormal = "red bold"
-    oldHighlight = "red bold 52"
-    newNormal = "green bold"
-    newHighlight = "green bold 22"
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
 
 [credential]
-    helper = osxkeychain
+  helper = osxkeychain
 
 [grep]
-    lineNumber = true
+  lineNumber = true
 
 [help]
-    autocorrect = 1
+  autocorrect = 1
 
 [difftool]
-    prompt = false
+  prompt = false
 
 [mergetool]
-    prompt = false
+  prompt = false
 
 [push]
-    default = simple
+  default = simple
 
 [fetch]
   prune = true
 
 [diff]
-    renames = copies
-    tool = Kaleidoscope
+  renames = copies
+  tool = Kaleidoscope
 [difftool "Kaleidoscope"]
-    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [merge]
-    tool = Kaleidoscope
-    conflictstyle = diff3
-    defaultToUpstream = true
+  tool = Kaleidoscope
+  conflictstyle = diff3
+  defaultToUpstream = true
 [mergetool "Kaleidoscope"]
-    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-    trustExitCode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 [mergetool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true

@@ -11,10 +11,10 @@ is-executable hub && eval "$(hub alias -s)" # alias git=hub
 # Global aliases
 
 if $(is-supported "alias -g"); then
-    alias -g G="| grep -i"
-    alias -g H="| head"
-    alias -g T="| tail"
-    alias -g L="| less"
+  alias -g G="| grep -i"
+  alias -g H="| head"
+  alias -g T="| tail"
+  alias -g L="| less"
 fi
 
 # List declared aliases, functions
@@ -66,7 +66,7 @@ alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([
 # Request using GET, POST, etc. method
 
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-    alias "$method"="lwp-request -m '$method'"
+  alias "$method"="lwp-request -m '$method'"
 done
 
 # Recursively remove Apple meta files
