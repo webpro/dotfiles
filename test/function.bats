@@ -32,8 +32,8 @@ FIXTURE_TEXT="foo"
 	[ "$status" -eq 1 ]
 }
 
-@test "c (calc)" {
-	ACTUAL="$(c 1+2)"
+@test "calc" {
+	ACTUAL="$(calc 1+2)"
 	EXPECTED=3
 	[ "$ACTUAL" -eq "$EXPECTED" ]
 }
