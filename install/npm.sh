@@ -16,7 +16,7 @@ packages=(
   spot
   svgo
   tldr
-  underscore
+  underscore-cli
   vtop
 )
 
