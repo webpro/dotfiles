@@ -13,6 +13,7 @@ sub_help () {
   echo "   reload           Reload dotfiles"
   echo "   test             Run tests"
   echo "   update           Update packages and pkg managers (OS, brew, npm, gem, pip)"
+  echo "   clean            Clean up caches (brew, npm, gem, rvm)"
   echo "   osx              Apply OS X system defaults"
   echo "   dock             Apply OS X Dock settings"
   echo "   install vundle   Install Vundle"
@@ -43,6 +44,14 @@ sub_update () {
   pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
 }
 
+sub_clean () {
+  brew cleanup
+  brew cask cleanup
+  npm cache clean
+  gem cleanup
+  rvm cleanup all
+}
+
 sub_osx () {
   for DEFAULTS_FILE in "$DOTFILES_DIR"/osx/defaults*.sh; do
     echo "Applying $DEFAULTS_FILE" && . "$DEFAULTS_FILE"
@@ -62,7 +71,7 @@ sub_install () {
 # Make sure to keep this in sync with the available public commands
 
 sub_completion () {
-  echo "help edit reload test update osx dock install"
+  echo "help edit reload test update clean osx dock install"
 }
 
 case $COMMAND_NAME in

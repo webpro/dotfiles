@@ -70,12 +70,3 @@ dataurl() {
   fi
   echo "data:${MIMETYPE};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
-
-# Clean caches
-
-cleanup() {
-  is-executable npm && npm cache clean
-  is-executable brew && brew cleanup
-  is-executable brew && brew cask cleanup
-  is-executable rvm && rvm cleanup all
-}
