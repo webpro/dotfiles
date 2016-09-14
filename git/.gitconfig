@@ -10,6 +10,7 @@
   editor = vim
   filemode = false
   trustctime = false
+  autocrlf = input
 
 [alias]
   st = status
@@ -74,6 +75,7 @@
 
 [push]
   default = simple
+  followTags = true
 
 [fetch]
   prune = true
