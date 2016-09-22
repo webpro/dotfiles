@@ -1,7 +1,7 @@
 # Start with system path
 # Retrieve it from getconf, otherwise it's just current $PATH
 
-is-executable getconf && PATH=$(command -v getconf PATH)
+is-executable getconf && PATH=$(`command -v getconf` PATH)
 
 # Prepend new items to path (if directory exists)
 
