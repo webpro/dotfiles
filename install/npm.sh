@@ -8,7 +8,6 @@ nvm alias default 6
 
 packages=(
   diff-so-fancy
-  git-standup
   grunt
   gulp
   http-server
