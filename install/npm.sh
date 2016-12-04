@@ -1,8 +1,6 @@
 brew install nvm
-
+. "${DOTFILES_DIR}/system/.nvm"
 nvm install 6
-nvm use 6
-nvm alias default 6
 
 # Globally install with npm
 
