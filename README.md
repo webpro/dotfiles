@@ -31,8 +31,9 @@ Install the dotfiles with either Git or curl:
 
 ### Clone with Git
 
-    git clone https://github.com/webpro/dotfiles.git
-    source dotfiles/install.sh
+    git clone https://github.com/webpro/dotfiles.git ~/.dotfiles
+    git clone https://github.com/webpro/extra.git ~/.extra       # Optional, see below
+    source ~/.dotfiles/install.sh
 
 ### Remotely install using curl
 
