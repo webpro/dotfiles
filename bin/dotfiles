@@ -14,8 +14,8 @@ sub_help () {
   echo "   test             Run tests"
   echo "   update           Update packages and pkg managers (OS, brew, npm, gem, pip)"
   echo "   clean            Clean up caches (brew, npm, gem, rvm)"
-  echo "   osx              Apply OS X system defaults"
-  echo "   dock             Apply OS X Dock settings"
+  echo "   macos            Apply MacOS system defaults"
+  echo "   dock             Apply MacOS Dock settings"
   echo "   install vundle   Install Vundle"
 }
 
@@ -52,26 +52,26 @@ sub_clean () {
   rvm cleanup all
 }
 
-sub_osx () {
-  for DEFAULTS_FILE in "$DOTFILES_DIR"/osx/defaults*.sh; do
-    echo "Applying $DEFAULTS_FILE" && . "$DEFAULTS_FILE"
+sub_macos () {
+  for DEFAULTS_FILE in "${DOTFILES_DIR}"/macos/defaults*.sh; do
+    echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
   done
   echo "Done. Some changes may require a logout/restart to take effect."
 }
 
 sub_dock () {
-  . "$DOTFILES_DIR/osx/dock.sh" && echo "Dock reloaded."
+  . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
 }
 
 sub_install () {
-  local SCRIPT="$DOTFILES_DIR/install/$SUB_COMMAND_NAME.sh"
-  [ -f "$SCRIPT" ] && . "$SCRIPT" || echo "Unable to find script to install $SUB_COMMAND_NAME"
+  local SCRIPT="${DOTFILES_DIR}/install/${SUB_COMMAND_NAME}.sh"
+  [ -f "$SCRIPT" ] && . "$SCRIPT" || echo "Unable to find script to install ${SUB_COMMAND_NAME}"
 }
 
 # Make sure to keep this in sync with the available public commands
 
 sub_completion () {
-  echo "help edit reload test update clean osx dock install"
+  echo "help edit reload test update clean macos dock install"
 }
 
 case $COMMAND_NAME in

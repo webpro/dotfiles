@@ -5,7 +5,7 @@
 # OS
 
 if [ "$(uname -s)" = "Darwin" ]; then
-  OS="OSX"
+  OS="MacOS"
 else
   OS=$(uname -s)
 fi
@@ -31,8 +31,8 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,compl
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
-if [ "$OS" = "OSX" ]; then
-  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.osx; do
+if [ "$OS" = "MacOS" ]; then
+  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.macos; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
   done
 fi

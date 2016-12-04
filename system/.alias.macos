@@ -6,7 +6,7 @@ alias chrome="open -a ~/Applications/Google\ Chrome.app"
 alias canary="open -a ~/Applications/Google\ Chrome\ Canary.app"
 alias firefox="open -a ~/Applications/Firefox.app"
 
-# Exclude OSX specific files in ZIP archives
+# Exclude MacOS specific files in ZIP archives
 
 alias zip="zip -x *.DS_Store -x *__MACOSX* -x *.AppleDouble*"
 
@@ -48,7 +48,7 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 alias killfinder="killall Finder"
 alias killdock="killall Dock"
 alias killmenubar="killall SystemUIServer NotificationCenter"
-alias killosx="killfinder && killdock && killmenubar"
+alias killos="killfinder && killdock && killmenubar"
 
 ## Kill all the tabs in Chrome to free up memory
 
