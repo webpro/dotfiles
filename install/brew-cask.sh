@@ -8,7 +8,7 @@ brew tap caskroom/versions
 
 apps=(
   alfred
-  dash
+  dash2
   dropbox
   firefox
   firefox-nightly
