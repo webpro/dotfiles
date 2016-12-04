@@ -14,7 +14,6 @@ apps=(
   bats
   battery
   coreutils
-  cmake
   dockutil
   ffmpeg
   fasd
@@ -33,7 +32,6 @@ apps=(
   python
   shellcheck
   ssh-copy-id
-  svn
   tree
   vim
   wget

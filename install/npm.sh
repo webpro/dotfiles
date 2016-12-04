@@ -8,8 +8,6 @@ nvm alias default 6
 
 packages=(
   diff-so-fancy
-  grunt
-  gulp
   http-server
   nodemon
   release-it
