@@ -6,10 +6,11 @@ nvm install 6
 
 packages=(
   diff-so-fancy
-  http-server
+  get-port-cli
   nodemon
   release-it
   spot
+  superstatic
   svgo
   tldr
   underscore-cli

@@ -15,7 +15,7 @@ It targets MacOS systems, but since it has some defensive checks it should work 
     * Git + [SourceTree](http://www.sourcetreeapp.com) + [hub](http://hub.github.com/)
     * [rvm](https://rvm.io/) (Ruby 2.1), [lunchy](https://github.com/eddiezane/lunchy)
     * Python 2
-* Dev (FE/JS/JSON): [http-server](https://github.com/nodeapps/http-server), [jq](http://stedolan.github.io/jq/), [nodemon](http://nodemon.io), [peco](http://peco.github.io), [underscore-cli](https://github.com/ddopson/underscore-cli)
+* Dev (FE/JS/JSON): [jq](http://stedolan.github.io/jq/), [nodemon](http://nodemon.io), [peco](http://peco.github.io), [superstatic](https://github.com/firebase/superstatic), [underscore-cli](https://github.com/ddopson/underscore-cli)
 * Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](http://www.lcdf.org/gifsicle), [imagemagick](http://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
 * MacOS: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](http://www.hammerspoon.org/), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
 * [MacOS apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)

@@ -1,11 +1,14 @@
 # Webserver
 
 srv() {
-  local PORT=${1:-80}
+  local DIR=${1:-.}
+  local AVAILABLE_PORT=$(get-port)
+  local PORT=${2:-$AVAILABLE_PORT}
   if [ "$PORT" -le "1024" ]; then
     sudo -v
   fi
-  http-server . -p "$PORT" -c-1
+  open "http://localhost:$PORT"
+  superstatic "$DIR" -p "$PORT"
 }
 
 # Get IP from hostname
