@@ -29,8 +29,8 @@ hs.hotkey.bind(mash, "/", function() local win = getWin(); win:moveToScreen(win:
 --- ,: snap window to grid
 hs.hotkey.bind(mash, ",", function() hs.grid.snap(getWin()) end)
 
---- m: maximize window
-hs.hotkey.bind(mash, "m", function() hs.grid.maximizeWindow() end)
+--- space: maximize window
+hs.hotkey.bind(mash, "space", function() hs.grid.maximizeWindow() end)
 
---- 1: minimize window
-hs.hotkey.bind(mash, "1", function() hs.grid.set(getWin(), '0,0 1x1'); end)
+--- .: minimize window
+hs.hotkey.bind(mash, ".", function() hs.grid.set(getWin(), '0,0 1x1'); end)
