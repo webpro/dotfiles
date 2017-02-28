@@ -9,7 +9,7 @@ local function toggleApplication(name)
   end
 end
 
-hs.hotkey.bind(mash, "c", function() toggleApplication("Chrome") end)
+hs.hotkey.bind(mash, "c", function() toggleApplication("Google Chrome") end)
 hs.hotkey.bind(mash, "d", function() toggleApplication("Dash") end)
 hs.hotkey.bind(mash, "g", function() toggleApplication("SourceTree") end)
 hs.hotkey.bind(mash, "s", function() toggleApplication("Spotify") end)
