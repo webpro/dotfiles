@@ -2,7 +2,7 @@
 
 These are my dotfiles. Take anything you want, but at your own risk.
 
-It targets MacOS systems, but since it has some defensive checks it should work on *nix as well (tested on a few Linux boxes).
+It targets macOS systems, but since it has some defensive checks it should work on *nix as well (tested on a few Linux boxes).
 
 ## Package overview
 
@@ -17,12 +17,12 @@ It targets MacOS systems, but since it has some defensive checks it should work 
     * Python 2
 * Dev (FE/JS/JSON): [jq](http://stedolan.github.io/jq/), [nodemon](http://nodemon.io), [peco](http://peco.github.io), [superstatic](https://github.com/firebase/superstatic), [underscore-cli](https://github.com/ddopson/underscore-cli)
 * Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](http://www.lcdf.org/gifsicle), [imagemagick](http://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
-* MacOS: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](http://www.hammerspoon.org/), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
-* [MacOS apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
+* macOS: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](http://www.hammerspoon.org/), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
+* [macOS apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
 
 ## Install
 
-On a sparkling fresh installation of MacOS:
+On a sparkling fresh installation of macOS:
 
     sudo softwareupdate -i -a
     xcode-select --install
@@ -57,8 +57,8 @@ Or, using wget:
        test             Run tests
        update           Update packages and pkg managers (OS, brew, npm, gem, pip)
        clean            Clean up caches (brew, npm, gem, rvm)
-       macos            MacOS system defaults
-       dock             Apply MacOS Dock settings
+       macos            macOS system defaults
+       dock             Apply macOS Dock settings
 
 ## Customize/extend
 
