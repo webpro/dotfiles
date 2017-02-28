@@ -33,7 +33,6 @@ apps=(
   shellcheck
   ssh-copy-id
   tree
-  vim
   wget
   wifi-password
 )

@@ -16,7 +16,6 @@ sub_help () {
   echo "   clean            Clean up caches (brew, npm, gem, rvm)"
   echo "   macos            Apply MacOS system defaults"
   echo "   dock             Apply MacOS Dock settings"
-  echo "   install vundle   Install Vundle"
 }
 
 sub_edit () {
@@ -63,15 +62,10 @@ sub_dock () {
   . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
 }
 
-sub_install () {
-  local SCRIPT="${DOTFILES_DIR}/install/${SUB_COMMAND_NAME}.sh"
-  [ -f "$SCRIPT" ] && . "$SCRIPT" || echo "Unable to find script to install ${SUB_COMMAND_NAME}"
-}
-
 # Make sure to keep this in sync with the available public commands
 
 sub_completion () {
-  echo "help edit reload test update clean macos dock install"
+  echo "help edit reload test update clean macos dock"
 }
 
 case $COMMAND_NAME in

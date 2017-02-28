@@ -2,7 +2,6 @@
 
 alias _="sudo"
 alias g="git"
-alias v="vim"
 alias rr="rm -rf"
 
 # Default options

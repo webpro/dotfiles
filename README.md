@@ -59,7 +59,6 @@ Or, using wget:
        clean            Clean up caches (brew, npm, gem, rvm)
        macos            MacOS system defaults
        dock             Apply MacOS Dock settings
-       install vundle   Install Vundle
 
 ## Customize/extend
 

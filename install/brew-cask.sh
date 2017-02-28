@@ -8,6 +8,7 @@ brew tap caskroom/versions
 
 apps=(
   alfred
+  atom
   dash2
   dropbox
   firefox
@@ -25,7 +26,7 @@ apps=(
   slack
   sourcetree
   spotify
-  sublime-text3
+  sublime-text
   transmit
   virtualbox
   vlc
