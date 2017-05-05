@@ -7,17 +7,17 @@ It targets macOS systems, but since it has some defensive checks it should work 
 ## Package overview
 
 * Core
-    * Bash + [coreutils](http://en.wikipedia.org/wiki/GNU_Core_Utilities) + bash-completion
-    * [Homebrew](http://brew.sh/), [homebrew-cask](http://caskroom.io/)
-    * Node.js + npm
-    * GNU [sed](http://www.gnu.org/software/sed/), [grep](https://www.gnu.org/software/grep/), [Wget](https://www.gnu.org/software/wget/)
-    * [fasd](https://github.com/clvv/fasd), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [pgrep](http://linux.die.net/man/1/pgrep), [spot](https://github.com/guille/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [vtop](https://github.com/MrRio/vtop)
-    * Git + [SourceTree](http://www.sourcetreeapp.com) + [hub](http://hub.github.com/)
-    * [rvm](https://rvm.io/) (Ruby 2.1), [lunchy](https://github.com/eddiezane/lunchy)
-    * Python 2
-* Dev (FE/JS/JSON): [jq](http://stedolan.github.io/jq/), [nodemon](http://nodemon.io), [peco](http://peco.github.io), [superstatic](https://github.com/firebase/superstatic), [underscore-cli](https://github.com/ddopson/underscore-cli)
-* Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](http://www.lcdf.org/gifsicle), [imagemagick](http://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
-* macOS: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](http://www.hammerspoon.org/), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
+  * Bash + [coreutils](https://en.wikipedia.org/wiki/GNU_Core_Utilities) + bash-completion
+  * [Homebrew](https://brew.sh), [homebrew-cask](https://caskroom.github.io)
+  * Node.js + npm
+  * GNU [sed](https://www.gnu.org/software/sed/), [grep](https://www.gnu.org/software/grep/), [Wget](https://www.gnu.org/software/wget/)
+  * [fasd](https://github.com/clvv/fasd), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [pgrep](https://linux.die.net/man/1/pgrep), [spot](https://github.com/guille/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [vtop](https://github.com/MrRio/vtop)
+  * Git + [SourceTree](https://www.sourcetreeapp.com) + [hub](https://hub.github.com/)
+  * [rvm](https://rvm.io/) (Ruby 2.1), [lunchy](https://github.com/eddiezane/lunchy)
+  * Python 2
+* Dev (FE/JS/JSON): [jq](https://stedolan.github.io/jq/), [nodemon](https://nodemon.io), [peco](https://peco.github.io), [superstatic](https://github.com/firebase/superstatic), [underscore-cli](https://github.com/ddopson/underscore-cli)
+* Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](https://www.lcdf.org/gifsicle), [imagemagick](https://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
+* macOS: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](https://www.hammerspoon.org/), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
 * [macOS apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
 
 ## Install
@@ -72,11 +72,11 @@ Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 ## Additional resources
 
 * [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
-* [Homebrew](http://brew.sh/) / [FAQ](https://github.com/Homebrew/homebrew/wiki/FAQ)
-* [homebrew-cask](http://caskroom.io/) / [usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md)
-* [Bash prompt](http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
+* [Homebrew](https://brew.sh)
+* [homebrew-cask](https://caskroom.github.io) / [usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md)
+* [Bash prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 * [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
 
 ## Credits
 
-Many thanks to the [dotfiles community](http://dotfiles.github.io/) and the creators of the incredibly useful tools.
+Many thanks to the [dotfiles community](https://dotfiles.github.io/).
