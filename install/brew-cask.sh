@@ -1,4 +1,7 @@
-# Install Caskroom
+if ! is-executable brew; then
+  echo "Skipping: Homebrew-Cask (not found: brew)"
+  return
+fi
 
 brew tap caskroom/cask
 brew install brew-cask

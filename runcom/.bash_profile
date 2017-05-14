@@ -22,7 +22,7 @@ elif [ -d "$HOME/.dotfiles" ]; then
   DOTFILES_DIR="$HOME/.dotfiles"
 else
   echo "Unable to find dotfiles, exiting."
-  return # `exit 1` would quit the shell itself
+  return
 fi
 
 # Finally we can source the dotfiles (order matters)
