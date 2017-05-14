@@ -5,7 +5,6 @@ nvm install 6
 # Globally install with npm
 
 packages=(
-  diff-so-fancy
   get-port-cli
   nodemon
   release-it
