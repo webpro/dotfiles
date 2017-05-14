@@ -36,6 +36,7 @@ alias l="ls -lahA $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
 alias ll="ls -lA $LS_COLORS"
 alias lt="ls -lhAtr $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
 alias ld="ls -ld $LS_COLORS */"
+alias lpm="stat -c '%a %n' *"
 
 unset LS_COLORS LS_TIMESTYLEISO LS_GROUPDIRSFIRST
 
@@ -51,7 +52,6 @@ alias tree1="tree -d -L 1"
 alias tree2="tree -d -L 2"
 
 alias cpwd="pwd|tr -d '\n'|pbcopy"
-
 
 # npm
 
@@ -69,11 +69,6 @@ alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
-
-# Recursively remove Apple meta files
-
-alias cleanupds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
-alias cleanupad="find . -type d -name '.AppleD*' -ls -exec /bin/rm -r {} \;"
 
 # Miscellaneous
 
