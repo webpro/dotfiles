@@ -29,6 +29,20 @@ prepend-path() {
   [ -d $1 ] && PATH="$1:$PATH"
 }
 
+# Update config file
+
+set-config() {
+  local KEY="$1"
+  local VALUE="$2"
+  local FILE="$3"
+  touch "$FILE"
+  if grep -q "$1=" "$FILE"; then
+    sed "s@$KEY=.*@$KEY=\"$VALUE\"@" -i "$FILE"
+  else
+    echo "export $KEY=$VALUE" >> "$FILE"
+  fi
+}
+
 # Show 256 TERM colors
 
 colors() {

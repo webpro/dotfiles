@@ -47,3 +47,6 @@ apps=(
 )
 
 brew install "${apps[@]}"
+
+export BREW_PREFIX_COREUTILS=`brew --prefix coreutils`
+set-config "BREW_PREFIX_COREUTILS" "$BREW_PREFIX_COREUTILS" "$DOTFILES_CACHE"

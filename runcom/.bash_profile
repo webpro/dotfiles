@@ -25,6 +25,11 @@ else
   return
 fi
 
+# Read cache
+
+DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
+[ -f "$DOTFILES_CACHE" ] && . "$DOTFILES_CACHE"
+
 # Finally we can source the dotfiles (order matters)
 
 for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,completion,grep,prompt,nvm,rvm,custom}; do
