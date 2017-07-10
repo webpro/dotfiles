@@ -23,6 +23,7 @@ apps=(
   bats
   battery
   coreutils
+  diff-so-fancy
   dockutil
   ffmpeg
   fasd

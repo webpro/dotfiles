@@ -11,6 +11,7 @@
   filemode = false
   trustctime = false
   autocrlf = input
+  pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
   st = status
@@ -32,11 +33,7 @@
   show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
   ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
   pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
-
-[pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
+  patch = !git --no-pager diff --no-color
 
 [color]
   ui = auto
@@ -54,10 +51,10 @@
   changed = green
   untracked = cyan
 [color "diff-highlight"]
-  oldNormal = "red bold"
-  oldHighlight = "red bold 52"
-  newNormal = "green bold"
-  newHighlight = "green bold 22"
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 
 [credential]
   helper = osxkeychain
