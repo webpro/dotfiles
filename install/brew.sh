@@ -36,7 +36,9 @@ apps=(
   httpie
   imagemagick
   jq
+  lynx
   mackup
+  pandoc
   peco
   psgrep
   python
