@@ -15,6 +15,7 @@ nvm install 6
 
 packages=(
   get-port-cli
+  historie
   nodemon
   release-it
   spot
