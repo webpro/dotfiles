@@ -1,3 +1,14 @@
+# Switch long/short prompt
+
+ps0() {
+  unset PROMPT_COMMAND
+  PS1='$ '
+}
+
+ps1() {
+  source "$DOTFILES_DIR"/system/.prompt
+}
+
 # Get named var (usage: get "VAR_NAME")
 
 get() {
