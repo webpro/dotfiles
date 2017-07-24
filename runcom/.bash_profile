@@ -48,18 +48,18 @@ eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
 
 # Hook for extra/custom stuff
 
-EXTRA_DIR="$HOME/.extra"
+DOTFILES_EXTRA_DIR="$HOME/.extra"
 
-if [ -d "$EXTRA_DIR" ]; then
-  for EXTRAFILE in "$EXTRA_DIR"/runcom/*.sh; do
+if [ -d "$DOTFILES_EXTRA_DIR" ]; then
+  for EXTRAFILE in "$DOTFILES_EXTRA_DIR"/runcom/*.sh; do
     [ -f "$EXTRAFILE" ] && . "$EXTRAFILE"
   done
 fi
 
 # Clean up
 
-unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
+unset OS READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE EXTRAFILE
 
 # Export
 
-export OS DOTFILES_DIR EXTRA_DIR
+export DOTFILES_DIR DOTFILES_EXTRA_DIR

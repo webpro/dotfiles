@@ -18,8 +18,8 @@ sub_help () {
 }
 
 sub_edit () {
-  sh -c "$IDE $DOTFILES_DIR"
-  sh -c "$GIT_GUI $DOTFILES_DIR"
+  sh -c "$DOTFILES_IDE $DOTFILES_DIR"
+  sh -c "$DOTFILES_GIT_GUI $DOTFILES_DIR"
 }
 
 sub_test () {

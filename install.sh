@@ -2,10 +2,10 @@
 
 # Get current dir (so run this script from anywhere)
 
-export DOTFILES_DIR DOTFILES_CACHE EXTRA_DIR
+export DOTFILES_DIR DOTFILES_CACHE DOTFILES_EXTRA_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
-EXTRA_DIR="$HOME/.extra"
+DOTFILES_EXTRA_DIR="$HOME/.extra"
 
 # Common functions
 
@@ -42,6 +42,6 @@ if is-executable bats; then bats test/*.bats; else echo "Skipped: tests (missing
 
 # Install extra stuff
 
-if [ -d "$EXTRA_DIR" -a -f "$EXTRA_DIR/install.sh" ]; then
-  . "$EXTRA_DIR/install.sh"
+if [ -d "$DOTFILES_EXTRA_DIR" -a -f "$DOTFILES_EXTRA_DIR/install.sh" ]; then
+  . "$DOTFILES_EXTRA_DIR/install.sh"
 fi

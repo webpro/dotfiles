@@ -7,8 +7,8 @@ manpdf() {
 # Dev
 
 d() {
-  $IDE ${1:-.}
-  $GIT_GUI ${1:-.}
+  $DOTFILES_IDE ${1:-.}
+  $DOTFILES_GIT_GUI ${1:-.}
 }
 
 # Show and select the given file(s) in the Finder
