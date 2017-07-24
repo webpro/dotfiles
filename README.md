@@ -2,22 +2,23 @@
 
 These are my dotfiles. Take anything you want, but at your own risk.
 
-It targets macOS systems, but since it has some defensive checks it should work on *nix as well (works well on a few Linux boxes and Ubuntu 16).
+It targets macOS systems, but it should work on *nix as well (tested on a few Linux boxes and Ubuntu 16).
 
 ## Package overview
 
 * Core
   * Bash + [coreutils](https://en.wikipedia.org/wiki/GNU_Core_Utilities) + bash-completion
-  * [Homebrew](https://brew.sh), [homebrew-cask](https://caskroom.github.io)
+  * [Homebrew](https://brew.sh) + [homebrew-cask](https://caskroom.github.io)
   * Node.js + npm
   * GNU [sed](https://www.gnu.org/software/sed/), [grep](https://www.gnu.org/software/grep/), [Wget](https://www.gnu.org/software/wget/)
   * [fasd](https://github.com/clvv/fasd), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [pgrep](https://linux.die.net/man/1/pgrep), [spot](https://github.com/guille/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [vtop](https://github.com/MrRio/vtop)
-  * Git + [SourceTree](https://www.sourcetreeapp.com) + [hub](https://hub.github.com/)
-  * [rvm](https://rvm.io/) (Ruby 2.1), [lunchy](https://github.com/eddiezane/lunchy)
+  * Git + [SourceTree](https://www.sourcetreeapp.com) + [hub](https://hub.github.com)
+  * [rvm](https://rvm.io) (Ruby 2.1), [lunchy](https://github.com/eddiezane/lunchy)
   * Python 2
-* Dev (FE/JS/JSON): [jq](https://stedolan.github.io/jq/), [nodemon](https://nodemon.io), [peco](https://peco.github.io), [superstatic](https://github.com/firebase/superstatic), [underscore-cli](https://github.com/ddopson/underscore-cli)
+  * `$EDITOR` and Git editor is [GNU nano](https://www.nano-editor.org)
+* Development (Node/JS/JSON): [jq](https://stedolan.github.io/jq), [nodemon](https://nodemon.io), [peco](https://peco.github.io), [superstatic](https://github.com/firebase/superstatic), [underscore-cli](https://github.com/ddopson/underscore-cli)
 * Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](https://www.lcdf.org/gifsicle), [imagemagick](https://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
-* macOS: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](https://www.hammerspoon.org/), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
+* macOS: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](https://www.hammerspoon.org), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
 * [macOS apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
 
 ## Install
@@ -32,7 +33,6 @@ Install the dotfiles with either Git or curl:
 ### Clone with Git
 
     git clone https://github.com/webpro/dotfiles.git ~/.dotfiles
-    git clone https://github.com/webpro/extra.git ~/.extra       # Optional, see below
     source ~/.dotfiles/install.sh
 
 ### Remotely install using curl
@@ -49,16 +49,15 @@ Or, using wget:
 
     $ dotfiles help
     Usage: dotfiles <command>
-
+    
     Commands:
+       clean            Clean up caches (brew, npm, gem, rvm)
+       dock             Apply macOS Dock settings
+       edit             Open dotfiles in IDE (ws) and Git GUI (stree)
        help             This help message
-       edit             Open dotfiles in editor ($DOTFILES_IDE) and Git GUI ($DOTFILES_GIT_GUI)
-       reload           Reload dotfiles
+       macos            Apply macOS system defaults
        test             Run tests
        update           Update packages and pkg managers (OS, brew, npm, gem, pip)
-       clean            Clean up caches (brew, npm, gem, rvm)
-       macos            macOS system defaults
-       dock             Apply macOS Dock settings
 
 ## Customize/extend
 
@@ -79,4 +78,4 @@ Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 
 ## Credits
 
-Many thanks to the [dotfiles community](https://dotfiles.github.io/).
+Many thanks to the [dotfiles community](https://dotfiles.github.io).
