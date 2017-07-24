@@ -11,7 +11,6 @@ brew tap caskroom/versions
 
 apps=(
   alfred
-  atom
   dash2
   dropbox
   firefox

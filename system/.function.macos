@@ -7,7 +7,7 @@ manpdf() {
 # Dev
 
 d() {
-  $EDITOR_ALT ${1:-.}
+  $IDE ${1:-.}
   $GIT_GUI ${1:-.}
 }
 

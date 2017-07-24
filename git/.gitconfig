@@ -7,7 +7,7 @@
 
 [core]
   excludesfile = ~/.gitignore_global
-  editor = atom
+  editor = nano
   filemode = false
   trustctime = false
   autocrlf = input

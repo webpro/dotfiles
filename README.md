@@ -52,7 +52,7 @@ Or, using wget:
 
     Commands:
        help             This help message
-       edit             Open dotfiles in editor ($EDITOR_ALT) and Git GUI ($GIT_GUI)
+       edit             Open dotfiles in editor ($IDE) and Git GUI ($GIT_GUI)
        reload           Reload dotfiles
        test             Run tests
        update           Update packages and pkg managers (OS, brew, npm, gem, pip)

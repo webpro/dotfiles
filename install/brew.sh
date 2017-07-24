@@ -38,6 +38,7 @@ apps=(
   jq
   lynx
   mackup
+  nano
   pandoc
   peco
   psgrep
