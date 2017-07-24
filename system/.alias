@@ -25,7 +25,7 @@ fi
 # List declared aliases, functions
 
 alias listaliases="alias | sed 's/=.*//'"
-alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'" # show non _prefixed functions
+alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 
 # dir listing/traversal
 
@@ -67,9 +67,10 @@ alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([
 
 # Request using GET, POST, etc. method
 
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-  alias "$method"="lwp-request -m '$method'"
+for METHOD in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+  alias "$METHOD"="lwp-request -m '$METHOD'"
 done
+unset METHOD
 
 # Miscellaneous
 

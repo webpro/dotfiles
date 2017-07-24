@@ -8,13 +8,13 @@ sub_help () {
   echo "Usage: $BIN_NAME <command>"
   echo
   echo "Commands:"
-  echo "   edit             Open dotfiles in IDE ($IDE) and Git GUI ($GIT_GUI)"
+  echo "   clean            Clean up caches (brew, npm, gem, rvm)"
+  echo "   dock             Apply macOS Dock settings"
+  echo "   edit             Open dotfiles in IDE ($DOTFILES_IDE) and Git GUI ($DOTFILES_GIT_GUI)"
   echo "   help             This help message"
+  echo "   macos            Apply macOS system defaults"
   echo "   test             Run tests"
   echo "   update           Update packages and pkg managers (OS, brew, npm, gem, pip)"
-  echo "   clean            Clean up caches (brew, npm, gem, rvm)"
-  echo "   macos            Apply macOS system defaults"
-  echo "   dock             Apply macOS Dock settings"
 }
 
 sub_edit () {
