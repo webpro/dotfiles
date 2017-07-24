@@ -10,7 +10,6 @@ sub_help () {
   echo "Commands:"
   echo "   help             This help message"
   echo "   edit             Open dotfiles in editor ($EDITOR_ALT) and Git GUI ($GIT_GUI)"
-  echo "   reload           Reload dotfiles"
   echo "   test             Run tests"
   echo "   update           Update packages and pkg managers (OS, brew, npm, gem, pip)"
   echo "   clean            Clean up caches (brew, npm, gem, rvm)"
@@ -21,10 +20,6 @@ sub_help () {
 sub_edit () {
   sh -c "$EDITOR_ALT $DOTFILES_DIR"
   sh -c "$GIT_GUI $DOTFILES_DIR"
-}
-
-sub_reload () {
-  . ~/.bash_profile && echo "Bash reloaded."
 }
 
 sub_test () {
