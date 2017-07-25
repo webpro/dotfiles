@@ -58,7 +58,7 @@ sub_dock () {
 # Make sure to keep this in sync with the available public commands
 
 sub_completion () {
-  echo "help edit reload test update clean macos dock"
+  echo "clean dock edit help macos test update"
 }
 
 case $COMMAND_NAME in
