@@ -17,6 +17,7 @@ packages=(
   get-port-cli
   historie
   nodemon
+  npm
   release-it
   spot
   superstatic
