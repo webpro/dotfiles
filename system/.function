@@ -15,11 +15,12 @@ get() {
   echo "${!1}"
 }
 
-# Executable
+# Feature detection
+
+is-macos() { [[ "$OSTYPE" =~ ^darwin ]] || return 1; }
 
 is-executable() {
-  local BIN=$(command -v "$1" 2>/dev/null)
-  if [[ ! $BIN == "" && -x $BIN ]]; then true; else false; fi
+  type "$1" > /dev/null 2>&1 || return 1;
 }
 
 is-supported() {

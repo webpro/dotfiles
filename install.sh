@@ -10,6 +10,7 @@ DOTFILES_EXTRA_DIR="$HOME/.extra"
 # Common functions
 
 . "$DOTFILES_DIR/system/.function"
+. "$DOTFILES_DIR/system/.function_network"
 
 # Update dotfiles itself first
 
@@ -27,13 +28,9 @@ ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
 . "$DOTFILES_DIR/install/brew.sh"
 . "$DOTFILES_DIR/install/npm.sh"
-
-if [ "$(uname)" == "Darwin" ]; then
-  . "$DOTFILES_DIR/install/bash.sh"
-  . "$DOTFILES_DIR/install/brew-cask.sh"
-  . "$DOTFILES_DIR/install/gem.sh"
-  ln -sfv "$DOTFILES_DIR/etc/mackup/.mackup.cfg" ~
-fi
+. "$DOTFILES_DIR/install/bash.sh"
+. "$DOTFILES_DIR/install/brew-cask.sh"
+. "$DOTFILES_DIR/install/gem.sh"
 
 # Run tests
 
