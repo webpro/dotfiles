@@ -1,2 +1,4 @@
-export NVM_DIR=~/.nvm
-source "$DOTFILES_BREW_PREFIX_NVM/nvm.sh"
+if is-executable nvm; then
+  export NVM_DIR=~/.nvm
+  source "$DOTFILES_BREW_PREFIX_NVM/nvm.sh"
+fi
