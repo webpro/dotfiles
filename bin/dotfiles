@@ -14,7 +14,7 @@ sub_help () {
   echo "   help             This help message"
   echo "   macos            Apply macOS system defaults"
   echo "   test             Run tests"
-  echo "   update           Update packages and pkg managers (OS, brew, npm, gem, pip)"
+  echo "   update           Update packages and pkg managers (OS, brew, npm, gem)"
 }
 
 sub_edit () {
@@ -34,8 +34,6 @@ sub_update () {
   npm update -g
   gem update --system
   gem update
-  pip install --upgrade pip
-  pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
 }
 
 sub_clean () {

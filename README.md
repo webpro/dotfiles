@@ -57,7 +57,7 @@ Or, using wget:
        help             This help message
        macos            Apply macOS system defaults
        test             Run tests
-       update           Update packages and pkg managers (OS, brew, npm, gem, pip)
+       update           Update packages and pkg managers (OS, brew, npm, gem)
 
 ## Customize/extend
 

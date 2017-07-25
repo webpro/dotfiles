@@ -27,7 +27,6 @@ ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
 . "$DOTFILES_DIR/install/brew.sh"
 . "$DOTFILES_DIR/install/npm.sh"
-. "$DOTFILES_DIR/install/pip.sh"
 
 if [ "$(uname)" == "Darwin" ]; then
   . "$DOTFILES_DIR/install/bash.sh"
