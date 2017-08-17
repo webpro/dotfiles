@@ -15,6 +15,7 @@ nvm install 6
 
 packages=(
   get-port-cli
+  gtop
   historie
   nodemon
   npm
@@ -24,7 +25,6 @@ packages=(
   svgo
   tldr
   underscore-cli
-  vtop
 )
 
 npm install -g "${packages[@]}"
