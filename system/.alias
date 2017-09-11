@@ -22,12 +22,13 @@ if $(is-supported "alias -g"); then
   alias -g L="| less"
 fi
 
-# List declared aliases, functions
+# List declared aliases, functions, paths
 
-alias listaliases="alias | sed 's/=.*//'"
-alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias aliases="alias | sed 's/=.*//'"
+alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias paths='echo -e ${PATH//:/\\n}'
 
-# dir listing/traversal
+# Directory listing/traversal
 
 LS_COLORS=`is-supported "ls --color" --color -G`
 LS_TIMESTYLEISO=`is-supported "ls --time-style=long-iso" --time-style=long-iso`
