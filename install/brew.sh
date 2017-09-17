@@ -39,6 +39,7 @@ apps=(
   shellcheck
   ssh-copy-id
   tree
+  unar
   wget
   wifi-password
 )
