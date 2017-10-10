@@ -14,26 +14,28 @@
   pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
-  st = status
-  sts = status -sb
-  stl = ls-files -m -o --exclude-standard
-  ci = commit
+  amend = commit --amend --reuse-message=HEAD
   br = branch
+  ci = commit
   co = checkout
+  contrib = shortlog --summary --numbered
   cr = clone --recursive
   df = diff --word-diff
-  unstage = reset --hard HEAD
+  g = grep --break --heading --line-number
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
+  lg = log -p
   ll = log --pretty=oneline --graph --abbrev-commit
   lm = log --pretty=format:'* %s (%h)'
-  lg = log -p
-  g = grep --break --heading --line-number
-  amend = commit --amend --reuse-message=HEAD
-  contrib = shortlog --summary --numbered
-  show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
-  ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
-  pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
   patch = !git --no-pager diff --no-color
+  p = push
+  pf = push --force
+  pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+  show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
+  st = status
+  stl = ls-files -m -o --exclude-standard
+  sts = status -sb
+  unstage = reset --hard HEAD
 
 [color]
   ui = auto

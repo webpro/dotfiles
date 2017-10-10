@@ -22,6 +22,12 @@ if $(is-supported "alias -g"); then
   alias -g L="| less"
 fi
 
+# git
+
+alias push="git push"
+alias pull="git pull"
+alias pull="git push --force"
+
 # List declared aliases, functions, paths
 
 alias aliases="alias | sed 's/=.*//'"
@@ -56,8 +62,10 @@ alias tree2="tree -d -L 2"
 # npm
 
 alias ni="npm install"
-alias nun="npm uninstall"
+alias nu="npm uninstall"
 alias nup="npm update"
+alias nri="rm -r node_modules && npm install"
+alias ncd="npm-check -su"
 
 # Network
 
@@ -73,6 +81,7 @@ unset METHOD
 
 # Miscellaneous
 
+alias hosts="sudo $EDITOR /etc/hosts"
 alias his="historie"
 alias quit="exit"
 alias week="date +%V"
