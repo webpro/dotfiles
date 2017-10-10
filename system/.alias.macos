@@ -6,6 +6,8 @@ alias cpwd="pwd|tr -d '\n'|pbcopy"
 
 alias gg="$DOTFILES_GIT_GUI"
 
+alias cask="brew cask"
+
 alias chrome="open -a ~/Applications/Google\ Chrome.app"
 alias canary="open -a ~/Applications/Google\ Chrome\ Canary.app"
 alias firefox="open -a ~/Applications/Firefox.app"
