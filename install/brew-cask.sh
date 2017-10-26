@@ -4,6 +4,7 @@ if ! is-macos -o ! is-executable brew; then
 fi
 
 brew tap caskroom/cask
+brew tap caskroom/fonts
 
 # Install packages
 
@@ -14,6 +15,7 @@ apps=(
   firefox
   firefoxnightly
   flux
+  font-fira-code
   glimmerblocker
   google-chrome
   google-chrome-canary
@@ -29,6 +31,7 @@ apps=(
   sublime-text
   transmit
   virtualbox
+  visual-studio-code
   vlc
   webstorm
 )
