@@ -12,7 +12,7 @@ apps=(
   dash2
   dropbox
   firefox
-  firefox-nightly
+  firefoxnightly
   flux
   glimmerblocker
   google-chrome

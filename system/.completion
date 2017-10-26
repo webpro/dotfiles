@@ -11,10 +11,6 @@ _dotfiles_completions() {
 
 complete -o default -F _dotfiles_completions dotfiles
 
-# Grunt
-
-is-executable grunt && eval "$(grunt --completion=bash)"
-
 # killall
 
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal" killall;
