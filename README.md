@@ -13,6 +13,7 @@ It targets macOS systems, but it should work on *nix as well (tested on a few Li
   * GNU [sed](https://www.gnu.org/software/sed/), [grep](https://www.gnu.org/software/grep/), [Wget](https://www.gnu.org/software/wget/)
   * [fasd](https://github.com/clvv/fasd), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [pgrep](https://linux.die.net/man/1/pgrep), [spot](https://github.com/guille/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [gtop](https://github.com/aksakalli/gtop)
   * Git + [SourceTree](https://www.sourcetreeapp.com) + [hub](https://hub.github.com)
+  * [unar](https://theunarchiver.com/command-line)
   * [rvm](https://rvm.io) (Ruby 2.1), [lunchy](https://github.com/eddiezane/lunchy)
   * Python 2
   * `$EDITOR` and Git editor is [GNU nano](https://www.nano-editor.org)
@@ -53,7 +54,7 @@ Or, using wget:
     Commands:
        clean            Clean up caches (brew, npm, gem, rvm)
        dock             Apply macOS Dock settings
-       edit             Open dotfiles in IDE (ws) and Git GUI (stree)
+       edit             Open dotfiles in IDE (code) and Git GUI (stree)
        help             This help message
        macos            Apply macOS system defaults
        test             Run tests
