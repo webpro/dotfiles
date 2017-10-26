@@ -7,10 +7,9 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
 DOTFILES_EXTRA_DIR="$HOME/.extra"
 
-# Common functions
+# Make utilities available
 
-. "$DOTFILES_DIR/system/.function"
-. "$DOTFILES_DIR/system/.function_network"
+PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Update dotfiles itself first
 

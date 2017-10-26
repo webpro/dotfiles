@@ -17,6 +17,10 @@ else
   return
 fi
 
+# Make utilities available
+
+PATH="$DOTFILES_DIR/bin:$PATH"
+
 # Read cache
 
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
