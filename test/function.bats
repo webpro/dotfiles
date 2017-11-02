@@ -12,26 +12,6 @@ FIXTURE_TEXT="foo"
 	[ "$ACTUAL" = "$EXPECTED" ]
 }
 
-@test "is-executable" {
-	run is-executable ls
-	[ "$status" -eq 0 ]
-}
-
-@test "is-executable (false)" {
-	run is-executable nonexistent
-	[ "$status" -eq 1 ]
-}
-
-@test "is-supported" {
-	run is-supported ls -a
-	[ "$status" -eq 0 ]
-}
-
-@test "is-supported (false)" {
-	run is-supported "ls --nonexistent"
-	[ "$status" -eq 1 ]
-}
-
 @test "calc" {
 	ACTUAL="$(calc 1+2)"
 	EXPECTED=3
