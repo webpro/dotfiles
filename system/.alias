@@ -22,12 +22,6 @@ if $(is-supported "alias -g"); then
   alias -g L="| less"
 fi
 
-# git
-
-alias push="git push"
-alias pull="git pull"
-alias pull="git push --force"
-
 # List declared aliases, functions, paths
 
 alias aliases="alias | sed 's/=.*//'"
