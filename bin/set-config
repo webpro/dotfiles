@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+KEY="$1"
+VALUE="$2"
+FILE="$3"
+
+touch "$FILE"
+
+if grep -q "$1=" "$FILE"; then
+  sed "s@$KEY=.*@$KEY=\"$VALUE\"@" -i "$FILE"
+else
+  echo "export $KEY=\"$VALUE\"" >> "$FILE"
+fi
