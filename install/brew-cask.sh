@@ -33,7 +33,6 @@ apps=(
   virtualbox
   visual-studio-code
   vlc
-  webstorm
 )
 
 brew cask install "${apps[@]}"

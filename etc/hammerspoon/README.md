@@ -18,7 +18,6 @@ M | Mail
 P | System Preferences
 S | Spotify
 T | Terminal
-W | WebStorm
 
 ## Window Management
 
