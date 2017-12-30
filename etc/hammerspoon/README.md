@@ -4,7 +4,9 @@ The hyper key is defined as ⌘ + ⌥ + ⌃ (ctrl + alt + cmd). Press this plus 
 
 Key | Action
 ---|---
+A | Lock Screen
 R | Reload config
+W | Print `¯\_(ツ)_/¯`
 
 ## Launch Apps
 
