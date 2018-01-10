@@ -30,6 +30,9 @@ sudo nvram SystemAudioVolume=" "
 # Menu bar: disable transparency
 defaults write com.apple.universalaccess reduceTransparency -bool true
 
+# Menu bar: show battery percentage
+defaults write com.apple.menuextra.battery ShowPercent YES
+
 # Disable opening and closing window animations
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 
@@ -65,10 +68,8 @@ sudo systemsetup -setrestartfreeze on
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
-# Disable smart quotes as they’re annoying when typing code
+# Disable smart quotes and dashes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable smart dashes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 ###############################################################################
@@ -419,16 +420,6 @@ defaults write com.apple.terminal "VisualBell" -bool false
 
 # Disable the annoying line marks
 defaults write com.apple.Terminal ShowLineMarks -int 0
-
-###############################################################################
-# Time Machine                                                                #
-###############################################################################
-
-# Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
-
-# Disable local Time Machine snapshots
-sudo tmutil disablelocal
 
 ###############################################################################
 # Activity Monitor                                                            #
