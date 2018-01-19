@@ -55,12 +55,6 @@ sub_dock () {
   . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
 }
 
-# Make sure to keep this in sync with the available public commands
-
-sub_completion () {
-  echo "clean dock edit help macos test update"
-}
-
 case $COMMAND_NAME in
   "" | "-h" | "--help")
     sub_help
