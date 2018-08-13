@@ -5,7 +5,7 @@ fi
 
 brew install nvm
 
-export DOTFILES_BREW_PREFIX_NVM=`brew --prefix nvm`
+export DOTFILES_BREW_PREFIX_NVM=$(brew --prefix nvm)
 set-config "DOTFILES_BREW_PREFIX_NVM" "$DOTFILES_BREW_PREFIX_NVM" "$DOTFILES_CACHE"
 
 . "${DOTFILES_DIR}/system/.nvm"
