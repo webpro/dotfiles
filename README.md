@@ -11,14 +11,14 @@ It targets macOS systems, but it should work on *nix as well (tested on a few Li
   * [Homebrew](https://brew.sh) + [homebrew-cask](https://caskroom.github.io)
   * Node.js + npm
   * GNU [sed](https://www.gnu.org/software/sed/), [grep](https://www.gnu.org/software/grep/), [Wget](https://www.gnu.org/software/wget/)
-  * [fasd](https://github.com/clvv/fasd), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [pgrep](https://linux.die.net/man/1/pgrep), [spot](https://github.com/guille/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [gtop](https://github.com/aksakalli/gtop)
+  * [fasd](https://github.com/clvv/fasd), [gtop](https://github.com/aksakalli/gtop), [pgrep](https://linux.die.net/man/1/pgrep), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [spot](https://github.com/rauchg/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [unar](https://theunarchiver.com/command-line)
   * Git + [SourceTree](https://www.sourcetreeapp.com) + [hub](https://hub.github.com)
   * [unar](https://theunarchiver.com/command-line)
-  * [rvm](https://rvm.io) (Ruby 2.1), [lunchy](https://github.com/eddiezane/lunchy)
+  * [rvm](https://rvm.io) (Ruby v2.5)
   * Python 2
-  * `$EDITOR` and Git editor is [GNU nano](https://www.nano-editor.org)
+  * `$EDITOR` (and Git editor) is [GNU nano](https://www.nano-editor.org)
 * Development (Node/JS/JSON): [jq](https://stedolan.github.io/jq), [nodemon](https://nodemon.io), [peco](https://peco.github.io), [superstatic](https://github.com/firebase/superstatic), [underscore-cli](https://github.com/ddopson/underscore-cli)
-* Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](https://www.lcdf.org/gifsicle), [imagemagick](https://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
+* Graphics: [ffmpeg](https://www.ffmpeg.org), [imagemagick](https://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
 * macOS: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](https://www.hammerspoon.org), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
 * [macOS apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
 
@@ -40,7 +40,7 @@ Install the dotfiles with either Git or curl:
 
 Alternatively, you can install this into `~/.dotfiles` remotely without Git using curl:
 
-    bash -c "`curl -fsSL https://raw.github.com/webpro/dotfiles/master/remote-install.sh`"
+    bash -c "`curl -fsSL https://raw.githubusercontent.com/webpro/dotfiles/master/remote-install.sh`"
 
 Or, using wget:
 
@@ -50,7 +50,7 @@ Or, using wget:
 
     $ dotfiles help
     Usage: dotfiles <command>
-    
+
     Commands:
        clean            Clean up caches (brew, npm, gem, rvm)
        dock             Apply macOS Dock settings
@@ -66,14 +66,14 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 
 Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 
-* The runcom `.bash_profile` sources all `~/.extra/runcom/*.sh` files.
 * The installer (`install.sh`) will run `~/.extra/install.sh`.
+* The runcom `.bash_profile` sources all `~/.extra/runcom/*.sh` files.
 
 ## Additional resources
 
 * [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
 * [Homebrew](https://brew.sh)
-* [homebrew-cask](https://caskroom.github.io) / [usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md)
+* [Homebrew Cask](http://caskroom.io)
 * [Bash prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 * [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
 
