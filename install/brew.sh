@@ -20,7 +20,6 @@ apps=(
   dockutil
   ffmpeg
   fasd
-  gifsicle
   git
   git-extras
   gnu-sed --with-default-names
