@@ -35,6 +35,7 @@ apps=(
   peco
   psgrep
   python
+  python@2
   shellcheck
   ssh-copy-id
   tree
