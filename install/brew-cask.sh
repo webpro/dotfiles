@@ -10,25 +10,21 @@ brew tap caskroom/fonts
 # Install packages
 
 apps=(
-  alfred
   dash2
   dropbox
   firefox
-  flux
   font-fira-code
   glimmerblocker
+  google-backup-and-sync
   google-chrome
   google-chrome-canary
   hammerspoon
   kaleidoscope
   macdown
-  opera
-  screenflow
+  postman
   slack
   sourcetree
   spotify
-  sublime-text
-  transmit
   virtualbox
   visual-studio-code
   vlc
