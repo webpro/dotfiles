@@ -11,7 +11,24 @@
   filemode = false
   trustctime = false
   autocrlf = input
+  untrackedCache = true
   pager = diff-so-fancy | less --tabs=4 -RFX
+
+[credential]
+  helper = osxkeychain
+
+[grep]
+  lineNumber = true
+
+[help]
+  autocorrect = 1
+
+[push]
+  default = simple
+  followTags = true
+
+[fetch]
+  prune = true
 
 [alias]
   amend = commit --amend --reuse-message=HEAD
@@ -37,6 +54,31 @@
   sts = status -sb
   unstage = reset --hard HEAD
 
+[diff]
+  renames = copies
+  indentHeuristic = true
+  tool = Kaleidoscope
+[difftool]
+  prompt = false
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[merge]
+  tool = Kaleidoscope
+  conflictstyle = diff3
+  defaultToUpstream = true
+[mergetool]
+  prompt = false
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+
 [color]
   ui = auto
 [color "branch"]
@@ -57,46 +99,3 @@
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
-
-[credential]
-  helper = osxkeychain
-
-[grep]
-  lineNumber = true
-
-[help]
-  autocorrect = 1
-
-[difftool]
-  prompt = false
-
-[mergetool]
-  prompt = false
-
-[push]
-  default = simple
-  followTags = true
-
-[fetch]
-  prune = true
-
-[diff]
-  renames = copies
-  indentHeuristic = true
-  tool = Kaleidoscope
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[merge]
-  tool = Kaleidoscope
-  conflictstyle = diff3
-  defaultToUpstream = true
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
