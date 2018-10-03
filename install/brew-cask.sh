@@ -14,6 +14,7 @@ apps=(
   dropbox
   firefox
   font-fira-code
+  font-hack
   glimmerblocker
   google-backup-and-sync
   google-chrome
