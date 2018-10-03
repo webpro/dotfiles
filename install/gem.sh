@@ -15,3 +15,5 @@ rvm install 2.5
 rvm use 2.5 --default
 
 gem install pygmentize
+
+ln -sfv "$DOTFILES_DIR/etc/.gemrc" ~
