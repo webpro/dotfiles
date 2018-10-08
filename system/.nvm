@@ -1,4 +1,6 @@
-if [ -f "$DOTFILES_BREW_PREFIX_NVM/nvm.sh" ]; then
-  export NVM_DIR=~/.nvm
-  source "$DOTFILES_BREW_PREFIX_NVM/nvm.sh"
+NVM_DIR=~/.nvm
+
+if [ -f "$NVM_DIR/nvm.sh" ]; then
+  export NVM_DIR
+  source "$NVM_DIR/nvm.sh"
 fi
