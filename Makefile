@@ -1,10 +1,10 @@
-SHELL=/bin/bash
+SHELL = /bin/bash
 DOTFILES_DIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
+NVM_DIR := $(HOME)/.nvm
 export XDG_CONFIG_HOME := $(HOME)/.config
 export STOW_DIR := $(DOTFILES_DIR)
-export NVM_HOME := $(HOME)/.nvm
 
 .PHONY: test
 
@@ -51,9 +51,8 @@ git: brew
 	brew install git git-extras
 
 npm:
-	mkdir -p $(NVM_HOME)
-	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-	. $(NVM_HOME)/nvm.sh; nvm install --lts
+	if ! [ -d $(NVM_DIR)/.git ]; then git clone https://github.com/creationix/nvm.git $(NVM_DIR); fi
+	. $(NVM_DIR)/nvm.sh; nvm install --lts
 
 ruby: brew
 	brew install ruby
@@ -69,7 +68,7 @@ cask-apps: brew
 	code --install-extension sharat.vscode-brewfile
 
 node-packages: npm
-	. $(NVM_HOME)/nvm.sh; npm install -g $(shell cat install/npmfile)
+	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/npmfile)
 
 gems: ruby
 	gem install $(shell cat install/Gemfile)
