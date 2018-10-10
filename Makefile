@@ -14,13 +14,17 @@ macos: core-macos packages link
 
 linux: core-linux link
 
-core-macos: brew bash git npm ruby
+core-macos: sudo brew bash git npm ruby
 
 core-linux:
 	apt-get update
 	apt-get upgrade -y
 	apt-get dist-upgrade -f
 	apt-get -y install stow
+
+sudo:
+	sudo -v
+	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 packages: brew-packages cask-apps node-packages gems
 
@@ -35,10 +39,10 @@ unlink:
 	stow --delete -t $(XDG_CONFIG_HOME) config
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
-brew:
+brew: sudo
 	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby
 
-bash: brew
+bash: sudo brew
 	brew install bash bash-completion@2
 	sudo append "/usr/local/bin/bash" /private/etc/shells
 	chsh -s /usr/local/bin/bash
