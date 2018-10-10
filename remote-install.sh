@@ -19,11 +19,8 @@ fi
 
 if [ -z "$CMD" ]; then
   echo "No git, curl or wget available. Aborting."
-elif ! is_executable "make"; then
-  echo "No make available. Aborting."
 else
   echo "Installing dotfiles..."
   mkdir -p "$TARGET"
   eval "$CMD"
-  make --directory="$TARGET"
 fi

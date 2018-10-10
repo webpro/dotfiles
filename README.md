@@ -32,17 +32,22 @@ Install the dotfiles with either Git or curl:
 ### Clone with Git
 
     git clone https://github.com/webpro/dotfiles.git ~/.dotfiles
-    source ~/.dotfiles/install.sh
+    cd ~/.dotfiles
+    make
 
 ### Remotely install using curl
 
 Alternatively, you can install this into `~/.dotfiles` remotely without Git using curl:
 
     bash -c "`curl -fsSL https://raw.githubusercontent.com/webpro/dotfiles/master/remote-install.sh`"
+    cd ~/.dotfiles
+    make
 
 Or, using wget:
 
     bash -c "`wget -O - --no-check-certificate https://raw.githubusercontent.com/webpro/dotfiles/master/remote-install.sh`"
+    cd ~/.dotfiles
+    make
 
 ## The `dotfiles` command
 
