@@ -64,3 +64,11 @@ alias killos="killfinder && killdock && killmenubar"
 # Kill all the tabs in Chrome to free up memory
 
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+# Show system information
+
+alias displays="system_profiler SPDisplaysDataType"
+alias cpu="sysctl -n machdep.cpu.brand_string"
+
+alias pbtext="pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy"
+alias pbspaces="pbpaste | expand | pbcopy"
