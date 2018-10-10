@@ -30,6 +30,9 @@ sudo systemsetup -settimezone "Europe/Amsterdam" > /dev/null
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
 
+# Disable Sudden Motion Sensor
+sudo pmset -a sms 0
+
 # Disable audio feedback when volume is changed
 defaults write com.apple.sound.beep.feedback -bool false
 
