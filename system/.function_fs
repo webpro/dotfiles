@@ -6,10 +6,9 @@ mk() {
 
 # Fuzzy find file/dir
 
-ff() {  find . -type f -iname "$1";}
-fff() { find . -type f -iname "*$1*";}
-fd() {  find . -type d -iname "$1";}
-fdf() { find . -type d -iname "*$1*";}
+ff() { find . -type f -iname "*$1*";}
+fd() { find . -type d -iname "*$1*";}
+
 
 # Show disk usage of current folder, or list with depth
 
