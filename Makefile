@@ -40,7 +40,7 @@ unlink:
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
 brew: sudo
-	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby
+	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby
 
 bash: sudo brew
 	brew install bash bash-completion@2
@@ -50,7 +50,7 @@ bash: sudo brew
 git: brew
 	brew install git git-extras
 
-npm: brew
+npm:
 	mkdir -p $(NVM_HOME)
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 	. $(NVM_HOME)/nvm.sh; nvm install --lts
