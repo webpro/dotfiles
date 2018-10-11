@@ -63,9 +63,7 @@ brew-packages: brew
 cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
-	code --install-extension esbenp.prettier-vscode
-	code --install-extension peterjausovec.vscode-docker
-	code --install-extension sharat.vscode-brewfile
+	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 
 node-packages: npm
 	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/npmfile)
