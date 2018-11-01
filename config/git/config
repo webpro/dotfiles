@@ -1,13 +1,13 @@
 [user]
-	name = Lars Kappert
-	email = lars@webpro.nl
+	name = Dan Golant
+	email = dgolant@gmail.com
 
 [github]
-	user = webpro
+	user = dangolant
 
 [core]
 	excludesfile = ~/.config/git/ignore
-	editor = nano
+	editor = vim
 	filemode = false
 	trustctime = false
 	autocrlf = input
@@ -53,6 +53,7 @@
 	stl = ls-files -m -o --exclude-standard
 	sts = status -sb
 	unstage = reset --hard HEAD
+	adog = log  --all --decorate --oneline --graph
 
 [diff]
 	renames = copies
