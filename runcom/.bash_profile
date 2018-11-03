@@ -54,3 +54,12 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE EXTRAFILE
 # Export
 
 export DOTFILES_DIR DOTFILES_EXTRA_DIR
+# At some point I should modify where DOTFILES_EXTRA_DIR
+# points to and make a company-specific extras folder
+
+# SKIMM stuff
+export SKIMM=/Users/dan/theSkimm
+eval $(dinghy env)
+
+# Add mysql-client to PATH
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
