@@ -8,7 +8,6 @@ function cdf() {
 
 d() {
   $DOTFILES_IDE ${1:-.}
-  $DOTFILES_GIT_GUI ${1:-.}
 }
 
 # Open query in Dash app

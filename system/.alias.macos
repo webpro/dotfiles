@@ -4,8 +4,6 @@ alias cpwd="pwd|tr -d '\n'|pbcopy"
 
 # Shortcuts
 
-alias gg="$DOTFILES_GIT_GUI"
-
 alias cask="brew cask"
 
 alias chrome="open -a ~/Applications/Google\ Chrome.app"
