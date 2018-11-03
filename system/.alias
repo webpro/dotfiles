@@ -4,6 +4,7 @@ alias reload="source ~/.bash_profile"
 alias _="sudo"
 alias g="git"
 alias rr="rm -rf"
+alias cls="clear; printf '\033[3J'"
 
 # Default options
 
@@ -11,6 +12,9 @@ alias rsync="rsync -vh"
 alias json="json -c"
 alias psgrep="psgrep -i"
 
+# This line creates a silent dependency on "hub",
+# not sure whether I see the value long-term, leaving
+# it for now.
 is-executable hub && eval "$(hub alias -s)" # alias git=hub
 
 # Global aliases
@@ -37,6 +41,7 @@ LS_GROUPDIRSFIRST=$(is-supported "ls --group-directories-first" --group-director
 alias l="ls -lahA $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
 alias ll="ls -lA $LS_COLORS"
 alias lt="ls -lhAtr $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
+# Long-list only directories
 alias ld="ls -ld $LS_COLORS */"
 alias lpm="stat -c '%a %n' *"
 
