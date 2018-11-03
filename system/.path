@@ -15,6 +15,9 @@ prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
 
+# Add mysql-client to PATH (skimm only, not installed by default)
+prepend-path "/usr/local/opt/mysql-client/bin"
+
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
 

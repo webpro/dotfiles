@@ -60,6 +60,3 @@ export DOTFILES_DIR DOTFILES_EXTRA_DIR
 # SKIMM stuff
 export SKIMM=/Users/dan/theSkimm
 eval $(dinghy env)
-
-# Add mysql-client to PATH
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
