@@ -3,6 +3,7 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 
+cask "1password"
 cask "dash2"
 cask "font-fira-code"
 cask "font-hack"
