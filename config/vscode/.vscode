@@ -1,0 +1,6 @@
+User = {
+    "files.trimTrailingWhitespace": true,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "editor.fontFamily": "FiraCode-Retina",
+    "workbench.colorTheme": "Monokai Dimmed"
+}
