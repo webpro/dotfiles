@@ -244,6 +244,9 @@ defaults write com.apple.dock no-bouncing -bool true
 # defaults write com.apple.dock wvous-bl-corner -int 0
 # defaults write com.apple.dock wvous-br-corner -int 0
 
+# Don't show recently opened applications
+defaults write com.Apple.Dock show-recents -bool false
+
 ###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
