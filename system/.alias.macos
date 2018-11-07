@@ -26,7 +26,7 @@ alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # Start screen saver
 
-alias afk="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine"
+alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 
 # Log off
 
