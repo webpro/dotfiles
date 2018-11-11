@@ -1,0 +1,2 @@
+prepend-path "/usr/local/opt/coreutils/libexec/gnubin"
+prepend-path "/usr/local/opt/ruby/bin"

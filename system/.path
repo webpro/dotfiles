@@ -8,7 +8,6 @@ is-executable getconf && PATH=$($(command -v getconf) PATH)
 prepend-path "/bin"
 prepend-path "/usr/bin"
 prepend-path "/usr/local/bin"
-prepend-path "/usr/local/opt/coreutils/libexec/gnubin"
 prepend-path "$DOTFILES_DIR/bin"
 prepend-path "$HOME/bin"
 prepend-path "/sbin"

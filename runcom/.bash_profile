@@ -28,7 +28,7 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,grep,
 done
 
 if is-macos; then
-  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.macos; do
+  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,path}.macos; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
   done
 fi
