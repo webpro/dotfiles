@@ -50,7 +50,7 @@ brew:
 bash: BASH=/usr/local/bin/bash
 bash: SHELLS=/private/etc/shells
 bash: brew
-	if ! grep -q $(BASH) $(SHELLS); then brew install bash bash-completion@2 && sudo append $(BASH) $(SHELLS) && chsh -s $(BASH); fi
+	if ! grep -q $(BASH) $(SHELLS); then brew install bash bash-completion@2 pcre && sudo append $(BASH) $(SHELLS) && chsh -s $(BASH); fi
 
 git: brew
 	brew install git git-extras
