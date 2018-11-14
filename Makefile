@@ -74,7 +74,7 @@ node-packages: npm
 	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/npmfile)
 
 gems: ruby
-	gem install $(shell cat install/Gemfile)
+	export PATH="/usr/local/opt/ruby/bin:$PATH"; gem install $(shell cat install/Gemfile)
 
 test:
 	bats test/*.bats
