@@ -11,6 +11,7 @@ brew "ffmpeg"
 brew "gnu-sed", args: ["with-default-names"]
 brew "goles/battery/battery"
 brew "grep", args: ["--with-default-names"]
+brew "grip"
 brew "httpie"
 brew "imagemagick"
 brew "jq"
