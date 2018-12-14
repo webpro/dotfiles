@@ -11,8 +11,6 @@ alias rsync="rsync -vh"
 alias json="json -c"
 alias psgrep="psgrep -i"
 
-is-executable hub && eval "$(hub alias -s)" # alias git=hub
-
 # Global aliases
 
 if $(is-supported "alias -g"); then

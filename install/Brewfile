@@ -12,7 +12,6 @@ brew "gnu-sed", args: ["with-default-names"]
 brew "goles/battery/battery"
 brew "grep", args: ["--with-default-names"]
 brew "httpie"
-brew "hub"
 brew "imagemagick"
 brew "jq"
 brew "lynx"
