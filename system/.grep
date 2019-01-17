@@ -1,7 +1,7 @@
 # Tell grep to highlight matches
 
 if is-supported "grep --color a <<< a"; then
-  GREP_OPTIONS+=" --color=auto"
+  GREP_OPTIONS+=" --color=always"
 fi
 
 # Avoid VCS folders
