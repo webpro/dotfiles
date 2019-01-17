@@ -85,3 +85,12 @@ alias his="historie"
 alias quit="exit"
 alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
+
+# this is mostly skimm-related stuff so maybe I should get around to writing an extras dir
+#docker-compose
+alias d-exec='docker-compose exec ${PWD##*/}'
+alias d-down='docker-compose down'
+alias d-up='docker-compose up'
+alias d-restart='docker-compose restart'
+alias d-rebuild='docker-compose down && docker-compose up --build'
+alias ngrok-api='ngrok http -subdomain=skimm-dan 192.168.99.100:9996'
