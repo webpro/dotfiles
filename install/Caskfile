@@ -5,6 +5,7 @@ tap "homebrew/cask-versions"
 
 cask "1password"
 cask "dash2"
+cask "flux"
 cask "font-fira-code"
 cask "font-hack"
 cask "google-chrome"

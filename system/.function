@@ -55,3 +55,13 @@ meteo() {
 md() {
   pandoc $1 | lynx -stdin -dump
 }
+
+# git
+
+del-branch() {
+  git branch -d `git branch --list '$1*'`
+}
+
+del-branch-force() {
+  git branch -D `git branch --list '$1*'`
+}
