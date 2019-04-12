@@ -38,12 +38,12 @@ Use the [Makefile](./Makefile) to install everything [listed above](#package-ove
 
 ## Post-install
 
-* `dotfiles dock` (set [Dock items](./macos/dock.sh))
-* `dotfiles macos` (set [macOS defaults](./macos/defaults.sh))
-* Mackup
-	* Log in to Dropbox
-	* `mackup restore`
-	* `ln -s ~/.config/mackup/.mackup.cfg ~` (until [#632](https://github.com/lra/mackup/pull/632) is fixed)
+- `dotfiles dock` (set [Dock items](./macos/dock.sh))
+- `dotfiles macos` (set [macOS defaults](./macos/defaults.sh))
+- Mackup
+  - Log in to Dropbox (and wait until synced)
+  - `ln -s ~/.config/mackup/.mackup.cfg ~` (until [#632](https://github.com/lra/mackup/pull/632) is fixed)
+  - `mackup restore`
 
 ## The `dotfiles` command
 
