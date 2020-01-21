@@ -1,1 +1,5 @@
-system/.custom
+._*
+.DS_Store
+.idea
+.vscode
+*.lock.json

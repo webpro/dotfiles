@@ -14,7 +14,7 @@ macos: sudo core-macos packages link
 
 linux: core-linux link
 
-core-macos: brew bash git npm ruby
+core-macos: brew bash git npm
 
 core-linux:
 	apt-get update
@@ -31,7 +31,7 @@ sudo:
 	sudo -v
 	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-packages: brew-packages cask-apps node-packages gems
+packages: brew-packages cask-apps node-packages
 
 link: stow-$(OS)
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then mv -v $(HOME)/$$FILE{,.bak}; fi; done
@@ -59,22 +59,15 @@ npm:
 	if ! [ -d $(NVM_DIR)/.git ]; then git clone https://github.com/creationix/nvm.git $(NVM_DIR); fi
 	. $(NVM_DIR)/nvm.sh; nvm install --lts
 
-ruby: brew
-	brew install ruby
-
 brew-packages: brew
-	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile
+	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile --no-upgrade
 
 cask-apps: brew
-	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile
-	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile --no-upgrade
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 
 node-packages: npm
 	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/npmfile)
-
-gems: ruby
-	export PATH="/usr/local/opt/ruby/bin:$PATH"; gem install $(shell cat install/Gemfile)
 
 test:
 	bats test/*.bats

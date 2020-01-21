@@ -1,5 +1,13 @@
-# Switch long/short prompt
+# Create a new directory and enter it
+mk() {
+  mkdir -p "$@" && cd "$@"
+}
 
+# Fuzzy find file/dir
+ff() { find . -type f -iname "*$1*";}
+fd() { find . -type d -iname "*$1*";}
+
+# Switch long/short prompt
 ps0() {
   unset PROMPT_COMMAND
   PS1='$ '
@@ -16,42 +24,24 @@ get() {
 }
 
 # Add to path
-
 prepend-path() {
   [ -d $1 ] && PATH="$1:$PATH"
 }
 
-# Show 256 TERM colors
+# Start an HTTP server from a directory, optionally specifying the port
+srv() {
+    # Get port (if specified)
+    local port="${1:-8000}"
 
-colors() {
-  local X=$(tput op)
-  local Y=$(printf %$((COLUMNS-6))s)
-  for i in {0..256}; do
-  o=00$i;
-  echo -e ${o:${#o}-3:3} $(tput setaf $i;tput setab $i)${Y// /=}$X;
-  done
-}
+    # Open in the browser
+    open "http://localhost:${port}/"
 
-# Calculator
-
-calc() {
-  echo "$*" | bc -l;
-}
-
-# Weather
-
-meteo() {
-  local LOCALE=$(echo ${LANG:-en} | cut -c1-2)
-  if [ $# -eq 0 ]; then
-    local LOCATION=$(curl -s ipinfo.io/loc)
-  else
-    local LOCATION=$1
-  fi
-  curl -s "$LOCALE.wttr.in/$LOCATION"
-}
-
-# Markdown
-
-md() {
-  pandoc $1 | lynx -stdin -dump
+    # Redefining the default content-type to text/plain instead of the default
+    # application/octet-stream allows "unknown" files to be viewable in-browser
+    # as text instead of being downloaded.
+    #
+    # Unfortunately, "python -m SimpleHTTPServer" doesn't allow you to redefine
+    # the default content-type, but the SimpleHTTPServer module can be executed
+    # manually with just a few lines of code.
+    python -c $'import SimpleHTTPServer;\nSimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map[""] = "text/plain";\nSimpleHTTPServer.test();' "$port"
 }

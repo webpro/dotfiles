@@ -40,10 +40,42 @@ Use the [Makefile](./Makefile) to install everything [listed above](#package-ove
 
 - `dotfiles dock` (set [Dock items](./macos/dock.sh))
 - `dotfiles macos` (set [macOS defaults](./macos/defaults.sh))
-- Mackup
-  - Log in to Dropbox (and wait until synced)
-  - `ln -s ~/.config/mackup/.mackup.cfg ~` (until [#632](https://github.com/lra/mackup/pull/632) is fixed)
-  - `mackup restore`
+- Adjust touchbar with `Preferences/keyboard/Touch bar shows`
+
+### DropBox
+
+Login and sync DropBox.
+
+### Mackup
+
+- `ln -s ~/.config/mackup/.mackup.cfg ~` (until [#632](https://github.com/lra/mackup/pull/632) is fixed)
+- `mackup restore`
+
+### Chrome
+
+Install the following extensions:
+
+- [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en)
+- [EverSync](https://chrome.google.com/webstore/detail/eversync-sync-bookmarks-b/iohcojnlgnfbmjfjfkbhahhmppcggdog)
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+- [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+
+Configure search engines (`Manage search engines`):
+
+| name             | Query URL                                                       | key binding |
+| ---------------- | --------------------------------------------------------------- | ----------- |
+| Duckduckgo       | https://duckduckgo.com/?q=%s                                    | `d`         |
+| Google maps      | https://www.google.com/maps/search/%s                           | `gm`        |
+| Google translate | https://translate.google.com/?&op=translate&sl=it&tl=en&text=%s | `gt`        |
+| npm              | https://www.npmjs.com/search?q=%s                               | `n`         |
+| Word Reference   | http://www.wordreference.com/iten/%s                            | `wr`        |
+| YouTube          | https://www.youtube.com/results?search_query=%s                 | `yt`        |
+
+### VSC
+
+- Open `VSC` settings `cmd + ,`
+- Connect `Code settings` extension to GitHub
+- Fire `Sync: Download Settings`
 
 ## The `dotfiles` command
 

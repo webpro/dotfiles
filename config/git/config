@@ -1,101 +1,61 @@
 [user]
-	name = Lars Kappert
-	email = lars@webpro.nl
+  name = Andrea Carraro
+  email = me@andreacarraro.it
 
 [github]
-	user = webpro
-
-[core]
-	excludesfile = ~/.config/git/ignore
-	editor = nano
-	filemode = false
-	trustctime = false
-	autocrlf = input
-	untrackedCache = true
-	pager = diff-so-fancy | less --tabs=4 -RFX
-
-[credential]
-	helper = osxkeychain
-
-[grep]
-	lineNumber = true
-
-[help]
-	autocorrect = 1
-
-[push]
-	default = simple
-	followTags = true
-
-[fetch]
-	prune = true
-
-[alias]
-	amend = commit --amend --reuse-message=HEAD
-	br = branch
-	ci = commit
-	co = checkout
-	contrib = shortlog --summary --numbered
-	cr = clone --recursive
-	df = diff --word-diff
-	g = grep --break --heading --line-number
-	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
-	lg = log -p
-	ll = log --pretty=oneline --graph --abbrev-commit
-	lm = log --pretty=format:'* %s (%h)'
-	patch = !git --no-pager diff --no-color
-	p = push
-	pf = push --force
-	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
-	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
-	st = status
-	stl = ls-files -m -o --exclude-standard
-	sts = status -sb
-	unstage = reset --hard HEAD
-
-[diff]
-	renames = copies
-	indentHeuristic = true
-	tool = Kaleidoscope
-[difftool]
-	prompt = false
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-	cmd = ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path =
+  user = toomuchdesign
 
 [merge]
-	tool = Kaleidoscope
-	conflictstyle = diff3
-	defaultToUpstream = true
-[mergetool]
-	prompt = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[mergetool "sourcetree"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+  conflictstyle = diff3
 
-[color]
-	ui = auto
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+[alias]
+
+  ###
+  # Aliases from:
+  # http://githowto.com/aliases
+
+    a = add .
+    co = checkout
+    ci = commit
+    cm = commit -m
+    ss = status
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+
+  ###
+  # Aliases from:
+  # http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+
+    # List commits showing changed files
+    ls = log --pretty=format:"%C(yellow)%h\\ %C(green)(%ar)\\ %Creset%s%Cblue\\ [%cn]%Cred%d" --decorate
+
+    # List commits in short form, with colors and branch/tag annotations.
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+  ###
+  # Silvio GIT alias
+
+    # Show the revision log graph using ASCII art
+    lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+
+    # List all local feature branches sorted according to the latest change
+    # date to give an overview which branches are under active development.
+    stbr = "for-each-ref --sort=-committerdate --format='%1B[32m%(committerdate:iso8601) %1B[34m%(committerdate:relative) %1B[0;m%(refname:short)' refs/heads/"
+
+    # List all local feature branches which have not yet been merged to the
+    # master repository (assuming "origin" is the remote for the master repo).
+    pending = branch --no-merged origin/master
+
+    # Do a flake8 run on about-to-be-committed files (only works from repo root).
+    flake8 = ./bin/flake8  --config etc/flake8.ini `git diff --cached --name-only
+
+  ###
+  # More aliases
+
+    # list of conflicted files
+    conf = diff --name-only --diff-filter=U
+
+    # align local branches to origin
+    pruneasorigin = git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d
