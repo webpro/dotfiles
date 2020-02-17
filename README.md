@@ -36,6 +36,8 @@ Use the [Makefile](./Makefile) to install everything [listed above](#package-ove
     cd ~/.dotfiles
     make
 
+> If brew/cask **virtualbox** install fails go to `System Preferences > Security & Privacy > General`, and enable `Oracle` under `Allow apps downloaded from:`.
+
 ## Post-install
 
 - `dotfiles dock` (set [Dock items](./macos/dock.sh))
