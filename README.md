@@ -7,7 +7,7 @@ It targets macOS systems, but it should work on \*nix as well (with `apt-get`).
 ## Package overview
 
 - [Homebrew](https://brew.sh) (packages: [Brewfile](./install/Brewfile))
-- [homebrew-cask](https://caskroom.github.io) (packages: [Caskfile](./install/Caskfile))
+- [homebrew-cask](https://github.com/Homebrew/homebrew-cask) (packages: [Caskfile](./install/Caskfile))
 - [Node.js + npm LTS](https://nodejs.org/en/download/) (packages: [npmfile](./install/npmfile))
 - Latest Ruby (packages: [Gemfile](./install/Gemfile))
 - Latest Git, Bash 4, Python 3, GNU coreutils, curl
@@ -69,7 +69,7 @@ Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 
 - [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
 - [Homebrew](https://brew.sh)
-- [Homebrew Cask](http://caskroom.io)
+- [Homebrew Cask](https://github.com/Homebrew/homebrew-cask)
 - [Bash prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 - [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
 
