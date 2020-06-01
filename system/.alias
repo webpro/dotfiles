@@ -61,7 +61,7 @@ alias ncd="npm-check -su"
 
 # Network
 
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ip="curl -s ipinfo.io | jq -r '.ip'"
 alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
 # Request using GET, POST, etc. method
