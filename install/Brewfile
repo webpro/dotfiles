@@ -2,6 +2,7 @@ tap "goles/battery"
 tap "homebrew/bundle"
 tap "homebrew/core"
 
+brew "bat"
 brew "bats"
 brew "coreutils"
 brew "diff-so-fancy"
