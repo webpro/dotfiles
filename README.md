@@ -9,7 +9,7 @@ It targets macOS systems, but it should work on \*nix as well (with `apt-get`).
 - [Homebrew](https://brew.sh) (packages: [Brewfile](./install/Brewfile))
 - [homebrew-cask](https://github.com/Homebrew/homebrew-cask) (packages: [Caskfile](./install/Caskfile))
 - [Node.js + npm LTS](https://nodejs.org/en/download/) (packages: [npmfile](./install/npmfile))
-- Latest Ruby (packages: [Gemfile](./install/Gemfile))
+- Latest Ruby
 - Latest Git, Bash 4, Python 3, GNU coreutils, curl
 - [Hammerspoon](https://www.hammerspoon.org) (config: [keybindings & window management](./config/hammerspoon))
 - [Mackup](https://github.com/lra/mackup) (sync application settings)
