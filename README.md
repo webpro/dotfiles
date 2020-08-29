@@ -13,7 +13,7 @@ It targets macOS systems, but it should work on \*nix as well (with `apt-get`).
 - Latest Git, Bash 4, Python 3, GNU coreutils, curl
 - [Hammerspoon](https://www.hammerspoon.org) (config: [keybindings & window management](./config/hammerspoon))
 - [Mackup](https://github.com/lra/mackup) (sync application settings)
-- `$EDITOR` (and Git editor) is [GNU nano](https://www.nano-editor.org)
+- `$EDITOR` (and Git editor) is VIM
 
 ## Install
 
