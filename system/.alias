@@ -1,6 +1,6 @@
 # Shortcuts
 
-alias reload="source ~/.bash_profile"
+alias restart="source ~/.bash_profile"
 
 # List declared aliases, functions, paths
 alias aliases="alias | sed 's/=.*//'"
