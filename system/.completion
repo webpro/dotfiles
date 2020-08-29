@@ -7,6 +7,12 @@ if is-executable brew; then
   unset BREW_PREFIX BASH_COMPLETION
 fi
 
+# Git
+
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
+
 # Dotfiles
 
 _dotfiles_completions() {
