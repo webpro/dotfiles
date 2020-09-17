@@ -56,6 +56,7 @@ alias gcob='git checkout -b'
 __git_complete gcob _git_checkout -b
 alias gcot='git checkout --track'
 __git_complete gcot _git_checkout --track
+alias gcod='git checkout develop'
 alias gcom='git checkout master'
 alias gcop='git checkout production'
 alias gconf='git grep "<<<<<<< HEAD"'
@@ -65,13 +66,18 @@ alias gdc='git diff --cached'
 __git_complete gdc _git_diff --cached
 alias gdd='git diff --cached'
 __git_complete gdd _git_diff --cached
+alias gf='git fetch'
+__git_complete gf _git_fetch
+__git_complete gdd _git_diff --cached
 alias gfa='git fetch --all'
 alias gl='git log'
+__git_complete gl _git_log
 alias gls='git log --pretty=format:"%C(yellow)%h %C(green)(%ar) %Creset%s%Cblue [%cn]%Cred%d" --decorate -5'
 __git_complete gls _git_log --pretty=format:"%C(yellow)%h %C(green)(%ar) %Creset%s%Cblue [%cn]%Cred%d" --decorate -5'
 alias glg='git log --graph --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)" --abbrev-commit --date=relative'
 __git_complete glg _git_log --graph --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)" --abbrev-commit --date=relative'
 alias gp='git pull'
+__git_complete gp _git_pull
 alias gpr='git pull --rebase'
 alias gpff='git fetch && git reset --hard @{u}'
 alias gprune='git fetch -p && for branch in `git branch -vv --no-color | grep ": gone]" | awk "{print $1}"`; do git branch -D $branch;'
@@ -98,6 +104,7 @@ __git_complete gmff _git_merge --ff-only
 
 # NPM shortcuts
 alias npms='npm start'
+alias npmd='npm run dev'
 alias npmr='npm run'
 # List all npm-linked packages
 alias npmlinked='( ls -l node_modules ; ls -l node_modules/@* ) | grep ^l'
