@@ -43,3 +43,9 @@ dataurl() {
   fi
   echo "data:${MIMETYPE};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
+
+# Tree
+
+t() {
+  tree -AdL ${1:-1}
+}
