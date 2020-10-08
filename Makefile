@@ -28,8 +28,10 @@ stow-linux: core-linux
 	is-executable stow || apt-get -y install stow
 
 sudo:
+ifndef GITHUB_ACTION
 	sudo -v
 	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+endif
 
 packages: brew-packages cask-apps node-packages
 
@@ -52,7 +54,19 @@ brew:
 bash: BASH=/usr/local/bin/bash
 bash: SHELLS=/private/etc/shells
 bash: brew
-	if ! grep -q $(BASH) $(SHELLS); then brew install bash bash-completion@2 pcre && sudo append $(BASH) $(SHELLS) && chsh -s $(BASH); fi
+ifdef GITHUB_ACTION
+	if ! grep -q $(BASH) $(SHELLS); then \
+		brew install bash bash-completion@2 pcre && \
+		sudo append $(BASH) $(SHELLS) && \
+		sudo chsh -s $(BASH); \
+	fi
+else
+	if ! grep -q $(BASH) $(SHELLS); then \
+		brew install bash bash-completion@2 pcre && \
+		sudo append $(BASH) $(SHELLS) && \
+		chsh -s $(BASH); \
+	fi
+endif
 
 git: brew
 	brew install git git-extras
@@ -68,7 +82,7 @@ brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile
 
 cask-apps: brew
-	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile
+	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook

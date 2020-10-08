@@ -1,0 +1,26 @@
+name: Dotfiles Installation
+
+on: push
+
+jobs:
+  install:
+    runs-on: macos-latest
+    steps:
+      - name: Clean up installed software
+        run: |
+          brew uninstall --force $(brew list)
+          # brew cask uninstall --force $(brew list --cask)
+          brew cask uninstall --force firefox google-chrome
+          brew cleanup --prune-prefix
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
+          rm -rf "$NVM_DIR"
+
+      - name: Download and install available system updates
+        run: |
+          sudo softwareupdate -i -a
+
+      - name: Clone this repository
+        uses: actions/checkout@v2
+
+      - name: Install using Makefile
+        run: make
