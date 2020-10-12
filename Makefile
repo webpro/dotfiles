@@ -91,4 +91,4 @@ node-packages: npm
 	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/npmfile)
 
 test:
-	. $$HOME/.bash_profile; bats $(DOTFILES_DIR)test/*.bats
+	. $(NVM_DIR)/nvm.sh; bats test

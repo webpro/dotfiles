@@ -3,7 +3,7 @@ tap "homebrew/bundle"
 tap "homebrew/core"
 
 brew "bat"
-brew "bats"
+brew "bats-core"
 brew "coreutils"
 brew "diff-so-fancy"
 brew "dockutil"
