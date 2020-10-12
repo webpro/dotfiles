@@ -36,7 +36,7 @@ alias l="ls -lahA $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
 alias ll="ls -lA $LS_COLORS"
 alias lt="ls -lhAtr $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
 alias ld="ls -ld $LS_COLORS */"
-alias lpm="stat -c '%a %n' *"
+alias lp="stat -c '%a %n' *"
 
 unset LS_COLORS LS_TIMESTYLEISO LS_GROUPDIRSFIRST
 
