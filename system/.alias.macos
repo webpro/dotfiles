@@ -69,6 +69,7 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 
 alias displays="system_profiler SPDisplaysDataType"
 alias cpu="sysctl -n machdep.cpu.brand_string"
+alias ram="top -l 1 -s 0 | grep PhysMem"
 
 alias pbtext="pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy"
 alias pbspaces="pbpaste | expand | pbcopy"
