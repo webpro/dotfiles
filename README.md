@@ -2,20 +2,31 @@
 
 These are my dotfiles. Take anything you want, but at your own risk.
 
-It targets macOS systems, but it should work on \*nix as well (with `apt-get`).
+It mainly targets macOS systems, but it works on at least Ubuntu as well.
 
-## Package overview
+## Highlights
+
+- Minimal efforts to install everything, using a [Makefile](./Makefile)
+- Mostly based around Homebrew, Caskroom and Node.js, latest Bash + GNU Utils
+- Great [Window management](./config/hammerspoon/README.md) (using Hammerspoon)
+- Fast and colored prompt
+- Updated macOS defaults
+- Well-organized and easy to customize
+- The installation and runcom setup is
+  [tested weekly on real Ubuntu and macOS machines](https://github.com/webpro/dotfiles/actions) using
+  [a GitHub Action](./.github/workflows/ci.yml)
+
+## Packages Overview
 
 - [Homebrew](https://brew.sh) (packages: [Brewfile](./install/Brewfile))
 - [homebrew-cask](https://github.com/Homebrew/homebrew-cask) (packages: [Caskfile](./install/Caskfile))
 - [Node.js + npm LTS](https://nodejs.org/en/download/) (packages: [npmfile](./install/npmfile))
-- Latest Ruby
-- Latest Git, Bash 4, Python 3, GNU coreutils, curl
+- Latest Git, Bash 4, Python 3, GNU coreutils, curl, Ruby
 - [Hammerspoon](https://www.hammerspoon.org) (config: [keybindings & window management](./config/hammerspoon))
 - [Mackup](https://github.com/lra/mackup) (sync application settings)
 - `$EDITOR` (and Git editor) is [GNU nano](https://www.nano-editor.org)
 
-## Install
+## Installation
 
 On a sparkling fresh installation of macOS:
 
@@ -51,7 +62,7 @@ make
 The installation process in the Makefile is tested on every push and every week in this
 [GitHub Action](https://github.com/webpro/dotfiles/actions).
 
-## Post-install
+## Post-Installation
 
 - `dotfiles dock` (set [Dock items](./macos/dock.sh))
 - `dotfiles macos` (set [macOS defaults](./macos/defaults.sh))
@@ -76,7 +87,7 @@ Commands:
     update           Update packages and pkg managers (OS, brew, npm, gem)
 ```
 
-## Customize/extend
+## Customize
 
 You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from
 `.bash_profile` automatically. This file is in `.gitignore`.
@@ -84,7 +95,7 @@ You can put your custom settings, such as Git credentials in the `system/.custom
 Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`. The runcom `.bash_profile` sources all
 `~/.extra/runcom/*.sh` files.
 
-## Additional resources
+## Additional Resources
 
 - [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
 - [Homebrew](https://brew.sh)
