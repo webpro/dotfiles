@@ -3,13 +3,18 @@ name: Dotfiles Installation
 on:
   push:
   schedule:
-    - cron: "0 17 * * 4" # Every Thursday 5:00PM
+    - cron: '0 17 * * 4' # Every Thursday 5:00PM
 
 jobs:
   install:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+
     steps:
       - name: Clean up installed software
+        if: matrix.os == 'macos-latest'
         run: |
           brew uninstall --force $(brew list)
           # brew cask uninstall --force $(brew list --cask)
@@ -19,6 +24,7 @@ jobs:
           rm -rf "$NVM_DIR"
 
       - name: Download and install available system updates
+        if: matrix.os == 'macos-latest'
         run: |
           sudo softwareupdate -i -a
 
@@ -26,4 +32,16 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install using Makefile
-        run: make
+        run: |
+          if [ "$RUNNER_OS" == "macOS" ]; then
+            make
+          else
+            sudo make
+          fi
+
+      - name: Verify runcom setup
+        run: source $HOME/.bash_profile
+
+      - name: Run tests
+        if: matrix.os == 'macos-latest'
+        run: make test

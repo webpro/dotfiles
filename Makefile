@@ -1,5 +1,5 @@
 SHELL = /bin/bash
-DOTFILES_DIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+export DOTFILES_DIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
 NVM_DIR := $(HOME)/.nvm
@@ -91,4 +91,4 @@ node-packages: npm
 	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/npmfile)
 
 test:
-	bats test/*.bats
+	. $$HOME/.bash_profile; bats $(DOTFILES_DIR)test/*.bats
