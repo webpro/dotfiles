@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Domains</key>
+	<dict>
+		<key>Applications</key>
+		<true/>
+		<key>Printing</key>
+		<true/>
+	</dict>
+	<key>FilterData</key>
+	<dict>
+		<key>ColorSettings</key>
+		<dict>
+			<key>ImageSettings</key>
+			<dict>
+				<key>Compression Quality</key>
+				<real>-1</real>
+				<key>ImageCompression</key>
+				<string>ImageJPEGCompress</string>
+				<key>ImageScaleSettings</key>
+				<dict>
+					<key>ImageResolution</key>
+					<integer>300</integer>
+					<key>ImageScaleFactor</key>
+					<real>0.0</real>
+					<key>ImageScaleInterpolate</key>
+					<integer>3</integer>
+					<key>ImageSizeMax</key>
+					<integer>0</integer>
+					<key>ImageSizeMin</key>
+					<integer>0</integer>
+				</dict>
+				<key>MonoImageScaleSettings</key>
+				<dict>
+					<key>ImageResolution</key>
+					<integer>300</integer>
+					<key>ImageScaleFactor</key>
+					<real>0.0</real>
+					<key>ImageScaleInterpolate</key>
+					<integer>3</integer>
+					<key>ImageSizeMax</key>
+					<integer>0</integer>
+					<key>ImageSizeMin</key>
+					<integer>0</integer>
+				</dict>
+			</dict>
+		</dict>
+	</dict>
+	<key>FilterType</key>
+	<integer>1</integer>
+	<key>Name</key>
+	<string>Reduce to 300 dpi low quality</string>
+</dict>
+</plist>

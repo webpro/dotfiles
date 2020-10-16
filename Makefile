@@ -10,7 +10,7 @@ export STOW_DIR := $(DOTFILES_DIR)
 
 all: $(OS)
 
-macos: sudo core-macos packages link
+macos: sudo core-macos packages link pdf-quartz-filters
 
 linux: core-linux link
 
@@ -58,6 +58,9 @@ git: brew
 npm:
 	if ! [ -d $(NVM_DIR)/.git ]; then git clone https://github.com/creationix/nvm.git $(NVM_DIR); fi
 	. $(NVM_DIR)/nvm.sh; nvm install --lts
+
+pdf-quartz-filters:
+  ln -s $(DOTFILES_DIR)/macos/pdf-quartz-filters/ /Library/PDF\ Services/
 
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile --no-upgrade
