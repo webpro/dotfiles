@@ -68,7 +68,10 @@ alias gdd='git diff --cached'
 __git_complete gdd _git_diff --cached
 alias gf='git fetch'
 __git_complete gf _git_fetch
-__git_complete gdd _git_diff --cached
+alias gfo='git fetch origin'
+__git_complete gfo _git_fetch_origin
+alias gfm='git fetch origin master:master'
+alias gfd='git fetch origin develop:develop'
 alias gfa='git fetch --all'
 alias gl='git log'
 __git_complete gl _git_log
