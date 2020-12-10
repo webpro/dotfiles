@@ -10,11 +10,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-10.15, macos-11.0, ubuntu-latest]
 
     steps:
       - name: Clean up installed software
-        if: matrix.os == 'macos-latest'
+        if: startsWith(matrix.os, 'macos')
         run: |
           brew uninstall --force $(brew list)
           # brew cask uninstall --force $(brew list --cask)
@@ -24,7 +24,7 @@ jobs:
           rm -rf "$NVM_DIR"
 
       - name: Download and install available system updates
-        if: matrix.os == 'macos-latest'
+        if: startsWith(matrix.os, 'macos')
         run: |
           sudo softwareupdate -i -a
 
@@ -43,5 +43,5 @@ jobs:
         run: source $HOME/.bash_profile
 
       - name: Run tests
-        if: matrix.os == 'macos-latest'
+        if: startsWith(matrix.os, 'macos')
         run: make test
