@@ -13,6 +13,7 @@
 	autocrlf = input
 	untrackedCache = true
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	ignorecase = false
 
 [credential]
 	helper = osxkeychain
