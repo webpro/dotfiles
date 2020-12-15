@@ -45,7 +45,7 @@ bash -c "`curl -fsSL https://raw.githubusercontent.com/webpro/dotfiles/master/re
 
 This will clone or download, this repo to `~/.dotfiles` depending on the availability of `git`, `curl` or `wget`.
 
-1. Alternatively, clone manually into the desired location:
+2. Alternatively, clone manually into the desired location:
 
 ```bash
 git clone https://github.com/webpro/dotfiles.git ~/.dotfiles
