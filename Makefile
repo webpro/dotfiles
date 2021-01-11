@@ -60,7 +60,7 @@ npm:
 	. $(NVM_DIR)/nvm.sh; nvm install --lts
 
 pdf-quartz-filters:
-	ln -s $(DOTFILES_DIR)/macos/pdf-quartz-filters/ /Library/PDF\ Services/
+	sudo mkdir -p /Library/PDF\ Services && sudo ln -sfn $(DOTFILES_DIR)/macos/pdf-quartz-filters/ /Library/PDF\ Services/
 
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile --no-upgrade
