@@ -5,6 +5,9 @@
 [github]
   user = toomuchdesign
 
+[core]
+  ignorecase = false
+
 [merge]
   conflictstyle = diff3
 
