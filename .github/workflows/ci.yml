@@ -16,9 +16,9 @@ jobs:
       - name: Clean up installed software
         if: startsWith(matrix.os, 'macos')
         run: |
-          brew uninstall --force $(brew list --formula)
-          # brew cask uninstall --force $(brew list --cask)
-          brew cask uninstall --force firefox google-chrome
+          brew uninstall --ignore-dependencies --force $(brew list --formula | grep -v python)
+          # brew uninstall --cask --force $(brew list --cask)
+          brew uninstall --cask --force firefox google-chrome
           brew cleanup --prune-prefix
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
           rm -rf "$NVM_DIR"
