@@ -16,7 +16,7 @@ jobs:
       - name: Clean up installed software
         if: startsWith(matrix.os, 'macos')
         run: |
-          brew uninstall --ignore-dependencies --force $(brew list --formula | grep -v python)
+          brew uninstall --ignore-dependencies --force $(brew list --formula)
           # brew uninstall --cask --force $(brew list --cask)
           brew uninstall --cask --force firefox google-chrome
           brew cleanup --prune-prefix
