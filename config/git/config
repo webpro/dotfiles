@@ -102,4 +102,16 @@
 # 	newNormal = green bold
 # 	newHighlight = green bold 22
 
-
+[user]
+	signingkey = 7E64323C09D2962D
+	email = jimmy@blockchaintp.com
+	name = Jimmy
+[push]
+	default = current
+[alias]
+    c = !"pre-commit && cz commit ; git commit -s -S --amend -no-edit"
+[pull]
+	default = current
+	ff = only
+[init]
+	templateDir = /Users/atp/.dotfiles/config/git/
