@@ -2,9 +2,25 @@ BREW_PREFIX=$(brew --prefix)
 
 # Bash
 
+<<<<<<< HEAD
 if is-executable brew; then
   . "$BREW_PREFIX/share/bash-completion/bash_completion"
 fi
+||||||| parent of 6e38063 (personalized aliases with work and project traversal and removed problematic conditional in .completion)
+if is-executable brew; then
+  BREW_PREFIX=$(brew --prefix)
+  BASH_COMPLETION="$BREW_PREFIX/share/bash-completion/bash_completion"
+  . "$BASH_COMPLETION"
+  unset BREW_PREFIX BASH_COMPLETION
+fi
+=======
+# if is-executable brew; then
+#   BREW_PREFIX=$(brew --prefix)
+#   BASH_COMPLETION="$BREW_PREFIX/share/bash-completion/bash_completion"
+#   . "$BASH_COMPLETION"
+#   unset BREW_PREFIX BASH_COMPLETION
+# fi
+>>>>>>> 6e38063 (personalized aliases with work and project traversal and removed problematic conditional in .completion)
 
 # Dotfiles
 

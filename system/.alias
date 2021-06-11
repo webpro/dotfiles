@@ -47,6 +47,17 @@ alias .....="cd ../../../.."
 alias -- -="cd -"                  # Go to previous dir with -
 alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is linked)
 
+# Work
+alias work='cd ~/.Work'
+alias btp='work; cd btp'
+alias sxt='btp; cd sextant'
+alias sxtapi='sxt; cd sextant-api'
+alias sxtdev='sxt; cd sextant-dev'
+
+# Projects
+alias proj='cd ~/Projects'
+alias wow='proj; cd wow'
+
 # npm
 
 alias ni="npm install"
