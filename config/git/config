@@ -17,8 +17,8 @@
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	ignorecase = false
 
-# [grep]
-# 	lineNumber = true
+ [grep]
+ 	lineNumber = true
 
 [pull]
 	rebase = true
@@ -26,32 +26,32 @@
 [init]
 	defaultBranch = main
 
-# [alias]
+ [alias]
 # 	amend = commit --amend --reuse-message=HEAD
-# 	br = branch
-# 	ci = commit
-# 	co = checkout
-# 	contrib = shortlog --summary --numbered
+ 	br = branch
+ 	ci = commit
+ 	co = checkout
+ 	contrib = shortlog --summary --numbered
 # 	cr = clone --recursive
-# 	df = diff --word-diff
+ 	df = diff --word-diff
 # 	g = grep --break --heading --line-number
-# 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+ 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 # 	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
 # 	lg = log -p
-# 	ll = log --pretty=oneline --graph --abbrev-commit
-# 	lm = log --pretty=format:'* %s (%h)'
+ 	ll = log --pretty=oneline --graph --abbrev-commit
+ 	lm = log --pretty=format:'* %s (%h)'
 # 	patch = !git --no-pager diff --no-color
-# 	p = push
+ 	p = push
 # 	pf = push --force
 # 	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 # 	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
-# 	st = status
-# 	stl = ls-files -m -o --exclude-standard
-# 	sts = status -sb
-# 	unstage = reset --hard HEAD
+ 	st = status
+ 	stl = ls-files -m -o --exclude-standard
+ 	sts = status -sb
+ 	unstage = reset --hard HEAD
 
-# [color]
-# 	ui = auto
+ [color]
+ 	ui = auto
 
 [grep]
 	lineNumber = true
@@ -85,22 +85,22 @@
 	unstage = reset --hard HEAD
 	c = "!pre-commit && cz commit ; git commit -s -S --amend --no-edit"
 
-# [color "diff"]
-# 	meta = yellow bold
-# 	frag = magenta bold
-# 	old = red bold
-# 	new = green bold
+ [color "diff"]
+ 	meta = yellow bold
+ 	frag = magenta bold
+ 	old = red bold
+ 	new = green bold
 
-# [color "status"]
-# 	added = yellow
-# 	changed = green
-# 	untracked = cyan
+ [color "status"]
+ 	added = yellow
+ 	changed = green
+ 	untracked = cyan
 
-# [color "diff-highlight"]
-# 	oldNormal = red bold
-# 	oldHighlight = red bold 52
-# 	newNormal = green bold
-# 	newHighlight = green bold 22
+ [color "diff-highlight"]
+ 	oldNormal = red bold
+ 	oldHighlight = red bold 52
+ 	newNormal = green bold
+ 	newHighlight = green bold 22
 
 [user]
 	signingkey = 7E64323C09D2962D
