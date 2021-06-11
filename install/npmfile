@@ -6,9 +6,16 @@ local-web-server
 nodemon
 npm
 npm-check
+npm-check-updates
+openblas
+openssl
 prettier
+pre-commit
+readline
 release-it
 svgo
 tldr
 underscore-cli
+xz
 yarn
+zlib
