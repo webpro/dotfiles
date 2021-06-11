@@ -51,9 +51,9 @@ alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is link
 alias work='cd ~/.Work'
 alias btp='work; cd btp'
 alias btpcat='btp; cd catenasys'
-alias sxt='btpcat; cd sextant'
-alias sxtapi='btpcat; cd sextant-api'
-alias sxtdev='btpcat; cd sextant-dev'
+alias sx='btpcat; cd sextant'
+alias sxapi='btpcat; cd sextant-api'
+alias sxdev='btpcat; cd sextant-dev'
 
 # Projects
 alias proj='cd ~/Projects'
