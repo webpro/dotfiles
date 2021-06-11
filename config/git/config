@@ -1,13 +1,15 @@
 [user]
-	name = Lars Kappert
-	email = lars@webpro.nl
+	email = jimmy@blockchaintp.com
+	name = Jimmy Holway
+	signingkey = A64E60994A5D7C2B1DC15B60CAC738970A8B9FC3
 
-[github]
-	user = webpro
+[pull]
+        default = current
+        ff = only
 
 [core]
 	excludesfile = ~/.config/git/ignore
-	editor = code --wait
+	editor = vim
 	filemode = false
 	trustctime = false
 	autocrlf = input
@@ -25,8 +27,7 @@
 	defaultBranch = main
 
 [push]
-	default = simple
-	followTags = true
+	default = current
 
 [fetch]
 	prune = true
@@ -40,6 +41,7 @@
 [alias]
 	amend = commit --amend --reuse-message=HEAD
 	br = branch
+	c = !"pre-commit && cz commit && git commit -s -S --amend --no-edit"
 	ci = commit
 	co = checkout
 	contrib = shortlog --summary --numbered
@@ -53,7 +55,7 @@
 	lm = log --pretty=format:'* %s (%h)'
 	patch = !git --no-pager diff --no-color
 	p = push
-	pf = push --force
+	pfl = push --force-with-lease
 	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
 	st = status
@@ -61,46 +63,25 @@
 	sts = status -sb
 	unstage = reset --hard HEAD
 
-[diff]
-	renames = copies
-	indentHeuristic = true
-	tool = Kaleidoscope
-[difftool]
-	prompt = false
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-	cmd = ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[merge]
-	tool = Kaleidoscope
-	conflictstyle = diff3
-	defaultToUpstream = true
-[mergetool]
-	prompt = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[mergetool "sourcetree"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-
 [color]
 	ui = auto
+
 [color "branch"]
 	current = yellow reverse
 	local = yellow
 	remote = green
+
 [color "diff"]
 	meta = yellow bold
 	frag = magenta bold
 	old = red bold
 	new = green bold
+
 [color "status"]
 	added = yellow
 	changed = green
 	untracked = cyan
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
