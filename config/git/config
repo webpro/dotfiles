@@ -62,6 +62,7 @@
 	stl = ls-files -m -o --exclude-standard
 	sts = status -sb
 	unstage = reset --hard HEAD
+	c = "!pre-commit && cz commit ; git commit -s -S --amend --no-edit"
 
 [color]
 	ui = auto
@@ -87,3 +88,11 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[user]
+	name = Jimmy Holway
+	email = jimmy@blockchaintp.com
+[pull]
+	default = current
+	ff = only
+[init]
+	templateDir = /Users/atp/.dotfiles/config/git/template
