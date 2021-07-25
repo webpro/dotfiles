@@ -87,7 +87,7 @@ cask-apps: brew
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 node-packages: npm
-	npm install -g $(shell cat install/npmfile)
+	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
 
 test:
-	bats test
+	eval $$(fnm env); bats test
