@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
-@test "dotfiles" {
-	run dotfiles
+@test "dot" {
+	run dot
 	[[ $output =~ "Usage" ]]
 }
 
