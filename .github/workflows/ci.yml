@@ -21,7 +21,6 @@ jobs:
           brew uninstall --cask --force firefox google-chrome
           brew cleanup --prune-prefix
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
-          rm -rf "$NVM_DIR"
 
       - name: Download and install available system updates
         if: startsWith(matrix.os, 'macos')
