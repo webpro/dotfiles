@@ -71,8 +71,8 @@ endif
 git: brew
 	brew install git git-extras
 
-npm:
-
+npm: brew-packages
+	fnm install --lts
 
 ruby: brew
 	brew install ruby
