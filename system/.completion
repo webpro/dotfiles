@@ -14,7 +14,7 @@ _dotfiles_completions() {
   COMPREPLY=( $(compgen -W 'clean dock edit help macos test update' -- $cur ) );
 }
 
-complete -o default -F _dotfiles_completions dotfiles
+complete -o default -F _dotfiles_completions dot
 
 # npm (https://docs.npmjs.com/cli/completion)
 
