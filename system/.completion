@@ -79,7 +79,7 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 
-# fvm
+# fnm
 
 _fnm() {
     local i cur prev opts cmds
@@ -95,7 +95,7 @@ _fnm() {
             fnm)
                 cmd="fnm"
                 ;;
-            
+
             alias)
                 cmd+="__alias"
                 ;;
@@ -132,6 +132,9 @@ _fnm() {
             ls-remote)
                 cmd+="__ls__remote"
                 ;;
+            unalias)
+                cmd+="__unalias"
+                ;;
             uninstall)
                 cmd+="__uninstall"
                 ;;
@@ -145,13 +148,13 @@ _fnm() {
 
     case "${cmd}" in
         fnm)
-            opts=" -h -V  --help --version --node-dist-mirror --fnm-dir --multishell-path --log-level --arch   list-remote list install use env completions alias default current exec uninstall help  ls-remote  ls"
+            opts=" -h -V  --help --version --node-dist-mirror --fnm-dir --multishell-path --log-level --arch   list-remote list install use env completions alias unalias default current exec uninstall help  ls-remote  ls"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -179,7 +182,7 @@ _fnm() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        
+
         fnm__alias)
             opts=" -h -V  --help --version --node-dist-mirror --fnm-dir --log-level --arch  <to-version> <name> "
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
@@ -187,7 +190,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -218,7 +221,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --shell)
                     COMPREPLY=($(compgen -W "zsh bash fish powershell elvish" -- "${cur}"))
                     return 0
@@ -253,7 +256,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -284,7 +287,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -315,7 +318,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --shell)
                     COMPREPLY=($(compgen -W "bash zsh fish powershell" -- "${cur}"))
                     return 0
@@ -350,7 +353,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --using)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -385,7 +388,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -416,7 +419,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -447,7 +450,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -478,7 +481,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -509,7 +512,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -540,7 +543,38 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
+                --node-dist-mirror)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --fnm-dir)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --log-level)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --arch)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        fnm__unalias)
+            opts=" -h -V  --help --version --node-dist-mirror --fnm-dir --log-level --arch  <requested-alias> "
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -571,7 +605,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -602,7 +636,7 @@ _fnm() {
                 return 0
             fi
             case "${prev}" in
-                
+
                 --node-dist-mirror)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
