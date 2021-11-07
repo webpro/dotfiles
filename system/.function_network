@@ -8,7 +8,7 @@ srv() {
     sudo -v
   fi
   open "http://localhost:$PORT"
-  superstatic "$DIR" -p "$PORT"
+  ws --directory "$DIR" --port "$PORT"
 }
 
 # Get IP from hostname

@@ -2,12 +2,12 @@ fast-cli
 fkill-cli
 get-port-cli
 gtop
+local-web-server
 nodemon
 npm
 npm-check
 prettier
 release-it
-superstatic
 svgo
 tldr
 underscore-cli
