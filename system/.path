@@ -3,14 +3,16 @@
 
 is-executable getconf && PATH=$($(command -v getconf) PATH)
 
+export HOMEBREW_PREFIX=$($DOTFILES_DIR/bin/is-supported $DOTFILES_DIR/bin/is-arm64 /opt/homebrew /usr/local)
+
 # Prepend new items to path (if directory exists)
 
 prepend-path "/bin"
 prepend-path "/usr/bin"
-prepend-path "/usr/local/bin"
-prepend-path "/usr/local/opt/coreutils/libexec/gnubin"
-prepend-path "/usr/local/opt/gnu-sed/libexec/gnubin"
-prepend-path "/usr/local/opt/grep/libexec/gnubin"
+prepend-path "$HOMEBREW_PREFIX/bin"
+prepend-path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
+prepend-path "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin"
+prepend-path "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
 prepend-path "/usr/local/opt/python/libexec/bin"
 prepend-path "/usr/local/opt/ruby/bin"
 prepend-path "$DOTFILES_DIR/bin"

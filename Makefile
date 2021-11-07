@@ -2,6 +2,7 @@ SHELL = /bin/bash
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
+HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local)
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
@@ -51,7 +52,7 @@ unlink: stow-$(OS)
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 
-bash: BASH=/usr/local/bin/bash
+bash: BASH=$(HOMEBREW_PREFIX)/bin/bash
 bash: SHELLS=/private/etc/shells
 bash: brew
 ifdef GITHUB_ACTION
