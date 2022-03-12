@@ -15,7 +15,7 @@ macos: sudo core-macos packages link
 
 linux: core-linux link
 
-core-macos: brew bash git npm ruby rust
+core-macos: brew bash git npm
 
 core-linux:
 	apt-get update
@@ -34,7 +34,7 @@ ifndef GITHUB_ACTION
 	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 endif
 
-packages: brew-packages cask-apps node-packages rust-packages
+packages: brew-packages cask-apps node-packages
 
 link: stow-$(OS)
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
@@ -78,9 +78,6 @@ npm: brew-packages
 ruby: brew
 	brew install ruby
 
-rust: brew
-	brew install rust
-
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
 
@@ -92,10 +89,6 @@ cask-apps: brew
 
 node-packages: npm
 	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
-
-rust-packages: CARGO=$(HOMEBREW_PREFIX)/bin/cargo
-rust-packages: rust
-	$(CARGO) install $(shell cat install/Rustfile)
 
 test:
 	eval $$(fnm env); bats test
