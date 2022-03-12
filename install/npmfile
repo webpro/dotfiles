@@ -1,14 +1,8 @@
-fast-cli
-fkill-cli
 get-port-cli
 gtop
-local-web-server
+http-server
 nodemon
 npm
-npm-check
-prettier
 release-it
 svgo
 tldr
-underscore-cli
-yarn

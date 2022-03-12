@@ -20,6 +20,7 @@ core-macos: brew bash git npm
 core-linux:
 	apt-get update
 	apt-get upgrade -y
+	apt-get install zsh
 	apt-get dist-upgrade -f
 
 stow-macos: brew
