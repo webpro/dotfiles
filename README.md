@@ -8,7 +8,6 @@ It mainly targets macOS systems, but it works on at least Ubuntu as well.
 
 - Minimal efforts to install everything, using a [Makefile](./Makefile)
 - Mostly based around Homebrew, Caskroom and Node.js, latest Bash + GNU Utils
-- Great [Window management](./config/hammerspoon/README.md) (using Hammerspoon)
 - Fast and colored prompt
 - Updated macOS defaults
 - Well-organized and easy to customize
@@ -23,7 +22,6 @@ It mainly targets macOS systems, but it works on at least Ubuntu as well.
 - [homebrew-cask](https://github.com/Homebrew/homebrew-cask) (packages: [Caskfile](./install/Caskfile))
 - [Node.js + npm LTS](https://nodejs.org/en/download/) (packages: [npmfile](./install/npmfile))
 - Latest Git, Bash 4, Python 3, GNU coreutils, curl
-- [Hammerspoon](https://www.hammerspoon.org) (config: [keybindings & window management](./config/hammerspoon))
 - [Mackup](https://github.com/lra/mackup) (sync application settings)
 - `$EDITOR` (and Git editor) is [GNU nano](https://www.nano-editor.org)
 
