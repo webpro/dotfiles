@@ -2,11 +2,10 @@
 
 The hyper key is defined as `⌘ + ⌥ + ⌃` (control + option + command). Press this plus the defined key:
 
-| Key | Action             |
-| --- | ------------------ |
-| A   | Lock Screen        |
-| R   | Reload config      |
-| W   | Print `¯\_(ツ)_/¯` |
+| Key | Action        |
+| --- | ------------- |
+| A   | Lock Screen   |
+| R   | Reload config |
 
 ## Launch Apps
 
