@@ -12,9 +12,10 @@ It mainly targets macOS systems, but it works on at least Ubuntu as well.
 - Fast and colored prompt
 - Updated macOS defaults
 - Well-organized and easy to customize
-- The installation and runcom setup is
-  [tested weekly on real Ubuntu and macOS machines](https://github.com/webpro/dotfiles/actions) using
-  [a GitHub Action](./.github/workflows/ci.yml)
+- The installation and runcom setup is [tested weekly on real Ubuntu and macOS
+  machines](https://github.com/webpro/dotfiles/actions) (Big Sur and Monterey;
+  Catalina should still be fine too) using [a GitHub
+  Action](./.github/workflows/ci.yml)
 - Supports both Apple Silicon (M1) and Intel chips
 
 ## Packages Overview
