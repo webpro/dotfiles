@@ -3,7 +3,6 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 
-cask "dash2"
 cask "docker"
 cask "dropbox"
 cask "firefox"

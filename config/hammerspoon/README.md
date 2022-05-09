@@ -13,7 +13,7 @@ The hyper key is defined as `⌘ + ⌥ + ⌃` (control + option + command). Pres
 | Key | App                |
 | --- | ------------------ |
 | C   | Google Chrome      |
-| D   | Dash               |
+| E   | Editor (VS Code)   |
 | F   | Finder             |
 | G   | SourceTree (Git)   |
 | M   | Mail               |
