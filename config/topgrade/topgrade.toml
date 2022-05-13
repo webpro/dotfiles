@@ -1,0 +1,11 @@
+# Don't ask for confirmations
+assume_yes = true
+
+# Disable specific steps - same options as the command line flag
+disable = ["containers", "pnpm"]
+
+# Display the time in step titles
+display_time = true
+
+# Cleanup temporary or old files
+cleanup = true
