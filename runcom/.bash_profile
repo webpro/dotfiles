@@ -21,7 +21,7 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,exports,alias,fnm,grep,prompt,completion,fix,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,exports,alias,fnm,grep,prompt,completion,fix}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
@@ -35,20 +35,10 @@ fi
 
 eval "$(dircolors -b "$DOTFILES_DIR"/system/.dir_colors)"
 
-# Hook for extra/custom stuff
-
-DOTFILES_EXTRA_DIR="$HOME/.extra"
-
-if [ -d "$DOTFILES_EXTRA_DIR" ]; then
-  for EXTRAFILE in "$DOTFILES_EXTRA_DIR"/runcom/*.sh; do
-    [ -f "$EXTRAFILE" ] && . "$EXTRAFILE"
-  done
-fi
-
 # Clean up
 
-unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE EXTRAFILE
+unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 # Export
 
-export DOTFILES_DIR DOTFILES_EXTRA_DIR
+export DOTFILES_DIR
