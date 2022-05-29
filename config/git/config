@@ -1,7 +1,7 @@
 [user]
 	email = jimmy@blockchaintp.com
 	name = Jimmy Holway
-	signingkey = A64E60994A5D7C2B1DC15B60CAC738970A8B9FC3
+	signingkey = 3AA5C34371567BD2
 
 [pull]
         default = current
@@ -27,24 +27,24 @@
 	defaultBranch = main
 
  [alias]
-# 	amend = commit --amend --reuse-message=HEAD
+ 	amend = commit --amend --reuse-message=HEAD
  	br = branch
  	ci = commit
  	co = checkout
  	contrib = shortlog --summary --numbered
 # 	cr = clone --recursive
  	df = diff --word-diff
-# 	g = grep --break --heading --line-number
+ 	g = grep --break --heading --line-number
  	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-# 	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
-# 	lg = log -p
+ 	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
+ 	lg = log -p
  	ll = log --pretty=oneline --graph --abbrev-commit
  	lm = log --pretty=format:'* %s (%h)'
-# 	patch = !git --no-pager diff --no-color
+ 	patch = !git --no-pager diff --no-color
  	p = push
-# 	pf = push --force
-# 	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
-# 	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
+ 	pfw = push --force-with-lease
+ 	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+ 	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
  	st = status
  	stl = ls-files -m -o --exclude-standard
  	sts = status -sb

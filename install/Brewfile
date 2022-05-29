@@ -12,14 +12,7 @@ brew "croc"
 brew "diff-so-fancy"
 brew "difftastic"
 brew "dockutil"
-<<<<<<< HEAD
-brew "fnm"
-||||||| parent of c234202 (changes 'dotfiles' command to 'dots')
-brew "ffmpeg"
-=======
 brew "eksctl"
-brew "ffmpeg"
->>>>>>> c234202 (changes 'dotfiles' command to 'dots')
 brew "gnu-sed"
 brew "gnupg"
 brew "goles/battery/battery"
@@ -37,14 +30,7 @@ brew "pandoc"
 brew "peco"
 brew "pre-commit"
 brew "python"
-<<<<<<< HEAD
 brew "rust"
-||||||| parent of c234202 (changes 'dotfiles' command to 'dots')
-brew "pyenv"
-brew "rbenv"
-=======
-brew "pyenv"
->>>>>>> c234202 (changes 'dotfiles' command to 'dots')
 brew "shellcheck"
 brew "stow"
 brew "thefuck"

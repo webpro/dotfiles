@@ -3,13 +3,11 @@ fkill-cli
 get-port-cli
 gtop
 local-web-server
-nodemon
 npm
 npm-check
 npm-check-updates
 prettier
 pre-commit
-release-it
 svgo
 tldr
 underscore-cli
