@@ -41,4 +41,6 @@ unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 # Export
 
-export DOTFILES_DIR
+export DOTFILES_DIR DOTFILES_EXTRA_DIR
+
+eval "$(thefuck --alias)"

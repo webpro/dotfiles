@@ -1,2 +1,8 @@
+# expempting /config/git/config/ to protect gpg keys
+
+/config/git/config/
+
+# exempt custom settings
+
 system/.custom
 system/.exports
