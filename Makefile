@@ -1,8 +1,8 @@
 SHELL = /bin/bash
-DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos linux)
-PATH := $(DOTFILES_DIR)/bin:$(PATH)
+DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local)
+PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(PATH)
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
@@ -52,20 +52,19 @@ unlink: stow-$(OS)
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 
-bash: BASH=$(HOMEBREW_PREFIX)/bin/bash
 bash: SHELLS=/private/etc/shells
 bash: brew
 ifdef GITHUB_ACTION
-	if ! grep -q $(BASH) $(SHELLS); then \
+	if ! grep -q bash $(SHELLS); then \
 		brew install bash bash-completion@2 pcre && \
-		sudo append $(BASH) $(SHELLS) && \
-		sudo chsh -s $(BASH); \
+		sudo append bash $(SHELLS) && \
+		sudo chsh -s bash; \
 	fi
 else
-	if ! grep -q $(BASH) $(SHELLS); then \
+	if ! grep -q bash $(SHELLS); then \
 		brew install bash bash-completion@2 pcre && \
-		sudo append $(BASH) $(SHELLS) && \
-		chsh -s $(BASH); \
+		sudo append bash $(SHELLS) && \
+		chsh -s bash; \
 	fi
 endif
 
@@ -93,9 +92,8 @@ cask-apps: brew
 node-packages: npm
 	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
 
-rust-packages: CARGO=$(HOMEBREW_PREFIX)/bin/cargo
 rust-packages: rust
-	$(CARGO) install $(shell cat install/Rustfile)
+	cargo install $(shell cat install/Rustfile)
 
 test:
 	eval $$(fnm env); bats test
