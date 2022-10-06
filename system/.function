@@ -49,9 +49,3 @@ meteo() {
   fi
   curl -s "$LOCALE.wttr.in/$LOCATION"
 }
-
-# Markdown
-
-md() {
-  pandoc $1 | lynx -stdin -dump
-}
