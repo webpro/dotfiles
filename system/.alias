@@ -51,7 +51,6 @@ alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is link
 
 alias ni="npm install"
 alias nu="npm uninstall"
-alias nup="npm update"
 alias nri="rm -r node_modules && npm install"
 alias ncd="npm-check -su"
 
@@ -60,17 +59,10 @@ alias ncd="npm-check -su"
 alias ip="curl -s ipinfo.io | jq -r '.ip'"
 alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
-# Request using GET, POST, etc. method
-
-for METHOD in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-  alias "$METHOD"="lwp-request -m '$METHOD'"
-done
-unset METHOD
-
 # Miscellaneous
 
 alias hosts="sudo $EDITOR /etc/hosts"
 alias quit="exit"
 alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
-alias grip="grip -b"
+alias grip="grip --browser --user=webpro --pass=$GITHUB_TOKEN"
