@@ -1,4 +1,24 @@
 COMPUTER_NAME="Neo"
+LANGUAGES=(en nl)
+LOCALE="en_US@currency=EUR"
+MEASUREMENT_UNITS="Centimeters"
+SCREENSHOTS_FOLDER="${HOME}/Screenshots"
+
+# Topics
+#
+# - Computer & Host name
+# - Localization
+# - System
+# - Keyboard & Input
+# - Trackpad, mouse, Bluetooth accessories
+# - Screen
+# - Finder
+# - Dock
+# - Mail
+# - Calendar
+# - Terminal
+# - Activity Monitor
+# - Software Updates
 
 osascript -e 'tell application "System Preferences" to quit'
 
@@ -9,7 +29,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
-# General UI/UX                                                               #
+# Computer & Host name                                                        #
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
@@ -18,14 +38,29 @@ sudo scutil --set HostName "$COMPUTER_NAME"
 sudo scutil --set LocalHostName "$COMPUTER_NAME"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
 
+###############################################################################
+# Localization                                                                #
+###############################################################################
+
 # Set language and text formats
-defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
-defaults write NSGlobalDomain AppleLocale -string "en_US@currency=EUR"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleLanguages -array ${LANGUAGES[@]}
+defaults write NSGlobalDomain AppleLocale -string "$LOCALE"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "$MEASUREMENT_UNITS"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
-# Set the timezone (see `sudo systemsetup -listtimezones` for other values)
-sudo systemsetup -settimezone "Europe/Amsterdam" > /dev/null
+# Using systemsetup might give Error:-99, can be ignored (commands still work)
+# systemsetup manpage: https://ss64.com/osx/systemsetup.html
+
+# Set the time zone
+sudo defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
+sudo systemsetup -setusingnetworktime on
+
+###############################################################################
+# System                                                                      #
+###############################################################################
+
+# Restart automatically if the computer freezes (Error:-99 can be ignored)
+sudo systemsetup -setrestartfreeze on
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
@@ -38,6 +73,7 @@ defaults write com.apple.sound.beep.feedback -bool false
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
+sudo nvram StartupMute=%01
 
 # Menu bar: show battery percentage
 defaults write com.apple.menuextra.battery ShowPercent YES
@@ -70,9 +106,6 @@ defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
-
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
 
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
@@ -137,8 +170,9 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+# Save screenshots to the ~/Screenshots folder
+mkdir -p "${SCREENSHOTS_FOLDER}"
+defaults write com.apple.screencapture location -string "${SCREENSHOTS_FOLDER}"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -288,12 +322,6 @@ defaults write com.apple.iCal "Show Week Numbers" -bool true
 defaults write com.apple.iCal "first day of week" -int 1
 
 ###############################################################################
-# Spotlight                                                                   #
-###############################################################################
-
-# Spotlight is replaced by Raycast, nothing to do.
-
-###############################################################################
 # Terminal                                                                    #
 ###############################################################################
 
@@ -329,8 +357,8 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 # Enable the automatic update check
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
-# Check for software updates daily, not just once per week
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -bool true
+# Check for software updates weekly (`dot update` includes software updates)
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -string 7
 
 # Download newly available updates in background
 defaults write com.apple.SoftwareUpdate AutomaticDownload -bool true
