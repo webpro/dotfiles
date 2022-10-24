@@ -7,27 +7,6 @@ mk() {
 ff() { find . -type f -iname "*$1*";}
 fd() { find . -type d -iname "*$1*";}
 
-# Switch long/short prompt
-ps0() {
-  unset PROMPT_COMMAND
-  PS1='$ '
-}
-
-ps1() {
-  source "$DOTFILES_DIR"/system/.prompt
-}
-
-# Get named var (usage: get "VAR_NAME")
-
-get() {
-  echo "${!1}"
-}
-
-# Add to path
-prepend-path() {
-  [ -d $1 ] && PATH="$1:$PATH"
-}
-
 # Start an HTTP server from a directory, optionally specifying the port
 srv() {
     # Get port (if specified)

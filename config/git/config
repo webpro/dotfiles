@@ -1,47 +1,26 @@
 [user]
-  name = Andrea Carraro
-  email = me@andreacarraro.it
+name = Andrea Carraro
+email = me@andreacarraro.it
 
 [github]
-  user = toomuchdesign
+user = toomuchdesign
 
 [core]
-  ignorecase = false
+ignorecase = false
 
 [merge]
-  conflictstyle = diff3
+conflictstyle = diff3
 
 [pull]
-  ff = only
+ff = only
 
 [alias]
 
-  ###
-  # Aliases from:
-  # http://githowto.com/aliases
-
-    a = add .
-    co = checkout
-    ci = commit
-    cm = commit -m
-    ss = status
-    br = branch
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+### Aliases from: http://githowto.com/aliases
     type = cat-file -t
     dump = cat-file -p
 
-  ###
-  # Aliases from:
-  # http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
-
-    # List commits showing changed files
-    ls = log --pretty=format:"%C(yellow)%h\\ %C(green)(%ar)\\ %Creset%s%Cblue\\ [%cn]%Cred%d" --decorate
-
-    # List commits in short form, with colors and branch/tag annotations.
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-
-  ###
-  # Silvio GIT alias
+### Silvio GIT alias
 
     # Show the revision log graph using ASCII art
     lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
@@ -57,11 +36,7 @@
     # Do a flake8 run on about-to-be-committed files (only works from repo root).
     flake8 = ./bin/flake8  --config etc/flake8.ini `git diff --cached --name-only
 
-  ###
-  # More aliases
-
-    # list of conflicted files
-    conf = diff --name-only --diff-filter=U
+### More aliases
 
     # align local branches to origin
     pruneasorigin = git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d

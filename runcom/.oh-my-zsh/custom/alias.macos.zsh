@@ -1,14 +1,5 @@
 # Shortcuts
 
-alias gg="$DOTFILES_GIT_GUI"
-
-alias chrome="open -a ~/Applications/Google\ Chrome.app"
-alias canary="open -a ~/Applications/Google\ Chrome\ Canary.app"
-alias firefox="open -a ~/Applications/Firefox.app"
-
-# Flush DNS
-alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
 # Show/hide desktop icons
 alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
