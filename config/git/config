@@ -11,6 +11,9 @@ ignorecase = false
 [merge]
 conflictstyle = diff3
 
+[push]
+autoSetupRemote = true
+
 [pull]
 ff = only
 
