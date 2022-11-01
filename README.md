@@ -41,13 +41,17 @@ make
 
 ### iTerm
 
-Set zsh as default shell
+Set zsh as default shell:
 
 `Preferences` > `Profiles` > `General` > `Commands` > Set `Custom shell` + `/bin/zsh`
 
 ### DropBox
 
 Login and sync DropBox.
+
+### Raycast
+
+Import configuration from `install/raycast-configuration.rayconfig`.
 
 ### Chrome
 
