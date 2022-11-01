@@ -39,6 +39,12 @@ make
 
 ## Post-install
 
+### iTerm
+
+Set zsh as default shell
+
+`Preferences` > `Profiles` > `General` > `Commands` > Set `Custom shell` + `/bin/zsh`
+
 ### DropBox
 
 Login and sync DropBox.
