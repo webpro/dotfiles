@@ -82,3 +82,7 @@ Configure search engines (`Manage search engines`):
 ## Credits
 
 Many thanks to the [dotfiles community](https://dotfiles.github.io).
+
+## Todos
+
+- Auto configure local `dotfiles` git config with personal user info

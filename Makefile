@@ -59,6 +59,8 @@ link: sudo
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	mkdir -p $(XDG_CONFIG_HOME)
+	# Create an untracked zsh config file (for machine-specific setups)
+	touch ./runcom/.oh-my-zsh/custom/local.untracked.zsh
 	stow -t $(HOME) runcom
 	stow -t $(XDG_CONFIG_HOME) config
 
