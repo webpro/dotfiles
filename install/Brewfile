@@ -1,6 +1,5 @@
 brew "autojump"
 brew "coreutils"
-brew "dockutil"
 brew "fzf"
 brew "git"
 brew "jpeg"
