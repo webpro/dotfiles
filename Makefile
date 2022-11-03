@@ -2,7 +2,9 @@ DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 NVM_DIR := $(HOME)/.nvm
 export XDG_CONFIG_HOME = $(HOME)/.config
 
-install: sudo core packages link quartz-filters
+install: install-minimal install-extra
+install-minimal: sudo core packages link quartz-filters
+install-extra: cask-apps-extra
 
 sudo:
 	sudo -v
@@ -45,6 +47,9 @@ brew-packages:
 
 cask-apps:
 	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile --no-upgrade
+
+cask-apps-extra:
+	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile.extra --no-upgrade
 
 node-packages: npm
 	. $(NVM_DIR)/nvm.sh; npm install -g $(shell cat install/npmfile)

@@ -33,9 +33,11 @@ Use the [Makefile](./Makefile) to install everything [listed above](#package-ove
 ```
 cd ~/.dotfiles
 make
+# or:
+make install-minimal
 ```
 
-> If brew/cask **virtualbox** install fails go to `System Preferences > Security & Privacy > General`, and enable `Oracle` under `Allow apps downloaded from:`.
+`make install-minimal` installs a few less applications.
 
 ## Post-install
 

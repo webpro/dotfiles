@@ -1,0 +1,5 @@
+cask "calibre"
+cask "handbrake"
+cask "libreoffice"
+cask "thunderbird"
+cask "tor-browser"
