@@ -53,7 +53,7 @@ Login and sync DropBox.
 
 ### Raycast
 
-Import configuration from `install/raycast-configuration.rayconfig`.
+Import configuration from `install/raycast/raycast-configuration.rayconfig`.
 
 ### Chrome
 
