@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Giphy search
+# @raycast.title Giphy search gifs
 # @raycast.mode silent
 # @raycast.author Zander Martineau
 # @raycast.authorURL https://zander.wtf
