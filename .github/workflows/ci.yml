@@ -3,7 +3,7 @@ name: Dotfiles Installation
 on:
   push:
   schedule:
-    - cron: '0 17 * * 4' # Every Thursday 5:00PM
+    - cron: "0 17 * * 4" # Every Thursday 5:00PM
 
 jobs:
   install:
@@ -28,7 +28,7 @@ jobs:
           sudo softwareupdate -i -a
 
       - name: Clone this repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install using Makefile
         run: |
