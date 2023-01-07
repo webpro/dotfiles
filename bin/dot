@@ -28,8 +28,6 @@ sub_test () {
 
 sub_update () {
   topgrade
-  echo "―― npm (manual) ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
-  npm update -g
 }
 
 sub_clean () {

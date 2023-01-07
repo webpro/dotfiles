@@ -2,8 +2,7 @@
 assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-# Do npm manually, as "node" also does Yarn and pnpm
-disable = ["containers", "git_repos", "node"]
+disable = ["containers", "git_repos", "pnpm", "yarn"]
 
 # Display the time in step titles
 display_time = false
