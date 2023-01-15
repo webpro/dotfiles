@@ -23,9 +23,9 @@ jobs:
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
 
       - name: Download and install available system updates
-        if: startsWith(matrix.os, 'macos')
-        run: |
-          sudo softwareupdate -i -a
+        # Step disabled since it also tries to update macOS itself and there seems no way to disable this
+        if: ${{ false && startsWith(matrix.os, 'macos') }}
+        run: sudo softwareupdate -i -a
 
       - name: Clone this repository
         uses: actions/checkout@v3
