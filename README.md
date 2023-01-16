@@ -2,7 +2,7 @@
 
 These are my dotfiles. Take anything you want, but at your own risk.
 
-It mainly targets macOS systems, but it works on at least Ubuntu as well.
+It mainly targets macOS systems (but it works on at least Ubuntu as well).
 
 ## Highlights
 
@@ -75,7 +75,7 @@ The installation process in the Makefile is tested on every push and every week 
 
 ## The `dotfiles` command
 
-```bash
+```
 $ dot help
 Usage: dot <command>
 

@@ -17,6 +17,15 @@ sub_help () {
   echo "   update           Update packages and pkg managers (brew, casks, cargo, pip3, npm, gems, macOS)"
 }
 
+sub_clean () {
+  brew cleanup
+  gem cleanup
+}
+
+sub_dock () {
+  . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
+}
+
 sub_edit () {
   sh -c "$DOTFILES_IDE $DOTFILES_DIR"
   sh -c "$DOTFILES_GIT_GUI $DOTFILES_DIR"
@@ -30,20 +39,11 @@ sub_update () {
   topgrade
 }
 
-sub_clean () {
-  brew cleanup
-  gem cleanup
-}
-
 sub_macos () {
   for DEFAULTS_FILE in "${DOTFILES_DIR}"/macos/defaults*.sh; do
     echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
   done
   echo "Done. Some changes may require a logout/restart to take effect."
-}
-
-sub_dock () {
-  . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
 }
 
 case $COMMAND_NAME in
