@@ -1,8 +1,9 @@
 SHELL = /bin/bash
-OS := $(shell bin/is-supported bin/is-macos macos linux)
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-SHELLS := /private/etc/shells
+PATH := $(DOTFILES_DIR)/bin:$(PATH)
+OS := $(shell bin/is-supported bin/is-macos macos linux)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local)
+SHELLS := /private/etc/shells
 BASH_BIN := $(HOMEBREW_PREFIX)/bin/bash
 BREW_BIN := $(HOMEBREW_PREFIX)/bin/brew
 CARGO_BIN := $(HOMEBREW_PREFIX)/bin/cargo
