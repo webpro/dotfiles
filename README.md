@@ -70,8 +70,10 @@ The installation process in the Makefile is tested on every push and every week 
 - `dot macos` (set [macOS defaults](./macos/defaults.sh))
 - Mackup
   - Log in to Dropbox (and wait until synced)
-  - `ln -s ~/.config/mackup/.mackup.cfg ~` (until [#632](https://github.com/lra/mackup/pull/632) is fixed)
+  - `cd && ln -s ~/.config/mackup/.mackup.cfg ~`
   - `mackup restore`
+- Start `Hammerspoon` once and set "Launch Hammerspoon at login"
+- `touch ~/.dotfiles/system/.exports` and populate this file with tokens (e.g. `export GITHUB_TOKEN=abc`)
 
 ## The `dotfiles` command
 
