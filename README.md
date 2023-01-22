@@ -26,7 +26,7 @@ It mainly targets macOS systems (but it works on at least Ubuntu as well).
 - Latest Git, Bash, Python, GNU coreutils, curl, Ruby
 - [Hammerspoon](https://www.hammerspoon.org) (config: [keybindings & window management](./config/hammerspoon))
 - [Mackup](https://github.com/lra/mackup) (sync application settings)
-- `$EDITOR` (and Git editor) is [GNU nano](https://www.nano-editor.org)
+- `$EDITOR` is [GNU nano](https://www.nano-editor.org) (`$VISUAL` is `code` and Git `core.editor` is `code --wait`)
 
 ## Installation
 

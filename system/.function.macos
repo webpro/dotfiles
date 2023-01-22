@@ -7,8 +7,8 @@ function cdf() {
 # Dev
 
 d() {
-  $DOTFILES_IDE ${1:-.}
-  $DOTFILES_GIT_GUI ${1:-.}
+  $VISUAL ${1:-.}
+  $VISUAL_GIT ${1:-.}
 }
 
 # Open man page as PDF

@@ -4,7 +4,7 @@ alias cpwd="pwd|tr -d '\n'|pbcopy"
 
 # Shortcuts
 
-alias gg="$DOTFILES_GIT_GUI"
+alias gg="$VISUAL_GIT"
 
 alias cask="brew cask"
 
