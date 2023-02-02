@@ -2,7 +2,7 @@
 
 These are my dotfiles. Take anything you want, but at your own risk.
 
-It mainly targets macOS systems (but it works on at least Ubuntu as well).
+It mainly targets macOS systems (should install on e.g. Ubuntu as well for many tools, config and aliases etc).
 
 ## Highlights
 
@@ -12,10 +12,10 @@ It mainly targets macOS systems (but it works on at least Ubuntu as well).
 - Fast and colored prompt
 - Updated macOS defaults
 - Well-organized and easy to customize
-- The installation and runcom setup is [tested weekly on real Ubuntu and macOS
-  machines](https://github.com/webpro/dotfiles/actions) (Big Sur and Monterey;
-  Catalina should still be fine too) using [a GitHub
-  Action](./.github/workflows/dotfiles-installation.yml)
+- The installation and runcom setup is
+  [tested weekly on real Ubuntu and macOS machines](https://github.com/webpro/dotfiles/actions)
+  (Big Sur/11, Monterey/12) using [a GitHub Action](./.github/workflows/dotfiles-installation.yml)
+  (currently on Ventura/13 myself)
 - Supports both Apple Silicon (M1) and Intel chips
 
 ## Packages Overview
