@@ -35,6 +35,7 @@ brew "the_silver_searcher"
 
 # languages/tools
 brew "fnm"
+brew "gh"
 brew "python"
 brew "rust"
 brew "shellcheck"
