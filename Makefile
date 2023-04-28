@@ -57,9 +57,6 @@ node-packages: npm
 #
 # LINK
 #
-stow:
-	stow || brew install stow
-
 link: sudo
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
