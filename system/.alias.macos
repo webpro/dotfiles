@@ -32,10 +32,6 @@ alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 
 alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-# Quick-Look preview files from the command line
-
-alias ql="qlmanage -p &>/dev/null"
-
 # Show/hide desktop icons
 
 alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killfinder"

@@ -92,7 +92,6 @@ cask-apps: brew
 	$(BREW_BIN) bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
-	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 node-packages: npm
 	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
