@@ -4,11 +4,7 @@ PATH := $(DOTFILES_DIR)/bin:$(PATH)
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-macos $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local) /home/linuxbrew/.linuxbrew)
 SHELLS := /private/etc/shells
-BASH_BIN := $(HOMEBREW_PREFIX)/bin/bash
-BREW_BIN := $(HOMEBREW_PREFIX)/bin/brew
-CARGO_BIN := $(HOMEBREW_PREFIX)/bin/cargo
-FNM_BIN := $(HOMEBREW_PREFIX)/bin/fnm
-STOW_BIN := $(HOMEBREW_PREFIX)/bin/stow
+BIN := $(HOMEBREW_PREFIX)/bin
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
@@ -46,12 +42,12 @@ link: stow-$(OS)
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	mkdir -p $(XDG_CONFIG_HOME)
-	$(STOW_BIN) -t $(HOME) runcom
-	$(STOW_BIN) -t $(XDG_CONFIG_HOME) config
+	$(BIN)/stow -t $(HOME) runcom
+	$(BIN)/stow -t $(XDG_CONFIG_HOME) config
 
 unlink: stow-$(OS)
-	$(STOW_BIN) --delete -t $(HOME) runcom
-	$(STOW_BIN) --delete -t $(XDG_CONFIG_HOME) config
+	$(BIN)/stow --delete -t $(HOME) runcom
+	$(BIN)/stow --delete -t $(XDG_CONFIG_HOME) config
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
@@ -60,36 +56,36 @@ brew:
 
 bash: brew
 ifdef GITHUB_ACTION
-	if ! grep -q $(BASH_BIN) $(SHELLS); then \
-		$(BREW_BIN) install bash bash-completion@2 pcre && \
-		sudo append $(BASH_BIN) $(SHELLS) && \
-		sudo chsh -s $(BASH_BIN); \
+	if ! grep -q $(BIN)/bash $(SHELLS); then \
+		$(BIN)/brew install bash bash-completion@2 pcre && \
+		sudo append $(BIN)/bash $(SHELLS) && \
+		sudo chsh -s $(BIN)/bash; \
 	fi
 else
-	if ! grep -q $(BASH_BIN) $(SHELLS); then \
-		$(BREW_BIN) install bash bash-completion@2 pcre && \
-		sudo append $(BASH_BIN) $(SHELLS) && \
-		chsh -s $(BASH_BIN); \
+	if ! grep -q $(BIN)/bash $(SHELLS); then \
+		$(BIN)/brew install bash bash-completion@2 pcre && \
+		sudo append $(BIN)/bash $(SHELLS) && \
+		chsh -s $(BIN)/bash; \
 	fi
 endif
 
 git: brew
-	$(BREW_BIN) install git git-extras
+	$(BIN)/brew install git git-extras
 
 npm: brew-packages
-	$(FNM_BIN) install --lts
+	$(BIN)/fnm install --lts
 
 ruby: brew
-	$(BREW_BIN) install ruby
+	$(BIN)/brew install ruby
 
 rust: brew
-	$(BREW_BIN) install rust
+	$(BIN)/brew install rust
 
 brew-packages: brew
-	$(BREW_BIN) bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
+	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
 
 cask-apps: brew
-	$(BREW_BIN) bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
+	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 
@@ -97,7 +93,7 @@ node-packages: npm
 	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
 
 rust-packages: rust
-	$(CARGO_BIN) install $(shell cat install/Rustfile)
+	$(BIN)/cargo install $(shell cat install/Rustfile)
 
 test:
 	eval $$(fnm env); bats test
