@@ -16,6 +16,7 @@ brew "topgrade"
 brew "bat"
 brew "croc"
 brew "httpie"
+brew "ngrok"
 brew "ssh-copy-id"
 brew "tree"
 brew "unar"
@@ -43,6 +44,7 @@ brew "shellcheck"
 # media
 brew "ffmpeg"
 brew "imagemagick"
+brew "uni"
 brew "webp"
 
 # misc
