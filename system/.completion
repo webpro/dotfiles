@@ -24,7 +24,7 @@ fi
 # fnm
 
 if is-executable fnm; then
-  . <(fnm completions)
+  . <(fnm completions --shell bash)
 fi
 
 # Git
