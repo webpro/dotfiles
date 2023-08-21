@@ -1,5 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/core"
 tap "lotyp/homebrew-formulae"
 
 # core/dotfiles
