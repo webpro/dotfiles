@@ -68,3 +68,6 @@ git-cleanup() {
     fi
   fi
 }
+
+# Kill port
+kill() { kill -9 $(lsof -t -i :$1);}
