@@ -6,6 +6,7 @@ HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-macos $(shell bin/is-supporte
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
 export XDG_CONFIG_HOME = $(HOME)/.config
+export N_PREFIX = $(HOME)/.n
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
 
@@ -73,7 +74,7 @@ git: brew
 	$(BIN)/brew install git git-extras
 
 npm: brew-packages
-	$(BIN)/fnm install --lts
+	$(BIN)/n install lts
 
 ruby: brew
 	$(BIN)/brew install ruby
@@ -90,10 +91,10 @@ cask-apps: brew
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 
 node-packages: npm
-	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
+	$(N_PREFIX)/bin/npm install -g $(shell cat install/npmfile)
 
 rust-packages: rust
 	$(BIN)/cargo install $(shell cat install/Rustfile)
 
 test:
-	eval $$(fnm env); bats test
+	bats test

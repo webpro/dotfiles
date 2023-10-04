@@ -1,3 +1,0 @@
-[ ! -f ".node-version" ] && echo "18.16.0" > .node-version
-eval "$(fnm env --use-on-cd)"
-FNM_DIR=$XDG_DATA_HOME/fnm

@@ -21,12 +21,6 @@ if is-executable npm; then
   . <(npm completion)
 fi
 
-# fnm
-
-if is-executable fnm; then
-  . <(fnm completions --shell bash)
-fi
-
 # Git
 
 if is-executable git; then

@@ -20,7 +20,7 @@ prepend-path "$DOTFILES_DIR/bin"
 prepend-path "$HOME/.cargo/bin"
 prepend-path "/sbin"
 prepend-path "/usr/sbin"
-prepend-path "$HOME/.local/share/fnm"
+prepend-path "$N_PREFIX/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755

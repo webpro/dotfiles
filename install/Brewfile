@@ -34,8 +34,8 @@ brew "psgrep"
 brew "the_silver_searcher"
 
 # languages/tools
-brew "fnm"
 brew "gh"
+brew "n"
 brew "python"
 brew "rust"
 brew "shellcheck"
