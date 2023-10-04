@@ -8,7 +8,9 @@ export HOMEBREW_PREFIX=$($DOTFILES_DIR/bin/is-supported $DOTFILES_DIR/bin/is-arm
 # Prepend new items to path (if directory exists)
 
 prepend-path "/bin"
+prepend-path "/sbin"
 prepend-path "/usr/bin"
+prepend-path "/usr/sbin"
 prepend-path "/usr/local/bin"
 prepend-path "$HOMEBREW_PREFIX/bin"
 prepend-path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
@@ -17,9 +19,10 @@ prepend-path "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
 prepend-path "$HOMEBREW_PREFIX/opt/python/libexec/bin"
 prepend-path "$HOMEBREW_PREFIX/opt/ruby/bin"
 prepend-path "$DOTFILES_DIR/bin"
+prepend-path "$HOME/.bun/bin"
 prepend-path "$HOME/.cargo/bin"
-prepend-path "/sbin"
-prepend-path "/usr/sbin"
+prepend-path "$HOME/.deno/bin"
+prepend-path "$HOME/.local/share/pnpm"
 prepend-path "$N_PREFIX/bin"
 
 # Remove duplicates (preserving prepended items)
