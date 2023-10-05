@@ -2,11 +2,11 @@ SHELL = /bin/bash
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-macos $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local) /home/linuxbrew/.linuxbrew)
-PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(PATH)
+export N_PREFIX = $(HOME)/.n
+PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(N_PREFIX)/bin:$(PATH)
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
 export XDG_CONFIG_HOME = $(HOME)/.config
-export N_PREFIX = $(HOME)/.n
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
 
@@ -18,7 +18,7 @@ macos: sudo core-macos packages link duti
 
 linux: core-linux link
 
-core-macos: brew bash git npm ruby rust
+core-macos: brew bash git npm
 
 core-linux:
 	apt-get update
@@ -76,24 +76,20 @@ git: brew
 npm: brew-packages
 	n install lts
 
-ruby: brew
-	brew install ruby
-
-rust: brew
-	brew install rust
-
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
 
 cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+
+vscode-extensions: cask-apps
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 
 node-packages: npm
 	$(N_PREFIX)/bin/npm install -g $(shell cat install/npmfile)
 
-rust-packages: rust
+rust-packages: brew-packages
 	cargo install $(shell cat install/Rustfile)
 
 duti:

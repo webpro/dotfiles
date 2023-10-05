@@ -37,6 +37,7 @@ brew "the_silver_searcher"
 brew "gh"
 brew "n"
 brew "python"
+brew "ruby"
 brew "rust"
 brew "shellcheck"
 
