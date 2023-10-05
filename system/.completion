@@ -26,3 +26,7 @@ fi
 if is-executable git; then
   . "$BREW_PREFIX/etc/bash_completion.d/git-completion.bash"
 fi
+
+# pnpm
+
+[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . $HOME/.config/tabtab/bash/__tabtab.bash || true

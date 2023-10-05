@@ -8,6 +8,7 @@ npm
 npm-check
 prettier
 release-it
+pnpm
 svgo
 tldr
 underscore-cli
