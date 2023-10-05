@@ -1,8 +1,8 @@
 SHELL = /bin/bash
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-PATH := $(DOTFILES_DIR)/bin:$(PATH)
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-macos $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local) /home/linuxbrew/.linuxbrew)
+PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(PATH)
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
 export XDG_CONFIG_HOME = $(HOME)/.config
@@ -43,12 +43,12 @@ link: stow-$(OS)
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	mkdir -p $(XDG_CONFIG_HOME)
-	$(BIN)/stow -t $(HOME) runcom
-	$(BIN)/stow -t $(XDG_CONFIG_HOME) config
+	stow -t $(HOME) runcom
+	stow -t $(XDG_CONFIG_HOME) config
 
 unlink: stow-$(OS)
-	$(BIN)/stow --delete -t $(HOME) runcom
-	$(BIN)/stow --delete -t $(XDG_CONFIG_HOME) config
+	stow --delete -t $(HOME) runcom
+	stow --delete -t $(XDG_CONFIG_HOME) config
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
@@ -57,36 +57,36 @@ brew:
 
 bash: brew
 ifdef GITHUB_ACTION
-	if ! grep -q $(BIN)/bash $(SHELLS); then \
-		$(BIN)/brew install bash bash-completion@2 pcre && \
-		sudo append $(BIN)/bash $(SHELLS) && \
-		sudo chsh -s $(BIN)/bash; \
+	if ! grep -q bash $(SHELLS); then \
+		brew install bash bash-completion@2 pcre && \
+		sudo append bash $(SHELLS) && \
+		sudo chsh -s bash; \
 	fi
 else
-	if ! grep -q $(BIN)/bash $(SHELLS); then \
-		$(BIN)/brew install bash bash-completion@2 pcre && \
-		sudo append $(BIN)/bash $(SHELLS) && \
-		chsh -s $(BIN)/bash; \
+	if ! grep -q bash $(SHELLS); then \
+		brew install bash bash-completion@2 pcre && \
+		sudo append bash $(SHELLS) && \
+		chsh -s bash; \
 	fi
 endif
 
 git: brew
-	$(BIN)/brew install git git-extras
+	brew install git git-extras
 
 npm: brew-packages
-	$(BIN)/n install lts
+	n install lts
 
 ruby: brew
-	$(BIN)/brew install ruby
+	brew install ruby
 
 rust: brew
-	$(BIN)/brew install rust
+	brew install rust
 
 brew-packages: brew
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
+	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
 
 cask-apps: brew
-	$(BIN)/brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
+	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 
@@ -94,7 +94,7 @@ node-packages: npm
 	$(N_PREFIX)/bin/npm install -g $(shell cat install/npmfile)
 
 rust-packages: rust
-	$(BIN)/cargo install $(shell cat install/Rustfile)
+	cargo install $(shell cat install/Rustfile)
 
 duti:
 	duti -v $(DOTFILES_DIR)/install/duti
