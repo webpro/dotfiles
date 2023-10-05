@@ -4,6 +4,7 @@ tap "lotyp/homebrew-formulae"
 # core/dotfiles
 brew "bats-core"
 brew "coreutils"
+brew "duti"
 brew "lotyp/formulae/dockutil"
 brew "mackup"
 brew "nano"
