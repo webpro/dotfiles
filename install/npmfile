@@ -3,7 +3,6 @@ fkill-cli
 get-port-cli
 gtop
 local-web-server
-nodemon
 npm
 npm-check
 prettier
