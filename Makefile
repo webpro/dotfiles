@@ -45,6 +45,8 @@ link: stow-$(OS)
 	mkdir -p $(XDG_CONFIG_HOME)
 	stow -t $(HOME) runcom
 	stow -t $(XDG_CONFIG_HOME) config
+	mkdir -p $(HOME)/.local/runtime
+	chmod 700 $(HOME)/.local/runtime
 
 unlink: stow-$(OS)
 	stow --delete -t $(HOME) runcom
