@@ -21,6 +21,12 @@
 [pull]
 	rebase = true
 
+[rerere]
+	enabled = true
+
+[rebase]
+	autoStash = true
+
 [init]
 	defaultBranch = main
 
