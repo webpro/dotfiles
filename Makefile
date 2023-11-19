@@ -89,7 +89,7 @@ vscode-extensions: cask-apps
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 
 node-packages: npm
-	$(N_PREFIX)/bin/npm install -g $(shell cat install/npmfile)
+	$(N_PREFIX)/bin/npm install --force --global $(shell cat install/npmfile)
 
 rust-packages: brew-packages
 	cargo install $(shell cat install/Rustfile)
