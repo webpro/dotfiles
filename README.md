@@ -14,8 +14,7 @@ It mainly targets macOS systems (should install on e.g. Ubuntu as well for many 
 - Well-organized and easy to customize
 - The installation and runcom setup is
   [tested weekly on real Ubuntu and macOS machines](https://github.com/webpro/dotfiles/actions)
-  (Big Sur/11, Monterey/12) using [a GitHub Action](./.github/workflows/dotfiles-installation.yml)
-  (currently on Ventura/13 myself)
+  (Big Sur/11, Monterey/12 and Ventura/13) using [a GitHub Action](./.github/workflows/dotfiles-installation.yml)
 - Supports both Apple Silicon (M1) and Intel chips
 
 ## Packages Overview
@@ -53,16 +52,16 @@ This will clone or download this repo to `~/.dotfiles` (depending on the availab
 git clone https://github.com/webpro/dotfiles.git ~/.dotfiles
 ```
 
-Use the [Makefile](./Makefile) to install the [packages listed above](#packages-overview), and symlink
-[runcom](./runcom) and [config](./config) files (using [stow](https://www.gnu.org/software/stow/)):
+2. Use the [Makefile](./Makefile) to install the [packages listed above](#packages-overview), and symlink
+   [runcom](./runcom) and [config](./config) files (using [stow](https://www.gnu.org/software/stow/)):
 
 ```bash
 cd ~/.dotfiles
 make
 ```
 
-The installation process in the Makefile is tested on every push and every week in this
-[GitHub Action](https://github.com/webpro/dotfiles/actions).
+Running `make` with the Makefile is idempotent. The installation process in the Makefile is tested on every push and every week in this
+[GitHub Action](https://github.com/webpro/dotfiles/actions). Please file an issue in this repo if there are errors.
 
 ## Post-Installation
 
@@ -75,7 +74,7 @@ The installation process in the Makefile is tested on every push and every week 
 - Start `Hammerspoon` once and set "Launch Hammerspoon at login"
 - `touch ~/.dotfiles/system/.exports` and populate this file with tokens (e.g. `export GITHUB_TOKEN=abc`)
 
-## The `dotfiles` command
+## The `dot` command
 
 ```
 $ dot help
