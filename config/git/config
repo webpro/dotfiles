@@ -62,7 +62,7 @@
 	pf = push --force
 	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
-	st = status
+	s = status
 	stl = ls-files -m -o --exclude-standard
 	sts = status -sb
 	unstage = reset --hard HEAD
