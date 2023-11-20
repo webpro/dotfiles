@@ -52,7 +52,6 @@ alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is link
 alias p="pnpm"
 alias ni="npm install"
 alias nu="npm uninstall"
-alias nri="rm -r node_modules && npm install"
 alias ncd="npm-check -su"
 
 # Network
