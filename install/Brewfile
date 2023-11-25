@@ -23,10 +23,9 @@ brew "wget"
 brew "zoxide"
 
 # search/grep/diff
-brew "diff-so-fancy"
-brew "difftastic"
 brew "fd"
 brew "fzf"
+brew "git-delta"
 brew "gnu-sed"
 brew "grep"
 brew "jq"

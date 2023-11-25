@@ -12,7 +12,7 @@
 	trustctime = false
 	autocrlf = input
 	untrackedCache = true
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 	ignorecase = false
 
 [credential]
@@ -70,7 +70,7 @@
 [diff]
 	renames = copies
 	indentHeuristic = true
-	tool = Kaleidoscope
+	colorMoved = default
 [difftool]
 	prompt = false
 [difftool "sourcetree"]
@@ -78,7 +78,6 @@
 	path =
 
 [merge]
-	tool = Kaleidoscope
 	conflictstyle = diff3
 	defaultToUpstream = true
 [mergetool]
@@ -86,6 +85,10 @@
 [mergetool "sourcetree"]
 	cmd = code --wait $MERGED
 	trustExitCode = true
+
+[delta]
+  navigate = true
+  light = false
 
 [color]
 	ui = auto
