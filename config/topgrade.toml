@@ -3,10 +3,13 @@
 assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["containers", "git_repos", "pnpm", "yarn"]
+disable = ["containers", "git_repos", "pnpm", "yarn", "node"]
 
 # Display the time in step titles
 display_time = false
 
 # Cleanup temporary or old files
 cleanup = true
+
+[commands]
+"npm" = "npm update --location global --force"
