@@ -2,27 +2,17 @@
 
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
-# Shortcuts
+# Application shortcuts
 
 alias gg="$VISUAL_GIT"
 
-alias cask="brew cask"
-
-alias chrome="open -a ~/Applications/Google\ Chrome.app"
-alias canary="open -a ~/Applications/Google\ Chrome\ Canary.app"
-alias firefox="open -a ~/Applications/Firefox.app"
+alias chrome="open -a /Applications/Google\ Chrome.app"
+alias canary="open -a /Applications/Google\ Chrome\ Canary.app"
+alias firefox="open -a /Applications/Firefox.app"
 
 # Exclude macOS specific files in ZIP archives
 
 alias zip="zip -x *.DS_Store -x *__MACOSX* -x *.AppleDouble*"
-
-# Open iOS Simulator
-
-alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app"
-
-# Flush DNS
-
-alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # Start screen saver
 
@@ -48,7 +38,7 @@ alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/La
 
 # Empty trash on mounted volumes and main HDD, and clear system logs
 
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash/*; sudo rm -rfv /private/var/log/asl/*.asl"
 
 # Reload native apps
 
@@ -57,15 +47,8 @@ alias killdock="killall Dock"
 alias killmenubar="killall SystemUIServer NotificationCenter"
 alias killos="killfinder && killdock && killmenubar"
 
-# Kill all the tabs in Chrome to free up memory
-
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
-
 # Show system information
 
 alias displays="system_profiler SPDisplaysDataType"
 alias cpu="sysctl -n machdep.cpu.brand_string"
 alias ram="top -l 1 -s 0 | grep PhysMem"
-
-alias pbtext="pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy"
-alias pbspaces="pbpaste | expand | pbcopy"

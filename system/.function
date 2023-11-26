@@ -15,17 +15,6 @@ get() {
   echo "${!1}"
 }
 
-# Show 256 TERM colors
-
-colors() {
-  local X=$(tput op)
-  local Y=$(printf %$((COLUMNS-6))s)
-  for i in {0..256}; do
-  o=00$i;
-  echo -e ${o:${#o}-3:3} $(tput setaf $i;tput setab $i)${Y// /=}$X;
-  done
-}
-
 # Calculator
 
 calc() {
@@ -36,10 +25,7 @@ calc() {
 
 meteo() {
   local LOCALE=$(echo ${LANG:-en} | cut -c1-2)
-  if [ $# -eq 0 ]; then
-    local LOCATION=$(curl -s ipinfo.io/loc)
-  else
-    local LOCATION=$1
-  fi
-  curl -s "$LOCALE.wttr.in/$LOCATION"
+  local LOCATION="$*"
+  LOCATION="${LOCATION// /%20}"
+  curl -s "$LOCALE.wttr.in/${LOCATION:-}"
 }
