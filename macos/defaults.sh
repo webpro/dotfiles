@@ -60,7 +60,7 @@ sudo systemsetup -setusingnetworktime on
 ###############################################################################
 
 # Restart automatically if the computer freezes (Error:-99 can be ignored)
-sudo systemsetup -setrestartfreeze on
+sudo systemsetup -setrestartfreeze on 2> /dev/null
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
