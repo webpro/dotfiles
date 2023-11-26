@@ -64,14 +64,28 @@ Running `make` with the Makefile is idempotent. The installation process in the 
 
 ## Post-Installation
 
-- `dot dock` (set [Dock items](./macos/dock.sh))
-- `dot macos` (set [macOS defaults](./macos/defaults.sh))
-- Mackup
-  - Log in to Dropbox (and wait until synced)
-  - `cd && ln -s ~/.config/mackup/.mackup.cfg ~`
-  - `mackup restore`
-- Start `Hammerspoon` once and set "Launch Hammerspoon at login"
-- `touch ~/.dotfiles/system/.exports` and populate this file with tokens (e.g. `export GITHUB_TOKEN=abc`)
+1. Set your Git credentials:
+
+```sh
+git config --global user.name "your name"
+git config --global user.email "your@email.com"
+git config --global github.user "your-github-username"
+```
+
+2. Set macOS [Dock items](./macos/dock.sh) and [system defaults](./macos/defaults.sh):
+
+```sh
+dot dock
+dot macos
+```
+
+3. Start Hammerspoon once and set "Launch Hammerspoon at login".
+
+4. Populate this file with tokens (example: `export GITHUB_TOKEN=abc`):
+
+```sh
+touch ~/.dotfiles/system/.exports
+```
 
 ## The `dot` command
 
@@ -91,7 +105,7 @@ Commands:
 
 ## Customize
 
-To customize the dotfiles to your likings, fork it and make sure to modify the locations above to your fork.
+To customize the dotfiles to your likings, fork it and [be the king of your castle!](https://www.webpro.nl/articles/getting-started-with-dotfiles)
 
 ## Credits
 
