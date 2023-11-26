@@ -2,7 +2,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 
 cask "docker"
-cask "dropbox"
+cask "proton-drive"
 cask "firefox"
 cask "font-fira-code"
 cask "font-hack"
