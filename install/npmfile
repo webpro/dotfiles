@@ -4,7 +4,7 @@ get-port-cli
 gtop
 local-web-server
 npm
-npm-check
+npm-check-updates
 prettier
 release-it
 pnpm

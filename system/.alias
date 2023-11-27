@@ -52,7 +52,8 @@ alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is link
 alias p="pnpm"
 alias ni="npm install"
 alias nu="npm uninstall"
-alias ncd="npm-check -su"
+alias ncu="npm-check-updates --interactive"
+alias ncuw="npm-check-updates --interactive --root --workspaces"
 
 # Network
 
