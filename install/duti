@@ -43,6 +43,7 @@ com.microsoft.VSCode .prettierignore editor
 com.microsoft.VSCode .prettierrc editor
 com.microsoft.VSCode .prompt editor
 com.microsoft.VSCode .sh editor
+com.microsoft.VSCode .snap editor
 com.microsoft.VSCode .svelte editor
 com.microsoft.VSCode .toml editor
 com.microsoft.VSCode .ts editor
