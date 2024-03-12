@@ -15,6 +15,7 @@ sub_help () {
   echo "   macos            Apply macOS system defaults"
   echo "   test             Run tests"
   echo "   update           Update packages and pkg managers (brew, casks, cargo, pip3, npm, gems, macOS)"
+  echo "   duti             Reload duti settings"
 }
 
 sub_clean () {
@@ -43,6 +44,10 @@ sub_test () {
 
 sub_update () {
   topgrade
+}
+
+sub_duti () {
+  duti -v "${DOTFILES_DIR}/install/duti"
 }
 
 sub_macos () {
