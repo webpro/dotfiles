@@ -61,14 +61,14 @@ bash: brew
 ifdef GITHUB_ACTION
 	if ! grep -q bash $(SHELLS); then \
 		brew install bash bash-completion@2 pcre && \
-		sudo append bash $(SHELLS) && \
-		sudo chsh -s bash; \
+		sudo append $(shell which bash) $(SHELLS) && \
+		sudo chsh -s $(shell which bash); \
 	fi
 else
 	if ! grep -q bash $(SHELLS); then \
 		brew install bash bash-completion@2 pcre && \
-		sudo append bash $(SHELLS) && \
-		chsh -s bash; \
+		sudo append $(shell which bash) $(SHELLS) && \
+		chsh -s $(shell which bash); \
 	fi
 endif
 
