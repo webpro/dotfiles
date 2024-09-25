@@ -10,12 +10,12 @@ sub_help () {
   echo "Commands:"
   echo "   clean            Clean up caches (brew, cargo, gem, pip)"
   echo "   dock             Apply macOS Dock settings"
+  echo "   duti             Set default apps for file types (UTI)"
   echo "   edit             Open dotfiles in IDE ($VISUAL) and Git GUI ($VISUAL_GIT)"
   echo "   help             This help message"
   echo "   macos            Apply macOS system defaults"
   echo "   test             Run tests"
   echo "   update           Update packages and pkg managers (brew, casks, cargo, pip3, npm, gems, macOS)"
-  echo "   duti             Reload duti settings"
 }
 
 sub_clean () {

@@ -12,6 +12,7 @@ com.microsoft.VSCode .conf editor
 com.microsoft.VSCode .config editor
 com.microsoft.VSCode .css editor
 com.microsoft.VSCode .csv editor
+com.microsoft.VSCode .cts editor
 com.microsoft.VSCode .dir_colors editor
 com.microsoft.VSCode .env editor
 com.microsoft.VSCode .exports editor
@@ -23,6 +24,7 @@ com.microsoft.VSCode .function_text editor
 com.microsoft.VSCode .gitignore editor
 com.microsoft.VSCode .graphql editor
 com.microsoft.VSCode .grep editor
+com.microsoft.VSCode .ignore editor
 com.microsoft.VSCode .ignore editor
 com.microsoft.VSCode .ini editor
 com.microsoft.VSCode .inputrc editor
@@ -38,6 +40,7 @@ com.microsoft.VSCode .map editor
 com.microsoft.VSCode .md editor
 com.microsoft.VSCode .mdx editor
 com.microsoft.VSCode .mjs editor
+com.microsoft.VSCode .mts editor
 com.microsoft.VSCode .n editor
 com.microsoft.VSCode .path editor
 com.microsoft.VSCode .prettierignore editor
@@ -46,6 +49,7 @@ com.microsoft.VSCode .prompt editor
 com.microsoft.VSCode .sh editor
 com.microsoft.VSCode .snap editor
 com.microsoft.VSCode .svelte editor
+com.microsoft.VSCode .svg editor
 com.microsoft.VSCode .toml editor
 com.microsoft.VSCode .ts editor
 com.microsoft.VSCode .tsv editor
@@ -58,9 +62,9 @@ com.microsoft.VSCode .zoxide editor
 com.microsoft.VSCode Brewfile editor
 com.microsoft.VSCode Caskfile editor
 com.microsoft.VSCode Codefile editor
+com.microsoft.VSCode Dockerfile editor
 com.microsoft.VSCode Makefile editor
 com.microsoft.VSCode npmfile editor
-com.microsoft.VSCode Dockerfile editor
 org.videolan.vlc .3gp all
 org.videolan.vlc .aac all
 org.videolan.vlc .aif all
