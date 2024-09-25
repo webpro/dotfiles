@@ -65,6 +65,7 @@
 
 	patch = !git --no-pager diff --no-color
 	show-ignored = !git clean -ndX | perl -pe 's/Would remove //'
+	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
 
 [diff]
 	renames = copies
