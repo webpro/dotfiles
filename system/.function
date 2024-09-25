@@ -9,6 +9,11 @@ ps1() {
   source "$DOTFILES_DIR"/system/.prompt
 }
 
+ps2() {
+  unset PROMPT_COMMAND
+  PS1="${P_GREEN}$ ${P_RESET}"
+}
+
 # Get named var (usage: get "VAR_NAME")
 
 get() {
