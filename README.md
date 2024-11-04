@@ -8,7 +8,6 @@ It mainly targets macOS systems (should install on e.g. Ubuntu as well for many 
 
 - Minimal efforts to install everything, using a [Makefile](./Makefile)
 - Mostly based around Homebrew, Caskroom and Node.js, latest Bash + GNU Utils
-- Great [Window management](./config/hammerspoon/README.md) (using Hammerspoon)
 - Fast and colored prompt
 - Updated macOS defaults
 - Well-organized and easy to customize
@@ -23,7 +22,6 @@ It mainly targets macOS systems (should install on e.g. Ubuntu as well for many 
 - [homebrew-cask](https://github.com/Homebrew/homebrew-cask) (packages: [Caskfile](./install/Caskfile))
 - [Node.js + npm LTS](https://nodejs.org/en/download/) (packages: [npmfile](./install/npmfile))
 - Latest Git, Bash, Python, GNU coreutils, curl, Ruby
-- [Hammerspoon](https://www.hammerspoon.org) (config: [keybindings & window management](./config/hammerspoon))
 - `$EDITOR` is [GNU nano](https://www.nano-editor.org) (`$VISUAL` is `code` and Git `core.editor` is `code --wait`)
 
 ## Installation
@@ -79,9 +77,7 @@ dot dock
 dot macos
 ```
 
-3. Start Hammerspoon once and set "Launch Hammerspoon at login".
-
-4. Populate this file with tokens (example: `export GITHUB_TOKEN=abc`):
+3. Populate this file with tokens (example: `export GITHUB_TOKEN=abc`):
 
 ```sh
 touch ~/.dotfiles/system/.exports
