@@ -75,7 +75,7 @@
 [difftool]
 	prompt = false
 
-[difftool "sourcetree"]
+[difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 	path =
 
@@ -86,7 +86,7 @@
 [mergetool]
 	prompt = false
 
-[mergetool "sourcetree"]
+[mergetool "vscode"]
 	cmd = code --wait $MERGED
 	trustExitCode = true
 
