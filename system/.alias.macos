@@ -22,11 +22,6 @@ alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 
 alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-# Show/hide desktop icons
-
-alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killfinder"
-alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killfinder"
-
 # Recursively remove Apple meta files
 
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
