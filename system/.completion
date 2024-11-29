@@ -15,6 +15,12 @@ _dotfiles_completions() {
 
 complete -o default -F _dotfiles_completions dot
 
+# tmux
+
+if is-executable brew; then
+  . "$BREW_PREFIX/etc/bash_completion.d/tmux"
+fi
+
 # npm (https://docs.npmjs.com/cli/completion)
 
 if is-executable npm; then
