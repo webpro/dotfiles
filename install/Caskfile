@@ -1,5 +1,3 @@
-tap "homebrew/cask-fonts"
-
 cask "docker"
 cask "proton-drive"
 cask "firefox"
