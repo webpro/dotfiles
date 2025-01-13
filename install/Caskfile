@@ -1,5 +1,4 @@
 cask "docker"
-cask "proton-drive"
 cask "firefox"
 cask "font-fira-code"
 cask "font-hack"
