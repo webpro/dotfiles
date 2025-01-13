@@ -4,6 +4,7 @@ alias reload="source ~/.bash_profile"
 alias _="sudo"
 alias g="git"
 alias rr="rm -rf"
+alias mux="tmuxinator"
 
 # Default options
 
