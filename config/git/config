@@ -60,6 +60,7 @@
 	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
 	ll = log --graph --abbrev-commit --pretty=oneline
 	lm = log --pretty=format:'* %s (%h)'
+	now = "!f() { GIT_SEQUENCE_EDITOR=: git rebase -i HEAD~${1:-1} --exec \"git commit --amend --no-edit --date=\\\"$(date)\\\"\"; }; f"
 	p = push
 	patch = !git --no-pager diff --no-color
 	pf = push --force
@@ -74,7 +75,7 @@
 	renames = copies
 	indentHeuristic = true
 	colorMoved = default
-  tool = vscode
+	tool = vscode
 
 [difftool]
 	prompt = false
@@ -86,7 +87,7 @@
 [merge]
 	conflictstyle = diff3
 	defaultToUpstream = true
-  tool = vscode
+	tool = vscode
 
 [mergetool]
 	prompt = false
@@ -101,3 +102,13 @@
 
 [color]
 	ui = auto
+
+[versionsort]
+	suffix = -alpha
+	suffix = -beta
+	suffix = -canary
+	suffix = -rc
+	suffix = -next
+
+[advice]
+	detachedHead = false
