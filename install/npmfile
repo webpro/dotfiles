@@ -6,9 +6,11 @@ gtop
 local-web-server
 npm
 npm-check-updates
+pnpm
 prettier
 release-it
-pnpm
+remark
+remark-preset-webpro
 svgo
 tldr
 underscore-cli
