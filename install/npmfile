@@ -9,7 +9,7 @@ npm-check-updates
 pnpm
 prettier
 release-it
-remark
+remark-cli
 remark-preset-webpro
 svgo
 tldr
