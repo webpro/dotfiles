@@ -14,9 +14,9 @@ export ACCEPT_EULA=Y
 
 all: $(OS)
 
-macos: sudo core-macos packages link duti
+macos: sudo core-macos packages link duti bun
 
-linux: core-linux link
+linux: core-linux link bun
 
 core-macos: brew bash git npm
 
@@ -95,6 +95,9 @@ rust-packages: brew-packages
 
 duti:
 	duti -v $(DOTFILES_DIR)/install/duti
+
+bun:
+  curl -fsSL https://bun.sh/install | bash
 
 test:
 	bats test
