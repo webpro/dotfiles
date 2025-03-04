@@ -28,7 +28,6 @@ prepend-path "$HOME/.bun/bin"
 prepend-path "$HOME/.cargo/bin"
 prepend-path "$HOME/.deno/bin"
 prepend-path "$HOME/.local/share/pnpm"
-prepend-path "$N_PREFIX/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755

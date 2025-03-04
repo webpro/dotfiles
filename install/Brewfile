@@ -1,51 +1,44 @@
+# NOTE: some packages get installed directly in Makefile, such as
+#   in target bash:
+#     bash / bash completion / pcre
+#   in target git:
+#     git / git-extras
+#   in target mise:
+
 tap "homebrew/bundle"
 tap "lotyp/homebrew-formulae"
 
 # core/dotfiles
 brew "bats-core"
-brew "coreutils"
-brew "duti"
-brew "lotyp/formulae/dockutil"
-brew "nano"
-brew "stow"
-brew "thefuck"
-brew "tmux"
+brew "coreutils" # provide cat/ls etc from coreutils instead of macos
+brew "duti" # set default app for filetype; see install/duti
+brew "lotyp/formulae/dockutil" # configure mac dock, see macos/dock
+brew "stow" # installs packages in its own dir and symlink to there
 brew "topgrade"
 
 # fs/network
-brew "bat"
-brew "croc"
-brew "httpie"
-brew "ssh-copy-id"
-brew "tree"
-brew "unar"
+brew "bat" # cat but with syntax highlighting
+brew "croc" # secure file transfers, across computers
+brew "tree" # recursive ls
 brew "wget"
-brew "zoxide"
+brew "zoxide" # smart replacement to cd, via `z`
 
 # search/grep/diff
-brew "fd"
-brew "fzf"
-brew "git-delta"
+brew "fd" # for telescope (nvim) and others
+brew "fzf" # fuzzy file finder
 brew "gnu-sed"
-brew "grep"
-brew "jq"
-brew "psgrep"
-brew "ripgrep"
-brew "the_silver_searcher"
+brew "ripgrep" # regex-based search via rg, super fast
+brew "the_silver_searcher" # search via ag <search-term>
 
-# languages/tools
-brew "gh"
-brew "n"
-brew "python"
-brew "ruby"
-brew "rust"
-brew "shellcheck"
+# Tmux
+brew "reattach-to-user-namespace"
+brew "tmux"
+brew "tmuxinator"
 
-# media
-brew "ffmpeg"
-brew "imagemagick"
-brew "uni"
-brew "webp"
+# Editors
+brew "vim"
+brew "nvim"
 
-# misc
-brew "grip"
+# Git - other than installed in Make git target
+brew "gh" # Github command line tool
+brew "git-delta" # nicer syntax highlighting for git diff

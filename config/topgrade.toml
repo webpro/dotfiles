@@ -5,6 +5,3 @@ assume_yes = true
 disable = ["containers", "git_repos", "pnpm", "yarn", "node"]
 display_time = false
 cleanup = true
-
-[commands]
-"npm" = "npm update --location global --force"

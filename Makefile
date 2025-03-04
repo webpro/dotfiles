@@ -1,8 +1,7 @@
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-macos $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local) /home/linuxbrew/.linuxbrew)
-export N_PREFIX = $(HOME)/.n
-PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(N_PREFIX)/bin:$(PATH)
+PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(PATH)
 SHELL := env PATH=$(PATH) /bin/bash
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
@@ -18,7 +17,7 @@ macos: sudo core-macos packages link duti bun
 
 linux: core-linux link bun
 
-core-macos: brew bash git npm
+core-macos: brew bash git mise
 
 core-linux:
 	apt-get update
@@ -75,8 +74,9 @@ endif
 git: brew
 	brew install git git-extras
 
-npm: brew-packages
-	n install lts
+mise: brew
+	brew install mise
+	mise install
 
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
@@ -86,9 +86,6 @@ cask-apps: brew
 
 vscode-extensions: cask-apps
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
-
-node-packages: npm
-	$(N_PREFIX)/bin/npm install --force --location global $(shell cat install/npmfile)
 
 rust-packages: brew-packages
 	cargo install $(shell cat install/Rustfile)
