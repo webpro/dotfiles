@@ -74,7 +74,7 @@ endif
 git: brew
 	brew install git git-extras
 
-mise: brew
+mise: brew link
 	brew install mise
 	mise install
 
