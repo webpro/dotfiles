@@ -13,5 +13,6 @@ remark-cli
 remark-preset-webpro
 svgo
 tldr
+tsx
 underscore-cli
 yarn
