@@ -4,6 +4,12 @@ mk() {
   mkdir -p "$@" && cd "$@"
 }
 
+# cd into latest created directory
+
+cdl() {
+  cd "$(ls -dt */ | head -n 1)"
+}
+
 # Show disk usage of current folder, or list with depth
 
 duf() {

@@ -1,0 +1,10 @@
+function git() {
+  if [ $1 = "c" ]
+  then
+    local url="$2";
+    [[ "$url" =~ ^[^:]+/.+$ ]] && url="git@github.com:${url}.git"
+    command git clone "$url" "${@:3}" && cdl
+  else
+    command git $@
+  fi
+}

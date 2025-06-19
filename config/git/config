@@ -46,6 +46,7 @@
 [alias]
 	amend = commit --amend --reuse-message=HEAD
 	br = branch
+	c = clone
 	ci = commit
 	co = checkout
 	contrib = shortlog --summary --numbered
