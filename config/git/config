@@ -53,7 +53,6 @@
 	diffstat = "!f() { if [ $# -eq 0 ]; then git show --shortstat HEAD | tail -1; else git show --shortstat $1 | tail -1; fi; }; f"
 	ds = -c delta.side-by-side=true diff
 	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
-	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
 	g = grep --break --heading --line-number
 	home = browse
 	l = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
