@@ -64,6 +64,7 @@
 	p = push
 	patch = !git --no-pager diff --no-color
 	pf = push --force
+	rv = remote -vv
 	rh = reset --hard HEAD
 	ra = rebase --abort
 	rc = rebase --continue
