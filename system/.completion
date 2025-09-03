@@ -6,7 +6,7 @@ if is-executable brew; then
   . "$BREW_PREFIX/share/bash-completion/bash_completion"
 fi
 
-# Dotfiles
+# dot
 
 _dotfiles_completions() {
   local cur="${COMP_WORDS[COMP_CWORD]}"
@@ -33,6 +33,32 @@ if is-executable git; then
   . "$BREW_PREFIX/etc/bash_completion.d/git-completion.bash"
 fi
 
-# pnpm
+# pnpm (https://pnpm.io/completion)
 
-[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . $HOME/.config/tabtab/bash/__tabtab.bash || true
+_pnpm_completion () {
+  local words cword
+  if type _get_comp_words_by_ref &>/dev/null; then
+    _get_comp_words_by_ref -n = -n @ -n : -w words -i cword
+  else
+    cword="$COMP_CWORD"
+    words=("${COMP_WORDS[@]}")
+  fi
+
+  local si="$IFS"
+  IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
+                          COMP_LINE="$COMP_LINE" \
+                          COMP_POINT="$COMP_POINT" \
+                          SHELL=bash \
+                          pnpm completion-server -- "${words[@]}" \
+                          2>/dev/null)) || return $?
+  IFS="$si"
+
+  if [ "$COMPREPLY" = "__tabtab_complete_files__" ]; then
+    COMPREPLY=($(compgen -f -- "$cword"))
+  fi
+
+  if type __ltrim_colon_completions &>/dev/null; then
+    __ltrim_colon_completions "${words[cword]}"
+  fi
+}
+complete -o default -F _pnpm_completion pnpm
