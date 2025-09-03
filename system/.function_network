@@ -2,7 +2,7 @@
 
 srv() {
   local DIR=${1:-.}
-  local AVAILABLE_PORT=$(get-port)
+  local AVAILABLE_PORT=$(get-port 8000)
   local PORT=${2:-$AVAILABLE_PORT}
   if [ "$PORT" -le "1024" ]; then
     sudo -v
