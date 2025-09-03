@@ -1,6 +1,6 @@
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-OS := $(shell bin/is-supported bin/is-macos macos linux)
-HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-macos $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local) /home/linuxbrew/.linuxbrew)
+OS := $(shell bin/is-supported bin/is-macos macos bin/is-ubuntu ubuntu bin/is-arch arch linux)
+HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local)
 export N_PREFIX = $(HOME)/.n
 PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(N_PREFIX)/bin:$(PATH)
 SHELL := env PATH=$(PATH) /bin/bash
@@ -16,20 +16,31 @@ all: $(OS)
 
 macos: sudo core-macos packages link duti bun
 
-linux: core-linux link bun
+linux: ubuntu
+
+ubuntu: core-ubuntu link bun
+
+arch: core-arch link bun
 
 core-macos: brew bash git npm
 
-core-linux:
-	apt-get update
-	apt-get upgrade -y
-	apt-get dist-upgrade -f
+core-ubuntu:
+	sudo apt-get update
+	sudo apt-get upgrade -y
+	sudo apt-get dist-upgrade -f
+
+stow-ubuntu: core-ubuntu
+	is-executable stow || sudo apt-get -y install stow
+
+core-arch:
+	sudo pacman -Syu --noconfirm
+	sudo pacman -S --noconfirm git base-devel
+
+stow-arch: core-arch
+	is-executable stow || pacman -S --noconfirm stow
 
 stow-macos: brew
 	is-executable stow || brew install stow
-
-stow-linux: core-linux
-	is-executable stow || apt-get -y install stow
 
 sudo:
 ifndef GITHUB_ACTION
