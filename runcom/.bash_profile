@@ -10,6 +10,8 @@ if [[ -n $CURRENT_SCRIPT && -x readlink ]]; then
   DOTFILES_DIR="${PWD}/$(dirname $(dirname $SCRIPT_PATH))"
 elif [ -d "$HOME/.dotfiles" ]; then
   DOTFILES_DIR="$HOME/.dotfiles"
+elif [ -d "$HOME/dotfiles" ]; then
+  DOTFILES_DIR="$HOME/dotfiles"
 else
   echo "Unable to find dotfiles, exiting."
   return
@@ -21,15 +23,16 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,path,env,exports,alias,fzf,grep,prompt,completion,fix,pnpm,zoxide}; do
+  . "$DOTFILE"
+done
+
 if is-macos; then
-  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,path}.macos; do
+  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.macos; do
     . "$DOTFILE"
   done
 fi
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,env,exports,alias,fzf,grep,prompt,completion,fix,pnpm,zoxide}; do
-  . "$DOTFILE"
-done
 
 # Set LSCOLORS
 
@@ -38,4 +41,5 @@ eval "$(dircolors -b "$DOTFILES_DIR"/system/.dir_colors)"
 # Wrap up
 
 unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE
+
 export DOTFILES_DIR

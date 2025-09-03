@@ -1,5 +1,5 @@
 DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-OS := $(shell bin/is-supported bin/is-macos macos bin/is-ubuntu ubuntu bin/is-arch arch linux)
+OS := $(shell bin/is-supported bin/is-macos macos $(shell bin/is-supported bin/is-ubuntu ubuntu $(shell bin/is-supported bin/is-arch arch linux)))
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local)
 export N_PREFIX = $(HOME)/.n
 PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(N_PREFIX)/bin:$(PATH)
@@ -14,27 +14,24 @@ export ACCEPT_EULA=Y
 
 all: $(OS)
 
-macos: sudo core-macos packages link duti bun
+macos: sudo core-macos packages-macos link duti bun
 
-linux: ubuntu
+ubuntu: core-ubuntu link
 
-ubuntu: core-ubuntu link bun
-
-arch: core-arch link bun
+arch: core-arch packages-arch link
 
 core-macos: brew bash git npm
 
 core-ubuntu:
-	sudo apt-get update
-	sudo apt-get upgrade -y
-	sudo apt-get dist-upgrade -f
+	apt-get update
+	apt-get upgrade -y
+	apt-get dist-upgrade -f
 
 stow-ubuntu: core-ubuntu
-	is-executable stow || sudo apt-get -y install stow
+	is-executable stow || apt-get -y install stow
 
 core-arch:
-	sudo pacman -Syu --noconfirm
-	sudo pacman -S --noconfirm git base-devel
+	pacman -Syu --noconfirm
 
 stow-arch: core-arch
 	is-executable stow || pacman -S --noconfirm stow
@@ -47,8 +44,6 @@ ifndef GITHUB_ACTION
 	sudo -v
 	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 endif
-
-packages: brew-packages cask-apps node-packages rust-packages
 
 link: stow-$(OS)
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
@@ -66,7 +61,7 @@ unlink: stow-$(OS)
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
 brew:
-	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
 bash: brew
 ifdef GITHUB_ACTION
@@ -88,6 +83,13 @@ git: brew
 
 npm: brew-packages
 	n install lts
+
+packages-macos: brew-packages cask-apps node-packages rust-packages
+
+packages-arch: pacman-packages
+
+pacman-packages:
+	pacman -S --noconfirm - < $(DOTFILES_DIR)/install/pacmanfile
 
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true

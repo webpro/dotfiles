@@ -1,0 +1,24 @@
+# Start with system path
+# Retrieve it from getconf, otherwise it's just current $PATH
+
+is-executable getconf && PATH=$($(command -v getconf) PATH)
+
+prepend-path() {
+  [ -d $1 ] && PATH="$1:$PATH"
+}
+
+# Prepend new items to path (if directory exists)
+
+prepend-path "/bin"
+prepend-path "/sbin"
+prepend-path "/usr/bin"
+prepend-path "/usr/sbin"
+prepend-path "/usr/local/bin"
+prepend-path "$DOTFILES_DIR/bin"
+
+is-macos && . "$DOTFILES_DIR/system/.path.macos"
+
+# Remove duplicates
+PATH=$(echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}')
+
+export PATH

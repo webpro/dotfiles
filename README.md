@@ -2,7 +2,7 @@
 
 These are my dotfiles. Take anything you want, but at your own risk.
 
-It mainly targets macOS systems (should install on e.g. Ubuntu as well for many tools, config and aliases etc).
+Mainly targets macOS systems, but works on Ubuntu and Arch Linux as well.
 
 ## Highlights
 
@@ -22,7 +22,7 @@ It mainly targets macOS systems (should install on e.g. Ubuntu as well for many 
 - [homebrew-cask](https://github.com/Homebrew/homebrew-cask) (packages: [Caskfile](./install/Caskfile))
 - [Node.js + npm LTS](https://nodejs.org/en/download/) (packages: [npmfile](./install/npmfile))
 - Latest Git, Bash, Python, GNU coreutils, curl, Ruby
-- `$EDITOR` is [GNU nano](https://www.nano-editor.org) (`$VISUAL` is `code` and Git `core.editor` is `code --wait`)
+- Editors: VS Code and nano (`EDITOR`, `VISUAL` and Git `core.editor`)
 
 ## Installation
 
