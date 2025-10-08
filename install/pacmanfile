@@ -1,8 +1,16 @@
+acl
 base-devel
 bash-completion
+curl
 fd
 fzf
 git
 git-delta
 nano
+nfs-utils
+openbsd-netcat
+rsync
+sudo
+tree
+unzip
 zoxide
