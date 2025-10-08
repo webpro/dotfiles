@@ -23,7 +23,9 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,path,env,exports,alias,fzf,grep,prompt,completion,fix,pnpm,zoxide}; do
+[ -f "$DOTFILES_DIR/system/.exports" ] && . "$DOTFILES_DIR/system/.exports"
+
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,path,env,alias,fzf,grep,prompt,completion,fix,pnpm,zoxide}; do
   . "$DOTFILE"
 done
 
@@ -32,7 +34,6 @@ if is-macos; then
     . "$DOTFILE"
   done
 fi
-
 
 # Set LSCOLORS
 
