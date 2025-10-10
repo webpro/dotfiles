@@ -13,4 +13,5 @@ rsync
 sudo
 tree
 unzip
+wget
 zoxide
