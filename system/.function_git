@@ -5,6 +5,6 @@ function git() {
     [[ "$url" =~ ^[^:]+/.+$ ]] && url="git@github.com:${url}.git"
     command git clone "$url" "${@:3}" && cdl
   else
-    command git $@
+    command git "$@"
   fi
 }
