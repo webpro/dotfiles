@@ -68,6 +68,7 @@
 	rh = reset --hard HEAD
 	ra = rebase --abort
 	rc = rebase --continue
+	squash-all = "!f() { git reset $(git commit-tree HEAD^{tree} -m \"${1:-Initial commit}\"); }; f"
 	s = status
 	show-ignored = !git clean -ndX | perl -pe 's/Would remove //'
 	sshort = "!f() { git show --shortstat \"${1:-HEAD}\" | awk \"/files? changed/ { gsub(/,/, \\\"\\\", \\$4); gsub(/,/, \\\"\\\", \\$6); print \\\"\\033[32m+\\\" \\$4 \\\" \\033[31m-\\\" \\$6 \\\"\\033[0m\\\" }\"; }; f"
