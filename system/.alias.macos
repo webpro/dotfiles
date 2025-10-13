@@ -2,6 +2,10 @@
 
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
+# Get local IP address
+
+alias ipl="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | awk '{print \$2}' | head -1"
+
 # Application shortcuts
 
 alias gg="$VISUAL_GIT"
