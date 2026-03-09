@@ -13,6 +13,7 @@ This guide covers setting up your dotfiles on Windows using native Windows apps 
 Open **PowerShell as Administrator** and run:
 
 ```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 cd path\to\dotfiles\install\windows
 .\setup.ps1
 ```
