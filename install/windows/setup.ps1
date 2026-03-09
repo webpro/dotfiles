@@ -9,6 +9,10 @@ $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIden
 if ($isAdmin) {
     Write-Host "[!!] Running as Administrator -- Scoop will refuse to install." -ForegroundColor Red
     Write-Host "     Re-run this script in a normal (non-elevated) PowerShell session." -ForegroundColor Red
+if (-not $isAdmin) {
+    Write-Host "✗ Please run this script as Administrator" -ForegroundColor Red
+if (-not $isAdmin) {
+    Write-Host "[x] Please run this script as Administrator" -ForegroundColor Red
     exit 1
 }
 
@@ -18,6 +22,10 @@ if ($isAdmin) {
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     Write-Host "[!!] winget not found." -ForegroundColor Yellow
     Write-Host "     Please install App Installer from the Microsoft Store to get winget" -ForegroundColor Yellow
+    Write-Host "→ Installing winget..." -ForegroundColor Yellow
+    Write-Host "Please install App Installer from the Microsoft Store to get winget" -ForegroundColor Yellow
+    Write-Host ">> Installing winget..." -ForegroundColor Yellow
+    Write-Host "Please install App Installer from the Microsoft Store to get winget" -ForegroundColor Yellow
     exit 1
 }
 
@@ -44,11 +52,19 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
 
 # Refresh PATH so 'scoop' is available in this session immediately after install
 $env:PATH = [System.Environment]::GetEnvironmentVariable("PATH","User") + ";" + $env:PATH
+Write-Host "→ Adding Scoop buckets..." -ForegroundColor Cyan
+scoop bucket add extras 2>$null
+scoop bucket add nerd-fonts 2>$null
+Write-Host ">> Adding Scoop buckets..." -ForegroundColor Cyan
+scoop bucket add extras 2>$null
+scoop bucket add nerd-fonts 2>$null
 
 Write-Host ">> Adding Scoop buckets..." -ForegroundColor Cyan
 scoop bucket add extras
 scoop bucket add nerd-fonts
 
+Write-Host ">> Installing CLI tools via Scoop..." -ForegroundColor Cyan
+Write-Host "→ Installing CLI tools via Scoop..." -ForegroundColor Cyan
 Write-Host ">> Installing CLI tools via Scoop..." -ForegroundColor Cyan
 $scoopPackages = @(
     "starship",
@@ -81,6 +97,10 @@ foreach ($pkg in $scoopPackages) {
 
 Write-Host ">> Installing Nerd Fonts via Scoop..." -ForegroundColor Cyan
 scoop install nerd-fonts/JetBrainsMono-NF
+Write-Host "→ Installing Nerd Fonts via Scoop..." -ForegroundColor Cyan
+scoop install nerd-fonts/JetBrainsMono-NF 2>$null
+Write-Host ">> Installing Nerd Fonts via Scoop..." -ForegroundColor Cyan
+scoop install nerd-fonts/JetBrainsMono-NF 2>$null
 
 # --- Deploy config files -----------------------------------------------------
 
@@ -96,8 +116,12 @@ if (Test-Path $wtSettingsDir) {
     }
     Copy-Item $wtSource $wtTarget -Force
     Write-Host "   [OK] Windows Terminal settings deployed" -ForegroundColor Green
+    Write-Host "  ✓ Windows Terminal settings deployed" -ForegroundColor Green
+    Write-Host "  [ok] Windows Terminal settings deployed" -ForegroundColor Green
 } else {
     Write-Host "   [!!] Windows Terminal not found -- install it first, then re-run" -ForegroundColor Yellow
+    Write-Host "  ⚠ Windows Terminal not found — install it first, then re-run" -ForegroundColor Yellow
+    Write-Host "  [!] Windows Terminal not found -- install it first, then re-run" -ForegroundColor Yellow
 }
 
 # Starship config
@@ -110,6 +134,8 @@ $starshipSource = Join-Path $PSScriptRoot "starship.toml"
 $starshipTarget = Join-Path $starshipDir "starship.toml"
 Copy-Item $starshipSource $starshipTarget -Force
 Write-Host "   [OK] Starship config deployed to $starshipTarget" -ForegroundColor Green
+Write-Host "  ✓ Starship config deployed to $starshipTarget" -ForegroundColor Green
+Write-Host "  [ok] Starship config deployed to $starshipTarget" -ForegroundColor Green
 
 # Global gitignore
 Write-Host ">> Deploying global gitignore..." -ForegroundColor Cyan
@@ -118,10 +144,28 @@ $gitignoreTarget = "$env:USERPROFILE\.gitignore-global"
 Copy-Item $gitignoreSource $gitignoreTarget -Force
 git config --global core.excludesFile "$gitignoreTarget"
 Write-Host "   [OK] Global gitignore deployed" -ForegroundColor Green
+Write-Host "  ✓ Global gitignore deployed" -ForegroundColor Green
+Write-Host "  [ok] Global gitignore deployed" -ForegroundColor Green
 
 # --- Starship init in PowerShell profile(s) ----------------------------------
 
 Write-Host ">> Configuring Starship in PowerShell profile..." -ForegroundColor Cyan
+Write-Host "→ Configuring Starship in PowerShell profile..." -ForegroundColor Cyan
+$profileDir = Split-Path $PROFILE -Parent
+if (-not (Test-Path $profileDir)) {
+    New-Item -ItemType Directory -Path $profileDir -Force | Out-Null
+}
+if (-not (Test-Path $PROFILE)) {
+    New-Item -ItemType File -Path $PROFILE -Force | Out-Null
+}
+Write-Host ">> Configuring Starship in PowerShell profile..." -ForegroundColor Cyan
+$profileDir = Split-Path $PROFILE -Parent
+if (-not (Test-Path $profileDir)) {
+    New-Item -ItemType Directory -Path $profileDir -Force | Out-Null
+}
+if (-not (Test-Path $PROFILE)) {
+    New-Item -ItemType File -Path $PROFILE -Force | Out-Null
+}
 $starshipInit = 'Invoke-Expression (&starship init powershell)'
 
 # Configure for both PS5.1 and PS7 -- they use separate profile files
@@ -143,6 +187,16 @@ foreach ($profilePath in $profilesToUpdate) {
     } else {
         Write-Host "   Starship already configured in $profilePath" -ForegroundColor Green
     }
+if (-not (Select-String -Path $PROFILE -Pattern 'starship init' -Quiet -ErrorAction SilentlyContinue)) {
+    Add-Content -Path $PROFILE -Value "`n# Starship prompt`n$starshipInit"
+    Write-Host "  ✓ Starship init added to PowerShell profile" -ForegroundColor Green
+} else {
+    Write-Host "  Starship already in PowerShell profile" -ForegroundColor Green
+if (-not (Select-String -Path $PROFILE -Pattern 'starship init' -Quiet -ErrorAction SilentlyContinue)) {
+    Add-Content -Path $PROFILE -Value "`n# Starship prompt`n$starshipInit"
+    Write-Host "  [ok] Starship init added to PowerShell profile" -ForegroundColor Green
+} else {
+    Write-Host "  Starship already in PowerShell profile" -ForegroundColor Green
 }
 
 # Add 'dot' command to PowerShell profile
@@ -196,3 +250,5 @@ if ($kanataExe) {
 
 Write-Host ""
 Write-Host "[OK] Windows setup complete!" -ForegroundColor Green
+Write-Host "✓ Windows setup complete!" -ForegroundColor Green
+Write-Host "[ok] Windows setup complete!" -ForegroundColor Green
