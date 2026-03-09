@@ -1,0 +1,176 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    // ─── Global ─────────────────────────────────────────────────────────────────
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "copyOnSelect": false,
+    "copyFormatting": "none",
+    "trimBlockSelection": true,
+    "confirmCloseAllTabs": false,
+
+    // ─── Window & Tab Chrome ─────────────────────────────────────────────────────
+    "showTabsInTitlebar": true,
+    "useAcrylicInTabRow": true,
+    "tabWidthMode": "titleLength",
+    "theme": "Flexoki Dark Theme",
+    "newTabMenu": [
+        { "type": "remainingProfiles" }
+    ],
+
+    // ─── Custom Theme (tab row + window frame) ───────────────────────────────────
+    "themes": [
+        {
+            "name": "Flexoki Dark Theme",
+            "tab": {
+                "background": "#100F0FFF",
+                "unfocusedBackground": "#1C1B1AFF",
+                "showCloseButton": "always"
+            },
+            "tabRow": {
+                "background": "#100F0FFF",
+                "unfocusedBackground": "#1C1B1AFF"
+            },
+            "window": {
+                "applicationTheme": "dark",
+                "useMica": false
+            }
+        }
+    ],
+
+    // ─── Color Schemes ───────────────────────────────────────────────────────────
+    "schemes": [
+        {
+            "name": "Flexoki Dark",
+
+            // Backgrounds & text
+            "background":   "#100F0F",
+            "foreground":   "#CECDC3",
+            "cursorColor":  "#D0A215",
+            "selectionBackground": "#403E3C",
+
+            // ANSI Black  → base-950 / base-900
+            "black":        "#1C1B1A",
+            "brightBlack":  "#282726",
+
+            // ANSI Red    → red-400 / red-600 (bright = more vivid)
+            "red":          "#D14D41",
+            "brightRed":    "#AF3029",
+
+            // ANSI Green  → green-400 / green-600
+            "green":        "#879A39",
+            "brightGreen":  "#66800B",
+
+            // ANSI Yellow → yellow-400 / yellow-600
+            "yellow":       "#D0A215",
+            "brightYellow": "#AD8301",
+
+            // ANSI Blue   → blue-400 / blue-600
+            "blue":         "#4385BE",
+            "brightBlue":   "#205EA6",
+
+            // ANSI Purple → purple-400 / purple-600
+            "purple":       "#8B7EC8",
+            "brightPurple": "#5E409D",
+
+            // ANSI Cyan   → cyan-400 / cyan-600
+            "cyan":         "#3AA99F",
+            "brightCyan":   "#24837B",
+
+            // ANSI White  → base-200 / base-50 (text tones)
+            "white":        "#CECDC3",
+            "brightWhite":  "#F2F0E5"
+        }
+    ],
+
+    // ─── Profile Defaults (apply to all profiles) ────────────────────────────────
+    "profiles": {
+        "defaults": {
+            // Color
+            "colorScheme": "Flexoki Dark",
+
+            // Typography — swap to your preferred Nerd Font if desired
+            // JetBrains Mono NF is already in your fonts list
+            "font": {
+                "face": "JetBrainsMono Nerd Font",
+                "size": 14,
+                "weight": "normal"
+            },
+
+            // Spacing & cursor
+            "padding": "12",
+            "cursorShape": "bar",
+
+            // Acrylic background — tweak opacity to taste (0.85–0.95 is sweet spot)
+            "useAcrylic": true,
+            "opacity": 88,
+
+            // Scrollback
+            "scrollbarState": "hidden",
+            "historySize": 10000,
+
+            // Bell
+            "bellStyle": "none",
+
+            // Close on exit
+            "closeOnExit": "graceful",
+
+            // Antialiasing — cleartype looks best with warm palettes
+            "antialiasingMode": "cleartype"
+        },
+
+        "list": [
+            // ── PowerShell (primary) ─────────────────────────────────────────────
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore",
+                "hidden": false
+            },
+
+            // ── Command Prompt (keep around, sometimes useful) ───────────────────
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "Command Prompt",
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "hidden": true
+            }
+        ]
+    },
+
+    // ─── Keybindings ────────────────────────────────────────────────────────────
+    "actions": [
+        // Tabs
+        { "command": { "action": "newTab" },         "keys": "ctrl+t" },
+        { "command": { "action": "closeTab" },       "keys": "ctrl+w" },
+        { "command": { "action": "nextTab" },        "keys": "ctrl+tab" },
+        { "command": { "action": "prevTab" },        "keys": "ctrl+shift+tab" },
+
+        // Splits
+        { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "ctrl+shift+d" },
+        { "command": { "action": "splitPane", "split": "vertical" },   "keys": "ctrl+shift+e" },
+        { "command": { "action": "moveFocus", "direction": "down" },   "keys": "ctrl+alt+down" },
+        { "command": { "action": "moveFocus", "direction": "up" },     "keys": "ctrl+alt+up" },
+        { "command": { "action": "moveFocus", "direction": "left" },   "keys": "ctrl+alt+left" },
+        { "command": { "action": "moveFocus", "direction": "right" },  "keys": "ctrl+alt+right" },
+
+        // Font size
+        { "command": { "action": "adjustFontSize", "delta": 1 },  "keys": "ctrl+=" },
+        { "command": { "action": "adjustFontSize", "delta": -1 }, "keys": "ctrl+-" },
+        { "command": { "action": "resetFontSize" },                "keys": "ctrl+0" },
+
+        // Copy/paste
+        { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+c" },
+        { "command": "paste",                                    "keys": "ctrl+v" },
+
+        // Settings
+        { "command": "openSettings",        "keys": "ctrl+," },
+        { "command": "openDefaultSettings", "keys": "ctrl+alt+," },
+
+        // Find
+        { "command": "find", "keys": "ctrl+f" },
+
+        // Clear scrollback
+        { "command": "clearBuffer", "keys": "ctrl+k" }
+    ]
+}

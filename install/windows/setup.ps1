@@ -10,10 +10,11 @@ if (-not $isAdmin) {
     exit 1
 }
 
+# ─── winget ──────────────────────────────────────────────────────────────────
+
 # Install winget if not present (comes with Windows 11 by default)
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     Write-Host "→ Installing winget..." -ForegroundColor Yellow
-    # winget should be pre-installed on Windows 11, manual installation needed for Windows 10
     Write-Host "Please install App Installer from the Microsoft Store to get winget" -ForegroundColor Yellow
     exit 1
 }
@@ -28,28 +29,99 @@ if (Test-Path $packagesFile) {
     }
 }
 
-# Enable WSL2
-Write-Host "→ Checking WSL2..." -ForegroundColor Cyan
-if (-not (Get-Command wsl -ErrorAction SilentlyContinue)) {
-    Write-Host "  Installing WSL2..." -ForegroundColor Yellow
-    wsl --install --no-distribution
-    Write-Host "  Please reboot and run this script again after reboot" -ForegroundColor Yellow
-    exit 0
+# ─── Scoop (CLI tools) ──────────────────────────────────────────────────────
+
+Write-Host "→ Setting up Scoop..." -ForegroundColor Cyan
+if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
+    Write-Host "  Installing Scoop..." -ForegroundColor Yellow
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 } else {
-    Write-Host "  WSL2 already installed" -ForegroundColor Green
+    Write-Host "  Scoop already installed" -ForegroundColor Green
 }
 
-# Install Ubuntu in WSL2 (or your preferred distro)
-Write-Host "→ Checking for WSL Ubuntu distribution..." -ForegroundColor Cyan
-$distros = wsl --list --quiet
-if ($distros -notcontains "Ubuntu") {
-    Write-Host "  Installing Ubuntu in WSL2..." -ForegroundColor Yellow
-    wsl --install --distribution Ubuntu
+Write-Host "→ Adding Scoop buckets..." -ForegroundColor Cyan
+scoop bucket add extras 2>$null
+scoop bucket add nerd-fonts 2>$null
+
+Write-Host "→ Installing CLI tools via Scoop..." -ForegroundColor Cyan
+$scoopPackages = @(
+    "starship",
+    "kanata",
+    "bat",
+    "eza",
+    "fd",
+    "ripgrep",
+    "fzf",
+    "zoxide",
+    "lazygit",
+    "jq",
+    "delta"
+)
+foreach ($pkg in $scoopPackages) {
+    Write-Host "  Installing: $pkg" -ForegroundColor Green
+    scoop install $pkg 2>$null
 }
 
-Write-Host "✓ Windows setup complete!" -ForegroundColor Green
+Write-Host "→ Installing Nerd Fonts via Scoop..." -ForegroundColor Cyan
+scoop install nerd-fonts/JetBrainsMono-NF 2>$null
+
+# ─── Deploy config files ────────────────────────────────────────────────────
+
+# Windows Terminal settings.json
+Write-Host "→ Deploying Windows Terminal settings..." -ForegroundColor Cyan
+$wtSettingsDir = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
+$wtSource = Join-Path $PSScriptRoot "windows-terminal-settings.json"
+if (Test-Path $wtSettingsDir) {
+    $wtTarget = Join-Path $wtSettingsDir "settings.json"
+    if (Test-Path $wtTarget) {
+        Copy-Item $wtTarget "$wtTarget.bak" -Force
+        Write-Host "  Backed up existing settings to settings.json.bak" -ForegroundColor Yellow
+    }
+    Copy-Item $wtSource $wtTarget -Force
+    Write-Host "  ✓ Windows Terminal settings deployed" -ForegroundColor Green
+} else {
+    Write-Host "  ⚠ Windows Terminal not found — install it first, then re-run" -ForegroundColor Yellow
+}
+
+# Starship config
+Write-Host "→ Deploying Starship config..." -ForegroundColor Cyan
+$starshipDir = "$env:USERPROFILE\.config"
+if (-not (Test-Path $starshipDir)) {
+    New-Item -ItemType Directory -Path $starshipDir -Force | Out-Null
+}
+$starshipSource = Join-Path $PSScriptRoot "starship.toml"
+$starshipTarget = Join-Path $starshipDir "starship.toml"
+Copy-Item $starshipSource $starshipTarget -Force
+Write-Host "  ✓ Starship config deployed to $starshipTarget" -ForegroundColor Green
+
+# Global gitignore
+Write-Host "→ Deploying global gitignore..." -ForegroundColor Cyan
+$gitignoreSource = Join-Path $PSScriptRoot "gitignore-global"
+$gitignoreTarget = "$env:USERPROFILE\.gitignore-global"
+Copy-Item $gitignoreSource $gitignoreTarget -Force
+git config --global core.excludesFile "$gitignoreTarget"
+Write-Host "  ✓ Global gitignore deployed" -ForegroundColor Green
+
+# ─── Starship init in PowerShell profile ─────────────────────────────────────
+
+Write-Host "→ Configuring Starship in PowerShell profile..." -ForegroundColor Cyan
+$profileDir = Split-Path $PROFILE -Parent
+if (-not (Test-Path $profileDir)) {
+    New-Item -ItemType Directory -Path $profileDir -Force | Out-Null
+}
+if (-not (Test-Path $PROFILE)) {
+    New-Item -ItemType File -Path $PROFILE -Force | Out-Null
+}
+$starshipInit = 'Invoke-Expression (&starship init powershell)'
+if (-not (Select-String -Path $PROFILE -Pattern 'starship init' -Quiet -ErrorAction SilentlyContinue)) {
+    Add-Content -Path $PROFILE -Value "`n# Starship prompt`n$starshipInit"
+    Write-Host "  ✓ Starship init added to PowerShell profile" -ForegroundColor Green
+} else {
+    Write-Host "  Starship already in PowerShell profile" -ForegroundColor Green
+}
+
+# ─── Done ────────────────────────────────────────────────────────────────────
+
 Write-Host ""
-Write-Host "Next steps:" -ForegroundColor Cyan
-Write-Host "1. Open WSL2 (Ubuntu) from Windows Terminal" -ForegroundColor White
-Write-Host "2. Clone this repo inside WSL2: git clone <your-repo>" -ForegroundColor White
-Write-Host "3. Run 'make' inside WSL2 to set up your Linux environment" -ForegroundColor White
+Write-Host "✓ Windows setup complete!" -ForegroundColor Green

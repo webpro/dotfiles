@@ -1,16 +1,14 @@
 # Windows Setup Guide
 
-This guide covers setting up your dotfiles on Windows using both native Windows apps and WSL2.
+This guide covers setting up your dotfiles on Windows using native Windows apps and Scoop CLI tools.
 
 ## Philosophy
 
-- **Native Windows apps** (VS Code, browsers, etc.) install directly on Windows via `winget`
-- **Unix tools and CLI** (git, shell, dev tools) run in WSL2 using this dotfiles repo
-- **Best of both worlds**: Native performance for GUI apps, full Unix environment for development
+- **Native Windows apps** (Arc, 1Password, Obsidian, etc.) install directly on Windows via `winget`
+- **CLI tools** (starship, bat, fzf, etc.) install via **Scoop** for native Windows use
+- **Theming**: Flexoki Dark across Windows Terminal, Starship prompt, and editor
 
-## Initial Setup on Windows
-
-### 1. Install Native Windows Applications
+## Quick Start
 
 Open **PowerShell as Administrator** and run:
 
@@ -20,105 +18,47 @@ cd path\to\dotfiles\install\windows
 ```
 
 This will:
-- Install winget packages (VS Code, Git, Windows Terminal, etc.)
-- Enable and install WSL2
-- Install Ubuntu in WSL2
-
-### 2. Configure WSL2
-
-After WSL2 is installed, open **Windows Terminal** and select Ubuntu:
-
-```bash
-# Update package lists
-sudo apt update && sudo apt upgrade -y
-
-# Clone your dotfiles inside WSL2
-cd ~
-git clone <your-dotfiles-repo-url> .dotfiles
-cd .dotfiles
-
-# Run the setup
-make
-```
-
-This will:
-- Install Homebrew for Linux
-- Install all packages from Brewfile
-- Symlink all your config files
-- Set up your shell environment
-
-## Customizing Windows Packages
-
-Edit `install/windows/winget-packages.txt` to add/remove Windows applications:
-
-```
-# Uncomment lines to install
-Microsoft.VisualStudioCode
-Git.Git
-# Add your own packages
-```
-
-Find package IDs at: https://winget.run/
+1. Install ~25 GUI apps via winget (see `winget-packages.txt`)
+2. Install Scoop + CLI tools (starship, bat, eza, fd, ripgrep, fzf, zoxide, lazygit, jq, delta, kanata)
+3. Install JetBrains Mono Nerd Font
+4. Deploy Windows Terminal settings (Flexoki Dark theme)
+5. Deploy Starship prompt config (Flexoki Dark palette)
+6. Set up global gitignore for Windows
+7. Add Starship init to your PowerShell profile
 
 ## File Organization
 
 ```
-~/.dotfiles/
-├── config/           # Unix configs (symlinked in WSL2)
-├── runcom/           # Shell configs (WSL2 only)
-├── install/
-│   ├── Brewfile      # macOS/Linux packages
-│   ├── npmfile       # Node packages (all platforms)
-│   └── windows/
-│       ├── setup.ps1              # Windows setup script
-│       ├── winget-packages.txt    # Windows native apps
-│       └── README.md              # This file
+install/windows/
+├── setup.ps1                      # Main setup script (run as Admin)
+├── winget-packages.txt            # Windows GUI apps (winget)
+├── windows-terminal-settings.json # Windows Terminal config (Flexoki Dark)
+├── starship.toml                  # Starship prompt config (Flexoki Dark)
+├── gitignore-global               # Windows global gitignore
+└── README.md                      # This file
 ```
 
-## Accessing Files Between Windows and WSL2
+## Customizing
 
-### From Windows → WSL2
-WSL2 filesystems are accessible at:
-```
-\\wsl$\Ubuntu\home\<username>\.dotfiles
-```
+### Windows Apps
+Edit `winget-packages.txt` — one winget package ID per line, `#` for comments. Find IDs at [winget.run](https://winget.run/).
 
-### From WSL2 → Windows
-Windows drives are mounted at:
-```bash
-/mnt/c/Users/<username>/
-/mnt/d/
-```
+### CLI Tools
+Edit the `$scoopPackages` array in `setup.ps1` to add/remove Scoop packages.
+
+### Windows Terminal
+Edit `windows-terminal-settings.json` then re-run `setup.ps1` to deploy, or edit directly in Windows Terminal (`Ctrl+,` → Open JSON).
+
+### Starship Prompt
+Edit `starship.toml` in this directory (Windows-specific). The macOS/Linux Starship config lives separately at `config/starship.toml`.
 
 ## Tips
 
-1. **Use Windows Terminal** - Best terminal for Windows + WSL2
-2. **VS Code Remote-WSL** - Edit WSL2 files from VS Code on Windows
-3. **Git in WSL2** - Use git from WSL2, not Windows Git, for consistency
-4. **Symbolic Links** - Keep dotfiles in WSL2, don't try to symlink across Windows/WSL2 boundary
+1. **Use Windows Terminal** — Best terminal experience on Windows
+2. **Scoop for CLI tools** — Easy to install, update, and manage from PowerShell
 
 ## Troubleshooting
 
-### WSL2 won't start
-```powershell
-# Run as Administrator
-wsl --update
-wsl --shutdown
-wsl
-```
+### Starship not rendering icons
+Install a Nerd Font (setup.ps1 installs JetBrains Mono NF via Scoop) and set it in Windows Terminal settings.
 
-### Homebrew not found in WSL2
-```bash
-# Add to ~/.zshrc or ~/.bashrc
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-```
-
-### Can't access Windows files from WSL2
-Windows drives are at `/mnt/c/`, `/mnt/d/`, etc.
-
-## Platform Detection
-
-The Makefile automatically detects your platform:
-- `make` on macOS → runs `macos` target
-- `make` on Linux → runs `linux` target
-- `make` on WSL2 → runs `wsl` target

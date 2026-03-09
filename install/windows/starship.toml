@@ -1,0 +1,147 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# ============================================================
+# PROMPT FORMAT
+# ============================================================
+format = """
+[╭─](fg:blue)\
+$username\
+[](bg:yellow fg:blue)\
+$directory\
+[](bg:maroon fg:yellow)\
+$git_branch\
+[](bg:teal fg:maroon)\
+$git_status\
+[](bg:mauve fg:teal)\
+$cmd_duration\
+[](bg:flamingo fg:mauve)\
+$time\
+[](fg:flamingo)
+$character\
+"""
+
+palette = 'flexoki_dark'
+
+# ============================================================
+# ACTIVE MODULES (in order of appearance)
+# ============================================================
+
+[username]
+show_always = true
+style_user = "bg:blue fg:plop"
+format = '[🧿 🌓 🌊 ]($style)'
+disabled = false
+
+[directory]
+style = "bg:yellow fg:plop"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " 󰌾"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = "󰇚 "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Programming" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:maroon fg:plop"
+format = '([ $symbol$branch ]($style))'
+
+[git_status]
+style = "bg:teal fg:plop"
+format = '([ $all_status$ahead_behind ]($style))'
+conflicted = "✗ "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕ "
+untracked = "? "
+stashed = "󰏖 "
+modified = "! "
+staged = "+ "
+renamed = "» "
+deleted = "✘ "
+
+[cmd_duration]
+show_milliseconds = false
+# Start with the connector so it only appears when duration is shown
+format = '([ took $duration ]($style))'
+style = "bg:mauve fg:plop"
+disabled = false
+min_time = 2000
+show_notifications = true
+min_time_to_notify = 45000
+
+[time]
+disabled = false
+time_format = "%H:%M"
+format = '[ ⏳︎$time ]($style)'
+style = "bg:flamingo fg:plop"
+
+[character]
+success_symbol = '[╰─➜](bold fg:green)'
+error_symbol = '[╰─➜](bold fg:red)'
+vimcmd_symbol = '[╰─⬅](bold fg:green)'
+vimcmd_replace_one_symbol = '[╰─⬅](bold fg:mauve)'
+vimcmd_replace_symbol = '[╰─⬅](bold fg:mauve)'
+vimcmd_visual_symbol = '[╰─⬅](bold fg:yellow)'
+
+# ============================================================
+# COLOR PALETTE (Flexoki Dark)
+# ============================================================
+# Source: https://stephango.com/flexoki / github.com/kepano/flexoki
+# Segment role → Flexoki color mapping:
+#   blue     (username bg)    → blue-400     #4385BE
+#   yellow   (directory bg)   → yellow-400   #D0A215
+#   maroon   (git branch bg)  → red-400      #D14D41
+#   teal     (git status bg)  → cyan-400     #3AA99F
+#   mauve    (cmd duration bg)→ purple-400   #8B7EC8
+#   flamingo (time bg)        → magenta-400  #CE5D97
+#   green    (success prompt) → green-400    #879A39
+#   red      (error prompt)   → red-400      #D14D41
+#   plop     (fg on all segs) → black        #100F0F
+
+[palettes.flexoki_dark]
+# Segment background colors (400 = vivid, readable on dark)
+blue       = "#4385BE"
+yellow     = "#D0A215"
+maroon     = "#D14D41"
+teal       = "#3AA99F"
+mauve      = "#8B7EC8"
+flamingo   = "#CE5D97"
+green      = "#879A39"
+red        = "#D14D41"
+# Foreground on all colored segments — near-black for contrast
+plop       = "#100F0F"
+# Extended palette (available for future modules)
+orange     = "#DA702C"
+cyan       = "#3AA99F"
+purple     = "#8B7EC8"
+magenta    = "#CE5D97"
+# Dark variants (600 series — for accents, borders, subtle use)
+blue_dark      = "#205EA6"
+yellow_dark    = "#AD8301"
+red_dark       = "#AF3029"
+cyan_dark      = "#24837B"
+purple_dark    = "#5E409D"
+magenta_dark   = "#A02F6F"
+green_dark     = "#66800B"
+orange_dark    = "#BC5215"
+# Base scale (backgrounds → foregrounds)
+base_950   = "#1C1B1A"
+base_900   = "#282726"
+base_850   = "#343331"
+base_800   = "#403E3C"
+base_700   = "#575653"
+base_600   = "#6F6E69"
+base_500   = "#878580"
+base_400   = "#9F9D96"
+base_300   = "#B7B5AC"
+base_200   = "#CECDC3"
+base_100   = "#E6E4D9"
+base_50    = "#F2F0E5"
+black      = "#100F0F"
+paper      = "#FFFCF0"

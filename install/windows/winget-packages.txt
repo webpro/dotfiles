@@ -1,34 +1,51 @@
-# Windows native applications to install via winget
-# Usage: Get-Content winget-packages.txt | ForEach-Object { winget install $_ }
+# Windows native applications — install via winget
+# Usage: winget install --id <ID> --silent --accept-package-agreements --accept-source-agreements
+# Or run setup.ps1 to install all at once.
+#
+# Philosophy: native GUI apps via winget, CLI/dev tools via Scoop.
 
-# Browsers
-# Google.Chrome
-# Mozilla.Firefox
+# ─── Browser ──────────────────────────────────────────────────────────────────
+TheBrowserCompany.Arc
 
-# Development Tools
-Microsoft.VisualStudioCode
+# ─── Productivity & Launchers ─────────────────────────────────────────────────
+Raycast.Raycast
+Obsidian.Obsidian
+Microsoft.PowerToys
+voidtools.Everything
+Flow-Launcher.Flow-Launcher
+
+# ─── Development ──────────────────────────────────────────────────────────────
 Git.Git
-GitHub.GitHubDesktop
+SublimeHQ.SublimeText.4
+Microsoft.VisualStudioCode
 
-# Terminal & Shell
-Microsoft.PowerShell
-Microsoft.WindowsTerminal
+# ─── Security & Networking ────────────────────────────────────────────────────
+AgileBits.1Password
+Tailscale.Tailscale
+AdGuard.AdGuard
 
-# Communication
-# Slack.Slack
-# Discord.Discord
+# ─── Sync & Backup ───────────────────────────────────────────────────────────
+Syncthing.Syncthing
 
-# Productivity
-# Notion.Notion
+# ─── Utilities ────────────────────────────────────────────────────────────────
+ShareX.ShareX
+7zip.7zip
+HWiNFO.HWiNFO
+Logitech.OptionsPlus
 
-# Media
-# VideoLAN.VLC
+# ─── Communication ───────────────────────────────────────────────────────────
+Slack.Slack
+Zoom.Zoom
+Grammarly.Grammarly
 
-# Developer Utilities
-# Docker.DockerDesktop
-# Postman.Postman
+# ─── Gaming ──────────────────────────────────────────────────────────────────
+EpicGames.EpicGamesLauncher
 
-# Notes:
-# - Uncomment lines to install those packages
-# - Add your own packages as needed
-# - WSL2 should be installed separately via: wsl --install
+# ─── Media ───────────────────────────────────────────────────────────────────
+VideoLAN.VLC
+calibre.calibre
+Audacity.Audacity
+
+# ─── AI ──────────────────────────────────────────────────────────────────────
+Anthropic.Claude
+# OpenAI ChatGPT — install from Microsoft Store (not in winget repo)
