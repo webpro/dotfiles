@@ -1,0 +1,3 @@
+# PowerShell 5.1 requires CRLF line endings and chokes on UTF-8 without BOM.
+# Use ASCII-safe characters in .ps1 files to avoid encoding issues entirely.
+*.ps1 text eol=crlf

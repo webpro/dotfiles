@@ -10,9 +10,10 @@ This guide covers setting up your dotfiles on Windows using native Windows apps 
 
 ## Quick Start
 
-Open **PowerShell as Administrator** and run:
+Open **PowerShell as a regular user** (not Administrator) and run:
 
 ```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 cd path\to\dotfiles\install\windows
 .\setup.ps1
 ```
@@ -30,7 +31,7 @@ This will:
 
 ```
 install/windows/
-├── setup.ps1                      # Main setup script (run as Admin)
+├── setup.ps1                      # Main setup script (run as normal user, NOT admin)
 ├── winget-packages.txt            # Windows GUI apps (winget)
 ├── windows-terminal-settings.json # Windows Terminal config (Flexoki Dark)
 ├── starship.toml                  # Starship prompt config (Flexoki Dark)
