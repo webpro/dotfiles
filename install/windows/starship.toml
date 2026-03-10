@@ -29,7 +29,7 @@ palette = 'flexoki_dark'
 [username]
 show_always = true
 style_user = "bg:blue fg:plop"
-format = '[🧿 🌓 🌊 ]($style)'
+format = '[ PCV2 ]($style)'
 disabled = false
 
 [directory]
@@ -78,7 +78,7 @@ min_time_to_notify = 45000
 [time]
 disabled = false
 time_format = "%H:%M"
-format = '[ ⏳︎$time ]($style)'
+format = '[ $time ]($style)'
 style = "bg:flamingo fg:plop"
 
 [character]
