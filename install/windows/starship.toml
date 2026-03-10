@@ -4,7 +4,7 @@
 # PROMPT FORMAT
 # ============================================================
 format = """
-[╭─ \U000F1395](fg:blue)\
+[╭─](fg:blue)\
 $username\
 [\uE0B0](bg:yellow fg:blue)\
 $directory\
