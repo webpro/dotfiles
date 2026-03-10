@@ -1,12 +1,14 @@
 # Windows Setup Script
-# Run this in PowerShell as Administrator
+# Run this in PowerShell as a regular user (NOT as Administrator)
+# Scoop requires non-admin context. winget will prompt for UAC per-package if needed.
 
 Write-Host "→ Starting Windows setup..." -ForegroundColor Cyan
 
-# Check if running as Administrator
+# Warn if running as Administrator — Scoop will fail
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-if (-not $isAdmin) {
-    Write-Host "✗ Please run this script as Administrator" -ForegroundColor Red
+if ($isAdmin) {
+    Write-Host "⚠ Running as Administrator — Scoop will refuse to install." -ForegroundColor Red
+    Write-Host "  Re-run this script in a normal (non-elevated) PowerShell session." -ForegroundColor Red
     exit 1
 }
 
@@ -40,9 +42,12 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
     Write-Host "  Scoop already installed" -ForegroundColor Green
 }
 
+# Refresh PATH so 'scoop' is available in this session immediately after install
+$env:PATH = [System.Environment]::GetEnvironmentVariable("PATH","User") + ";" + $env:PATH
+
 Write-Host "→ Adding Scoop buckets..." -ForegroundColor Cyan
-scoop bucket add extras 2>$null
-scoop bucket add nerd-fonts 2>$null
+scoop bucket add extras
+scoop bucket add nerd-fonts
 
 Write-Host "→ Installing CLI tools via Scoop..." -ForegroundColor Cyan
 $scoopPackages = @(
@@ -60,11 +65,14 @@ $scoopPackages = @(
 )
 foreach ($pkg in $scoopPackages) {
     Write-Host "  Installing: $pkg" -ForegroundColor Green
-    scoop install $pkg 2>$null
+    scoop install $pkg
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "  ⚠ Failed to install $pkg (exit $LASTEXITCODE)" -ForegroundColor Yellow
+    }
 }
 
 Write-Host "→ Installing Nerd Fonts via Scoop..." -ForegroundColor Cyan
-scoop install nerd-fonts/JetBrainsMono-NF 2>$null
+scoop install nerd-fonts/JetBrainsMono-NF
 
 # ─── Deploy config files ────────────────────────────────────────────────────
 

@@ -8,7 +8,6 @@
 TheBrowserCompany.Arc
 
 # ─── Productivity & Launchers ─────────────────────────────────────────────────
-Raycast.Raycast
 Obsidian.Obsidian
 Microsoft.PowerToys
 voidtools.Everything
@@ -30,15 +29,16 @@ Syncthing.Syncthing
 # ─── Utilities ────────────────────────────────────────────────────────────────
 ShareX.ShareX
 7zip.7zip
-HWiNFO.HWiNFO
+REALiX.HWiNFO
 Logitech.OptionsPlus
 
 # ─── Communication ───────────────────────────────────────────────────────────
-Slack.Slack
+SlackTechnologies.Slack
 Zoom.Zoom
 Grammarly.Grammarly
 
 # ─── Gaming ──────────────────────────────────────────────────────────────────
+Valve.Steam
 EpicGames.EpicGamesLauncher
 
 # ─── Media ───────────────────────────────────────────────────────────────────
