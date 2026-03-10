@@ -4,19 +4,19 @@
 # PROMPT FORMAT
 # ============================================================
 format = """
-[╭─](fg:blue)\
+[╭─ \U000F1395](fg:blue)\
 $username\
-[](bg:yellow fg:blue)\
+[\uE0B0](bg:yellow fg:blue)\
 $directory\
-[](bg:maroon fg:yellow)\
+[\uE0B0](bg:maroon fg:yellow)\
 $git_branch\
-[](bg:teal fg:maroon)\
+[\uE0B0](bg:teal fg:maroon)\
 $git_status\
-[](bg:mauve fg:teal)\
+[\uE0B0](bg:mauve fg:teal)\
 $cmd_duration\
-[](bg:flamingo fg:mauve)\
+[\uE0B0](bg:flamingo fg:mauve)\
 $time\
-[](fg:flamingo)
+[\uE0B0](fg:flamingo)
 $character\
 """
 
