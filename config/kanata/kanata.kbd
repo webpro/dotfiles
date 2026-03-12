@@ -6,7 +6,7 @@
 ;;    - physical lalt -> lctl
 ;;    - physical ralt -> rctl
 ;; 2. Caps Lock:
-;;    - tap  -> Esc
+;;    - tap  -> Caps Lock
 ;;    - hold -> Hyper (Ctrl+Alt+Shift+Win)
 ;; 3. Right Ctrl:
 ;;    - tap  -> Right Ctrl
@@ -35,10 +35,10 @@
   meh-mods   (multi lctl lalt lsft)
   hyper-mods (multi lctl lalt lsft lmet)
 
-  ;; Caps Lock: tap Esc, hold Hyper
+  ;; Caps Lock: tap Caps Lock, hold Hyper
   caps-hyper
     (tap-hold-press $tap-time $hold-time
-      esc
+      caps
       @hyper-mods
     )
 

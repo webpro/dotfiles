@@ -53,6 +53,7 @@ Write-Host ">> Installing CLI tools via Scoop..." -ForegroundColor Cyan
 $scoopPackages = @(
     "starship",
     "kanata",
+    "gh",
     "bat",
     "eza",
     "fd",
