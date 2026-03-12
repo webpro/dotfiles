@@ -1,0 +1,93 @@
+;; kanata.kbd
+;; ------------------------------------------------------------
+;; What this config does
+;; 1. Swaps Ctrl <-> Alt on both sides:
+;;    - physical lctl -> lalt
+;;    - physical lalt -> lctl
+;;    - physical ralt -> rctl
+;; 2. Caps Lock:
+;;    - tap  -> Caps Lock
+;;    - hold -> Hyper (Ctrl+Alt+Shift+Win)
+;; 3. Right Ctrl:
+;;    - tap  -> Right Ctrl
+;;    - hold -> Meh (Ctrl+Alt+Shift)
+;; 4. "System" leader:
+;;    - Hyper+S, then 1 -> F19
+;;    - Hyper+S, then L -> F18
+;;
+;; On Windows, bind F19 / F18 in PowerToys or AutoHotkey.
+
+(defcfg
+  ;; Keep everything else as-is unless explicitly remapped.
+  process-unmapped-keys yes
+
+  ;; How long Kanata waits for the next key after entering leader mode.
+  sequence-timeout 800
+)
+
+(defvar
+  tap-time 200
+  hold-time 200
+)
+
+(defalias
+  ;; Modifier bundles
+  meh-mods   (multi lctl lalt lsft)
+  hyper-mods (multi lctl lalt lsft lmet)
+
+  ;; Caps Lock: tap Caps Lock, hold Hyper
+  caps-hyper
+    (tap-hold-press $tap-time $hold-time
+      caps
+      @hyper-mods
+    )
+
+  ;; Right Ctrl: tap Right Ctrl, hold Meh
+  rctrl-meh
+    (tap-hold-press $tap-time $hold-time
+      rctl
+      @meh-mods
+    )
+
+  ;; Leader used for the "System" mode
+  sys-leader ldr
+)
+
+;; Fake keys for downstream tools like PowerToys / AutoHotkey
+(deffakekeys
+  sys-sleep f19
+  sys-lock  f18
+)
+
+;; After Hyper+S:
+;;   1 -> sys-sleep (F19)
+;;   l -> sys-lock  (F18)
+(defseq
+  sys-sleep (1)
+  sys-lock  (l)
+)
+
+;; Keys we explicitly care about here
+(defsrc
+  caps s 1 l
+  lctl lalt ralt rctl
+)
+
+(deflayer base
+  ;; caps / system keys
+  @caps-hyper s 1 l
+
+  ;; bottom-row modifier swaps / dual-role key
+  lalt
+  lctl
+  rctl
+  @rctrl-meh
+)
+
+;; Chord: Hyper (physical caps) + S enters the System leader
+;; Then press:
+;;   1 -> F19
+;;   L -> F18
+(defchordsv2
+  (caps s) @sys-leader 200 all-released ()
+)

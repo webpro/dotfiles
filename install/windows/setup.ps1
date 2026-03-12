@@ -53,6 +53,7 @@ Write-Host ">> Installing CLI tools via Scoop..." -ForegroundColor Cyan
 $scoopPackages = @(
     "starship",
     "kanata",
+    "gh",
     "bat",
     "eza",
     "fd",
@@ -135,6 +136,43 @@ foreach ($profilePath in $profilesToUpdate) {
     } else {
         Write-Host "   Starship already configured in $profilePath" -ForegroundColor Green
     }
+}
+
+# --- Kanata ------------------------------------------------------------------
+
+Write-Host ">> Deploying Kanata config..." -ForegroundColor Cyan
+$kanataConfigDir = "$env:USERPROFILE\.config\kanata"
+if (-not (Test-Path $kanataConfigDir)) {
+    New-Item -ItemType Directory -Path $kanataConfigDir -Force | Out-Null
+}
+$kanataSource = Join-Path (Split-Path $PSScriptRoot -Parent | Split-Path -Parent) "config\kanata\kanata.kbd"
+$kanataTarget = Join-Path $kanataConfigDir "kanata.kbd"
+if (Test-Path $kanataSource) {
+    Copy-Item $kanataSource $kanataTarget -Force
+    Write-Host "   [OK] Kanata config deployed to $kanataTarget" -ForegroundColor Green
+} else {
+    Write-Host "   [!!] Kanata config not found at $kanataSource" -ForegroundColor Yellow
+}
+
+# Register Kanata as an elevated scheduled task (runs at logon, high privilege)
+Write-Host ">> Registering Kanata startup task..." -ForegroundColor Cyan
+$kanataExe = (Get-Command kanata -ErrorAction SilentlyContinue)?.Source
+if ($kanataExe) {
+    $taskName = "Kanata"
+    $existing = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
+    if ($existing) {
+        Write-Host "   Kanata task already registered -- skipping" -ForegroundColor Yellow
+    } else {
+        $action    = New-ScheduledTaskAction -Execute $kanataExe -Argument "--cfg `"$kanataTarget`""
+        $trigger   = New-ScheduledTaskTrigger -AtLogOn -User "$env:USERDOMAIN\$env:USERNAME"
+        $principal = New-ScheduledTaskPrincipal -UserId "$env:USERDOMAIN\$env:USERNAME" -RunLevel Highest
+        $settings  = New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Hours 0) -RestartCount 3 -RestartInterval (New-TimeSpan -Minutes 1)
+        Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Settings $settings | Out-Null
+        Write-Host "   [OK] Kanata scheduled task registered (runs elevated at logon)" -ForegroundColor Green
+        Write-Host "   To start now without rebooting: Start-ScheduledTask -TaskName Kanata" -ForegroundColor Cyan
+    }
+} else {
+    Write-Host "   [!!] kanata.exe not found in PATH -- install it first (scoop install kanata)" -ForegroundColor Yellow
 }
 
 # --- Done --------------------------------------------------------------------
