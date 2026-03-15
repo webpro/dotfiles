@@ -62,7 +62,14 @@ $scoopPackages = @(
     "zoxide",
     "lazygit",
     "jq",
-    "delta"
+    "delta",
+    "neovim",
+    "nodejs",
+    "python",
+    "atuin",
+    "yazi",
+    "nmap",
+    "croc"
 )
 foreach ($pkg in $scoopPackages) {
     Write-Host "   Installing: $pkg" -ForegroundColor Green
