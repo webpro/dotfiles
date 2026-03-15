@@ -48,4 +48,5 @@ Audacity.Audacity
 
 # ─── AI ──────────────────────────────────────────────────────────────────────
 Anthropic.Claude
+Perplexity.Comet
 # OpenAI ChatGPT — install from Microsoft Store (not in winget repo)
