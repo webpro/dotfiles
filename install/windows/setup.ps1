@@ -137,6 +137,16 @@ if (-not (Select-String -Path $PROFILE -Pattern 'starship init' -Quiet -ErrorAct
     Write-Host "   Starship already in PowerShell profile" -ForegroundColor Green
 }
 
+# Add 'dot' command to PowerShell profile
+$dotScript = Join-Path $PSScriptRoot "dot.ps1"
+$dotFunction = "function dot { & `"$dotScript`" @args }"
+if (-not (Select-String -Path $PROFILE -Pattern 'function dot' -Quiet -ErrorAction SilentlyContinue)) {
+    Add-Content -Path $PROFILE -Value "`n# dot - dotfiles management`n$dotFunction"
+    Write-Host "   [OK] dot command added to PowerShell profile" -ForegroundColor Green
+} else {
+    Write-Host "   dot command already in PowerShell profile" -ForegroundColor Green
+}
+
 # --- Kanata ------------------------------------------------------------------
 
 Write-Host ">> Deploying Kanata config..." -ForegroundColor Cyan
