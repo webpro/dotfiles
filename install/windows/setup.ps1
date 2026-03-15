@@ -62,7 +62,14 @@ $scoopPackages = @(
     "zoxide",
     "lazygit",
     "jq",
-    "delta"
+    "delta",
+    "neovim",
+    "nodejs",
+    "python",
+    "atuin",
+    "yazi",
+    "nmap",
+    "croc"
 )
 foreach ($pkg in $scoopPackages) {
     Write-Host "   Installing: $pkg" -ForegroundColor Green
@@ -163,7 +170,7 @@ if ($kanataExe) {
     if ($existing) {
         Write-Host "   Kanata task already registered -- skipping" -ForegroundColor Yellow
     } else {
-        $action    = New-ScheduledTaskAction -Execute $kanataExe -Argument "--cfg `"$kanataTarget`""
+        $action    = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-WindowStyle Hidden -NonInteractive -Command `"& '$kanataExe' --cfg '$kanataTarget'`""
         $trigger   = New-ScheduledTaskTrigger -AtLogOn -User "$env:USERDOMAIN\$env:USERNAME"
         $principal = New-ScheduledTaskPrincipal -UserId "$env:USERDOMAIN\$env:USERNAME" -RunLevel Highest
         $settings  = New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Hours 0) -RestartCount 3 -RestartInterval (New-TimeSpan -Minutes 1)

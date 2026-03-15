@@ -21,6 +21,8 @@ Microsoft.PowerShell
 Git.Git
 SublimeHQ.SublimeText.4
 Microsoft.VisualStudioCode
+Microsoft.WindowsTerminal
+Anysphere.Cursor
 
 # ─── Security & Networking ────────────────────────────────────────────────────
 AgileBits.1Password
@@ -50,6 +52,11 @@ VideoLAN.VLC
 calibre.calibre
 Audacity.Audacity
 
+# --- Tools ---
+Amazon.AWSCLI
+HTTPie.HTTPie
+
 # ─── AI ──────────────────────────────────────────────────────────────────────
 Anthropic.Claude
+Perplexity.Comet
 # OpenAI ChatGPT — install from Microsoft Store (not in winget repo)
