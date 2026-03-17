@@ -29,17 +29,15 @@ alias paths='echo -e ${PATH//:/\\n}'
 
 # Directory listing/traversal
 
-LS_COLORIZED=$(is-supported "ls --color" --color -G)
-LS_TIMESTYLEISO=$(is-supported "ls --time-style=long-iso" --time-style=long-iso)
-LS_GROUPDIRSFIRST=$(is-supported "ls --group-directories-first" --group-directories-first)
-
-alias l="ls -lahA $LS_COLORIZED $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
-alias ll="ls -lA $LS_COLORIZED"
-alias lt="ls -lhAtr $LS_COLORIZED $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
-alias ld="ls -ld $LS_COLORIZED */"
+alias l="eza -lahA --icons=auto --group-directories-first"
+alias ll="eza -lA --icons=auto --group-directories-first"
+alias lt="eza -lhA --sort=modified --icons=auto"
+alias ld="eza -lAd --icons=auto */"
 alias lp="stat -c '%a %n' *"
 
-unset LS_COLORIZED LS_TIMESTYLEISO LS_GROUPDIRSFIRST
+# Modern tool replacements
+
+alias cat="bat"
 
 alias ..="cd .."
 alias ...="cd ../.."
