@@ -45,6 +45,7 @@ Grammarly.Grammarly
 
 # ─── Gaming ──────────────────────────────────────────────────────────────────
 Valve.Steam
+Mojang.MinecraftLauncher
 EpicGames.EpicGamesLauncher
 
 # ─── Media ───────────────────────────────────────────────────────────────────

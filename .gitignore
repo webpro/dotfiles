@@ -4,6 +4,7 @@
 __pycache__
 system/.custom
 system/.exports
-
-# Claude Code working directory (worktrees, settings, session data)
-.claude/
+*.bak
+.claude/worktrees/
+.claude/settings.local.json
+.claude/._settings.local.json
