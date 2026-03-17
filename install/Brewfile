@@ -10,6 +10,7 @@ brew "fd"                   # Fast file finder
 brew "ripgrep"              # Fast text/code search
 brew "fzf"                  # Fuzzy finder for interactive search
 brew "yazi"                 # Terminal file manager with image preview
+brew "tldr"                 # Simplified man pages with practical examples
 brew "zoxide"               # Smarter cd command
 
 # --- Testing ---
