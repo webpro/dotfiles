@@ -17,7 +17,7 @@ voidtools.Everything
 Flow-Launcher.Flow-Launcher
 
 # ─── Development ──────────────────────────────────────────────────────────────
-Microsoft.PowerShell
+Docker.DockerDesktop
 Git.Git
 SublimeHQ.SublimeText.4
 Microsoft.VisualStudioCode

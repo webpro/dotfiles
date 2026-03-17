@@ -1,0 +1,17 @@
+services:
+  pairdrop:
+    image: lscr.io/linuxserver/pairdrop:latest
+    container_name: pairdrop
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      # Rate limit to 10 requests per minute per IP
+      - RATE_LIMIT=10
+      # Set to "true" to enable pairing via a 6-digit room key
+      - RTC_CONFIG=false
+      # Set to "true" to enable debug logging
+      - DEBUG_MODE=false

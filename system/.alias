@@ -58,6 +58,11 @@ alias ncuw="npm-check-updates --interactive --root --workspaces"
 alias ip="curl -s ipinfo.io | jq -r '.ip'"
 alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
+# Docker / Self-hosted
+
+alias pairdrop="docker compose -f $DOTFILES_DIR/docker/pairdrop/docker-compose.yml up -d"
+alias pairdrop-stop="docker compose -f $DOTFILES_DIR/docker/pairdrop/docker-compose.yml down"
+
 # Miscellaneous
 
 alias hosts="sudo $EDITOR /etc/hosts"
