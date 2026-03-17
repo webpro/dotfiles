@@ -1,5 +1,6 @@
 .DS_Store
 *.lock.json
+*.bak
 __pycache__
 system/.custom
 system/.exports

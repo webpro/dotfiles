@@ -92,7 +92,7 @@
             // Typography — swap to your preferred Nerd Font if desired
             // JetBrains Mono NF is already in your fonts list
             "font": {
-                "face": "JetBrainsMono Nerd Font",
+                "face": "JetBrainsMono NF",
                 "size": 14,
                 "weight": "normal"
             },

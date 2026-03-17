@@ -119,22 +119,30 @@ Copy-Item $gitignoreSource $gitignoreTarget -Force
 git config --global core.excludesFile "$gitignoreTarget"
 Write-Host "   [OK] Global gitignore deployed" -ForegroundColor Green
 
-# --- Starship init in PowerShell profile -------------------------------------
+# --- Starship init in PowerShell profile(s) ----------------------------------
 
 Write-Host ">> Configuring Starship in PowerShell profile..." -ForegroundColor Cyan
-$profileDir = Split-Path $PROFILE -Parent
-if (-not (Test-Path $profileDir)) {
-    New-Item -ItemType Directory -Path $profileDir -Force | Out-Null
-}
-if (-not (Test-Path $PROFILE)) {
-    New-Item -ItemType File -Path $PROFILE -Force | Out-Null
-}
 $starshipInit = 'Invoke-Expression (&starship init powershell)'
-if (-not (Select-String -Path $PROFILE -Pattern 'starship init' -Quiet -ErrorAction SilentlyContinue)) {
-    Add-Content -Path $PROFILE -Value "`n# Starship prompt`n$starshipInit"
-    Write-Host "   [OK] Starship init added to PowerShell profile" -ForegroundColor Green
-} else {
-    Write-Host "   Starship already in PowerShell profile" -ForegroundColor Green
+
+# Configure for both PS5.1 and PS7 -- they use separate profile files
+$profilesToUpdate = @(
+    "$env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1",
+    "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+)
+foreach ($profilePath in $profilesToUpdate) {
+    $profileDir = Split-Path $profilePath -Parent
+    if (-not (Test-Path $profileDir)) {
+        New-Item -ItemType Directory -Path $profileDir -Force | Out-Null
+    }
+    if (-not (Test-Path $profilePath)) {
+        New-Item -ItemType File -Path $profilePath -Force | Out-Null
+    }
+    if (-not (Select-String -Path $profilePath -Pattern 'starship init' -Quiet -ErrorAction SilentlyContinue)) {
+        Add-Content -Path $profilePath -Value "`n# Starship prompt`n$starshipInit"
+        Write-Host "   [OK] Starship init added to $profilePath" -ForegroundColor Green
+    } else {
+        Write-Host "   Starship already configured in $profilePath" -ForegroundColor Green
+    }
 }
 
 # Add 'dot' command to PowerShell profile

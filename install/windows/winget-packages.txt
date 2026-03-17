@@ -7,6 +7,9 @@
 # ─── Browser ──────────────────────────────────────────────────────────────────
 TheBrowserCompany.Arc
 
+# ─── Microsoft 365 (requires subscription — installs Word, Excel, Outlook, etc.)
+Microsoft.Office
+
 # ─── Productivity & Launchers ─────────────────────────────────────────────────
 Obsidian.Obsidian
 Microsoft.PowerToys
@@ -14,6 +17,7 @@ voidtools.Everything
 Flow-Launcher.Flow-Launcher
 
 # ─── Development ──────────────────────────────────────────────────────────────
+Microsoft.PowerShell
 Git.Git
 SublimeHQ.SublimeText.4
 Microsoft.VisualStudioCode
