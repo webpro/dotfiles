@@ -58,7 +58,15 @@ Audacity.Audacity
 Amazon.AWSCLI
 HTTPie.HTTPie
 
+# ─── Apple / iCloud ──────────────────────────────────────────────────────────
+# iCloud for Windows (Microsoft Store version — preferred over legacy Apple.iCloud)
+9PKTQ5699M62
+
+# ─── Journaling ──────────────────────────────────────────────────────────────
+# Day One (Microsoft Store — no proper winget ID)
+9NN2H8X92WBT
+
 # ─── AI ──────────────────────────────────────────────────────────────────────
 Anthropic.Claude
 Perplexity.Comet
-# OpenAI ChatGPT — install from Microsoft Store (not in winget repo)
+# OpenAI ChatGPT — install from Microsoft Store: search "ChatGPT" in Store
