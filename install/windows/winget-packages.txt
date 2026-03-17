@@ -40,6 +40,7 @@ Logitech.OptionsPlus
 
 # ─── Communication ───────────────────────────────────────────────────────────
 SlackTechnologies.Slack
+Discord.Discord
 Zoom.Zoom
 Grammarly.Grammarly
 
