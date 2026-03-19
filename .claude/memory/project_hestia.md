@@ -70,33 +70,18 @@ type: project
   - `kuma.tinomercy.xyz` → `http://100.85.232.114:3001`
 - Ariadne no longer proxies Hestia services
 
+## Planned
+- Beszel Agent
+- Alloy Agent (ships logs to Loki on Ariadne)
+
 ## TODO
 - **Tailscale SSH on HAOS**: set `userspace_networking: false` in add-on config
--**USB SSD migration**: Samsung T7 or Crucial X6 recommended — SD card is reliability risk
-
-## Key Commands
-
-```bash
-# AdGuard
-cd ~/docker/adguard && docker compose up -d
-docker logs adguard && docker restart adguard
-
-# HAOS VM
-sudo virsh start haos
-sudo virsh shutdown haos
-sudo virsh console haos
-sudo virsh domifaddr haos
-sudo virsh autostart haos
-
-# System
-ip addr show br0
-tailscale status
-docker ps
-```
+- **USB SSD migration**: Samsung T7 or Crucial X6 recommended — SD card is reliability risk
 
 ## Architecture
 - **Hestia**: bombproof, minimal — AdGuard Home + HAOS VM + Uptime Kuma + nginx
-- **Ariadne** (100.74.218.93): general homelab — nginx, Cloudflare tunnel, all other services
-- **Phaedra** (Oracle Cloud): experimental services, Gitea
+- **Ariadne** (Beelink N100, 16GB RAM, 500GB): main homelab app host, Proxmox + Ubuntu Server VM, Cloudflare Tunnel
+- **Phaedra** (Oracle Cloud, 24GB RAM, 200GB): Minecraft, planned OpenClaw
+- **UDM SE**: main router/gateway
 - Tailscale is the backbone for all remote access
-- No public exposure of Hestia — Tailscale only
+- No public exposure of Hestia — Tailscale only, not on Cloudflare Tunnel

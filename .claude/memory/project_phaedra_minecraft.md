@@ -32,11 +32,6 @@ type: project
 - GTX 1070 — running on High/Medium preset recommended
 - Interested in also adding: Sodium, Lithium, Falling Leaves, Ambient Sounds, Distant Horizons
 
-## Tools installed on phaedra for setup
-- unzip, pipx, gdown (used to download server pack from Google Drive)
-- tmux (for persistent sessions)
-- `unsetopt CORRECT` added to ~/.zshrc (zsh autocorrect was interfering)
-
 ## Goals
 - Beautiful world to explore with shaders
 - Load and explore other people's custom maps/worlds
