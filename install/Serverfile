@@ -3,6 +3,7 @@
 
 # --- Shell & Navigation ---
 brew "atuin"                # Sync and search shell history
+brew "toilet"               # ASCII art text banners (used in login greeting)
 brew "bat"                  # cat with syntax highlighting
 brew "eza"                  # Modern ls with icons and colors
 brew "fd"                   # Fast file finder

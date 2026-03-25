@@ -3,79 +3,140 @@
 
 if [[ -o login && -o interactive && -z "$GREETING_SHOWN" ]]; then
   export GREETING_SHOWN=1
-  case $(hostname -s | tr '[:upper:]' '[:lower:]') in
-    ariadne)
-      echo ""
-      echo "  ┌─────────────────────────────────────────┐"
-      echo "  │                                         │"
-      echo "  │   ▲  ARIADNE                            │"
-      echo "  │                                         │"
-      echo "  │   Main homelab · Proxmox VM             │"
-      echo "  │   tinomercy.xyz · Cloudflare Tunnel     │"
-      echo "  │                                         │"
-      echo "  │   \"She held the thread that led         │"
-      echo "  │    the way through the labyrinth.\"      │"
-      echo "  │                                         │"
-      echo "  └─────────────────────────────────────────┘"
-      echo ""
-      ;;
-    hestia)
-      echo ""
-      echo "  ┌─────────────────────────────────────────┐"
-      echo "  │                                         │"
-      echo "  │   ⌂  HESTIA                             │"
-      echo "  │                                         │"
-      echo "  │   Home automation · AdGuard · HA        │"
-      echo "  │   Raspberry Pi 4 · Tailscale-only       │"
-      echo "  │                                         │"
-      echo "  │   \"Keeper of the sacred flame,          │"
-      echo "  │    guardian of the home.\"               │"
-      echo "  │                                         │"
-      echo "  └─────────────────────────────────────────┘"
-      echo ""
-      ;;
-    phaedra)
-      echo ""
-      echo "  ┌─────────────────────────────────────────┐"
-      echo "  │                                         │"
-      echo "  │   ◈  PHAEDRA                            │"
-      echo "  │                                         │"
-      echo "  │   Oracle Cloud · ARM · 24GB             │"
-      echo "  │   Gitea · OpenClaw · Tailscale-only     │"
-      echo "  │                                         │"
-      echo "  │   \"Far from shore,                      │"
-      echo "  │    but never beyond reach.\"             │"
-      echo "  │                                         │"
-      echo "  └─────────────────────────────────────────┘"
-      echo ""
-      ;;
-    hermes)
-      echo ""
-      echo "  ┌─────────────────────────────────────────┐"
-      echo "  │                                         │"
-      echo "  │   ✦  HERMES                             │"
-      echo "  │                                         │"
-      echo "  │   MacBook Pro M4 · Primary workstation  │"
-      echo "  │                                         │"
-      echo "  │   \"The swiftest of the gods,            │"
-      echo "  │    messenger between all worlds.\"       │"
-      echo "  │                                         │"
-      echo "  └─────────────────────────────────────────┘"
-      echo ""
-      ;;
-    proteus)
-      echo ""
-      echo "  ┌─────────────────────────────────────────┐"
-      echo "  │                                         │"
-      echo "  │   ◉  PROTEUS                            │"
-      echo "  │                                         │"
-      echo "  │   Windows · Gaming · Work · Dev         │"
-      echo "  │                                         │"
-      echo "  │   \"He who can take any form             │"
-      echo "  │    is master of all of them.\"           │"
-      echo "  │                                         │"
-      echo "  └─────────────────────────────────────────┘"
-      echo ""
-      ;;
-  esac
+
+  _greet() {
+    # $'...' ensures escape codes are resolved at assignment time (stores real ESC)
+    local BOLD=$'\033[1m'
+    local DIM=$'\033[2m'
+    local GREEN=$'\033[0;32m'
+    local YELLOW=$'\033[0;33m'
+    local BLUE=$'\033[0;34m'
+    local PURPLE=$'\033[0;35m'
+    local CYAN=$'\033[0;36m'
+    local PINK=$'\033[1;35m'
+    local ORANGE=$'\033[38;5;214m'
+    local RESET=$'\033[0m'
+
+    local host
+    host=$(hostname -s | tr '[:upper:]' '[:lower:]')
+
+    # Print big ASCII name banner — toilet if available, plain fallback otherwise
+    _banner() {
+      printf '%s' "$1"                          # color
+      if command -v toilet &>/dev/null; then
+        toilet -f future "$2"
+      else
+        printf '%s\n\n' "${BOLD}  *** $2 ***"
+      fi
+      printf '%s' "${RESET}"
+    }
+
+    case "$host" in
+
+      # ──────────────────────────────────────────────────────────────
+      ariadne)
+        _banner "${PURPLE}" "ARIADNE"
+        printf '%s' "${GREEN}"
+        printf '%s\n' '           .    *         .    *       .      *'
+        printf '%s\n' '      *       .    *    .      *    .      *'
+        printf '%s\n' '   .      *       .       *        .    *     .'
+        printf '%s\n' '               /\              /\           /\'
+        printf '%s\n' '          /\  /  \   /\    /\ /  \  /\    /  \'
+        printf '%s\n' '         /  \/    \ /  \  /  X    \/  \  / /\ \'
+        printf '%s\n' '        / /\ \    // /\ \/ / \\ /\ \  \/ / /  \'
+        printf '%s\n' '       / /  \ \__// /  \ \/   \/ \ \__/ / /    \'
+        printf '%s\n' '  ~~~~~/~~   \___/~~\   /~~\       \___/~~\~~~~~~'
+        printf '%s\n' "${RESET}"
+        printf '%s\n' "    ${PINK}\"The wound is the place where the Light enters you.\"${RESET}"
+        printf '%s\n' "                       ${DIM}— Rumi —${RESET}"
+        printf '\n'
+        ;;
+
+      # ──────────────────────────────────────────────────────────────
+      hestia)
+        _banner "${YELLOW}" "HESTIA"
+        printf '%s' "${ORANGE}"
+        printf '%s\n' '                          )                      '
+        printf '%s\n' '                        (  ) )                   '
+        printf '%s\n' '                       ) (( (  )                 '
+        printf '%s\n' '                      ( ) ) ) ) )                '
+        printf '%s\n' '                     ) ( (_/\_) )                '
+        printf '%s\n' "                    (_,--'   '--,_)               "
+        printf '%s\n' '                    / /  (   )  \ \              '
+        printf '%s\n' '                   | |   |   |   | |             '
+        printf '%s\n' '                    \_\  |___|  /_/              '
+        printf '%s\n' '             _________|_________|_________        '
+        printf '%s\n' '            |___________________________________|  '
+        printf '%s\n' "     ${DIM}~ Home Automation · AdGuard · Tailscale ~${RESET}${ORANGE}"
+        printf '%s\n' '            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  '
+        printf '%s\n' "${RESET}"
+        printf '%s\n' "    ${PINK}\"In the warmth of the hearth, all roads lead home.\"${RESET}"
+        printf '%s\n' "                ${DIM}— Keeper of the Sacred Flame —${RESET}"
+        printf '\n'
+        ;;
+
+      # ──────────────────────────────────────────────────────────────
+      phaedra)
+        _banner "${BLUE}" "PHAEDRA"
+        printf '%s' "${CYAN}"
+        printf '%s\n' '        .   .   .   .   .   .   .   .   .   .   .'
+        printf '%s\n' '      .   .   .   .   .   .   .   .   .   .   .  '
+        printf '%s\n' '    ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~ '
+        printf '%s\n' '   ~ ~  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  '
+        printf '%s\n' '   ~~~    ~~~    ~~~    ~~~    ~~~    ~~~    ~~~   '
+        printf '%s\n' '  ~   ~~~~   ~~~~   ~~~~   ~~~~   ~~~~   ~~~~   ~ '
+        printf '%s\n' '   ~~    ~~    ~~    ~~    ~~    ~~    ~~    ~~    '
+        printf '%s\n' '     ~~~~  ~~~~  ~~~~  ~~~~  ~~~~  ~~~~  ~~~~     '
+        printf '%s\n' "     ${DIM}~ Oracle Cloud · ARM · 24GB · Tailscale-only ~${RESET}${CYAN}"
+        printf '%s\n' '     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+        printf '%s\n' "${RESET}"
+        printf '%s\n' "    ${PINK}\"Even in exile, the mind travels further than the body.\"${RESET}"
+        printf '%s\n' "                ${DIM}— Far from shore, never beyond reach —${RESET}"
+        printf '\n'
+        ;;
+
+      # ──────────────────────────────────────────────────────────────
+      hermes)
+        _banner "${CYAN}" "HERMES"
+        printf '%s' "${CYAN}"
+        printf '\n'
+        printf '%s\n' '     -  -  -  -  -  -  -  -  -  -> * * *         '
+        printf '%s\n' '   - -  -  -  -  -  -  -  -  -->  * * * *        '
+        printf '%s\n' '  -  -  -  -  -  -  -  -  -  -->   * * * * * ~~> '
+        printf '%s\n' '   - -  -  -  -  -  -  -  -  -->  * * * *        '
+        printf '%s\n' '     -  -  -  -  -  -  -  -  -  -> * * *         '
+        printf '\n'
+        printf '%s\n' "        ${DIM}MacBook Pro M4  ·  Primary Workstation${RESET}"
+        printf '%s\n' "${RESET}"
+        printf '%s\n' "    ${PINK}\"The swiftest of the gods, messenger between all worlds.\"${RESET}"
+        printf '%s\n' "                    ${DIM}— Messenger of the Gods —${RESET}"
+        printf '\n'
+        ;;
+
+      # ──────────────────────────────────────────────────────────────
+      proteus)
+        _banner "${GREEN}" "PROTEUS"
+        printf '%s' "${BLUE}"
+        printf '%s\n' '    ~      ~      ~      ~      ~      ~      ~   '
+        printf '%s\n' '  ~    ~~     ~~     ~~     ~~     ~~     ~~     ~'
+        printf '%s\n' ' ~  ~~   ~  ~~   ~  ~~   ~  ~~   ~  ~~   ~  ~~  ~'
+        printf '%s\n' '~      ~~      ~~      ~~      ~~      ~~      ~~~'
+        printf '%s\n' ' ~  ~~   ~  ~~   ~  ~~   ~  ~~   ~  ~~   ~  ~~  ~'
+        printf '%s\n' '  ~    ~~     ~~     ~~     ~~     ~~     ~~     ~'
+        printf '%s\n' '    ~      ~      ~      ~      ~      ~      ~   '
+        printf '%s\n' "     ${DIM}~ Windows · Gaming · Work · Dev ~${RESET}${BLUE}"
+        printf '%s\n' '     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   '
+        printf '%s\n' "${RESET}"
+        printf '%s\n' "    ${PINK}\"He who can take any form is master of all of them.\"${RESET}"
+        printf '%s\n' "                    ${DIM}— The Old Man of the Sea —${RESET}"
+        printf '\n'
+        ;;
+
+    esac
+
+    unset -f _banner
+  }
+
+  _greet
+  unset -f _greet
 fi

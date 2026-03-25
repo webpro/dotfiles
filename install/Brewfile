@@ -55,6 +55,7 @@ brew "n"                    # Node.js version manager
 brew "nmap"                 # Network mapper/scanner
 brew "psgrep"               # Search running processes
 brew "tree"                 # Display folder structures
+brew "toilet"               # ASCII art text banners (used in login greeting)
 brew "unar"                 # Extract archive files
 
 # ─── Fonts (via Homebrew Cask) ────────────────────────────────────
