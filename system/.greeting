@@ -1,0 +1,81 @@
+# Per-host login greeting
+# Sourced by .zshrc for interactive login shells only
+
+if [[ -o login && -o interactive && -z "$GREETING_SHOWN" ]]; then
+  export GREETING_SHOWN=1
+  case $(hostname -s | tr '[:upper:]' '[:lower:]') in
+    ariadne)
+      echo ""
+      echo "  ┌─────────────────────────────────────────┐"
+      echo "  │                                         │"
+      echo "  │   ▲  ARIADNE                            │"
+      echo "  │                                         │"
+      echo "  │   Main homelab · Proxmox VM             │"
+      echo "  │   tinomercy.xyz · Cloudflare Tunnel     │"
+      echo "  │                                         │"
+      echo "  │   \"She held the thread that led         │"
+      echo "  │    the way through the labyrinth.\"      │"
+      echo "  │                                         │"
+      echo "  └─────────────────────────────────────────┘"
+      echo ""
+      ;;
+    hestia)
+      echo ""
+      echo "  ┌─────────────────────────────────────────┐"
+      echo "  │                                         │"
+      echo "  │   ⌂  HESTIA                             │"
+      echo "  │                                         │"
+      echo "  │   Home automation · AdGuard · HA        │"
+      echo "  │   Raspberry Pi 4 · Tailscale-only       │"
+      echo "  │                                         │"
+      echo "  │   \"Keeper of the sacred flame,          │"
+      echo "  │    guardian of the home.\"               │"
+      echo "  │                                         │"
+      echo "  └─────────────────────────────────────────┘"
+      echo ""
+      ;;
+    phaedra)
+      echo ""
+      echo "  ┌─────────────────────────────────────────┐"
+      echo "  │                                         │"
+      echo "  │   ◈  PHAEDRA                            │"
+      echo "  │                                         │"
+      echo "  │   Oracle Cloud · ARM · 24GB             │"
+      echo "  │   Gitea · OpenClaw · Tailscale-only     │"
+      echo "  │                                         │"
+      echo "  │   \"Far from shore,                      │"
+      echo "  │    but never beyond reach.\"             │"
+      echo "  │                                         │"
+      echo "  └─────────────────────────────────────────┘"
+      echo ""
+      ;;
+    hermes)
+      echo ""
+      echo "  ┌─────────────────────────────────────────┐"
+      echo "  │                                         │"
+      echo "  │   ✦  HERMES                             │"
+      echo "  │                                         │"
+      echo "  │   MacBook Pro M4 · Primary workstation  │"
+      echo "  │                                         │"
+      echo "  │   \"The swiftest of the gods,            │"
+      echo "  │    messenger between all worlds.\"       │"
+      echo "  │                                         │"
+      echo "  └─────────────────────────────────────────┘"
+      echo ""
+      ;;
+    proteus)
+      echo ""
+      echo "  ┌─────────────────────────────────────────┐"
+      echo "  │                                         │"
+      echo "  │   ◉  PROTEUS                            │"
+      echo "  │                                         │"
+      echo "  │   Windows · Gaming · Work · Dev         │"
+      echo "  │                                         │"
+      echo "  │   \"He who can take any form             │"
+      echo "  │    is master of all of them.\"           │"
+      echo "  │                                         │"
+      echo "  └─────────────────────────────────────────┘"
+      echo ""
+      ;;
+  esac
+fi

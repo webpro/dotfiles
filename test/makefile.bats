@@ -112,6 +112,65 @@
 	grep -A 10 "^macos:" Makefile | grep -q "brew"
 }
 
+@test "Linux target depends on brew-linux" {
+	grep "^linux:" Makefile | grep -q "brew-linux"
+}
+
+@test "Linux target depends on packages-linux" {
+	grep "^linux:" Makefile | grep -q "packages-linux"
+}
+
+@test "Linux target depends on chsh-linux" {
+	grep "^linux:" Makefile | grep -q "chsh-linux"
+}
+
+@test "brew-linux target exists and installs homebrew" {
+	grep -q "^brew-linux:" Makefile
+	grep -A 3 "^brew-linux:" Makefile | grep -q "brew"
+}
+
+@test "packages-linux target exists and uses Serverfile" {
+	grep -q "^packages-linux:" Makefile
+	grep -A 3 "^packages-linux:" Makefile | grep -q "Serverfile"
+}
+
+@test "chsh-linux target exists and sets zsh" {
+	grep -q "^chsh-linux:" Makefile
+	grep -A 5 "^chsh-linux:" Makefile | grep -q "zsh"
+}
+
+@test "core-linux installs zsh" {
+	grep -A 5 "^core-linux:" Makefile | grep -q "zsh"
+}
+
+@test "core-linux installs procps for Homebrew" {
+	grep -A 5 "^core-linux:" Makefile | grep -q "procps"
+}
+
+@test "core-linux uses sudo" {
+	grep -A 5 "^core-linux:" Makefile | grep -q "sudo"
+}
+
+@test "brew-linux uses NONINTERACTIVE for unattended install" {
+	grep -A 3 "^brew-linux:" Makefile | grep -q "NONINTERACTIVE"
+}
+
+@test "Serverfile exists" {
+	[ -f "install/Serverfile" ]
+}
+
+@test "Serverfile contains starship" {
+	grep -q "starship" install/Serverfile
+}
+
+@test "Serverfile contains zoxide" {
+	grep -q "zoxide" install/Serverfile
+}
+
+@test "Serverfile does not contain macOS-only tools" {
+	! grep -qE "^(cask|brew \"dockutil\"|brew \"mas\"|brew \"duti\"|brew \"kanata\")" install/Serverfile
+}
+
 @test "Makefile exports necessary environment variables" {
 	grep -q "export XDG_CONFIG_HOME" Makefile
 	grep -q "export PATH" Makefile

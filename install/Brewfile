@@ -35,7 +35,6 @@ brew "thefuck"              # Correct mistyped shell commands
 brew "dockutil"             # Manage macOS Dock items via CLI
 brew "mas"                  # Mac App Store CLI for scripting installs
 brew "wget"                 # Command-line downloader
-brew "tailscale"            # Zero-config VPN for secure, identity-based device networking.
 
 # --- Media & Graphics ---
 brew "ffmpeg"               # Video/audio conversion toolkit

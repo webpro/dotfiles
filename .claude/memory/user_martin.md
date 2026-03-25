@@ -7,12 +7,12 @@ type: user
 # Martin
 
 ## System
-- Windows 11 Home
-- NVIDIA GeForce GTX 1070
-- Uses PowerShell as primary shell
-- Dotfiles managed via a dotfiles repo; uses `winget` for package management and wants packages tracked in `dot` so they update with `winget upgrade --all`
+- **Hermes** — MacBook Pro M4, primary workstation, macOS, zsh + Starship + Ghostty
+- **Proteus** — Windows 11 Home PC (gaming / work / programming), NVIDIA GeForce GTX 1070
+- Dotfiles managed via dotfiles repo (github.com/m-mrcr/dotfiles); Homebrew on macOS/Linux, winget on Windows
 - Uses Kanata for keyboard remapping (can interfere with tmux keybindings)
 - Uses Caffeine (via Scoop) to keep PC awake during long operations
+- Shell prompt: Starship with Catppuccin Mocha palette, custom hostname module showing machine name in all caps
 
 ## Role
 - Team Enablement Manager

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ "$OSTYPE" =~ ^linux ]] && ! (grep -qi microsoft /proc/version 2>/dev/null); then
+  exit 0
+else
+  exit 1
+fi
