@@ -1,1 +1,1 @@
-eval $(thefuck --alias fix)
+is-executable thefuck && eval $(thefuck --alias fix)
