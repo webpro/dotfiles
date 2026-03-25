@@ -5,7 +5,7 @@
 # ============================================================
 format = """
 [╭─](fg:blue)\
-$username\
+${custom.machine}\
 [](bg:yellow fg:blue)\
 $directory\
 [](bg:maroon fg:yellow)\
@@ -27,10 +27,13 @@ palette = 'catppuccin_mocha'
 # ============================================================
 
 [username]
-show_always = true
-style_user = "bg:blue fg:plop"
-format = '[🧿 🌓 🌊 ]($style)'
-disabled = false
+disabled = true
+
+[custom.machine]
+command = "hostname -s | tr '[:lower:]' '[:upper:]'"
+when = "true"
+style = "bg:blue fg:plop"
+format = '[ $output ]($style)'
 
 [directory]
 style = "bg:yellow fg:plop"

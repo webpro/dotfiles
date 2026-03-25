@@ -23,16 +23,31 @@ all: $(OS)
 
 macos: sudo core-macos packages link duti bun
 
-linux: core-linux link bun
+linux: core-linux brew-linux packages-linux link chsh-linux bun
 
 wsl: core-wsl link bun
 
 core-macos: brew git npm
 
 core-linux:
-	apt-get update
-	apt-get upgrade -y
-	apt-get dist-upgrade -f
+	sudo apt-get update
+	sudo apt-get upgrade -y
+	sudo apt-get dist-upgrade -f
+	sudo apt-get install -y zsh curl git build-essential procps
+
+brew-linux:
+	@is-executable brew || NONINTERACTIVE=1 /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+packages-linux: brew-linux
+	brew bundle --file=$(DOTFILES_DIR)/install/Serverfile || true
+
+chsh-linux:
+	@if [ "$$SHELL" != "$$(which zsh)" ]; then \
+		echo "→ Changing default shell to zsh..."; \
+		sudo chsh -s $$(which zsh) $$USER; \
+	else \
+		echo "→ zsh is already the default shell"; \
+	fi
 
 core-wsl:
 	@echo "→ Setting up WSL2 environment..."
@@ -46,8 +61,8 @@ core-wsl:
 stow-macos: brew
 	is-executable stow || brew install stow
 
-stow-linux: core-linux
-	is-executable stow || apt-get -y install stow
+stow-linux: packages-linux
+	@is-executable stow || brew install stow
 
 stow-wsl:
 	@is-executable stow || brew install stow

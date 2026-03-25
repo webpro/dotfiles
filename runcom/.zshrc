@@ -31,6 +31,15 @@ if is-macos; then
   done
 fi
 
+if is-linux; then
+  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.linux; do
+    [ -f "$DOTFILE" ] && . "$DOTFILE"
+  done
+fi
+
+# Login greeting
+[ -f "$DOTFILES_DIR/system/.greeting" ] && . "$DOTFILES_DIR/system/.greeting"
+
 # Wrap up
 
 unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE

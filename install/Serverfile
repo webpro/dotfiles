@@ -1,0 +1,30 @@
+# ─── Server Brewfile ───────────────────────────────────────────
+# Subset of Brewfile for headless Linux servers (no GUI, no macOS-only tools)
+
+# --- Shell & Navigation ---
+brew "atuin"                # Sync and search shell history
+brew "bat"                  # cat with syntax highlighting
+brew "eza"                  # Modern ls with icons and colors
+brew "fd"                   # Fast file finder
+brew "ripgrep"              # Fast text/code search
+brew "fzf"                  # Fuzzy finder for interactive search
+brew "tldr"                 # Simplified man pages with practical examples
+brew "zoxide"               # Smarter cd command
+
+# --- Development & Languages ---
+brew "git"                  # Version control
+brew "gh"                   # GitHub CLI
+brew "git-delta"            # Syntax-highlighted diffs for Git
+brew "lazygit"              # Terminal UI for git commands
+brew "jq"                   # Parse and transform JSON data
+brew "shellcheck"           # Linter for shell scripts
+brew "stow"                 # Manage dotfiles with symlinks
+brew "starship"             # Beautiful and minimal shell prompt
+brew "tmux"                 # Terminal multiplexer
+
+# --- System & Utility ---
+brew "wget"                 # Command-line downloader
+brew "nmap"                 # Network mapper/scanner
+brew "tree"                 # Display folder structures
+brew "httpie"               # Human-friendly HTTP client
+brew "croc"                 # Encrypted file transfer between devices

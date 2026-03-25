@@ -123,9 +123,45 @@
 	grep -q "Windows" README.md
 }
 
+@test "Linux env override file exists" {
+	[ -f "system/.env.linux" ]
+}
+
+@test "Linux env overrides EDITOR away from VSCode" {
+	grep -q "EDITOR" system/.env.linux
+	# Must not set editor to 'code' — VSCode is not available on headless servers
+	! grep -E "EDITOR.*=.*[\"']?code[\"']?" system/.env.linux
+}
+
+@test "Linux env uses official Homebrew shellenv path" {
+	grep -q "/home/linuxbrew/.linuxbrew" system/.env.linux
+}
+
+@test "zshrc sources Linux-specific dotfiles" {
+	grep -q "is-linux" runcom/.zshrc
+	grep -q "\.linux" runcom/.zshrc
+}
+
+@test "zshrc Linux block mirrors macOS block structure" {
+	# Both platforms should source env/alias/function files via brace expansion
+	grep -q "\.{env,alias,function}\.linux" runcom/.zshrc
+}
+
+@test "path file sets HOMEBREW_PREFIX correctly for Linux" {
+	# Linux must use /home/linuxbrew/.linuxbrew, not macOS paths
+	grep -q "is-linux" system/.path
+	grep -q "/home/linuxbrew/.linuxbrew" system/.path
+}
+
+@test "path file preserves macOS HOMEBREW_PREFIX logic" {
+	# macOS arm64/intel detection must still exist
+	grep -q "is-arm64" system/.path
+	grep -q "/opt/homebrew" system/.path
+}
+
 @test "All submodules are properly configured" {
-	if [ -f ".gitmodules" ]; then
-		# Should have proper URLs
+	if [ -f ".gitmodules" ] && [ -s ".gitmodules" ]; then
+		# Should have proper URLs if submodules are defined
 		grep -q "url" .gitmodules
 	fi
 }

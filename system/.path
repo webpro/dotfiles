@@ -3,7 +3,11 @@
 
 is-executable getconf && PATH=$($(command -v getconf) PATH)
 
-export HOMEBREW_PREFIX=$($DOTFILES_DIR/bin/is-supported $DOTFILES_DIR/bin/is-arm64 /opt/homebrew /usr/local)
+if $DOTFILES_DIR/bin/is-linux 2>/dev/null; then
+  export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+else
+  export HOMEBREW_PREFIX=$($DOTFILES_DIR/bin/is-supported $DOTFILES_DIR/bin/is-arm64 /opt/homebrew /usr/local)
+fi
 
 prepend-path() {
   [ -d $1 ] && PATH="$1:$PATH"
