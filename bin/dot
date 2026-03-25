@@ -19,14 +19,11 @@ sub_help () {
 }
 
 sub_clean () {
-  echo "$ brew cleanup"
-  brew cleanup
+  mole clean
   echo "$ cargo cache --autoclean"
   cargo cache --autoclean
   echo "$ gem cleanup"
   gem cleanup
-  echo "$ pip cache purge"
-  pip cache purge
 }
 
 sub_dock () {
