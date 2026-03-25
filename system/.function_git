@@ -1,9 +1,14 @@
 function git() {
-  if [ $1 = "c" ]
+  if [ "$1" = "c" ] || [ "$1" = "cs" ]
   then
     local url="$2";
     [[ "$url" =~ ^[^:]+/.+$ ]] && url="git@github.com:${url}.git"
-    command git clone "$url" "${@:3}" && cdl
+    local shallow=()
+    [[ "$1" == "cs" ]] && shallow=(--depth 1 --single-branch)
+    local dir="${url##*/}"
+    dir="${dir%.git}"
+    [[ -n "$3" && "$3" != -* ]] && dir="$3"
+    command git clone "${shallow[@]}" "$url" "${@:3}" && cd "$dir"
   else
     command git "$@"
   fi
