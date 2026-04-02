@@ -6,7 +6,6 @@
 @test "Package list files exist" {
 	[ -f "install/Brewfile" ]
 	[ -f "install/npmfile" ]
-	[ -f "install/Rustfile" ]
 }
 
 @test "Brewfile is valid" {
@@ -22,9 +21,6 @@
 	grep -v "^#" install/npmfile | grep -v "^$" | wc -l | grep -qv "^0$"
 }
 
-@test "Rustfile is valid" {
-	[ -s "install/Rustfile" ]
-}
 
 @test "Homebrew is installed (if on macOS or Linux with Homebrew)" {
 	if command -v brew &> /dev/null; then

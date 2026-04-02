@@ -19,9 +19,11 @@ brew "bats-core"            # Bash Automated Testing System
 # --- Development & Languages ---
 brew "git"                  # Version control
 brew "gh"                   # GitHub CLI
+brew "1password-cli"        # 1Password CLI (op)
 brew "git-delta"            # Syntax-highlighted diffs for Git
 brew "lazygit"              # Terminal UI for git commands
 brew "jq"                   # Parse and transform JSON data
+brew "jless"                # Interactive JSON viewer
 brew "python@3.13"          # Python 3.13 interpreter
 brew "node"                 # Node.js runtime
 brew "rust"                 # Rust programming language toolchain
@@ -37,6 +39,7 @@ brew "mas"                  # Mac App Store CLI for scripting installs
 brew "wget"                 # Command-line downloader
 
 # --- Media & Graphics ---
+brew "chafa"                # Render images as ANSI art in the terminal
 brew "ffmpeg"               # Video/audio conversion toolkit
 brew "imagemagick"          # Image processing utilities
 brew "webp"                 # Convert images to/from WebP format
@@ -55,7 +58,6 @@ brew "n"                    # Node.js version manager
 brew "nmap"                 # Network mapper/scanner
 brew "psgrep"               # Search running processes
 brew "tree"                 # Display folder structures
-brew "toilet"               # ASCII art text banners (used in login greeting)
 brew "unar"                 # Extract archive files
 
 # ─── Fonts (via Homebrew Cask) ────────────────────────────────────

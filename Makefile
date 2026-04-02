@@ -95,8 +95,16 @@ link: stow-$(OS) submodules
 			mv -v "$$TARGET" "$$TARGET.bak"; \
 		fi; \
 	done
+	@echo "→ Backing up existing SSH config..."
+	@if [ -f "$(HOME)/.ssh/config" ] && [ ! -h "$(HOME)/.ssh/config" ]; then \
+		mv -v "$(HOME)/.ssh/config" "$(HOME)/.ssh/config.bak"; \
+	fi
+	@mkdir -p "$(HOME)/.ssh"
+	@chmod 700 "$(HOME)/.ssh"
 	@echo "→ Symlinking runcom files to home directory..."
 	@stow -t "$(HOME)" runcom
+	@echo "→ Symlinking SSH config..."
+	@stow -t "$(HOME)" ssh
 	@echo "→ Symlinking config files to ~/.config..."
 	@stow -t "$(XDG_CONFIG_HOME)" config
 	@echo "→ Creating runtime directory..."
@@ -118,6 +126,8 @@ unlink: stow-$(OS)
 	fi
 	@echo "→ Removing runcom symlinks..."
 	@stow --delete -t "$(HOME)" runcom
+	@echo "→ Removing SSH config symlink..."
+	@stow --delete -t "$(HOME)" ssh
 	@echo "→ Removing config symlinks..."
 	@stow --delete -t "$(XDG_CONFIG_HOME)" config
 	@echo "→ Restoring runcom backups..."
@@ -161,7 +171,11 @@ node-packages: npm
 	$(N_PREFIX)/bin/npm install --force --location global $(shell cat install/npmfile)
 
 rust-packages: brew-packages
-	cargo install $(shell cat install/Rustfile)
+	@if [ -s "$(DOTFILES_DIR)/install/Rustfile" ]; then \
+		cargo install $$(cat install/Rustfile); \
+	else \
+		echo "→ Rustfile is empty, skipping cargo installs"; \
+	fi
 
 duti:
 	duti -v $(DOTFILES_DIR)/install/duti

@@ -23,25 +23,19 @@ sub_help () {
   echo "Usage: $BIN_NAME <command>"
   echo
   echo "Commands:"
-  echo "   clean            Clean up caches (brew, cargo, gem, pip)"
+  echo "   clean            Clean up caches (brew)"
   echo "   dock             Apply macOS Dock settings"
   echo "   duti             Set default apps for file types (UTI)"
   echo "   edit             Open dotfiles in IDE ($VISUAL) and Git GUI ($VISUAL_GIT)"
   echo "   help             This help message"
   echo "   macos            Apply macOS system defaults"
   echo "   test             Run tests"
-  echo "   update           Update packages and pkg managers (brew, casks, cargo, pip3, npm, gems, macOS)"
+  echo "   update           Update packages (brew, casks, Mac App Store, macOS)"
 }
 
 sub_clean () {
   echo "$ brew cleanup"
   brew cleanup
-  echo "$ cargo cache --autoclean"
-  cargo cache --autoclean
-  echo "$ gem cleanup"
-  gem cleanup
-  echo "$ pip3 cache purge"
-  pip3 cache purge
 }
 
 sub_dock () {
@@ -105,31 +99,6 @@ sub_update () {
   brew update
   brew upgrade
   brew upgrade --cask
-
-  echo "―― Rust (cargo) ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
-  if command -v cargo &> /dev/null; then
-    if command -v cargo-install-update &> /dev/null; then
-      cargo install-update -a
-    else
-      echo "cargo-install-update not found. Install with: cargo install cargo-update"
-    fi
-  fi
-
-  echo "―― Python (pip3) ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
-  if command -v pip3 &> /dev/null; then
-    pip3 list --outdated --format=json | jq -r '.[] | .name' | xargs -n1 pip3 install -U
-  fi
-
-  echo "―― npm ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
-  if command -v npm &> /dev/null; then
-    npm update -g
-  fi
-
-  echo "―― Ruby (gem) ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
-  if command -v gem &> /dev/null; then
-    gem update --system
-    gem update
-  fi
 
   echo "―― Mac App Store ――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
   sub_update_mas

@@ -3,7 +3,6 @@
 
 # --- Shell & Navigation ---
 brew "atuin"                # Sync and search shell history
-brew "toilet"               # ASCII art text banners (used in login greeting)
 brew "bat"                  # cat with syntax highlighting
 brew "eza"                  # Modern ls with icons and colors
 brew "fd"                   # Fast file finder
@@ -15,6 +14,7 @@ brew "zoxide"               # Smarter cd command
 # --- Development & Languages ---
 brew "git"                  # Version control
 brew "gh"                   # GitHub CLI
+brew "1password-cli"        # 1Password CLI (op)
 brew "git-delta"            # Syntax-highlighted diffs for Git
 brew "lazygit"              # Terminal UI for git commands
 brew "jq"                   # Parse and transform JSON data
