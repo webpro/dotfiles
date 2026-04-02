@@ -1,6 +1,7 @@
 [user]
 	name = Martin Mercer
 	email = 28820023+m-mrcr@users.noreply.github.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJVTG9L8C2uOaJ4Gi82wA8EC1OadfSQ4Q2QE27aRrRXf
 
 [github]
 	user = m-mrcr
@@ -118,3 +119,9 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
