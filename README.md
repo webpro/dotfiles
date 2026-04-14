@@ -77,10 +77,10 @@ dot dock
 dot macos
 ```
 
-3. Populate this file with tokens (example: `export GITHUB_TOKEN=abc`):
+1. Populate this file with anything you need sourced in each shell:
 
 ```sh
-touch ~/.dotfiles/system/.exports
+touch ~/.dotfiles/local/.profile
 ```
 
 ## The `dot` command

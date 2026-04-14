@@ -16,7 +16,7 @@ prepend-path "/usr/sbin"
 prepend-path "/usr/local/bin"
 prepend-path "$DOTFILES_DIR/bin"
 
-is-macos && . "$DOTFILES_DIR/system/.path.macos"
+is-macos && . "$DOTFILES_DIR/system/macos/.path"
 
 # Remove duplicates
 PATH=$(echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}')
