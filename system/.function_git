@@ -11,9 +11,34 @@ git_c() {
 
 git_cs() { git_c "$@"; }
 
+git_changelog() {
+  local base="${1:?usage: git changelog <base> <head>}"
+  local head="${2:?usage: git changelog <base> <head>}"
+  local jq_filter='.commits[:-1][] | [(.sha[:9]), (.commit.message | split("\n")[0]), .author.login] | @tsv'
+  local repo my_login commits me
+  repo="$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null)"
+  my_login="$(gh api user -q .login 2>/dev/null)"
+
+  if [ -n "$repo" ] && [ -n "$my_login" ] && commits="$(gh api "repos/${repo}/compare/${base}...${head}" -q "$jq_filter" 2>/dev/null)"; then
+    me="$my_login"
+  else
+    me="$(git config user.email)"
+    commits="$(command git log --reverse --format='%h%x09%s%x09%ae' "${base}..${head}^")"
+  fi
+
+  echo "$commits" | while IFS=$'\t' read -r sha subject who; do
+    if [ "$who" = "$me" ]; then
+      printf '* %s (%s)\n' "$subject" "$sha"
+    else
+      printf '* %s (%s) - thanks @%s!\n' "$subject" "$sha" "$who"
+    fi
+  done
+}
+
 function git() {
   case "$1" in
     c|cs)        "git_$1" "${@:2}" ;;
+    changelog)   git_changelog "${@:2}" ;;
     *)           command git "$@" ;;
   esac
 }
