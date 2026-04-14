@@ -56,22 +56,24 @@
 	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
 	g = grep --break --heading --line-number
 	home = browse
+	ignored = check-ignore -v -n
 	l = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
 	ll = log --graph --abbrev-commit --pretty=oneline
-	lm = log --pretty=format:'* %s (%h)'
+	lm = log --reverse --pretty=format:'* %s (%h)'
 	now = "!f() { GIT_SEQUENCE_EDITOR=: git rebase -i HEAD~${1:-1} --exec \"git commit --amend --no-edit --date=\\\"$(date)\\\"\"; }; f"
 	p = push
 	patch = !git --no-pager diff --no-color
 	pf = push --force
-	rv = remote -vv
-	rh = reset --hard HEAD
 	ra = rebase --abort
 	rc = rebase --continue
-	squash-all = "!f() { git reset $(git commit-tree HEAD^{tree} -m \"${1:-Initial commit}\"); }; f"
+	rh = reset --hard HEAD
+	rv = remote -vv
 	s = status
 	show-ignored = !git clean -ndX | perl -pe 's/Would remove //'
+	squash-all = "!f() { git reset $(git commit-tree HEAD^{tree} -m \"${1:-Initial commit}\"); }; f"
 	sshort = "!f() { git show --shortstat \"${1:-HEAD}\" | awk \"/files? changed/ { gsub(/,/, \\\"\\\", \\$4); gsub(/,/, \\\"\\\", \\$6); print \\\"\\033[32m+\\\" \\$4 \\\" \\033[31m-\\\" \\$6 \\\"\\033[0m\\\" }\"; }; f"
+	tidy = "!f() { GIT_SEQUENCE_EDITOR=: git rebase -i HEAD~${1:-1} --exec \"git commit --amend -m \\\"\\$(git log --format=%s -1)\\\" --date=\\\"\\$(date)\\\"\"; }; f"
 
 [diff]
 	renames = copies
