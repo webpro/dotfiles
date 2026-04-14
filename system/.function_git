@@ -1,15 +1,19 @@
+git_c() {
+  local url="$1"
+  [[ "$url" =~ ^[^:]+/.+$ ]] && url="git@github.com:${url}.git"
+  local shallow=()
+  [[ "${FUNCNAME[1]}" == "git_cs" ]] && shallow=(--depth 1 --single-branch)
+  local dir="${url##*/}"
+  dir="${dir%.git}"
+  [[ -n "$2" && "$2" != -* ]] && dir="$2"
+  command git clone "${shallow[@]}" "$url" "${@:2}" && cd "$dir"
+}
+
+git_cs() { git_c "$@"; }
+
 function git() {
-  if [ "$1" = "c" ] || [ "$1" = "cs" ]
-  then
-    local url="$2";
-    [[ "$url" =~ ^[^:]+/.+$ ]] && url="git@github.com:${url}.git"
-    local shallow=()
-    [[ "$1" == "cs" ]] && shallow=(--depth 1 --single-branch)
-    local dir="${url##*/}"
-    dir="${dir%.git}"
-    [[ -n "$3" && "$3" != -* ]] && dir="$3"
-    command git clone "${shallow[@]}" "$url" "${@:3}" && cd "$dir"
-  else
-    command git "$@"
-  fi
+  case "$1" in
+    c|cs)        "git_$1" "${@:2}" ;;
+    *)           command git "$@" ;;
+  esac
 }
