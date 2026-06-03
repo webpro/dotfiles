@@ -13,7 +13,7 @@ Mainly targets macOS systems, but works on Ubuntu and Arch Linux as well.
 - Well-organized and easy to customize
 - The installation and runcom setup is
   [tested weekly on real Ubuntu and macOS machines](https://github.com/webpro/dotfiles/actions)
-  (Ventura/13, Sonomo/14, Sequoia/15) using [a GitHub Action](./.github/workflows/dotfiles-installation.yml)
+  (Sonoma/14, Sequoia/15, Tahoe/26) using [a GitHub Action](./.github/workflows/dotfiles-installation.yml)
 - Supports both Apple Silicon (M1) and Intel chips
 
 ## Packages Overview
