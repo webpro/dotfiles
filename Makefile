@@ -92,7 +92,7 @@ pacman-packages:
 	pacman -S --noconfirm - < $(DOTFILES_DIR)/install/pacmanfile
 
 brew-packages: brew
-	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
+	brew bundle --verbose --file=$(DOTFILES_DIR)/install/Brewfile || true
 
 cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
