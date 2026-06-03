@@ -115,3 +115,7 @@
 
 [advice]
 	detachedHead = false
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true

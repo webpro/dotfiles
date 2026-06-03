@@ -68,6 +68,7 @@ Running `make` with the Makefile is idempotent. The installation process in the 
 git config --global user.name "your name"
 git config --global user.email "your@email.com"
 git config --global github.user "your-github-username"
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
 ```
 
 2. Set macOS [Dock items](./macos/dock.sh) and [system defaults](./macos/defaults.sh):
