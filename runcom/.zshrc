@@ -1,6 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Homebrew shellenv — also in .zprofile, repeated here so non-login
+# interactive shells (IDE/agent subshells) pick up /opt/homebrew/bin.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -106,13 +110,13 @@ export UPDATE_ZSH_DAYS=14
 # autojump setup
 [ -f $HOMEBREW_PREFIX/etc/profile.d/autojump.sh ] && . $HOMEBREW_PREFIX/etc/profile.d/autojump.sh
 
-# thefuck setup
-eval $(thefuck --alias)
+# thefuck setup — lazy-loaded so `thefuck --alias`
+# only runs the first time `fuck` is invoked, instead of on every shell launch.
+fuck() {
+  unfunction fuck
+  eval "$(thefuck --alias)"
+  fuck "$@"
+}
 
 # fnm setup
-FNM_PATH="/opt/homebrew/opt/fnm/bin"
-if [ -d "$FNM_PATH" ]; then
-  eval "`fnm env`"
-fi
-
 eval "$(fnm env --use-on-cd --shell zsh)"
