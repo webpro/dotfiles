@@ -69,5 +69,18 @@ git-cleanup() {
   fi
 }
 
-# Kill port
-kill() { kill -9 $(lsof -t -i :$1);}
+# Kill the process listening on a given TCP port.
+# Usage: killport 3000
+killport() {
+  if [[ -z "$1" ]]; then
+    echo "usage: killport <port>" >&2
+    return 1
+  fi
+  local pids
+  pids=$(lsof -t -i ":$1")
+  if [[ -z "$pids" ]]; then
+    echo "no process listening on port $1" >&2
+    return 1
+  fi
+  command kill -9 $pids
+}
