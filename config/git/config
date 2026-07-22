@@ -71,6 +71,7 @@
 	s = status
 	show-ignored = !git clean -ndX | perl -pe 's/Would remove //'
 	squash-all = "!f() { git reset $(git commit-tree HEAD^{tree} -m \"${1:-Initial commit}\"); }; f"
+	squash-branch = "!f() { base=$(git merge-base HEAD \"${1:-main}\"); first=$(git rev-list --reverse \"$base\"..HEAD | head -1); git reset --soft \"$base\" && git commit -C \"$first\"; }; f"
 	sshort = "!f() { git show --shortstat \"${1:-HEAD}\" | awk \"/files? changed/ { gsub(/,/, \\\"\\\", \\$4); gsub(/,/, \\\"\\\", \\$6); print \\\"\\033[32m+\\\" \\$4 \\\" \\033[31m-\\\" \\$6 \\\"\\033[0m\\\" }\"; }; f"
 	tidy = "!f() { GIT_SEQUENCE_EDITOR=: git rebase -i HEAD~${1:-1} --exec \"git commit --amend -m \\\"\\$(git log --format=%s -1)\\\" --date=\\\"\\$(date)\\\"\"; }; f"
 
