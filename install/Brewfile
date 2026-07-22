@@ -1,10 +1,8 @@
-tap "lotyp/homebrew-formulae"
-
 # core/dotfiles
 brew "bats-core"
 brew "coreutils"
 brew "duti"
-brew "lotyp/formulae/dockutil"
+brew "dockutil"
 brew "nano"
 brew "parallel"
 brew "stow"
