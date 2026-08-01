@@ -2,7 +2,7 @@ DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 export XDG_CONFIG_HOME = $(HOME)/.config
 
 install: install-minimal install-extra
-install-minimal: sudo core packages link quartz-filters plannotator
+install-minimal: sudo core packages link quartz-filters plannotator claude-skills
 install-extra: brew-packages-extra cask-apps-extra
 
 sudo:
@@ -94,6 +94,41 @@ quartz-filters:
 # the claude-code cask exists for the installer's agent integration.
 plannotator:
 	curl -fsSL https://plannotator.ai/install.sh | bash -s -- --non-interactive
+
+#
+# CLAUDE CODE SKILLS & PLUGINS
+#
+# Agent skills/plugins aren't dotfiles to track — they're generated artifacts
+# (like plannotator's skills), so we (re)install them from source instead of
+# vendoring them. Everything lands under ~/.claude (or $CLAUDE_CONFIG_DIR).
+# Grouped after `packages` so the `claude` CLI (claude-code cask) and node exist.
+CLAUDE_SKILLS_DIR := $(if $(CLAUDE_CONFIG_DIR),$(CLAUDE_CONFIG_DIR),$(HOME)/.claude)/skills
+
+claude-skills: superpowers mcollina-skills playwright-skills
+
+# obra/superpowers is a real Claude Code plugin (hooks, /brainstorm, SessionStart
+# injection), so it goes through the plugin CLI rather than being copied as loose
+# skills. `marketplace add` is made idempotent so re-runs don't fail; the first
+# install may prompt once to trust the marketplace — answer it interactively.
+superpowers:
+	claude plugin marketplace add obra/superpowers-marketplace || true
+	claude plugin install superpowers@superpowers-marketplace --scope user
+
+# mcollina/skills is a plain skills folder (dirs with SKILL.md, no plugin
+# manifest), so the plugin CLI can't consume it — shallow-clone and copy the
+# skills into place. Re-running refreshes them to the latest commit.
+mcollina-skills:
+	mkdir -p "$(CLAUDE_SKILLS_DIR)"
+	tmp=$$(mktemp -d) && \
+		git clone --depth 1 https://github.com/mcollina/skills "$$tmp" && \
+		cp -R "$$tmp"/skills/. "$(CLAUDE_SKILLS_DIR)/" && \
+		rm -rf "$$tmp"
+
+# @playwright/cli installs its own Claude Code skill via `install --skills`
+# (lands in ~/.claude/skills/playwright-cli).
+playwright-skills:
+	npm install -g @playwright/cli@latest
+	playwright-cli install --skills
 
 # Stow test commands:
 # stow --adopt -nvSt ~ runcom

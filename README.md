@@ -10,6 +10,7 @@ Initially forked from https://github.com/webpro/dotfiles. It targets only macOS 
 - [homebrew-cask](https://caskroom.github.io) (packages: [Caskfile](./install/Caskfile))
 - [Node.js + npm LTS](https://nodejs.org/en/download/)
 - [Plannotator](https://plannotator.ai) (not on Homebrew — installed via its official script by `make`; see [below](#plannotator))
+- Claude Code agent skills & plugins ([superpowers](https://github.com/obra/superpowers), [mcollina/skills](https://github.com/mcollina/skills), [@playwright/cli](https://playwright.dev/docs/getting-started-cli); see [below](#claude-code-skills--plugins))
 - Latest Git, ZSH, GNU coreutils, curl
 
 ## Install
@@ -63,6 +64,20 @@ To add another app: create `install/<app-name>/`, commit its exported configurat
 - integrates with coding agents it detects, which is why it runs after `packages` (so the `claude-code` cask already exists).
 
 Both the binary and the skills are generated artifacts (like a `git` checkout), so nothing here is tracked in this repo. To change the extras / model-invocable choices skipped by `--non-interactive`, run `plannotator --reconfigure` by hand.
+
+## Claude Code skills & plugins
+
+`make` installs a few [Claude Code](https://claude.com/claude-code) agent add-ons under `~/.claude` (or `$CLAUDE_CONFIG_DIR`) via the [`claude-skills` Makefile target](./Makefile). Like plannotator's skills, these are generated artifacts installed from source, so nothing is tracked in this repo:
+
+| Add-on                                                             | Kind                                                                 | How it's installed                                                                 |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [superpowers](https://github.com/obra/superpowers)                 | Claude Code **plugin** (hooks, `/brainstorm`, session-start context) | `claude plugin marketplace add` + `claude plugin install @superpowers-marketplace` |
+| [mcollina/skills](https://github.com/mcollina/skills)              | Plain skills (no plugin manifest)                                    | shallow `git clone`, copied into `~/.claude/skills/`                               |
+| [@playwright/cli](https://playwright.dev/docs/getting-started-cli) | npm CLI + its own skill                                              | `npm i -g @playwright/cli@latest` + `playwright-cli install --skills`              |
+
+Runs after `packages` so the `claude` CLI and Node are available. The superpowers step may prompt once to trust its marketplace — answer it interactively. Re-running the target refreshes each add-on to its latest version.
+
+An alternative to the imperative `superpowers` target would be to declare the marketplace + plugin in a global `~/.claude/settings.json` (`extraKnownMarketplaces` + `enabledPlugins`) and let Claude Code auto-install on startup — but this repo doesn't manage `~/.claude`, so the Makefile route is used instead.
 
 ## Post-install
 
