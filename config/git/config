@@ -1,10 +1,10 @@
 [user]
-	name = Lars Kappert
-	email = lars@webpro.nl
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMQDJg/REFtUFoSB/oS9Q/nHR4c+IDYzP0ktzj/yD0l4
+	name = Alex Ciavarra
+	email = abjectnotfound@protonmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO4OYimzLgAWrgs3fYQ5BIdbfY37KlAzesRjk6pBAWU3
 
 [github]
-	user = webpro
+	user = abjectnotfound
 
 [core]
 	excludesfile = ~/.config/git/ignore
