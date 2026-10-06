@@ -50,11 +50,13 @@ link: stow-$(OS)
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	mkdir -p "$(XDG_CONFIG_HOME)"
 	stow -t "$(HOME)" runcom
-	stow -t "$(XDG_CONFIG_HOME)" config
+	stow -t "$(XDG_CONFIG_HOME)" --ignore='^agents$$' config
+	stow --no-folding -d "$(DOTFILES_DIR)/config" -t "$(HOME)" agents
 
 unlink: stow-$(OS)
 	stow --delete -t "$(HOME)" runcom
-	stow --delete -t "$(XDG_CONFIG_HOME)" config
+	stow --delete -t "$(XDG_CONFIG_HOME)" --ignore='^agents$$' config
+	stow --delete -d "$(DOTFILES_DIR)/config" -t "$(HOME)" agents
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 

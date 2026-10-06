@@ -1,0 +1,4 @@
+model_context_window = 872000
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "thread-name", "git-branch", "pull-request-number", "context-used", "context-window-size"]
+status_line_use_colors = true
