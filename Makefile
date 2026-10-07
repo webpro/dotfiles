@@ -66,13 +66,13 @@ brew:
 bash: brew
 ifdef GITHUB_ACTION
 	if ! grep -qx $(BIN)/bash $(SHELLS); then \
-		brew install bash bash-completion@2 pcre && \
+		brew install bash bash-completion@2 pcre2 && \
 		echo $(BIN)/bash | sudo tee -a $(SHELLS) && \
 		sudo chsh -s $(BIN)/bash; \
 	fi
 else
 	if ! grep -qx $(BIN)/bash $(SHELLS); then \
-		brew install bash bash-completion@2 pcre && \
+		brew install bash bash-completion@2 pcre2 && \
 		echo $(BIN)/bash | sudo tee -a $(SHELLS) && \
 		chsh -s $(BIN)/bash; \
 	fi
