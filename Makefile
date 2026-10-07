@@ -65,16 +65,16 @@ brew:
 
 bash: brew
 ifdef GITHUB_ACTION
-	if ! grep -q bash $(SHELLS); then \
+	if ! grep -qx $(BIN)/bash $(SHELLS); then \
 		brew install bash bash-completion@2 pcre && \
-		echo $(shell which bash) | sudo tee -a $(SHELLS) && \
-		sudo chsh -s $(shell which bash); \
+		echo $(BIN)/bash | sudo tee -a $(SHELLS) && \
+		sudo chsh -s $(BIN)/bash; \
 	fi
 else
-	if ! grep -q bash $(SHELLS); then \
+	if ! grep -qx $(BIN)/bash $(SHELLS); then \
 		brew install bash bash-completion@2 pcre && \
-		echo $(shell which bash) | sudo tee -a $(SHELLS) && \
-		chsh -s $(shell which bash); \
+		echo $(BIN)/bash | sudo tee -a $(SHELLS) && \
+		chsh -s $(BIN)/bash; \
 	fi
 endif
 
