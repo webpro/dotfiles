@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14, macos-15, macos-26, ubuntu-latest]
+        os: [macos-15, macos-26, macos-27, ubuntu-latest]
 
     steps:
       - name: Clean up installed software
