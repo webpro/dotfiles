@@ -1,6 +1,8 @@
 {
   "general": {
-    "showInMenuBar": true,
+    "launcherShortcut": "cmd+space",
+    "showInMenuBar": false,
+    "automaticallyCheckForUpdates": true,
     "popToRootSeconds": 0,
     "escapeKeyBehavior": "navigateBackOrClose",
     "autoSwitchInputSource": null,
@@ -9,7 +11,7 @@
   "appearance": {
     "theme": "system",
     "interfaceSize": "standard",
-    "compactMode": false,
+    "compactMode": true,
     "showFavoritesInCompactMode": true,
     "followCursorAcrossDisplays": true,
     "dragToReposition": false
@@ -27,6 +29,7 @@
     "sensitivity": "medium"
   },
   "applications": {
+    "enabled": true,
     "searchScopes": [
       "/Applications",
       "/Applications/Utilities",
@@ -36,9 +39,51 @@
       "/System/Volumes/Preboot/Cryptexes/App/System/Applications",
       "/System/Library/CoreServices/Finder.app",
       "~/Applications"
-    ]
+    ],
+    "apps": {
+      "app.zen-browser.zen": {
+        "shortcut": "hyper+z",
+        "alias": null,
+        "showInLauncher": true
+      },
+      "com.1password.1password": {
+        "shortcut": "hyper+1",
+        "alias": null,
+        "showInLauncher": true
+      },
+      "com.apple.Terminal": {
+        "shortcut": "hyper+t",
+        "alias": null,
+        "showInLauncher": true
+      },
+      "com.apple.systempreferences": {
+        "shortcut": "hyper+s",
+        "alias": null,
+        "showInLauncher": true
+      },
+      "com.google.Chrome": {
+        "shortcut": "hyper+c",
+        "alias": null,
+        "showInLauncher": true
+      },
+      "org.jeffvli.feishin": {
+        "shortcut": "hyper+e",
+        "alias": null,
+        "showInLauncher": true
+      }
+    }
+  },
+  "systemSettings": {
+    "enabled": true,
+    "panes": {}
+  },
+  "systemActions": {
+    "enabled": true,
+    "actions": {}
   },
   "commands": {
+    "builtInEnabled": true,
+    "builtIn": {},
     "enabled": false,
     "showInLauncher": true
   },
@@ -47,7 +92,8 @@
     "showInLauncher": true,
     "opensNewWindow": false,
     "selectionFallback": "ask",
-    "confirmsBeforeDelete": true
+    "confirmsBeforeDelete": true,
+    "commands": {}
   },
   "appleShortcuts": {
     "enabled": false
@@ -60,32 +106,48 @@
     "retentionDays": "forever",
     "opensTo": "recent",
     "newChatAfterMinutes": 5,
-    "toolRounds": 25
+    "toolRounds": 25,
+    "commands": {}
   },
   "quickActions": {
-    "targetLanguage": ""
+    "targetLanguage": "",
+    "commands": {}
+  },
+  "dictation": {
+    "mode": "toggle",
+    "shortcut": null,
+    "model": "redux",
+    "microphone": null,
+    "destination": "paste",
+    "adaptsCapitalization": true,
+    "releaseAfterMinutes": 1,
+    "language": null
   },
   "fileSearch": {
     "enabled": false,
     "scopes": [
       "~"
     ],
-    "ignorePatterns": []
+    "ignorePatterns": [],
+    "commands": {}
   },
   "notes": {
     "enabled": false,
     "rendersMarkdown": true,
     "showsFormattingBar": true,
-    "folder": null
+    "folder": null,
+    "commands": {}
   },
   "snippets": {
     "showInLauncher": true,
-    "folder": null
+    "folder": null,
+    "commands": {}
   },
   "navigation": {
     "enabled": false,
     "menuSearchShowsAppleMenu": false,
-    "menuSearchDisabledApps": []
+    "menuSearchDisabledApps": [],
+    "commands": {}
   },
   "windowManagement": {
     "enabled": true,
@@ -131,9 +193,11 @@
       "previous-space": null,
       "next-space": null
     },
+    "aliases": {},
     "customSizes": [],
     "layouts": [],
-    "rooms": []
+    "rooms": [],
+    "commands": {}
   },
   "clipboard": {
     "enabled": true,
@@ -142,11 +206,24 @@
     "disabledApps": [
       "com.apple.keychainaccess",
       "com.apple.Passwords"
-    ]
+    ],
+    "commands": {
+      "clipboard-history": {
+        "shortcut": "hyper+v",
+        "alias": null,
+        "showInLauncher": true
+      },
+      "paste-sequentially": {
+        "shortcut": "hyper+w",
+        "alias": null,
+        "showInLauncher": true
+      }
+    }
   },
   "emoji": {
     "skinTone": "none",
-    "gridColumns": 8
+    "gridColumns": 8,
+    "commands": {}
   },
   "calendar": {
     "showInLauncher": true,
@@ -154,12 +231,14 @@
     "span": "todayAndTomorrow",
     "joinWindowMinutes": 5,
     "autoJoinConfirms": true,
+    "autoJoinNamedProvidersOnly": false,
     "meetingBrowser": null,
     "menuBar": "disabled",
     "menuBarUpcomingEvents": "today",
     "menuBarLinkedEventsOnly": true,
     "menuBarHidesWhenEmpty": false,
-    "hideCurrentEventAfterMinutes": "never"
+    "hideCurrentEventAfterMinutes": "never",
+    "commands": {}
   },
   "extensions": {
     "showInLauncher": true
