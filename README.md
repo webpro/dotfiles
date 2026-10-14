@@ -100,7 +100,7 @@ $ dot help
 Usage: dot <command>
 
 Commands:
-   clean            Clean up caches (brew, cargo, gem, pip)
+   clean            Clean caches and inspect macOS storage
    dock             Apply macOS Dock settings
    edit             Open dotfiles in IDE ($VISUAL) and Git GUI ($VISUAL_GIT)
    help             This help message

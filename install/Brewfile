@@ -61,3 +61,4 @@ brew "webp"
 # misc
 brew "grip"
 brew "mole"
+brew "omlahore/tap/removemacai" if OS.mac? && Hardware::CPU.arm? && MacOS.version >= "27"
