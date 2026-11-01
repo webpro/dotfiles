@@ -26,12 +26,12 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 [ -f "$DOTFILES_DIR/local/.profile" ] && . "$DOTFILES_DIR/local/.profile"
 [ -f "$DOTFILES_DIR/local/.env" ] && . "$DOTFILES_DIR/local/.env"
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,path,env,alias,fzf,grep,prompt,completion,fix,pnpm,zoxide}; do
+for DOTFILE in "$DOTFILES_DIR"/system/function/*.bash "$DOTFILES_DIR"/system/{n,path,env,alias,fzf,grep,prompt,completion,fix,pnpm,zoxide}.bash; do
   . "$DOTFILE"
 done
 
 if is-macos; then
-  for DOTFILE in "$DOTFILES_DIR"/system/macos/.{env,alias,function}; do
+  for DOTFILE in "$DOTFILES_DIR"/system/macos/{env,alias,function}.bash; do
     . "$DOTFILE"
   done
 fi

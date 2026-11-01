@@ -6,7 +6,7 @@ ps0() {
 }
 
 ps1() {
-  source "$DOTFILES_DIR"/system/.prompt
+  source "$DOTFILES_DIR"/system/prompt.bash
 }
 
 ps2() {

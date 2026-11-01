@@ -1,4 +1,3 @@
-com.microsoft.VSCode .alias editor
 com.microsoft.VSCode .astro editor
 com.microsoft.VSCode .bash editor
 com.microsoft.VSCode .bash_profile editor
@@ -7,7 +6,6 @@ com.microsoft.VSCode .bats editor
 com.microsoft.VSCode .cfg editor
 com.microsoft.VSCode .cjs editor
 com.microsoft.VSCode .colors editor
-com.microsoft.VSCode .completion editor
 com.microsoft.VSCode .conf editor
 com.microsoft.VSCode .config editor
 com.microsoft.VSCode .css editor
@@ -16,14 +14,8 @@ com.microsoft.VSCode .cts editor
 com.microsoft.VSCode .dir_colors editor
 com.microsoft.VSCode .env editor
 com.microsoft.VSCode .exports editor
-com.microsoft.VSCode .fix editor
-com.microsoft.VSCode .function editor
-com.microsoft.VSCode .function_fs editor
-com.microsoft.VSCode .function_network editor
-com.microsoft.VSCode .function_text editor
 com.microsoft.VSCode .gitignore editor
 com.microsoft.VSCode .graphql editor
-com.microsoft.VSCode .grep editor
 # com.microsoft.VSCode .html editor
 com.microsoft.VSCode .ignore editor
 com.microsoft.VSCode .ini editor
@@ -41,11 +33,8 @@ com.microsoft.VSCode .md editor
 com.microsoft.VSCode .mdx editor
 com.microsoft.VSCode .mjs editor
 com.microsoft.VSCode .mts editor
-com.microsoft.VSCode .n editor
-com.microsoft.VSCode .path editor
 com.microsoft.VSCode .prettierignore editor
 com.microsoft.VSCode .prettierrc editor
-com.microsoft.VSCode .prompt editor
 com.microsoft.VSCode .sh editor
 com.microsoft.VSCode .snap editor
 com.microsoft.VSCode .svelte editor
@@ -58,7 +47,6 @@ com.microsoft.VSCode .txt editor
 com.microsoft.VSCode .vue editor
 com.microsoft.VSCode .yaml editor
 com.microsoft.VSCode .yml editor
-com.microsoft.VSCode .zoxide editor
 com.microsoft.VSCode Brewfile editor
 com.microsoft.VSCode Caskfile editor
 com.microsoft.VSCode Codefile editor

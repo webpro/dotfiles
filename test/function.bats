@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
-load "../system/.function"
-load "../system/.function_text"
+load "../system/function/core.bash"
+load "../system/function/text.bash"
 
 FIXTURE=$'foo\nbar\nbaz\nfoo'
 FIXTURE_TEXT="foo"
@@ -43,14 +43,14 @@ FIXTURE_TEXT="foo"
 }
 
 @test "git dispatches to git_* functions" {
-	load "../system/.function_git"
+	load "../system/function/git.bash"
 	git_foo() { echo "foo:$*"; }
 	ACTUAL="$(git foo a b)"
 	[ "$ACTUAL" = "foo:a b" ]
 }
 
 @test "git passes other commands through" {
-	load "../system/.function_git"
+	load "../system/function/git.bash"
 	ACTUAL="$(git -C / rev-parse --is-inside-work-tree 2>&1 || true)"
 	[[ "$ACTUAL" == *"not a git repository"* ]]
 }
