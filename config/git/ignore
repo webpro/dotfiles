@@ -1,4 +1,6 @@
 ._*
+.agents/reviews
+.agents/tasks
 .DS_Store
 .idea
 .vscode
