@@ -16,9 +16,9 @@ all: $(OS)
 
 macos: sudo core-macos packages-macos link duti bun
 
-ubuntu: core-ubuntu link
+ubuntu: core-ubuntu locale link
 
-arch: core-arch packages-arch link
+arch: core-arch packages-arch locale link
 
 core-macos: brew bash git npm
 
@@ -38,6 +38,16 @@ stow-arch: core-arch
 
 stow-macos: brew
 	is-executable stow || brew install stow
+
+locale-ubuntu: core-ubuntu
+	is-executable locale-gen || apt-get -y install locales
+
+locale-arch: core-arch
+
+locale: locale-$(OS)
+	sed -i 's/^# *en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+	locale-gen
+	locale -a | grep -qiE '^en_US\.utf-?8$$'
 
 sudo:
 ifndef GITHUB_ACTION
