@@ -1,3 +1,3 @@
 # https://github.com/ajeetdsouza/zoxide
 
-eval "$(zoxide init bash)"
+is-executable zoxide && eval "$(zoxide init bash)"
