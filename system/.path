@@ -15,6 +15,7 @@ prepend-path "/usr/bin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/bin"
 prepend-path "$DOTFILES_DIR/bin"
+prepend-path "$DOTFILES_DIR/local/bin"
 
 is-macos && . "$DOTFILES_DIR/system/macos/.path"
 
