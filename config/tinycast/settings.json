@@ -6,20 +6,23 @@
     "popToRootSeconds": 0,
     "escapeKeyBehavior": "navigateBackOrClose",
     "autoSwitchInputSource": null,
-    "supportReminders": true
+    "supportReminders": true,
+    "language": "en"
   },
   "appearance": {
     "theme": "system",
+    "animations": false,
     "interfaceSize": "standard",
     "compactMode": true,
-    "showFavoritesInCompactMode": true,
+    "compactBarCommands": [],
     "followCursorAcrossDisplays": true,
     "dragToReposition": false
   },
   "hyperKey": {
     "key": "capsLock",
     "includesShift": true,
-    "quickPress": "originalKey"
+    "quickPress": "none",
+    "secureInputCompatibility": true
   },
   "calculator": {
     "numberStyle": "system"
@@ -53,6 +56,11 @@
       },
       "com.apple.Terminal": {
         "shortcut": "hyper+t",
+        "alias": null,
+        "showInLauncher": true
+      },
+      "com.apple.finder": {
+        "shortcut": "hyper+f",
         "alias": null,
         "showInLauncher": true
       },
@@ -91,7 +99,7 @@
     "enabled": false,
     "showInLauncher": true,
     "opensNewWindow": false,
-    "selectionFallback": "ask",
+    "passesSelectedText": false,
     "confirmsBeforeDelete": true,
     "commands": {}
   },
@@ -101,6 +109,7 @@
   "ai": {
     "enabled": false,
     "webSearch": false,
+    "choices": true,
     "systemPrompt": "",
     "systemPromptEnabled": true,
     "retentionDays": "forever",
@@ -116,10 +125,12 @@
   "dictation": {
     "mode": "toggle",
     "shortcut": null,
+    "playsSounds": true,
     "model": "redux",
     "microphone": null,
     "destination": "paste",
     "adaptsCapitalization": true,
+    "liveInsertion": false,
     "releaseAfterMinutes": 1,
     "language": null
   },
@@ -129,12 +140,15 @@
       "~"
     ],
     "ignorePatterns": [],
+    "removedDefaultPatterns": [],
+    "showInLauncher": false,
     "commands": {}
   },
   "notes": {
     "enabled": false,
     "rendersMarkdown": true,
     "showsFormattingBar": true,
+    "showsInMenuBar": false,
     "folder": null,
     "commands": {}
   },
@@ -161,10 +175,10 @@
       "right-half": "hyper+l",
       "top-half": "hyper+i",
       "bottom-half": "hyper+k",
-      "top-left-quarter": null,
-      "top-right-quarter": null,
-      "bottom-left-quarter": null,
-      "bottom-right-quarter": null,
+      "top-left-quarter": "hyper+8",
+      "top-right-quarter": "hyper+9",
+      "bottom-left-quarter": "hyper+7",
+      "bottom-right-quarter": "hyper+0",
       "first-three-fourths": null,
       "last-three-fourths": null,
       "first-third": null,
@@ -223,7 +237,13 @@
   "emoji": {
     "skinTone": "none",
     "gridColumns": 8,
-    "commands": {}
+    "commands": {
+      "search-emoji": {
+        "shortcut": "ctrl+cmd+space",
+        "alias": null,
+        "showInLauncher": false
+      }
+    }
   },
   "calendar": {
     "showInLauncher": true,
