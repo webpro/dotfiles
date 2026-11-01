@@ -41,3 +41,16 @@ FIXTURE_TEXT="foo"
 	EXPECTED=$'bar\nbaz'
 	[ "$ACTUAL" = "$EXPECTED" ]
 }
+
+@test "git dispatches to git_* functions" {
+	load "../system/.function_git"
+	git_foo() { echo "foo:$*"; }
+	ACTUAL="$(git foo a b)"
+	[ "$ACTUAL" = "foo:a b" ]
+}
+
+@test "git passes other commands through" {
+	load "../system/.function_git"
+	ACTUAL="$(git -C / rev-parse --is-inside-work-tree 2>&1 || true)"
+	[[ "$ACTUAL" == *"not a git repository"* ]]
+}

@@ -36,9 +36,9 @@ git_changelog() {
 }
 
 function git() {
-  case "$1" in
-    c|cs)        "git_$1" "${@:2}" ;;
-    changelog)   git_changelog "${@:2}" ;;
-    *)           command git "$@" ;;
-  esac
+  if declare -F "git_$1" >/dev/null; then
+    "git_$1" "${@:2}"
+  else
+    command git "$@"
+  fi
 }
