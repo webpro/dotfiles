@@ -1,4 +1,7 @@
-tap "abue-ammar/tinycast", trusted: true
+if OS.mac? && Hardware::CPU.arm? && MacOS.version >= "26"
+  tap "abue-ammar/tinycast", trusted: true
+  cask "abue-ammar/tinycast/tinycast"
+end
 
 cask "firefox"
 cask "font-fira-code"
@@ -10,7 +13,6 @@ cask "ngrok"
 cask "proton-drive"
 cask "protonvpn"
 cask "slack"
-cask "abue-ammar/tinycast/tinycast"
 cask "visual-studio-code"
 cask "vlc"
 cask "zen"
