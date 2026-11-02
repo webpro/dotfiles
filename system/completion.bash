@@ -14,7 +14,7 @@ fi
 
 _dotfiles_completions() {
   local cur="${COMP_WORDS[COMP_CWORD]}"
-  COMPREPLY=( $(compgen -W 'clean dock duti edit help macos test update' -- $cur ) );
+  COMPREPLY=( $(compgen -W "$(dot --commands)" -- "$cur") )
 }
 
 complete -o default -F _dotfiles_completions dot

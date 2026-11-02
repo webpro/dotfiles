@@ -98,13 +98,14 @@ $ dot help
 Usage: dot <command>
 
 Commands:
-   clean            Clean caches and inspect macOS storage
+   clean            Clean up caches, logs, temporary files, and app leftovers
    dock             Apply macOS Dock settings
-   edit             Open dotfiles in IDE ($VISUAL) and Git GUI ($VISUAL_GIT)
+   duti             Set default apps for file types (UTI)
+   edit             Open dotfiles in IDE (code) and Git GUI (fork)
    help             This help message
-   macos            Apply macOS system defaults
+   macos            Apply macOS system defaults and optional system setup
    test             Run tests
-   update           Update packages and pkg managers (brew, casks, cargo, pip3, npm, gems, macOS)
+   update           Update packages and pkg managers (e.g. Homebrew, npm, gems)
 ```
 
 ## Customize
