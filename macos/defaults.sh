@@ -146,6 +146,12 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 \
 # Open Tinycast with ⌘Space
 defaults write com.tinycast.app hotkey.togglePalette -string '{"combo":{"_0":{"carbonModifiers":256,"carbonKeyCode":49}}}'
 
+# Open Feishin instead of Apple Music with Play button (requires notunes)
+defaults write digital.twisted.noTunes replacement "/Applications/Feishin.app"
+
+# Open noTunes at login
+osascript -e 'tell application "System Events" to if not (exists login item "noTunes") then make login item at end with properties {path:"/Applications/noTunes.app", hidden:false}' > /dev/null
+
 ###############################################################################
 # Trackpad, mouse, Bluetooth accessories                                      #
 ###############################################################################
