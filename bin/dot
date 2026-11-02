@@ -22,6 +22,8 @@ sub_clean () {
   mole clean
   cargo cache --autoclean
   gem cleanup
+  fd -u --exclude /Library --exclude node_modules --exclude .git \
+    --glob '{.DS_Store,.AppleDouble,.AppleDesktop,.AppleDB}' "$HOME" -X rm -rfv
 }
 
 sub_dock () {

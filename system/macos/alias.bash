@@ -26,11 +26,6 @@ alias afk="open /System/Library/CoreServices/ScreenSaverEngine.app"
 
 alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-# Recursively remove Apple meta files
-
-alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
-alias cleanupad="find . -type d -name '.AppleD*' -ls -exec /bin/rm -r {} \;"
-
 # Clean up LaunchServices to remove duplicates in the "Open With" menu
 
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
