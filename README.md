@@ -70,22 +70,20 @@ git config --global user.email "your@email.com"
 git config --global github.user "your-github-username"
 ```
 
-2. Sign in to 1Password and [configure commit signing](https://www.1password.dev/ssh/git-commit-signing) with your existing SSH key.
-
-3. Authenticate [GitHub CLI](https://cli.github.com/manual/gh_auth_login):
+2. Authenticate [GitHub CLI](https://cli.github.com/manual/gh_auth_login):
 
 ```sh
 gh auth login
 ```
 
-4. Set macOS [Dock items](./macos/dock.sh) and [system defaults](./macos/defaults.sh):
+3. Set macOS [Dock items](./macos/dock.sh) and [system defaults](./macos/defaults.sh):
 
 ```sh
 dot dock
 dot macos
 ```
 
-5. Populate this file with anything you need sourced in each shell:
+4. Populate this file with anything you need sourced in each shell:
 
 ```sh
 mkdir -p $DOTFILES_DIR/local

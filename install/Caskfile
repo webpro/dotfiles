@@ -1,7 +1,5 @@
 tap "abue-ammar/tinycast", trusted: true
 
-cask "1password"
-cask "1password-cli"
 cask "firefox"
 cask "font-fira-code"
 cask "font-hack"
