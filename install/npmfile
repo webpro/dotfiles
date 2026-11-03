@@ -12,6 +12,4 @@ release-it
 remark-cli
 remark-preset-webpro
 svgo
-tsx
 underscore-cli
-yarn
