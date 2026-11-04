@@ -350,6 +350,9 @@ defaults write com.apple.terminal "Default Window Settings" -string "Pro"
 defaults write com.apple.terminal "Startup Window Settings" -string "Pro"
 defaults write com.apple.Terminal ShowLineMarks -int 0
 
+# Set Pro's background to black at 100% opacity (RGB colors are fully opaque)
+osascript -e 'tell application "Terminal" to set background color of settings set "Pro" to {0, 0, 0}'
+
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################
