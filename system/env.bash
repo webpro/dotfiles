@@ -38,6 +38,10 @@ export GH_TELEMETRY=false
 export DO_NOT_TRACK=true
 export DISABLE_TELEMETRY=true
 
+# Markdown style for glow (glow.yml can't expand ~ in a style path)
+
+export GLOW_STYLE="$XDG_CONFIG_HOME/glow/style.json"
+
 # Case-insensitive globbing (used in pathname expansion)
 
 shopt -s nocaseglob

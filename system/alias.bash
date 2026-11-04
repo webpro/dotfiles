@@ -3,6 +3,8 @@
 alias reload="source ~/.bash_profile"
 alias _="sudo"
 alias g="git"
+alias m="glow -w 0"
+alias mw="glow -w 80"
 alias rr="rm -rf"
 alias mux="tmuxinator"
 

@@ -1,0 +1,9 @@
+# style is set with GLOW_STYLE in system/env.bash
+# mouse support (TUI-mode only)
+mouse: false
+# use pager to display markdown
+pager: false
+# word-wrap at width
+width: 80
+# show all files, including hidden and ignored.
+all: false

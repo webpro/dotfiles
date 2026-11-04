@@ -54,6 +54,7 @@ brew "shellcheck"
 
 # media
 brew "ffmpeg"
+brew "glow"
 brew "imagemagick"
 brew "optipng"
 brew "poppler"
