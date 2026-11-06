@@ -19,7 +19,7 @@ SCREENSHOTS_FOLDER="${HOME}/Screenshots"
 # - Activity Monitor
 # - Software Updates
 
-osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'tell application "System Settings" to quit'
 
 # Ask for the administrator password upfront
 sudo -v
@@ -51,6 +51,9 @@ defaults write NSGlobalDomain AppleLocale -string "$LOCALE"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "$MEASUREMENT_UNITS"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
+# Week starts on Monday (1 = Sunday, 2 = Monday), also used by Calendar
+defaults write NSGlobalDomain AppleFirstWeekday -dict gregorian -int 2
+
 # Using systemsetup might give Error:-99, can be ignored (commands still work)
 # systemsetup manpage: https://ss64.com/osx/systemsetup.html
 
@@ -65,21 +68,14 @@ sudo systemsetup -setusingnetworktime on
 # Restart automatically if the computer freezes (Error:-99 can be ignored)
 sudo systemsetup -setrestartfreeze on 2> /dev/null
 
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
-
-# Disable Sudden Motion Sensor
-sudo pmset -a sms 0
-
 # Disable audio feedback when volume is changed
-defaults write com.apple.sound.beep.feedback -bool false
+defaults write NSGlobalDomain com.apple.sound.beep.feedback -int 0
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
 sudo nvram StartupMute=%01
 
 # Menu bar: show battery percentage
-defaults write com.apple.menuextra.battery ShowPercent YES
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 
 # Disable opening and closing window animations
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
@@ -105,13 +101,10 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable Resume system-wide
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
-
-# Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 ###############################################################################
 # Keyboard & Input                                                            #
@@ -176,6 +169,11 @@ defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool true
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 1
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 1
 
+# Trackpad: disable "Look up & data detectors" (force click and three-finger tap)
+defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -int 0
+
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
@@ -197,7 +195,7 @@ defaults write com.apple.screencapture type -string "png"
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
-# Enable subpixel font rendering on non-Apple LCDs
+# Font smoothing (subpixel rendering was removed in Mojave; this now sets stroke weight)
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 ###############################################################################
@@ -222,9 +220,6 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Finder: allow text selection in Quick Look
-defaults write com.apple.finder QLEnableTextSelection -bool true
-
 # Display full POSIX path as Finder window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
@@ -245,9 +240,6 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
-
-# Use AirDrop over every interface.
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Always open everything in Finder's list view.
 # Use list view in all Finder windows by default
@@ -293,9 +285,6 @@ defaults write com.Apple.Dock show-recents -bool false
 # Mail                                                                        #
 ###############################################################################
 
-# Display emails in threaded mode
-defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
-
 # Disable send and reply animations in Mail.app
 defaults write com.apple.mail DisableReplyAnimations -bool true
 defaults write com.apple.mail DisableSendAnimations -bool true
@@ -332,11 +321,8 @@ defaults write com.apple.mail ConversationViewSortDescending -bool true
 # Calendar                                                                    #
 ###############################################################################
 
-# Show week numbers (10.8 only)
+# Show week numbers
 defaults write com.apple.iCal "Show Week Numbers" -bool true
-
-# Week starts on monday
-defaults write com.apple.iCal "first day of week" -int 1
 
 ###############################################################################
 # Terminal                                                                    #
@@ -389,13 +375,10 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
 
-# Allow the App Store to reboot machine on macOS updates
-defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
-
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal"; do
+for app in "Calendar" "Contacts" "Dock" "Finder" "Mail" "SystemUIServer"; do
   killall "${app}" &> /dev/null
 done
