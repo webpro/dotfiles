@@ -30,3 +30,19 @@
 	run is-supported "ls --nonexistent"
 	[ "$status" -eq 1 ]
 }
+
+@test "sort-json-keys requires exactly one file" {
+	FILE="$BATS_TEST_TMPDIR/one.json"
+	echo '{"b":1,"a":2}' > "$FILE"
+	run sort-json-keys "$FILE" "$FILE"
+	[ "$status" -eq 1 ]
+	[ "$(cat "$FILE")" = '{"b":1,"a":2}' ]
+}
+
+@test "sort-json-keys leaves invalid JSON unchanged" {
+	FILE="$BATS_TEST_TMPDIR/invalid.json"
+	echo '{"b":1,"a":2,}' > "$FILE"
+	run sort-json-keys "$FILE"
+	[ "$status" -ne 0 ]
+	[ "$(cat "$FILE")" = '{"b":1,"a":2,}' ]
+}
