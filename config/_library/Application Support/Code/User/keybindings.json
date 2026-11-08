@@ -1,0 +1,29 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  {
+    "key": "ctrl+cmd+k",
+    "command": "workbench.action.terminal.clear"
+  },
+  {
+    "key": "ctrl+cmd+w",
+    "command": "workbench.action.terminal.kill"
+  },
+  {
+    "key": "shift+cmd+0",
+    "command": "workbench.action.zoomReset"
+  },
+  {
+    "key": "cmd+numpad0",
+    "command": "-workbench.action.zoomReset"
+  },
+  {
+    "key": "f3",
+    "command": "editor.action.rename",
+    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "f4",
+    "command": "references-view.findReferences",
+    "when": "editorHasReferenceProvider"
+  }
+]

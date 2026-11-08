@@ -1,0 +1,20 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "auto",
+  "verbose": false,
+  "idleCompaction": false,
+  "switchModelsOnFlag": false,
+  "showTurnDuration": true,
+  "autoMode": {
+    "environment": []
+  }
+}

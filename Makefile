@@ -60,13 +60,19 @@ link: stow-$(OS)
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	mkdir -p "$(XDG_CONFIG_HOME)"
 	stow -t "$(HOME)" runcom
-	stow -t "$(XDG_CONFIG_HOME)" --ignore='^agents$$' config
-	stow --no-folding -d "$(DOTFILES_DIR)/config" -t "$(HOME)" agents
+	stow -t "$(XDG_CONFIG_HOME)" --ignore='^_.*' config
+	stow --no-folding -d "$(DOTFILES_DIR)/config" -t "$(HOME)" _home
+ifeq ($(OS),macos)
+	stow --no-folding -d "$(DOTFILES_DIR)/config" -t "$(HOME)/Library" _library
+endif
 
 unlink: stow-$(OS)
 	stow --delete -t "$(HOME)" runcom
-	stow --delete -t "$(XDG_CONFIG_HOME)" --ignore='^agents$$' config
-	stow --delete -d "$(DOTFILES_DIR)/config" -t "$(HOME)" agents
+	stow --delete -t "$(XDG_CONFIG_HOME)" --ignore='^_.*' config
+	stow --delete -d "$(DOTFILES_DIR)/config" -t "$(HOME)" _home
+ifeq ($(OS),macos)
+	stow --delete -d "$(DOTFILES_DIR)/config" -t "$(HOME)/Library" _library
+endif
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 

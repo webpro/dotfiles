@@ -6,7 +6,7 @@
     "popToRootSeconds": 0,
     "escapeKeyBehavior": "navigateBackOrClose",
     "autoSwitchInputSource": null,
-    "supportReminders": true,
+    "supportReminders": false,
     "language": "en"
   },
   "appearance": {
@@ -21,7 +21,7 @@
   "hyperKey": {
     "key": "capsLock",
     "includesShift": true,
-    "quickPress": "none",
+    "quickPress": "originalKey",
     "secureInputCompatibility": true
   },
   "calculator": {
@@ -110,6 +110,7 @@
     "enabled": false,
     "webSearch": false,
     "choices": true,
+    "expandsReasoning": false,
     "systemPrompt": "",
     "systemPromptEnabled": true,
     "retentionDays": "forever",
@@ -168,6 +169,8 @@
     "showInLauncher": true,
     "gap": 0,
     "cycle": "sizes",
+    "wrapDisplays": true,
+    "keepProportions": true,
     "layoutsShowInLauncher": true,
     "roomsShowInLauncher": true,
     "shortcuts": {
@@ -201,6 +204,10 @@
       "move-right": null,
       "move-up": null,
       "move-down": null,
+      "move-to-left-edge": null,
+      "move-to-right-edge": null,
+      "move-to-top-edge": null,
+      "move-to-bottom-edge": null,
       "next-display": "hyper+/",
       "previous-display": null,
       "toggle-fullscreen": null,

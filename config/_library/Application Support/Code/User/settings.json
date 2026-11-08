@@ -1,0 +1,206 @@
+{
+  "[astro]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[makefile]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "unifiedjs.vscode-remark"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "remcohaszing.vscode-mdxlint"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "cSpell.userWords": [
+    "webpro"
+  ],
+  "chat.editing.alwaysSaveWithGeneratedChanges": true,
+  "chat.tools.terminal.autoApprove": {
+  },
+  "chat.tools.urls.autoApprove": {
+  },
+  "chat.viewSessions.orientation": "stacked",
+  "claudeCode.preferredLocation": "sidebar",
+  "debug.javascript.autoAttachFilter": "onlyWithFlag",
+  "debug.javascript.autoAttachSmartPattern": [
+    "${workspaceFolder}/**",
+    "**/$KNOWN_TOOLS$/**"
+  ],
+  "debug.onTaskErrors": "debugAnyway",
+  "editor.accessibilitySupport": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.fontFamily": "Hack",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "editor.minimap.enabled": false,
+  "editor.minimap.renderCharacters": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.pasteAs.enabled": false,
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": "onlySnippets",
+  "editor.tabSize": 2,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.wordWrapColumn": 120,
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.run": "onSave",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmPasteNative": false,
+  "explorer.fileNesting.patterns": {
+    "*.db": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.s3db": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.ts": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "tsconfig.json": "tsconfig.*.json"
+  },
+  "explorer.openEditors.visible": 0,
+  "extensions.ignoreRecommendations": true,
+  "files.associations": {
+  },
+  "files.autoSaveWhenNoErrors": true,
+  "files.autoSaveWorkspaceFilesOnly": true,
+  "files.exclude": {
+    "**/*error.log": true
+  },
+  "files.insertFinalNewline": true,
+  "files.saveConflictResolution": "overwriteFileOnDisk",
+  "files.trimTrailingWhitespace": true,
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.ignoreWhitespace": true,
+  "git.blame.statusBarItem.enabled": true,
+  "git.confirmSync": false,
+  "git.openRepositoryInParentFolders": "never",
+  "github.copilot.chat.agent.autoFix": false,
+  "github.copilot.chat.agent.currentEditorContext.enabled": false,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+  "github.copilot.chat.localeOverride": "en",
+  "github.copilot.editor.enableCodeActions": false,
+  "github.copilot.enable": {
+    "*": false,
+    "markdown": false,
+    "plaintext": false,
+    "scminput": false
+  },
+  "github.copilot.nextEditSuggestions.allowWhitespaceOnlyChanges": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.nextEditSuggestions.fixes": false,
+  "github.copilot.renameSuggestions.triggerAutomatically": false,
+  "html.format.extraLiners": "",
+  "html.format.indentInnerHtml": true,
+  "html.format.preserveNewLines": false,
+  "html.format.wrapLineLength": 80,
+  "js/ts.preferGoToSourceDefinition": true,
+  "js/ts.preferences.importModuleSpecifier": "relative",
+  "js/ts.preferences.preferTypeOnlyAutoImports": true,
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "json.schemaDownload.trustedDomains": {
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://unpkg.com": true,
+    "https://www.schemastore.org/": true
+  },
+  "json.schemas": [],
+  "markdown.editor.filePaste.enabled": "smart",
+  "markdown.extension.theming.decoration.renderCodeSpan": false,
+  "markdown.extension.toc.omittedFromToc": {},
+  "markdown.extension.toc.plaintext": true,
+  "markdown.extension.toc.updateOnSave": false,
+  "oxc.enable.oxfmt": true,
+  "prettier.arrowParens": "avoid",
+  "prettier.bracketSameLine": true,
+  "prettier.resolveGlobalModules": true,
+  "prettier.trailingComma": "none",
+  "remote.SSH.connectTimeout": 1800,
+  "search.exclude": {
+    "**/.next": true,
+    "**/.nuxt": true,
+    "coverage": true,
+    "package-lock.json": true,
+    "pnpm-lock.yaml": true,
+    "tmp": true,
+    "yarn.lock": true
+  },
+  "search.useGlobalIgnoreFiles": true,
+  "search.useParentIgnoreFiles": true,
+  "security.promptForLocalFileProtocolHandling": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "telemetry.feedback.enabled": false,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.defaultProfile.osx": "bash",
+  "terminal.integrated.macOptionClickForcesSelection": true,
+  "terminal.integrated.profiles.osx": {
+    "bash": {
+      "icon": "terminal-bash",
+      "path": "/opt/homebrew/bin/bash"
+    }
+  },
+  "terminal.integrated.suggest.enabled": false,
+  "window.confirmSaveUntitledWorkspace": false,
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#3e3e3e80",
+    "editor.rangeHighlightBackground": "#3e3e3e80"
+  },
+  "workbench.colorTheme": "Dark Modern",
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editorAssociations": {
+    "*.drawio.svg": "hediet.vscode-drawio-text",
+    "*.svg": "default",
+    "git-rebase-todo": "default"
+  },
+  "workbench.list.multiSelectModifier": "alt",
+  "workbench.secondarySideBar.defaultVisibility": "visible",
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  "workbench.tree.enableStickyScroll": true
+}

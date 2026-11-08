@@ -1,0 +1,16 @@
+model = "gpt-6-astra"
+model_reasoning_effort = "xhigh"
+model_context_window = 872000
+
+[tui]
+screen_reader_detection_done = true
+status_line = ["model-with-reasoning", "current-dir", "thread-name", "git-branch", "pull-request-number", "context-used", "context-window-size"]
+status_line_use_colors = true
+animations = false
+show_tooltips = false
+
+[tui.effects]
+starfield = false
+
+[projects."/Users/lars/.dotfiles"]
+trust_level = "trusted"
