@@ -126,7 +126,7 @@ duti:
 	duti -v $(DOTFILES_DIR)/install/duti
 
 bun:
-	curl -fsSL https://bun.sh/install | bash
+	curl -fsSL https://bun.sh/install | PATH="$(HOME)/.bun/bin:$$PATH" bash
 
 test:
 	bats test
