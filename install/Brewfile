@@ -41,6 +41,7 @@ brew "grep"
 brew "jq"
 brew "psgrep"
 brew "ripgrep"
+brew "yq"
 
 # languages/tools
 brew "cmake"

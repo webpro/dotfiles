@@ -11,6 +11,3 @@ show_tooltips = false
 
 [tui.effects]
 starfield = false
-
-[projects."/Users/lars/.dotfiles"]
-trust_level = "trusted"
