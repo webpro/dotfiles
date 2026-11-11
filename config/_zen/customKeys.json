@@ -1,0 +1,22 @@
+{
+  "key_openAddons": {
+    "key": "A",
+    "modifiers": "accel,shift"
+  },
+  "zen-compact-mode-toggle": {
+    "key": "C",
+    "modifiers": "accel,control"
+  },
+  "zen-pinned-tab-reset-shortcut": {
+    "key": "R",
+    "modifiers": "accel,control"
+  },
+  "zen-workspace-backward": {
+    "key": "~",
+    "modifiers": "control,shift"
+  },
+  "zen-workspace-forward": {
+    "key": "`",
+    "modifiers": "control"
+  }
+}

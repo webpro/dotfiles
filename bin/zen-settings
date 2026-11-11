@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+
+# Copy Zen shortcuts and Space Routing between the Zen profile and dotfiles.
+# Zen saves these files with a rename that replaces symlinks, so they are copied.
+
+set -euo pipefail
+
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
+LOCAL="$DOTFILES_DIR/local"
+ZEN="$HOME/Library/Application Support/zen"
+SHORTCUTS="$DOTFILES_DIR/config/_zen/customKeys.json"
+ROUTING="$LOCAL/config/_zen/zen-space-routing.json"
+
+usage() {
+  cat >&2 << 'EOF'
+Usage: zen-settings <export|import>
+  export  Copy shortcuts and Space Routing from the Zen profile to dotfiles
+  import  Copy them back to the Zen profile (quit Zen first)
+EOF
+  exit 1
+}
+
+fail() {
+  echo "$1" >&2
+  exit 1
+}
+
+profile() {
+  local path
+  path=$(sed -n 's/^Default=//p' "$ZEN/installs.ini" 2> /dev/null || true)
+  if [[ -n $path && $path != *$'\n'* ]]; then
+    [[ $path = /* ]] || path="$ZEN/$path"
+    [[ -d $path ]] && echo "$path" && return
+  fi
+  fail "Expected one Zen profile in $ZEN/installs.ini. Start Zen once to create it."
+}
+
+u32le() {
+  printf '%b' "$(printf '\\x%02x' $(($1 & 255)) $(($1 >> 8 & 255)) $(($1 >> 16 & 255)) $(($1 >> 24)))"
+}
+
+# mozlz4 is an LZ4 block behind "mozLz40\0" and the decompressed size. The lz4
+# legacy frame holds the same block behind its magic number and the block size.
+decompress() {
+  printf 'mozLz40\0' | cmp -s -n 8 - "$1" || fail "Not a mozlz4 file: $1"
+  { printf '\x02\x21\x4c\x18'; u32le $(($(wc -c < "$1") - 12)); tail -c +13 "$1"; } | lz4 -dc
+}
+
+compress() {
+  printf 'mozLz40\0'
+  u32le "$(printf '%s' "$1" | wc -c)"
+  printf '%s' "$1" | lz4 -l -c | tail -c +9
+}
+
+export_file() {
+  local source=$1 target=$2 json
+  if [[ ! -e $source ]]; then
+    echo "Skipped $source, not found"
+    return
+  fi
+  if [[ $source = *.jsonlz4 ]]; then
+    json=$(decompress "$source" | jq -S .)
+  else
+    json=$(jq -S . "$source")
+  fi
+  mkdir -p "$(dirname "$target")"
+  printf '%s\n' "$json" > "$target"
+  echo "Wrote $target"
+}
+
+import_file() {
+  local source=$1 target=$2 json
+  if [[ ! -e $source ]]; then
+    echo "Skipped $source, not found"
+    return
+  fi
+  json=$(jq -c . "$source")
+  if [[ $target = *.jsonlz4 ]]; then
+    compress "$json" > "$target.tmp"
+  else
+    printf '%s' "$json" > "$target.tmp"
+  fi
+  mv "$target.tmp" "$target"
+  echo "Wrote $target"
+}
+
+export_settings() {
+  export_file "$1/customKeys.json" "$SHORTCUTS"
+  if [[ -d $LOCAL ]]; then
+    export_file "$1/zen-space-routing.jsonlz4" "$ROUTING"
+  fi
+}
+
+import_settings() {
+  if pgrep -x zen > /dev/null; then
+    fail "Quit Zen first: it reads these files at startup and overwrites them on save."
+  fi
+  import_file "$SHORTCUTS" "$1/customKeys.json"
+  if [[ -d $LOCAL ]]; then
+    import_file "$ROUTING" "$1/zen-space-routing.jsonlz4"
+  fi
+}
+
+[[ $# -eq 1 && (${1} == export || ${1} == import) ]] || usage
+PROFILE=$(profile)
+"$1_settings" "$PROFILE"
