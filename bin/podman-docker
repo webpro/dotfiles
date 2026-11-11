@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Docker CLI for tools that shell out to docker, running podman instead:
+# - drops the buildx-only build flags podman rejects: --provenance=… (no attestations) and --load (podman always loads)
+# - reports the digest a pushed image has in the registry: podman lists the local digest in RepoDigests, but it
+#   recompresses layers on push, so the registry has the image under another digest
+# Example: WRANGLER_DOCKER_BIN=podman-docker wrangler deploy
+
+state="${TMPDIR:-/tmp}/podman-docker"
+key() { printf '%s' "$1" | tr '/:@' '___'; }
+
+if [ "$1" = push ] && [ $# -eq 2 ]; then
+  mkdir -p "$state"
+  podman push --digestfile "$state/$(key "$2")" "$2"
+  exit
+fi
+
+if [ "$1" = image ] && [ "$2" = inspect ] && [ $# -eq 5 ] && [ "$4" = --format ] &&
+  [ "$5" = '{{ json .RepoDigests }}' ] && [ -f "$state/$(key "$3")" ]; then
+  printf '["%s@%s"]\n' "${3%:*}" "$(<"$state/$(key "$3")")"
+  exit
+fi
+
+args=()
+for arg in "$@"; do
+  case "$arg" in
+    --provenance=* | --load) ;;
+    *) args+=("$arg") ;;
+  esac
+done
+
+exec podman "${args[@]}"
