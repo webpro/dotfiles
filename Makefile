@@ -61,7 +61,6 @@ link: stow-$(OS)
 	mkdir -p "$(XDG_CONFIG_HOME)"
 	stow -t "$(HOME)" runcom
 	stow -t "$(XDG_CONFIG_HOME)" --ignore='^_.*' config
-	stow --no-folding -d "$(DOTFILES_DIR)/config" -t "$(HOME)" _home
 ifeq ($(OS),macos)
 	stow --no-folding -d "$(DOTFILES_DIR)/config" -t "$(HOME)/Library" _library
 endif
@@ -69,7 +68,6 @@ endif
 unlink: stow-$(OS)
 	stow --delete -t "$(HOME)" runcom
 	stow --delete -t "$(XDG_CONFIG_HOME)" --ignore='^_.*' config
-	stow --delete -d "$(DOTFILES_DIR)/config" -t "$(HOME)" _home
 ifeq ($(OS),macos)
 	stow --delete -d "$(DOTFILES_DIR)/config" -t "$(HOME)/Library" _library
 endif
