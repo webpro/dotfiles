@@ -47,6 +47,7 @@ brew "yq"
 # languages/tools
 brew "cmake"
 brew "gh"
+brew "go"
 brew "make"
 brew "n"
 brew "podman"
