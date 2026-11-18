@@ -74,6 +74,11 @@
         "alias": null,
         "showInLauncher": true
       },
+      "com.superlogical.rex": {
+        "shortcut": "hyper+r",
+        "alias": null,
+        "showInLauncher": true
+      },
       "org.jeffvli.feishin": {
         "shortcut": "hyper+e",
         "alias": null,
@@ -156,6 +161,7 @@
   "snippets": {
     "showInLauncher": true,
     "folder": null,
+    "defaultAction": "paste",
     "commands": {}
   },
   "navigation": {
@@ -222,7 +228,7 @@
   },
   "clipboard": {
     "enabled": true,
-    "retentionDays": 90,
+    "retentionDays": 7,
     "defaultAction": "paste",
     "disabledApps": [
       "com.apple.keychainaccess",
